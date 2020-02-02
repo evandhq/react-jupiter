@@ -1,13 +1,14 @@
+// @flow
 
 import React, { useState } from 'react';
 import { VERTICAL_CARD, HORIZONTAL_CARD } from './constants';
 import CardTemplate from '../card-template';
 import ShowDate from '../../show-date';
 import Avatar from '../../avatar';
+import Cover from '../../cover';
 import ProductProperties from '../../product-properties';
 import {
   Link,
-  VerticalCover,
   VerticalContentContainer,
   DateBookmarkContainer,
   BookmarkIcon,
@@ -15,7 +16,7 @@ import {
   OrganizationLink,
   OrganizationName,
   HorizontalCardContainer,
-  HorizontalCover,
+  CoverCointainer,
   HorizontalContentContainer,
 } from './index.style';
 
@@ -34,6 +35,7 @@ type Props = {
   },
   linkTo?: string,
   queryString?: string,
+  renderLink?: * => Node,
   onClickBookmark: () => void,
 }
 
@@ -49,6 +51,7 @@ const EventCard = (props: Props) => {
     organization,
     onClickBookmark,
     linkTo,
+    renderLink,
     queryString,
   } = props;
 
@@ -70,7 +73,10 @@ const EventCard = (props: Props) => {
       hoverToLevel={3}
       maxWidth={270}
     >
-      <Link to={`${linkTo}${queryString.length > 0 ? `?${queryString}` : ''}`}><VerticalCover data-test="vertical-cover" src={cover} /></Link>
+      <Cover
+        src={cover}
+        renderLink={renderLink}
+      />
       <VerticalContentContainer data-test="vertical-content">
         <div>
           <DateBookmarkContainer data-test="vertical-date-bookmark">
@@ -101,7 +107,10 @@ const EventCard = (props: Props) => {
       hoverToLevel={3}
       maxWidth={560}
     >
-      <Link to={`${linkTo}${queryString.length > 0 ? `?${queryString}` : ''}`}><HorizontalCover data-test="horizontal-cover" src={cover} /></Link>
+      <CoverCointainer
+        src={cover}
+        renderLink={renderLink}
+      />
       <HorizontalContentContainer data-test="horizontal-content">
         <DateBookmarkContainer>
           <ShowDate date={date} color="gray" fontSize="12" />
@@ -137,6 +146,7 @@ EventCard.defaultProps = {
   bookmarked: false,
   type: VERTICAL_CARD,
   queryString: '',
+  renderLink: null,
 };
 
 export default EventCard;

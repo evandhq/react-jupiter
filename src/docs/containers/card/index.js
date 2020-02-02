@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { Typography } from '../../../components';
 import ShowDate from '../../../components/show-date';
 import CardTemplate from '../../../components/card/card-template';
@@ -31,6 +31,7 @@ const CardPage = () => (
       }}
       onClickBookmark={() => { window.console.log('handle click bookmark'); }}
       linkTo="/somewhere"
+      renderLink={(element) => <Link to="/somewhere">{element}</Link>}
     />
     <br />
     <NumericSummeryReport
@@ -50,6 +51,7 @@ const CardPage = () => (
       place="تهران"
       price="از ۴۴۰۰۰ تومان"
       onClickBookmark={() => { window.console.log('handle click bookmark'); }}
+      renderLink={(element) => <Link to="/somewhere">{element}</Link>}
       linkTo="/somewhere"
       queryString="icn=trendEvents&ici=fp5"
     />

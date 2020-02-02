@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link as ReactRouterLink } from 'react-router-dom';
-
+import Cover from '../../cover';
 import CardTemplate from '../card-template';
 import { Text, Heading } from '../../typography';
 import Icon from '../../icon';
@@ -67,10 +67,9 @@ export const HorizontalCardContainer = styled(CardTemplate)`
   height: 116px;
 `;
 
-export const HorizontalCover = styled.img`
+export const CoverCointainer = styled(Cover)`
   width: 206px;
-  min-width: 206px;
-  height: auto;
+  min-height: 116px;
 `;
 
 export const HorizontalContentContainer = styled.div`
