@@ -76,6 +76,7 @@ const EventCard = (props: Props) => {
       <Cover
         src={cover}
         renderLink={renderLink}
+        data-test="vertical-cover"
       />
       <VerticalContentContainer data-test="vertical-content">
         <div>
@@ -110,6 +111,7 @@ const EventCard = (props: Props) => {
       <CoverCointainer
         src={cover}
         renderLink={renderLink}
+        data-test="horizontal-cover"
       />
       <HorizontalContentContainer data-test="horizontal-content">
         <DateBookmarkContainer>

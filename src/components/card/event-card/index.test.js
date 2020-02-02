@@ -24,9 +24,9 @@ describe('Event Card', () => {
       onClickBookmark: () => { window.console.log('handle click bookmark'); },
       linkTo: '/somewhere',
     });
-    const VerticalCover = findByTestAtrr(VerticalCard.find('img'), 'vertical-cover');
+    const VerticalCover = findByTestAtrr(VerticalCard, 'vertical-cover');
     const VerticalContent = findByTestAtrr(VerticalCard.find('div'), 'vertical-content');
-    expect(VerticalCover.length).toBe(1);
+    expect(VerticalCover.length).not.toBe(0);
     expect(VerticalContent.length).toBe(1);
     VerticalCard.unmount();
   });
@@ -43,9 +43,9 @@ describe('Event Card', () => {
       organizerLogo: 'https://static.evand.net/images/organizations/logos/original/e90483ade453446ae2fd156e15244d04.jpg',
       linkTo: '/somewhere',
     });
-    const HorizontalCover = findByTestAtrr(HorizontalCard.find('img'), 'horizontal-cover');
+    const HorizontalCover = findByTestAtrr(HorizontalCard, 'horizontal-cover');
     const HorizontalContent = findByTestAtrr(HorizontalCard.find('div'), 'horizontal-content');
-    expect(HorizontalCover.length).toBe(1);
+    expect(HorizontalCover.length).not.toBe(0);
     expect(HorizontalContent.length).toBe(1);
     HorizontalCard.unmount();
   });
@@ -62,13 +62,13 @@ describe('Event Card', () => {
       onClickBookmark: fn,
       linkTo: '/somewhere',
     });
-    const Bookmark = findByTestAtrr(VerticalCard, 'vertical-date-bookmark').find('i[name="bookmark-border"]');
-    expect(Bookmark.length).toBe(1);
+    const Bookmark = findByTestAtrr(VerticalCard, 'vertical-date-bookmark').find('i');
+    expect(Bookmark.exists('.icon-bookmark-border')).toBe(true);
     Bookmark.simulate('click');
-    const NewBookmark = findByTestAtrr(VerticalCard, 'vertical-date-bookmark').find('i[name="bookmark-border"]');
-    expect(NewBookmark.length).toBe(0);
-    const Bookmarked = findByTestAtrr(VerticalCard, 'vertical-date-bookmark').find('i[name="bookmark"]');
-    expect(Bookmarked.length).toBe(1);
+    const NewBookmark = findByTestAtrr(VerticalCard, 'vertical-date-bookmark').find('i');
+    expect(NewBookmark.exists('.icon-bookmark-border')).toBe(false);
+    const Bookmarked = findByTestAtrr(VerticalCard, 'vertical-date-bookmark').find('i');
+    expect(Bookmarked.exists('.icon-bookmark')).toBe(true);
     VerticalCard.unmount();
   });
 });
