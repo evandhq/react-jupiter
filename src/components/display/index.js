@@ -1,34 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Block, Flex } from './index.style';
-
-const displays = {
-  block: 'block',
-  flex: 'flex',
-};
+import { Block, Flex, DisplayStyle } from './index.style';
+import styled from 'styled-components';
 
 const Display = (props) => {
   const {
-    children, display, ...rest
+    children, ...rest
   } = props;
 
-  const renderDisplay = (display) => {
+  const renderDisplay = () => {
     if (children === undefined) {
       return null;
     }
-    switch (display) {
-      case 'block':
-        return (<Block {...rest}>{children}</Block>);
-      case 'flex':
-        return (<Flex {...rest}>{children}</Flex>);
-      default:
-        return (<Block {...rest}>{children}</Block>);
-    }
+
+    return <DisplayStyle {...rest}>{children}</DisplayStyle>
   };
 
   return (
     <>
-      {renderDisplay(display)}
+      {renderDisplay()}
     </>
   );
 };
@@ -39,11 +29,6 @@ Display.propTypes = {
     PropTypes.node,
     PropTypes.string,
   ]).isRequired,
-  display: PropTypes.oneOf([displays.block, displays.flex]),
-};
-
-Display.defaultProps = {
-  display: displays.block,
 };
 
 export default Display;

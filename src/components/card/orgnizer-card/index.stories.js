@@ -21,6 +21,7 @@ storiesOf('OrganizerCard', module)
       activeEventsCount={text('activeEventsCount(optional)', '۱۲۳')}
       allEventsCount={text('allEventsCount(optional)', '۲۴۵۶۷')}
       recommendedCount={text('recommendedCount(optional)', '۳۳ نفر')}
+      isFollowed={true}
     />
   ))
   .addDecorator(withKnobs)

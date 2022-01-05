@@ -47,7 +47,7 @@ const OrgnizerCard = (props: Props) => {
   return (
     <Container>
       <ResponsiveFlex>
-        <Display display="flex" alignItems="center" justifyContent="space-between">
+        <Display display="flex" alignItems="center" justifyContent="space-between" width="100%">
           {renderOrganizerLink(<Avatar
             alt={name}
             src={logo}
@@ -56,12 +56,16 @@ const OrgnizerCard = (props: Props) => {
           <Display display="block">
             <Margin right={5}>
               <Text size={12} bold>
-                برگزار‌کننده :
+                برگزار‌کننده: 
               </Text>
-              <br />
-              {renderOrganizerLink(<Heading size="md" level={4}>
-                {name}
-              </Heading>)}
+              {renderOrganizerLink(
+              <Text
+                strong={true}
+                size="md"
+                level={4}
+              >
+                {` ${name}`}
+              </Text>)}
             </Margin>
           </Display>
         </Display>
@@ -69,7 +73,7 @@ const OrgnizerCard = (props: Props) => {
           <Margin top={5}/>
         </Responsive>
         {(activeEventsCount || allEventsCount) && (
-        <Display display="flex" alignItems="center" justofyContent="space-between">
+        <Display display="flex" alignItems="center" justifyContent="space-between">
           {followersCount && (
             <Display display="block">
               <Margin left={6}>
@@ -138,7 +142,7 @@ const OrgnizerCard = (props: Props) => {
             این برگزارکننده را توصیه کرده‌اند.
           </Heading>
         )}
-        <Display display="flex" justifyContent="space-between">
+        <Display display="flex" justifyContent="center" width="100%">
           <Buttons
             onClickFollowMe={onClickFollowMe}
             onClickConnectUs={onClickConnectUs}

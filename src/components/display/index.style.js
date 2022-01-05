@@ -15,3 +15,22 @@ export const Flex = styled.div`
 export const Block = styled.div`
   display: block;
 `;
+
+export const DisplayStyle = styled.div`
+  ${({ display }) => (display
+    ? `display: ${display}`
+    : ''
+  )}
+  ${({ width }) => (width
+    ? `width: ${width}`
+    : ''
+  )}
+  ${({ justifyContent }) => (justifyContent
+    ? `justify-content: ${justifyContent}`
+    : ''
+  )}
+  ${({ alignItems }) => (alignItems
+    ? `align-items: ${alignItems}`
+    : ''
+  )}
+`;

@@ -36,10 +36,10 @@ export const TextCenter = styled.div`
 export const ResponsiveFlex = styled.div`
   display: flex;
   @media only screen and (max-width: ${defaultTheme.breakpoints.sm}px) {
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
   }
   @media only screen and (min-width: ${defaultTheme.breakpoints.sm}px) {
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
   }
   align-items: center;
   justify-content: space-between;
