@@ -40,7 +40,7 @@ const Buttons = (props: Props) => {
             styleType="secondary"
             htmlType="button"
             mainColor="blue"
-            size="sm"
+            size="md"
             onClick={onClickConnectUs}
           >
             تماس

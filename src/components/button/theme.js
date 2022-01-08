@@ -17,7 +17,7 @@ const theme = {
     sm: {
       padding: '2px 16px',
       font: 10,
-      minWidth: 100,
+      minWidth: 80,
       height: 36,
     },
   },

@@ -17,7 +17,7 @@ export const StyledButton = styled(Button)`
   direction: rtl;
 
   &.follow-button {
-    min-width: 140px;
+    min-width: 120px;
   }
 `;
 
@@ -36,10 +36,10 @@ export const TextCenter = styled.div`
 export const ResponsiveFlex = styled.div`
   display: flex;
   @media only screen and (max-width: ${defaultTheme.breakpoints.sm}px) {
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
   }
   @media only screen and (min-width: ${defaultTheme.breakpoints.sm}px) {
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
   }
   align-items: center;
   justify-content: space-between;
