@@ -7,6 +7,7 @@ import {
   LTRContainer,
   StyledButton,
 } from './index.style';
+import Display from '../../display';
 
 type Props = {
   isFollowed: boolean,
@@ -40,7 +41,7 @@ const Buttons = (props: Props) => {
             styleType="secondary"
             htmlType="button"
             mainColor="blue"
-            size="md"
+            size="sm"
             onClick={onClickConnectUs}
           >
             تماس
@@ -59,38 +60,29 @@ const Buttons = (props: Props) => {
       </Responsive>
 
       <Responsive option={{ lessThan: '768px' }}>
-        <Grid>
-          <Grid.Unit size={1 / 2}>
-            <Margin all={4}>
-              <Button
-                styleType="secondary"
-                htmlType="button"
-                mainColor="blue"
-                size="sm"
-                onClick={onClickConnectUs}
-                wide
-              >
-                تماس
-              </Button>
-            </Margin>
-          </Grid.Unit>
-
-          <Grid.Unit size={1 / 2}>
-            <Margin all={4}>
-              <Button
-                className="follow-button"
-                styleType="secondary"
-                htmlType="button"
-                size="sm"
-                isLoading={isLoading}
-                onClick={handleClickFollowMe}
-                wide
-              >
-                {isFollow ? 'دنبال میکنید' : 'دنبال کنید'}
-              </Button>
-            </Margin>
-          </Grid.Unit>
-        </Grid>
+        <Display display="flex" justifyContent="center" width="100%">
+          <Button
+            styleType="secondary"
+            htmlType="button"
+            mainColor="blue"
+            size="sm"
+            onClick={onClickConnectUs}
+            wide
+          >
+            تماس
+          </Button>
+          <Button
+            className="follow-button"
+            styleType="secondary"
+            htmlType="button"
+            size="sm"
+            isLoading={isLoading}
+            onClick={handleClickFollowMe}
+            wide
+          >
+            {isFollow ? 'دنبال میکنید' : 'دنبال کنید'}
+          </Button>
+        </Display>
       </Responsive>
     </>
   );

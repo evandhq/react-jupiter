@@ -152,7 +152,7 @@ const OrgnizerCard = (props: Props) => {
           </Display>
         </Responsive>
         <Responsive option={{ lessThan: '768px' }}>
-          <Display display="flex" justifyContent="center" width={!!recommendedCount ? "auto" : "100%"}>
+          <Display display="flex" justifyContent="center" width="100%">
             <Buttons
               onClickFollowMe={onClickFollowMe}
               onClickConnectUs={onClickConnectUs}
