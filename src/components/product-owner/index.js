@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TitledAvatar from '../titled-avatar';
 import { ButtonContainer, StyledButton } from './index.style';
 import Responsive from '../responsive';
@@ -41,6 +41,10 @@ const ProductOwner = (props: Props) => {
       setFollowStatus(!isFollowed);
     }
   }
+
+  useEffect(() => {
+    setFollowStatus(isFollowed)
+  }, [isFollowed]);
 
   return (
     <div data-test="product-owner">
