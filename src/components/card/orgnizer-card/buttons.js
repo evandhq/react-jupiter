@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from 'styled-components-grid';
 import Button from '../../button';
 import { Margin } from '../../spacing';
@@ -23,6 +23,10 @@ const Buttons = (props: Props) => {
   } = props;
   const [isFollow, setFollowStatus] = useState(isFollowed);
   const [isLoading, setLoadingStatus] = useState(false);
+
+  useEffect(() => {
+    setFollowStatus(isFollowed)
+  }, [isFollowed]);
 
   async function handleClickFollowMe() {
     setLoadingStatus(true);

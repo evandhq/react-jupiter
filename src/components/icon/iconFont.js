@@ -18,702 +18,739 @@ const FontStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .new-icon-zoom-out-map:before {
+  .new-icon-account-balance-wallet:before {
     content: "\\e900";
   }
-  .new-icon-zoom-out:before {
+  .new-icon-account-box:before {
     content: "\\e901";
   }
-  .new-icon-zoom-in:before {
+  .new-icon-account-circle:before {
     content: "\\e902";
   }
-  .new-icon-work-outline:before {
+  .new-icon-add-a-photo:before {
     content: "\\e903";
   }
-  .new-icon-work-off:before {
+  .new-icon-add-alert:before {
     content: "\\e904";
   }
-  .new-icon-work:before {
+  .new-icon-add-box:before {
     content: "\\e905";
   }
-  .new-icon-where-to-vote:before {
+  .new-icon-add-circle-outline:before {
     content: "\\e906";
   }
-  .new-icon-watch-later:before {
+  .new-icon-add-circle:before {
     content: "\\e907";
   }
-  .new-icon-watch:before {
+  .new-icon-add-photo-alternate:before {
     content: "\\e908";
   }
-  .new-icon-warning:before {
+  .new-icon-add:before {
     content: "\\e909";
   }
-  .new-icon-vpn-key:before {
+  .new-icon-alarm-add:before {
     content: "\\e90a";
   }
-  .new-icon-volume-up:before {
+  .new-icon-alarm-off:before {
     content: "\\e90b";
   }
-  .new-icon-volume-off:before {
+  .new-icon-alarm-on:before {
     content: "\\e90c";
   }
-  .new-icon-volume-mute:before {
+  .new-icon-alarm:before {
     content: "\\e90d";
   }
-  .new-icon-volume-down:before {
+  .new-icon-apps:before {
     content: "\\e90e";
   }
-  .new-icon-visibility-off:before {
+  .new-icon-arrow-back:before {
     content: "\\e90f";
   }
-  .new-icon-visibility:before {
+  .new-icon-arrow-backward-ios:before {
     content: "\\e910";
   }
-  .new-icon-view-carousel:before {
+  .new-icon-arrow-downward:before {
     content: "\\e911";
   }
-  .new-icon-verified-user:before {
+  .new-icon-arrow-drop-down-circle:before {
     content: "\\e912";
   }
-  .new-icon-update:before {
+  .new-icon-arrow-drop-down:before {
     content: "\\e913";
   }
-  .new-icon-twitter-alt:before {
+  .new-icon-arrow-drop-up:before {
     content: "\\e914";
   }
-  .new-icon-twitter:before {
+  .new-icon-arrow-forward-ios:before {
     content: "\\e915";
   }
-  .new-icon-tv:before {
+  .new-icon-arrow-forward:before {
     content: "\\e916";
   }
-  .new-icon-touch-app:before {
+  .new-icon-arrow-left:before {
     content: "\\e917";
   }
-  .new-icon-toggle-on:before {
+  .new-icon-arrow-right:before {
     content: "\\e918";
   }
-  .new-icon-toggle-off:before {
+  .new-icon-arrow-upward:before {
     content: "\\e919";
   }
-  .new-icon-today:before {
+  .new-icon-aspect-ratio:before {
     content: "\\e91a";
   }
-  .new-icon-thumb-up-alt:before {
+  .new-icon-assessment:before {
     content: "\\e91b";
   }
-  .new-icon-thumb-up:before {
+  .new-icon-assignment-ind:before {
     content: "\\e91c";
   }
-  .new-icon-thumb-down-alt:before {
+  .new-icon-assignment:before {
     content: "\\e91d";
   }
-  .new-icon-thumb-down:before {
+  .new-icon-attachment:before {
     content: "\\e91e";
   }
-  .new-icon-theaters:before {
+  .new-icon-autorenew:before {
     content: "\\e91f";
   }
-  .new-icon-textsms:before {
+  .new-icon-backup:before {
     content: "\\e920";
   }
-  .new-icon-telegram-alt:before {
+  .new-icon-block:before {
     content: "\\e921";
   }
-  .new-icon-telegram:before {
+  .new-icon-bluetooth-connected:before {
     content: "\\e922";
   }
-  .new-icon-tablet-android:before {
+  .new-icon-bluetooth-disabled:before {
     content: "\\e923";
   }
-  .new-icon-tablet:before {
+  .new-icon-bluetooth-searching:before {
     content: "\\e924";
   }
-  .new-icon-supervisor-account:before {
+  .new-icon-bluetooth:before {
     content: "\\e925";
   }
-  .new-icon-supervised-user-circle:before {
+  .new-icon-bookmark-border:before {
     content: "\\e926";
   }
-  .new-icon-stay-current-portrait:before {
+  .new-icon-bookmark:before {
     content: "\\e927";
   }
-  .new-icon-stay-current-landscape:before {
+  .new-icon-bookmarks:before {
     content: "\\e928";
   }
-  .new-icon-star-half:before {
+  .new-icon-build:before {
     content: "\\e929";
   }
-  .new-icon-star-border:before {
+  .new-icon-cake:before {
     content: "\\e92a";
   }
-  .new-icon-star:before {
+  .new-icon-calendar-today:before {
     content: "\\e92b";
   }
-  .new-icon-sort-by-alpha:before {
+  .new-icon-call-end:before {
     content: "\\e92c";
   }
-  .new-icon-smartphone:before {
+  .new-icon-call:before {
     content: "\\e92d";
   }
-  .new-icon-shopping-cart:before {
+  .new-icon-camera-alt:before {
     content: "\\e92e";
   }
-  .new-icon-share:before {
+  .new-icon-cancel:before {
     content: "\\e92f";
   }
-  .new-icon-settings-ethernet:before {
+  .new-icon-card-giftcard:before {
     content: "\\e930";
   }
-  .new-icon-settings-applications:before {
+  .new-icon-category:before {
     content: "\\e931";
   }
-  .new-icon-setting:before {
+  .new-icon-chat-bubble:before {
     content: "\\e932";
   }
-  .new-icon-sentiment-very-satisfied:before {
+  .new-icon-chat:before {
     content: "\\e933";
   }
-  .new-icon-sentiment-very-dissatisfied:before {
+  .new-icon-check-box-outline-blank:before {
     content: "\\e934";
   }
-  .new-icon-sentiment-satisfied:before {
+  .new-icon-check-box:before {
     content: "\\e935";
   }
-  .new-icon-sentiment-dissatisfied:before {
+  .new-icon-check-circle-outline:before {
     content: "\\e936";
   }
-  .new-icon-send:before {
+  .new-icon-check-circle:before {
     content: "\\e937";
   }
-  .new-icon-search:before {
+  .new-icon-check:before {
     content: "\\e938";
   }
-  .new-icon-restore:before {
+  .new-icon-chevron-left:before {
     content: "\\e939";
   }
-  .new-icon-report-problem:before {
+  .new-icon-chevron-right:before {
     content: "\\e93a";
   }
-  .new-icon-remove-circle-outline:before {
+  .new-icon-close:before {
     content: "\\e93b";
   }
-  .new-icon-remove-circle:before {
+  .new-icon-cloud-circle:before {
     content: "\\e93c";
   }
-  .new-icon-radio-button-unchecked:before {
+  .new-icon-cloud-done:before {
     content: "\\e93d";
   }
-  .new-icon-radio-button-checked:before {
+  .new-icon-cloud-download:before {
     content: "\\e93e";
   }
-  .new-icon-question-answer:before {
+  .new-icon-cloud-off:before {
     content: "\\e93f";
   }
-  .new-icon-query-builder:before {
+  .new-icon-cloud-queue:before {
     content: "\\e940";
   }
-  .new-icon-print:before {
+  .new-icon-cloud-upload:before {
     content: "\\e941";
   }
-  .new-icon-playlist-play:before {
+  .new-icon-cloud:before {
     content: "\\e942";
   }
-  .new-icon-playlist-add-check:before {
+  .new-icon-code:before {
     content: "\\e943";
   }
-  .new-icon-playlist-add:before {
+  .new-icon-commute:before {
     content: "\\e944";
   }
-  .new-icon-play-circle-outline:before {
+  .new-icon-copyright:before {
     content: "\\e945";
   }
-  .new-icon-play-circle-filled:before {
+  .new-icon-create:before {
     content: "\\e946";
   }
-  .new-icon-play-arrow:before {
+  .new-icon-credit-card:before {
     content: "\\e947";
   }
-  .new-icon-place:before {
+  .new-icon-crop-rotate:before {
     content: "\\e948";
   }
-  .new-icon-perm-identity:before {
+  .new-icon-dashboard:before {
     content: "\\e949";
   }
-  .new-icon-perm-contact-calendar:before {
+  .new-icon-delete-outline:before {
     content: "\\e94a";
   }
-  .new-icon-pause-circle-outline:before {
+  .new-icon-delete-sweep:before {
     content: "\\e94b";
   }
-  .new-icon-outlined-flag:before {
+  .new-icon-delete:before {
     content: "\\e94c";
   }
-  .new-icon-ondemand-video:before {
+  .new-icon-description:before {
     content: "\\e94d";
   }
-  .new-icon-offline-pin:before {
+  .new-icon-dialpad:before {
     content: "\\e94e";
   }
-  .new-icon-notifications-paused:before {
+  .new-icon-drafts:before {
     content: "\\e94f";
   }
-  .new-icon-notifications-off:before {
+  .new-icon-email:before {
     content: "\\e950";
   }
-  .new-icon-notifications-none:before {
+  .new-icon-equalizer:before {
     content: "\\e951";
   }
-  .new-icon-notifications-active:before {
+  .new-icon-error-outline:before {
     content: "\\e952";
   }
-  .new-icon-notifications:before {
+  .new-icon-error:before {
     content: "\\e953";
   }
-  .new-icon-notification-important:before {
+  .new-icon-event-seat:before {
     content: "\\e954";
   }
-  .new-icon-note-add:before {
+  .new-icon-event:before {
     content: "\\e955";
   }
-  .new-icon-note:before {
+  .new-icon-exit-to-app:before {
     content: "\\e956";
   }
-  .new-icon-not-interested:before {
+  .new-icon-expand-less:before {
     content: "\\e957";
   }
-  .new-icon-more-vert:before {
+  .new-icon-expand-more:before {
     content: "\\e958";
   }
-  .new-icon-more-horiz:before {
+  .new-icon-facebook-alt:before {
     content: "\\e959";
   }
-  .new-icon-mood-bad:before {
+  .new-icon-facebook:before {
     content: "\\e95a";
   }
-  .new-icon-mood:before {
+  .new-icon-favorite-border:before {
     content: "\\e95b";
   }
-  .new-icon-mic-off:before {
+  .new-icon-favorite:before {
     content: "\\e95c";
   }
-  .new-icon-mic-none:before {
-    content: "\\e95d";
+  .new-icon-file:before {
+    content: "\\e95e";    
   }
-  .new-icon-mic:before {
-    content: "\\e95e";
-  }
-  .new-icon-menu:before {
+  .new-icon-fingerprint:before {
     content: "\\e95f";
   }
-  .new-icon-mail-outline:before {
+  .new-icon-forum:before {
     content: "\\e960";
   }
-  .new-icon-mail:before {
+  .new-icon-get-app:before {
     content: "\\e961";
   }
-  .new-icon-loyalty:before {
+  .new-icon-google-alt:before {
     content: "\\e962";
   }
-  .new-icon-loop:before {
+  .new-icon-google-plus-alt:before {
     content: "\\e963";
   }
-  .new-icon-lock-open:before {
+  .new-icon-google-plus:before {
     content: "\\e964";
   }
-  .new-icon-lock:before {
+  .new-icon-google:before {
     content: "\\e965";
   }
-  .new-icon-location-on:before {
+  .new-icon-gps-fixed:before {
     content: "\\e966";
   }
-  .new-icon-location-off:before {
+  .new-icon-gps-not-fixed:before {
     content: "\\e967";
   }
-  .new-icon-linkedin-alt:before {
+  .new-icon-gps-off:before {
     content: "\\e968";
   }
-  .new-icon-linkedin:before {
+  .new-icon-group:before {
     content: "\\e969";
   }
-  .new-icon-link-off:before {
+  .new-icon-headset-mic:before {
     content: "\\e96a";
   }
-  .new-icon-link:before {
+  .new-icon-headset:before {
     content: "\\e96b";
   }
-  .new-icon-language:before {
+  .new-icon-help-outline:before {
     content: "\\e96c";
   }
-  .new-icon-keyboard-voice:before {
+  .new-icon-help:before {
     content: "\\e96d";
   }
-  .new-icon-keyboard-backspace:before {
+  .new-icon-highlight-off:before {
     content: "\\e96e";
   }
-  .new-icon-keyboard:before {
+  .new-icon-history:before {
     content: "\\e96f";
   }
-  .new-icon-instagram-alt:before {
+  .new-icon-home:before {
     content: "\\e970";
   }
-  .new-icon-instagram:before {
+  .new-icon-hourglass-empty:before {
     content: "\\e971";
   }
-  .new-icon-info:before {
+  .new-icon-hourglass-full:before {
     content: "\\e972";
   }
-  .new-icon-indeterminate-check-box:before {
+  .new-icon-ic-content-copy:before {
     content: "\\e973";
   }
   .new-icon-import-contacts:before {
     content: "\\e974";
   }
-  .new-icon-ic-content-copy:before {
+  .new-icon-indeterminate-check-box:before {
     content: "\\e975";
   }
-  .new-icon-hourglass-full:before {
+  .new-icon-info:before {
     content: "\\e976";
   }
-  .new-icon-hourglass-empty:before {
+  .new-icon-instagram-alt:before {
     content: "\\e977";
   }
-  .new-icon-home:before {
+  .new-icon-instagram:before {
     content: "\\e978";
   }
-  .new-icon-history-1:before {
+  .new-icon-keyboard-backspace:before {
     content: "\\e979";
   }
-  .new-icon-highlight-off:before {
+  .new-icon-keyboard-voice:before {
     content: "\\e97a";
   }
-  .new-icon-help-outline:before {
+  .new-icon-keyboard:before {
     content: "\\e97b";
   }
-  .new-icon-help:before {
+  .new-icon-language:before {
     content: "\\e97c";
   }
-  .new-icon-headset-mic:before {
+  .new-icon-link-off:before {
     content: "\\e97d";
   }
-  .new-icon-headset:before {
+  .new-icon-link:before {
     content: "\\e97e";
   }
-  .new-icon-group:before {
+  .new-icon-linkedin-alt:before {
     content: "\\e97f";
   }
-  .new-icon-gps-off:before {
+  .new-icon-linkedin:before {
     content: "\\e980";
   }
-  .new-icon-gps-not-fixed:before {
-    content: "\\e981";
-  }
-  .new-icon-gps-fixed:before {
+  .new-icon-local-offer:before {
     content: "\\e982";
   }
-  .new-icon-google-plus-alt:before {
+  .new-icon-local-offer .path2:before {
+    content: "\\e982";
+    margin-left: -1em;
+    color: rgb(59, 65, 65);
+  }
+  .new-icon-location-off:before {
     content: "\\e983";
   }
-  .new-icon-google-plus:before {
+  .new-icon-location-on:before {
     content: "\\e984";
   }
-  .new-icon-google-alt:before {
+  .new-icon-lock-open:before {
     content: "\\e985";
   }
-  .new-icon-google:before {
+  .new-icon-lock:before {
     content: "\\e986";
   }
-  .new-icon-get-app:before {
+  .new-icon-loop:before {
     content: "\\e987";
   }
-  .new-icon-forum:before {
+  .new-icon-loyalty:before {
     content: "\\e988";
   }
-  .new-icon-fingerprint:before {
+  .new-icon-mail-outline:before {
     content: "\\e989";
   }
-  .new-icon-favorite-border:before {
+  .new-icon-mail:before {
     content: "\\e98a";
   }
-  .new-icon-favorite:before {
+  .new-icon-menu:before {
     content: "\\e98b";
   }
-  .new-icon-facebook-alt:before {
+  .new-icon-mic-none:before {
     content: "\\e98c";
   }
-  .new-icon-facebook:before {
+  .new-icon-mic-off:before {
     content: "\\e98d";
   }
-  .new-icon-expand-more:before {
+  .new-icon-mic:before {
     content: "\\e98e";
   }
-  .new-icon-expand-less:before {
+  .new-icon-mood-bad:before {
     content: "\\e98f";
   }
-  .new-icon-exit-to-app:before {
+  .new-icon-mood:before {
     content: "\\e990";
   }
-  .new-icon-event-seat:before {
+  .new-icon-more-horiz:before {
     content: "\\e991";
   }
-  .new-icon-event:before {
+  .new-icon-more-vert:before {
     content: "\\e992";
   }
-  .new-icon-error-outline:before {
+  .new-icon-not-interested:before {
     content: "\\e993";
   }
-  .new-icon-error:before {
+  .new-icon-note-add:before {
     content: "\\e994";
   }
-  .new-icon-equalizer:before {
+  .new-icon-note:before {
     content: "\\e995";
   }
-  .new-icon-email:before {
+  .new-icon-notification-important:before {
     content: "\\e996";
   }
-  .new-icon-drafts:before {
+  .new-icon-notifications-active:before {
     content: "\\e997";
   }
-  .new-icon-dialpad:before {
+  .new-icon-notifications-none:before {
     content: "\\e998";
   }
-  .new-icon-description:before {
+  .new-icon-notifications-off:before {
     content: "\\e999";
   }
-  .new-icon-delete-sweep:before {
+  .new-icon-notifications-paused:before {
     content: "\\e99a";
   }
-  .new-icon-delete-outline:before {
+  .new-icon-notifications:before {
     content: "\\e99b";
   }
-  .new-icon-delete:before {
+  .new-icon-offline-pin:before {
     content: "\\e99c";
   }
-  .new-icon-dashboard:before {
+  .new-icon-ondemand-video:before {
     content: "\\e99d";
   }
-  .new-icon-crop-rotate:before {
+  .new-icon-outlined-flag:before {
     content: "\\e99e";
   }
-  .new-icon-credit-card:before {
+  .new-icon-pause-circle-outline:before {
     content: "\\e99f";
   }
-  .new-icon-create:before {
+  .new-icon-perm-contact-calendar:before {
     content: "\\e9a0";
   }
-  .new-icon-copyright:before {
+  .new-icon-perm-identity:before {
     content: "\\e9a1";
   }
-  .new-icon-commute:before {
+  .new-icon-place:before {
     content: "\\e9a2";
   }
-  .new-icon-code:before {
+  .new-icon-play-arrow:before {
     content: "\\e9a3";
   }
-  .new-icon-cloud-upload:before {
+  .new-icon-play-circle-filled:before {
     content: "\\e9a4";
   }
-  .new-icon-cloud-queue:before {
+  .new-icon-play-circle-outline:before {
     content: "\\e9a5";
   }
-  .new-icon-cloud-off:before {
+  .new-icon-playlist-add-check:before {
     content: "\\e9a6";
   }
-  .new-icon-cloud-download:before {
+  .new-icon-playlist-add:before {
     content: "\\e9a7";
   }
-  .new-icon-cloud-done:before {
+  .new-icon-playlist-play:before {
     content: "\\e9a8";
   }
-  .new-icon-cloud-circle:before {
+  .new-icon-print:before {
     content: "\\e9a9";
   }
-  .new-icon-cloud:before {
+  .new-icon-query-builder:before {
     content: "\\e9aa";
   }
-  .new-icon-close:before {
+  .new-icon-question-answer:before {
     content: "\\e9ab";
   }
-  .new-icon-chevron-right:before {
+  .new-icon-radio-button-checked:before {
     content: "\\e9ac";
   }
-  .new-icon-chevron-left:before {
+  .new-icon-radio-button-unchecked:before {
     content: "\\e9ad";
   }
-  .new-icon-check-circle-outline:before {
+  .new-icon-remove-circle-outline:before {
     content: "\\e9ae";
   }
-  .new-icon-check-circle:before {
+  .new-icon-remove-circle:before {
     content: "\\e9af";
   }
-  .new-icon-check-box-outline-blank:before {
+  .new-icon-remove-red-eye-2 .path1:before {
     content: "\\e9b0";
   }
-  .new-icon-check-box:before {
+  .new-icon-remove-red-eye-2 .path2:before {
     content: "\\e9b1";
+    margin-left: -1em;
+    color: rgb(59, 65, 65);
   }
-  .new-icon-check:before {
+  .new-icon-remove-red-eye .path1:before {
     content: "\\e9b2";
   }
-  .new-icon-chat-bubble:before {
+  .new-icon-remove-red-eye .path2:before {
     content: "\\e9b3";
+    margin-left: -1em;
+    color: rgb(59, 65, 65);
   }
-  .new-icon-chat:before {
+  .new-icon-report-problem:before {
     content: "\\e9b4";
   }
-  .new-icon-card-giftcard:before {
+  .new-icon-restore:before {
     content: "\\e9b5";
   }
-  .new-icon-cancel:before {
+  .new-icon-search:before {
     content: "\\e9b6";
   }
-  .new-icon-camera-alt:before {
+  .new-icon-send:before {
     content: "\\e9b7";
   }
-  .new-icon-call-end:before {
+  .new-icon-sentiment-dissatisfied:before {
     content: "\\e9b8";
   }
-  .new-icon-call:before {
+  .new-icon-sentiment-satisfied:before {
     content: "\\e9b9";
   }
-  .new-icon-calendar-today:before {
+  .new-icon-sentiment-very-dissatisfied:before {
     content: "\\e9ba";
   }
-  .new-icon-cake:before {
+  .new-icon-sentiment-very-satisfied:before {
     content: "\\e9bb";
   }
-  .new-icon-build:before {
+  .new-icon-setting:before {
     content: "\\e9bc";
   }
-  .new-icon-bookmarks:before {
+  .new-icon-settings-applications:before {
     content: "\\e9bd";
   }
-  .new-icon-bookmark-border:before {
+  .new-icon-settings-ethernet:before {
     content: "\\e9be";
   }
-  .new-icon-bookmark:before {
+  .new-icon-share:before {
     content: "\\e9bf";
   }
-  .new-icon-bluetooth-searching:before {
+  .new-icon-shopping-cart:before {
     content: "\\e9c0";
   }
-  .new-icon-bluetooth-disabled:before {
+  .new-icon-smartphone:before {
     content: "\\e9c1";
   }
-  .new-icon-bluetooth-connected:before {
+  .new-icon-sort-by-alpha:before {
     content: "\\e9c2";
   }
-  .new-icon-bluetooth:before {
+  .new-icon-star-border:before {
     content: "\\e9c3";
   }
-  .new-icon-block:before {
+  .new-icon-star-half:before {
     content: "\\e9c4";
   }
-  .new-icon-backup:before {
+  .new-icon-star:before {
     content: "\\e9c5";
   }
-  .new-icon-autorenew:before {
+  .new-icon-stay-current-landscape:before {
     content: "\\e9c6";
   }
-  .new-icon-attachment:before {
+  .new-icon-stay-current-portrait:before {
     content: "\\e9c7";
   }
-  .new-icon-assignment-ind:before {
+  .new-icon-Subtraction:before {
     content: "\\e9c8";
   }
-  .new-icon-assignment:before {
+  .new-icon-supervised-user-circle:before {
     content: "\\e9c9";
   }
-  .new-icon-assessment:before {
+  .new-icon-supervisor-account:before {
     content: "\\e9ca";
   }
-  .new-icon-aspect-ratio:before {
+  .new-icon-tablet-android:before {
     content: "\\e9cb";
   }
-  .new-icon-arrow-upward:before {
+  .new-icon-tablet:before {
     content: "\\e9cc";
   }
-  .new-icon-arrow-right:before {
+  .new-icon-telegram-alt:before {
     content: "\\e9cd";
   }
-  .new-icon-arrow-left:before {
+  .new-icon-telegram:before {
     content: "\\e9ce";
   }
-  .new-icon-arrow-forward-ios:before {
+  .new-icon-textsms:before {
     content: "\\e9cf";
   }
-  .new-icon-arrow-forward:before {
+  .new-icon-theaters:before {
     content: "\\e9d0";
   }
-  .new-icon-arrow-drop-up:before {
+  .new-icon-thumb-down-alt:before {
     content: "\\e9d1";
   }
-  .new-icon-arrow-drop-down-circle:before {
+  .new-icon-thumb-down:before {
     content: "\\e9d2";
   }
-  .new-icon-arrow-drop-down:before {
+  .new-icon-thumb-up-alt:before {
     content: "\\e9d3";
   }
-  .new-icon-arrow-downward:before {
+  .new-icon-thumb-up:before {
     content: "\\e9d4";
   }
-  .new-icon-arrow-backward-ios:before {
+  .new-icon-today:before {
     content: "\\e9d5";
   }
-  .new-icon-arrow-back:before {
+  .new-icon-toggle-off:before {
     content: "\\e9d6";
   }
-  .new-icon-apps:before {
+  .new-icon-toggle-on:before {
     content: "\\e9d7";
   }
-  .new-icon-alarm-on:before {
+  .new-icon-touch-app:before {
     content: "\\e9d8";
   }
-  .new-icon-alarm-off:before {
-    content: "\\e9d9";
-  }
-  .new-icon-alarm-add:before {
+  .new-icon-tv:before {
     content: "\\e9da";
   }
-  .new-icon-alarm:before {
+  .new-icon-tv .path2:before {
+    content: "\\e9da";
+    margin-left: -1em;
+    color: rgb(59, 65, 65);
+  }
+  .new-icon-twitter-alt:before {
     content: "\\e9db";
   }
-  .new-icon-add-photo-alternate:before {
+  .new-icon-twitter:before {
     content: "\\e9dc";
   }
-  .new-icon-add-circle-outline:before {
+  .new-icon-update:before {
     content: "\\e9dd";
   }
-  .new-icon-add-circle:before {
+  .new-icon-verified-user:before {
     content: "\\e9de";
   }
-  .new-icon-add-box:before {
+  .new-icon-view-carousel:before {
     content: "\\e9df";
   }
-  .new-icon-add-alert:before {
+  .new-icon-visibility-off:before {
     content: "\\e9e0";
   }
-  .new-icon-add-a-photo:before {
+  .new-icon-visibility:before {
     content: "\\e9e1";
   }
-  .new-icon-add:before {
+  .new-icon-volume-down:before {
     content: "\\e9e2";
   }
-  .new-icon-account-circle:before {
+  .new-icon-volume-mute:before {
     content: "\\e9e3";
   }
-  .new-icon-account-box:before {
+  .new-icon-volume-off:before {
     content: "\\e9e4";
   }
-  .new-icon-account-balance-wallet:before {
+  .new-icon-volume-up:before {
     content: "\\e9e5";
   }
-  .new-icon-Whatsapp-alt:before {
+  .new-icon-vpn-key:before {
     content: "\\e9e6";
   }
-  .new-icon-Subtraction-1:before {
+  .new-icon-warning:before {
     content: "\\e9e7";
   }
+  .new-icon-watch-later:before {
+    content: "\\e9e8";
+  }
+  .new-icon-watch:before {
+    content: "\\e9e9";
+  }
+  .new-icon-Whatsapp-alt:before {
+    content: "\\e9ea";
+  }
+  .new-icon-where-to-vote:before {
+    content: "\\e9eb";
+  }
+  .new-icon-work-off:before {
+    content: "\\e9ec";
+  }
+  .new-icon-work-outline:before {
+    content: "\\e9ed";
+  }
+  .new-icon-work:before {
+    content: "\\e9ee";
+  }
+  .new-icon-zoom-in:before {
+    content: "\\e9ef";
+  }
+  .new-icon-zoom-out-map:before {
+    content: "\\e9f0";
+  }
+  .new-icon-zoom-out:before {
+    content: "\\e9f1";
+  }
+  
+  
 `;
 
 export default FontStyle;
