@@ -18,6 +18,9 @@ const FontStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .new-icon-call-message:before {
+    content: "\\e9f2";
+  }
   .new-icon-account-balance-wallet:before {
     content: "\\e900";
   }
@@ -297,8 +300,14 @@ const FontStyle = createGlobalStyle`
   .new-icon-favorite:before {
     content: "\\e95c";
   }
-  .new-icon-file:before {
-    content: "\\e95e";    
+  .new-icon-file .path1:before {
+    content: "\\e95d";
+    color: rgb(255, 255, 255);
+  }
+  .new-icon-file .path2:before {
+    content: "\\e95e";
+    margin-left: -1em;
+    color: rgb(59, 65, 65);
   }
   .new-icon-fingerprint:before {
     content: "\\e95f";
@@ -402,8 +411,9 @@ const FontStyle = createGlobalStyle`
   .new-icon-linkedin:before {
     content: "\\e980";
   }
-  .new-icon-local-offer:before {
-    content: "\\e982";
+  .new-icon-local-offer .path1:before {
+    content: "\\e981";
+    color: rgb(255, 255, 255);
   }
   .new-icon-local-offer .path2:before {
     content: "\\e982";
@@ -547,6 +557,7 @@ const FontStyle = createGlobalStyle`
   }
   .new-icon-remove-red-eye-2 .path1:before {
     content: "\\e9b0";
+    color: rgb(255, 255, 255);
   }
   .new-icon-remove-red-eye-2 .path2:before {
     content: "\\e9b1";
@@ -555,6 +566,7 @@ const FontStyle = createGlobalStyle`
   }
   .new-icon-remove-red-eye .path1:before {
     content: "\\e9b2";
+    color: rgb(255, 255, 255);
   }
   .new-icon-remove-red-eye .path2:before {
     content: "\\e9b3";
@@ -672,8 +684,9 @@ const FontStyle = createGlobalStyle`
   .new-icon-touch-app:before {
     content: "\\e9d8";
   }
-  .new-icon-tv:before {
-    content: "\\e9da";
+  .new-icon-tv .path1:before {
+    content: "\\e9d9";
+    color: rgb(255, 255, 255);
   }
   .new-icon-tv .path2:before {
     content: "\\e9da";
@@ -749,6 +762,7 @@ const FontStyle = createGlobalStyle`
   .new-icon-zoom-out:before {
     content: "\\e9f1";
   }
+  
   
   
 `;
