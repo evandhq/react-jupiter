@@ -11,12 +11,12 @@ const Panel = ({item}) => {
 
         if(panelRef.current.classList.contains('collapse')) {
             panelRef.current.classList.remove('collapse');
-            icon.classList.remove('new-icon-arrow-drop-up');
-            icon.classList.add('new-icon-arrow-drop-down');
-        } else {
-            panelRef.current.classList.add('collapse');
             icon.classList.remove('new-icon-arrow-drop-down');
             icon.classList.add('new-icon-arrow-drop-up');
+        } else {
+            panelRef.current.classList.add('collapse');
+            icon.classList.remove('new-icon-arrow-drop-up');
+            icon.classList.add('new-icon-arrow-drop-down');
         }
     }
 
