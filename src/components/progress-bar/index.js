@@ -1,16 +1,26 @@
 import React from "react";
-import { ProgressBar as Bar} from './index.styles';
+import { ProgressBar as Bar, Names, Numbers} from './index.styles';
+import { toPersianNumber } from '../utils/numbers';
+import Icon from '../icon';
 
 const ProgressBar = ({ width }) => {
     return (
-        <Bar width={width}>
-            <div />
-            <div>
+        <React.Fragment>
+            <Names>
+                <span>همیار<Icon name="arrow-drop-down" size="sm" /></span>
+                <span>همکار<Icon name="arrow-drop-down" size="sm" /></span>
+            </Names>
+            <Bar width={width}>
+                <div className="filled">
+                    <span>امتیاز شما: {toPersianNumber(width, {})}</span>
+                </div>
+            </Bar>
+            <Numbers>
                 <span>۰</span>
                 <span>۵۰</span>
                 <span>۱۰۰</span>
-            </div>
-        </Bar>
+            </Numbers>
+        </React.Fragment>
     )
 }
 
