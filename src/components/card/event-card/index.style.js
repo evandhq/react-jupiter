@@ -55,6 +55,8 @@ export const VerticalContentContainer = styled.div`
   padding: 12px 16px 16px;
   min-height: 180px;
   max-height: 200px;
+  direction: rtl;
+  text-align: right;
 `;
 
 export const VerticalTitle = styled(Heading)`
