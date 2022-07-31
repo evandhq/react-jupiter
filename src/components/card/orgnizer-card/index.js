@@ -130,7 +130,7 @@ const OrgnizerCard = (props: Props) => {
             <Margin top={5}/>
           </Responsive>
           <Paragraph size={12} color="riverBed" bold>
-            {description.slice(0, 120).concat('...')}
+            {description.slice(0, 350).concat('...')}
           </Paragraph>
         </Display>
       )}
