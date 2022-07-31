@@ -33,4 +33,8 @@ export const DisplayStyle = styled.div`
     ? `align-items: ${alignItems}`
     : ''
   )}
+  ${({ flexDirection }) => (flexDirection
+    ? `flex-direction: ${flexDirection}`
+    : ''
+  )}
 `;
