@@ -4,11 +4,6 @@ import { PanelGroup } from './index.styles';
 import Icon from '../icon';
 import Panel from './panel';
 
-type item = {
-    title: String,
-    body: React.ReactNode
-}
-
 const Accordion = ({items}) => {
     
     return (
@@ -25,6 +20,7 @@ Accordion.propTypes = {
         mode: PropTypes.oneOf(['white', 'light', 'dark']),
         title: PropTypes.string.isRequired,
         key: PropTypes.string.isRequired,
+        status: PropTypes.bool,
         meta: PropTypes.node,
         body: PropTypes.node.isRequired
     }))
