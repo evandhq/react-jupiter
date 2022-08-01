@@ -1,5 +1,5 @@
 import React, { useRef} from "react";
-import { Panel as StyledPanel, PanelHeading } from "./index.styles";
+import { Panel as StyledPanel } from "./index.styles";
 import Icon from '../icon';
 
 const Panel = ({item}) => {
@@ -22,7 +22,7 @@ const Panel = ({item}) => {
 
     return (
         <StyledPanel className={item.mode}>
-            <PanelHeading onClick={() => handleClick(item.key)}>
+            <a className="panel-heading" onClick={() => handleClick(item.key)}>
                 <h4 className="panel-title">
                     <Icon name="info" size="sm" color="yellow" />
                     <span>{item.title}</span>
@@ -31,7 +31,7 @@ const Panel = ({item}) => {
                     {item.meta}
                     <Icon id={`icon-${item.key}`} name="arrow-drop-down" size="sm" />
                 </div>
-            </PanelHeading>
+            </a>
             <div id={item.key} ref={panelRef} className="panel-collapse collapse in">
                 <div className="panel-body">{item.body}</div>
             </div>

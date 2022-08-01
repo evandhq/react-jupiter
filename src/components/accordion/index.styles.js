@@ -1,13 +1,8 @@
-import React from 'react';
 import styled from 'styled-components';
 
 export const PanelGroup = styled.div`
     font-family: 'IranSharp';
 `;
-
-const HeadingWrapper = styled.a``;
-
-export const PanelHeading = ({ children }) => <HeadingWrapper>{children}</HeadingWrapper>;
 
 export const Panel = styled.div`
     background-color: #fff;
@@ -25,28 +20,28 @@ export const Panel = styled.div`
         background: #caf0fc;
     }
     &.white, &.light {
-        & ${HeadingWrapper} {
+        & .panel-heading {
             color: #000000;
         }
     }
     &.dark {
         background: rgb(80, 89, 117);
-        & ${HeadingWrapper} {
+        & .panel-heading {
             color: #ffffff;
-        }
-    }
-
-    ${HeadingWrapper} {
-        padding: 10px 15px;
-        display: flex;
-        justify-content: space-between;
-        &:hover {
-            cursor: pointer;
         }
     }
 
     .collapse {
         display: none;
+    }
+
+    .panel-heading {
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        &:hover {
+            cursor: pointer;
+        }        
     }
     
     .panel-title {
@@ -56,12 +51,3 @@ export const Panel = styled.div`
         color: inherit;
     }
 `;
-
-// export const PanelHeading = styled.a`
-//     padding: 10px 15px;
-//     display: flex;
-//     justify-content: space-between;
-//     &:hover {
-//         cursor: pointer;
-//     }
-// `;
