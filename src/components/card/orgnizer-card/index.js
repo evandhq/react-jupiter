@@ -14,6 +14,8 @@ import { Margin } from '../../spacing';
 import Display from '../../display';
 import Responsive from '../../responsive';
 import defaultTheme from '../../themes';
+import Icon from '../../icon'
+import styled from 'styled-components';
 
 type Props = {
   name: string,
@@ -26,7 +28,8 @@ type Props = {
   isFollowed?: boolean,
   onClickFollowMe?: () => boolean,
   onClickConnectUs?: () => void,
-  renderOrganizerLink: * => Node
+  renderOrganizerLink: * => Node,
+  partnership?: string
 }
 
 const OrgnizerCard = (props: Props) => {
@@ -42,7 +45,19 @@ const OrgnizerCard = (props: Props) => {
     activeEventsCount,
     recommendedCount,
     renderOrganizerLink,
+    partnership
   } = props;
+
+  const PartnershipBox = styled.div`
+    background: #FFC72724;
+    border-radius: 5px;
+    color: #FFD324;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    height: 25px;
+  `;
 
   return (
     <Container>
@@ -53,8 +68,8 @@ const OrgnizerCard = (props: Props) => {
             src={logo}
             size="md"
           />)}
-          <Display display="block">
-            <Margin right={5}>
+          <Margin right={4}>
+            <Display display="flex">
               <Text size={12} bold>
                 برگزار‌کننده: 
               </Text>
@@ -64,10 +79,15 @@ const OrgnizerCard = (props: Props) => {
                 size="md"
                 level={4}
               >
-                {` ${name}`}
+                {` ${name} `}
               </Text>)}
+              {!!partnership &&
+              <PartnershipBox>
+                  <Icon name={partnership} color="yellow" /> {partnership === 'partner' ? 'همیار' : 'همکار'} ایوند
+              </PartnershipBox>
+              }
+              </Display>
             </Margin>
-          </Display>
         </Display>
         <Responsive option={{ lessThan: defaultTheme.breakpoints.sm }}>
           <Margin top={5}/>

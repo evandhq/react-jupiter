@@ -342,11 +342,10 @@ const FontStyle = createGlobalStyle`
   .new-icon-group:before {
     content: "\\e96a";
   }
-  .new-icon-hamkar:before {
+  .new-icon-colleague:before {
     content: "\\e96b";
-    color: #595959;
   }
-  .new-icon-hamyar:before {
+  .new-icon-partner:before {
     content: "\\e96c";
   }
   .new-icon-headset-mic:before {
