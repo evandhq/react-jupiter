@@ -3,12 +3,11 @@ import { ProgressBar as Bar, Names, Numbers} from './index.styles';
 import { toPersianNumber } from '../utils/numbers';
 import Icon from '../icon';
 
-const ProgressBar = ({ width }) => {
+const ProgressBar = ({ width, labels }) => {
     return (
         <React.Fragment>
             <Names>
-                <span>همیار<Icon name="arrow-drop-down" size="sm" /></span>
-                <span>همکار<Icon name="arrow-drop-down" size="sm" /></span>
+                {labels.map((label, key) => <span key={key}>{label}<Icon name="arrow-drop-down" size="sm" /></span>)}
             </Names>
             <Bar width={width}>
                 <div className="filled">

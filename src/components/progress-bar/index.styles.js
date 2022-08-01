@@ -16,14 +16,13 @@ export const ProgressBar = styled.div`
         width: ${(props) => props.width}%;
         height: 20px;
         background: rgb(80, 89, 117);
-        left: 0;
-        position: absolute;
         border-radius: 16px;
         display: flex;
         align-items: center;
         font-size: 15px;
         color: #fff;
         justify-content: center;
+        float: left;
       }
     }
 `;
