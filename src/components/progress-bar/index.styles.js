@@ -14,6 +14,7 @@ export const ProgressBar = styled.div`
 
     & div.filled {
         width: ${(props) => props.width}%;
+        min-width: 100px;
         height: 20px;
         background: rgb(80, 89, 117);
         border-radius: 16px;
