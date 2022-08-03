@@ -54,7 +54,7 @@ const EventCard = (props) => {
   // TODO: if the new form was accepted and remove old one from evand clean these parts
   const productPropertiesList = [
     { iconName: 'place', text: place },
-    { iconName: 'local-offer', text: price },
+    { iconName: 'ticket', text: price },
   ];
   if (organization && organization.logo === 'unset') {
     productPropertiesList.push({ iconName: 'supervisor-account', text: organization.name });
