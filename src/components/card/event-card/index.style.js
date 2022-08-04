@@ -52,7 +52,7 @@ export const VerticalContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 12px 16px 16px;
+  padding: 12px 0px;
   min-height: 180px;
   max-height: 200px;
   direction: rtl;
@@ -98,3 +98,14 @@ export const HorizontalTitle = styled(Heading)`
 `;
 
 export const HorizontalPlacePrice = styled(ProductProperties)``;
+
+export const PartnershipBox = styled.div`
+  background: #FFC72724;
+  border-radius: 5px;
+  margin-left: 5px;
+  color: #FFD324;
+  display: flex;
+  align-items: center;
+  min-width: 40px;
+  height: 25px;
+`;

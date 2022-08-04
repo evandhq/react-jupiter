@@ -20,11 +20,12 @@ import {
   HorizontalContentContainer,
   HorizontalTitle,
   HorizontalPlacePrice,
+  PartnershipBox
 } from './index.style';
+import Icon from '../../icon';
 
 const finishedClockLabelUrl = 'https://evand-storage.oss-eu-central-1.aliyuncs.com/assets/images/other/finished-clock-label.svg';
 const defaultCoverUrl = 'https://static.evand.net/assets/images/defaults/event-cover.jpg';
-
 const EventCard = (props) => {
   const {
     title,
@@ -84,6 +85,11 @@ const EventCard = (props) => {
             <DateLabelContainer>
               {finished && <EventCardLabel type="finished" />}
               {!finished && ads && <EventCardLabel type="ads" />}
+              {!!organization.partnership.status && 
+              <PartnershipBox>
+                <Icon name={organization.partnership.status} color="yellow" />
+              </PartnershipBox>
+              }
               {date && <ShowDate date={date} color="gray" fontSize="12" />}
               {showDate && (
                 <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
@@ -175,6 +181,9 @@ EventCard.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       logo: PropTypes.string,
+      partnership: {
+        status: PropTypes.string
+      }
     }),
     undefined,
   ]),
