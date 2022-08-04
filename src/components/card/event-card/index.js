@@ -85,9 +85,9 @@ const EventCard = (props) => {
             <DateLabelContainer>
               {finished && <EventCardLabel type="finished" />}
               {!finished && ads && <EventCardLabel type="ads" />}
-              {!!organization.partnership.status && 
+              {!!organization?.partnership?.status && 
               <PartnershipBox>
-                <Icon name={organization.partnership.status} color="yellow" />
+                <Icon name={organization?.partnership?.status} color="yellow" />
               </PartnershipBox>
               }
               {date && <ShowDate date={date} color="gray" fontSize="12" />}
@@ -180,10 +180,7 @@ EventCard.propTypes = {
   organization: oneOfType([
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      logo: PropTypes.string,
-      partnership: {
-        status: PropTypes.string
-      }
+      logo: PropTypes.string      
     }),
     undefined,
   ]),

@@ -111,7 +111,7 @@ storiesOf('EventCard', module)
         name: 'هلدینگ کلان - مجتمع فنی پلی تکنیک - شرکت تجارت جهانی اندیشه',
         logo: 'https://static.evand.net/images/organizations/logos/original/e90483ade453446ae2fd156e15244d04.jpg',
         partnership: {
-          status: 'colleague'
+          status: 'partner'
         }
       }}      
       clickBookmark={() => true}
