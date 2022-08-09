@@ -44,3 +44,14 @@ export const ResponsiveFlex = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const PartnershipBox = styled.div`
+    background: #FFC72724;
+    border-radius: 5px;
+    color: #FFD324;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    height: 25px;
+  `;

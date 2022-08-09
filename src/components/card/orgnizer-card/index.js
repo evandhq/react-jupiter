@@ -8,14 +8,14 @@ import Buttons from './buttons';
 import {
   Container,
   TextCenter,
-  ResponsiveFlex
+  ResponsiveFlex,
+  PartnershipBox
 } from './index.style';
 import { Margin } from '../../spacing';
 import Display from '../../display';
 import Responsive from '../../responsive';
 import defaultTheme from '../../themes';
 import Icon from '../../icon'
-import styled from 'styled-components';
 
 type Props = {
   name: string,
@@ -47,17 +47,6 @@ const OrgnizerCard = (props: Props) => {
     renderOrganizerLink,
     partnership
   } = props;
-
-  const PartnershipBox = styled.div`
-    background: #FFC72724;
-    border-radius: 5px;
-    color: #FFD324;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-    min-width: 100px;
-    height: 25px;
-  `;
 
   return (
     <Container>
