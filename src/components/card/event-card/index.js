@@ -37,6 +37,7 @@ const EventCard = (props) => {
     cover,
     ads,
     finished,
+    partnership,
     organization,
     renderEventLink,
     renderOrganizationLink,
@@ -85,9 +86,9 @@ const EventCard = (props) => {
             <DateLabelContainer>
               {finished && <EventCardLabel type="finished" />}
               {!finished && ads && <EventCardLabel type="ads" />}
-              {!!organization?.partnership?.status && 
+              {!!partnership?.status && 
               <PartnershipBox>
-                <Icon name={organization?.partnership?.status} color="yellow" />
+                <Icon name={partnership?.status} color="yellow" />
               </PartnershipBox>
               }
               {date && <ShowDate date={date} color="gray" fontSize="12" />}

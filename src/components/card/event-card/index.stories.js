@@ -109,11 +109,11 @@ storiesOf('EventCard', module)
       price="از ۴۴۰۰۰ تومان"
       organization={{
         name: 'هلدینگ کلان - مجتمع فنی پلی تکنیک - شرکت تجارت جهانی اندیشه',
-        logo: 'https://static.evand.net/images/organizations/logos/original/e90483ade453446ae2fd156e15244d04.jpg',
-        partnership: {
-          status: 'partner'
-        }
-      }}      
+        logo: 'https://static.evand.net/images/organizations/logos/original/e90483ade453446ae2fd156e15244d04.jpg',        
+      }}
+      partnership={{
+        status: 'partner'
+      }}
       clickBookmark={() => true}
       renderEventLink={(element) => <a href="/tosomewherenew">{element}</a>}
       renderOrganizationLink={(element) => <a href="/toorganization">{element}</a>}

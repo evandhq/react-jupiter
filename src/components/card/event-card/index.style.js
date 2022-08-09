@@ -52,7 +52,7 @@ export const VerticalContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 12px 0px;
+  padding: 12px 16px 16px;
   min-height: 180px;
   max-height: 200px;
   direction: rtl;
@@ -106,6 +106,7 @@ export const PartnershipBox = styled.div`
   color: #FFD324;
   display: flex;
   align-items: center;
-  min-width: 40px;
+  min-width: 30px;
   height: 25px;
+  justify-content: center;
 `;
