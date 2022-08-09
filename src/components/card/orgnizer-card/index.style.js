@@ -46,7 +46,7 @@ export const ResponsiveFlex = styled.div`
 `;
 
 export const PartnershipBox = styled.div`
-    background: #FFC72724;
+    background: rgba(255, 199, 39, 0.1);
     border-radius: 5px;
     color: #FFD324;
     margin-right: 10px;
