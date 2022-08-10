@@ -13,8 +13,9 @@ export const ProgressBar = styled.div`
     }
 
     & div.filled {
-        width: ${(props) => props.width}%;
         min-width: 100px;
+        max-width: 100%;
+        width: ${(props) => props.width}%;
         height: 20px;
         background: rgb(80, 89, 117);
         border-radius: 16px;
@@ -40,7 +41,7 @@ export const Names = styled.div`
     }
     & span:first-child {
         position: relative;
-        left: 48%;
+        left: ${props => ((props.points.partner*100)/props.points.colleague)-2}%;
     }
 `;
 
@@ -49,4 +50,9 @@ export const Numbers = styled.div`
     justify-content: space-between;
     direction: ltr;
     font-family: 'IranSharp';
+    position: relative;
+    & span:nth-child(2) {
+        position: relative;
+        right: ${props => (props.points.partner*100)/props.points.colleague}%
+    }
 `;
