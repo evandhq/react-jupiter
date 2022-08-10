@@ -52,7 +52,7 @@ export const Numbers = styled.div`
     font-family: 'IranSharp';
     position: relative;
     & span:nth-child(2) {
-        position: relative;
-        right: ${props => (props.points.partner*100)/props.points.colleague}%
+        position: absolute;
+        left: ${props => (props.points.partner*100)/props.points.colleague}%
     }
 `;
