@@ -10,7 +10,7 @@ import OrgnizerCard from './index';
 storiesOf('OrganizerCard', module)
   .add('sample', () => (
     <OrgnizerCard
-      name={text('name', 'نام صاحب آواتار')}
+      name={text('name', 'وزارت آموزش و پرورش استان آذربایجان شرقی در جمهوری اسلامی ایران')}
       followersCount={text('followersCount (string-optional)', '۱۳۲۴۷')}
       description={
         text('description(optional)',

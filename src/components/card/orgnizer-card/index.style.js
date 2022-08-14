@@ -45,13 +45,13 @@ export const ResponsiveFlex = styled.div`
   justify-content: space-between;
 `;
 
-export const PartnershipBox = styled.div`
+export const PartnershipBox = styled.span`
     background: rgba(255, 199, 39, 0.1);
     border-radius: 5px;
     color: #FFD324;
     margin-right: 10px;
-    display: flex;
+    display: initial;
     align-items: center;
-    min-width: 100px;
+    width: 110px;
     height: 25px;
   `;

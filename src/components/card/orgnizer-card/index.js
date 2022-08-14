@@ -52,29 +52,38 @@ const OrgnizerCard = (props: Props) => {
     <Container>
       <ResponsiveFlex>
         <Display display="flex" alignItems="center" justifyContent="space-between">
-          {renderOrganizerLink(<Avatar
-            alt={name}
-            src={logo}
-            size="md"
-          />)}
+          <Display display="flex" flexDirection="column" >
+            <Text size={12} bold textAlign="center">
+              برگزار‌کننده
+            </Text>
+            {renderOrganizerLink(<Avatar
+              alt={name}
+              src={logo}
+              size="md"
+            />)}
+          </Display>
           <Margin right={4}>
             <Display display="flex">
-              <Text size={12} bold>
-                برگزار‌کننده: 
-              </Text>
               {renderOrganizerLink(
               <Text
                 strong={true}
                 size="md"
                 level={4}
               >
-                {` ${name} `}
-              </Text>)}
-              {!!partnership &&
-              <PartnershipBox>
-                  <Icon name={partnership} color="yellow" /> {partnership === 'partner' ? 'همیار' : 'همکار'} ایوند
-              </PartnershipBox>
-              }
+                <Display display="inline-block">
+                  {` ${name} `}
+                  {!!partnership &&
+                  <PartnershipBox>
+                      <Icon 
+                            name={partnership}
+                            color="yellow"                            
+                            stickyRight={true}
+                      />
+                       {partnership === 'partner' ? 'همیار' : 'همکار'} ایوند
+                  </PartnershipBox>
+                  }
+                </Display>
+              </Text>)}              
               </Display>
             </Margin>
         </Display>
