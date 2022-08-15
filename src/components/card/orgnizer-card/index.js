@@ -53,9 +53,11 @@ const OrgnizerCard = (props: Props) => {
       <ResponsiveFlex>
         <Display display="flex" alignItems="center" justifyContent="space-between">
           <Display display="flex" flexDirection="column" >
-            <Text size={12} bold textAlign="center">
-              برگزار‌کننده
+            <Margin bottom={3}>
+            <Text size={12} bold textAlign="right">
+              برگزار‌کننده:
             </Text>
+            </Margin>
             {renderOrganizerLink(<Avatar
               alt={name}
               src={logo}
