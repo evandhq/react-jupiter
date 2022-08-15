@@ -19,8 +19,10 @@ export const DateBookmarkContainer = styled.div`
 
 
 export const DateLabelContainer = styled.div`
-  display: flex;
-  justify-items: center;
+  display: inline-block;
+  & > * {
+    vertical-align:middle;
+  }
 `;
 
 export const BookmarkIcon = styled(Icon)`
@@ -104,7 +106,7 @@ export const PartnershipBox = styled.div`
   border-radius: 5px;
   margin-left: 5px;
   color: #FFD324;
-  display: flex;
+  display: initial;
   align-items: center;
   min-width: 30px;
   height: 25px;

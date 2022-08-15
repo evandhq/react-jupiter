@@ -88,7 +88,7 @@ const EventCard = (props) => {
               {!finished && ads && <EventCardLabel type="ads" />}
               {!!partnership?.status && 
               <PartnershipBox>
-                <Icon name={partnership?.status} color="yellow" />
+                <Icon name={partnership?.status} color="yellow" /> {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
               </PartnershipBox>
               }
               {date && <ShowDate date={date} color="gray" fontSize="12" />}
