@@ -21,6 +21,7 @@ Accordion.propTypes = {
         title: PropTypes.string.isRequired,
         key: PropTypes.string.isRequired,
         status: PropTypes.bool,
+        collapse: PropTypes.bool.isRequired,
         meta: PropTypes.node,
         body: PropTypes.node.isRequired
     }))

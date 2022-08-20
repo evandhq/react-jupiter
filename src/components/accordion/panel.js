@@ -32,7 +32,7 @@ const Panel = ({item}) => {
                     <Icon id={`icon-${item.key}`} name="arrow-drop-down" size="sm" />
                 </div>
             </a>
-            <div id={item.key} ref={panelRef} className="panel-collapse collapse in">
+            <div id={item.key} ref={panelRef} className={`panel-collapse ${item.collapse && 'collapse'}`}>
                 <div className="panel-body">{item.body}</div>
             </div>
         </StyledPanel>
