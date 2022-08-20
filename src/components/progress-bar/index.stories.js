@@ -9,5 +9,5 @@ const points = {
     colleague: 200
 }
 storiesOf('Progress Bar', module)
-.add('Progress Bar', () => <ProgressBar width="8" labels={labels} points={points} />)
+.add('Progress Bar', () => <ProgressBar width="150" labels={labels} points={points} />)
 .addDecorator(withInfo);

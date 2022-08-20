@@ -24,7 +24,7 @@ export const ProgressBar = styled.div`
         font-size: 15px;
         color: #fff;
         justify-content: center;
-        float: left;
+        float: right;
       }
     }
 `;
@@ -32,7 +32,7 @@ export const ProgressBar = styled.div`
 export const Names = styled.div`
     display: flex;
     justify-content: space-between;
-    direction: ltr;
+    direction: rtl;
     position: relative;
     width: 100%;
     font-family: 'IranSharp';
@@ -41,18 +41,18 @@ export const Names = styled.div`
     }
     & span:first-child {
         position: relative;
-        left: ${props => ((props.points.partner*100)/props.points.colleague)-2}%;
+        right: ${props => ((props.points.partner*100)/props.points.colleague)-2}%;
     }
 `;
 
 export const Numbers = styled.div`
     display: flex;
     justify-content: space-between;
-    direction: ltr;
+    direction: rtl;
     font-family: 'IranSharp';
     position: relative;
     & span:nth-child(2) {
         position: absolute;
-        left: ${props => (props.points.partner*100)/props.points.colleague}%
+        right: ${props => (props.points.partner*100)/props.points.colleague}%
     }
 `;

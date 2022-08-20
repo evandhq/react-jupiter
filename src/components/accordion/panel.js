@@ -21,10 +21,10 @@ const Panel = ({item}) => {
     }
 
     return (
-        <StyledPanel className={item.mode}>
+        <StyledPanel className={item.mode} status={item.status}>
             <a className="panel-heading" onClick={() => handleClick(item.key)}>
                 <h4 className="panel-title">
-                    <Icon name={item.status ? 'check-circle' : 'info'} size="sm" color={item.status ? 'green' : 'yellow'} />
+                    <Icon name={item.status ? 'check-circle' : 'info'} size="sm" color={item.status ? 'green' : 'gray'} />
                     <span>{item.title}</span>
                 </h4>
                 <div>

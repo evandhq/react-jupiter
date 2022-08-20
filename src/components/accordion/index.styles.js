@@ -7,10 +7,9 @@ export const PanelGroup = styled.div`
 export const Panel = styled.div`
     background-color: #fff;
     margin: 10px 0;
-    border: 1px solid #000000;
-    border-radius: 4px;
+    border: ${props => props.status ? '2px solid rgb(80, 89, 117)' : '1px solid #000000'};
+    border-radius: 7px;
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    border-radius: 4px;
     padding: 10px;
 
     &.white {
