@@ -14,6 +14,8 @@ const Icon = (props) => {
     className,
     stickyLeft,
     stickyRight,
+    marginLeft,
+    marginRight,
     ...rest
   } = props;
 
@@ -30,6 +32,8 @@ const Icon = (props) => {
         data-test="icon"
         stickyLeft={stickyLeft}
         stickyRight={stickyRight}
+        marginLeft={marginLeft}
+        marginRight={marginRight}
         {...rest}
       />
     </ThemeProvider>
@@ -43,6 +47,8 @@ Icon.propTypes = {
   className: PropTypes.string,
   stickyLeft: PropTypes.bool,
   stickyRight: PropTypes.bool,
+  marginLeft: PropTypes.number,
+  marginRight: PropTypes.number,
 };
 
 Icon.defaultProps = {
@@ -51,6 +57,8 @@ Icon.defaultProps = {
   className: '',
   stickyLeft: false,
   stickyRight: false,
+  marginLeft: 0,
+  marginRight: 0,
 };
 
 export default Icon;
