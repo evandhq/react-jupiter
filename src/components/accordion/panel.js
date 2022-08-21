@@ -21,7 +21,7 @@ const Panel = ({item}) => {
     }
 
     return (
-        <StyledPanel className={item.mode} status={item.status}>
+        <StyledPanel className={item.mode} status={item.status} bold={item.bold}>
             <a className="panel-heading" onClick={() => handleClick(item.key)}>
                 <h4 className="panel-title">
                     <Icon name={item.status ? 'check-circle' : 'info'} size="sm" color={item.status ? 'green' : 'gray'} />
@@ -29,7 +29,7 @@ const Panel = ({item}) => {
                 </h4>
                 <div>
                     {item.meta}
-                    <Icon id={`icon-${item.key}`} name="arrow-drop-down" size="sm" />
+                    <Icon id={`icon-${item.key}`} name="arrow-drop-down" size="sm" color={item.status ? 'white' : 'darkblue'}/>
                 </div>
             </a>
             <div id={item.key} ref={panelRef} className={`panel-collapse ${item.collapse && 'collapse'}`}>

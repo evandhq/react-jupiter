@@ -23,7 +23,8 @@ Accordion.propTypes = {
         status: PropTypes.bool,
         collapse: PropTypes.bool.isRequired,
         meta: PropTypes.node,
-        body: PropTypes.node.isRequired
+        body: PropTypes.node.isRequired,
+        bold: PropTypes.bool
     }))
 }
 
