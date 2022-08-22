@@ -108,7 +108,7 @@ export const PartnershipBox = styled.div`
   color: #FFD324;
   display: inline-flex;
   align-items: center;
-  min-width: 50px;
+  min-width: 60px;
   height: 25px;
   justify-content: center;
 `;
