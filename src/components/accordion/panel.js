@@ -24,7 +24,7 @@ const Panel = ({item}) => {
         <StyledPanel className={item.mode} status={item.status} bold={item.bold}>
             <a className="panel-heading" onClick={() => handleClick(item.key)}>
                 <h4 className="panel-title">
-                    <Icon name={item.status ? 'check-circle' : 'info'} size="sm" color={item.status ? 'green' : 'gray'} />
+                    <Icon name={item.status ? 'check-circle' : 'error'} size="sm" color={item.status ? 'green' : 'gray'} />
                     <span>{item.title}</span>
                 </h4>
                 <div>

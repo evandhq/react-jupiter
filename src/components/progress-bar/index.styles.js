@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ProgressBar = styled.div`
-    background-color: #f1f1f1;
+    background-color: rgb(167, 167, 167);
     color: rgb(68, 68, 68);
     height: 20px;
     border-radius: 16px;
