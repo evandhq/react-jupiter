@@ -106,9 +106,9 @@ export const PartnershipBox = styled.div`
   border-radius: 5px;
   margin-left: 5px;
   color: #FFD324;
-  display: initial;
+  display: inline-flex;
   align-items: center;
-  min-width: 30px;
+  min-width: 50px;
   height: 25px;
   justify-content: center;
 `;
