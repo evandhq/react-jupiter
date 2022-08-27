@@ -2,7 +2,7 @@ section {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 24px;
-  padding: 48px 20px;
+  /* padding: 48px 20px; */
   margin: 0 auto;
   max-width: 700px;
   color: #333;
@@ -26,10 +26,10 @@ section a {
   color: #1ea7fd;
 }
 
-section ul {
+/* section ul {
   padding-left: 30px;
   margin: 1em 0;
-}
+} */
 
 section li {
   margin-bottom: 8px;

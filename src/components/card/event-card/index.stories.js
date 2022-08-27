@@ -5,11 +5,24 @@ import EventCard from './index';
 import '../../storybook.css';
 
 storiesOf('EventCard', module)
+.add('horizontal mobile event card', () => (
+  <EventCard
+    type="horizontal-mobile"
+    title="تایتل یک رویداد نسبتا طولانی در اینجاست که باید و باید و قرار است اضافه بیاید و بزند به بیرون"
+    cover="https://static.evand.net/assets/images/defaults/event-cover.jpg"
+    date="2020-01-10T14:00:00+0330"
+    place="تهران"
+    price="از ۴۴۰۰۰ تومان"
+    clickBookmark={() => true}
+    queryString="icn=trendEvents&ici=fp5"
+    renderEventLink={(element) => <a href="/tosomewhere">{element}</a>}
+  />
+))
   .add('horizontal event card', () => (
     <EventCard
       type="horizontal"
       title="تایتل یک رویداد نسبتا طولانی در اینجاست که باید و باید و قرار است اضافه بیاید و بزند به بیرون"
-      cover="https://static.evand.net/images/events/covers/original/2e6f40ac8e1bc78304ccf3fd77b1b3d5.jpg"
+      cover="https://static.evand.net/assets/images/defaults/event-cover.jpg"
       date="2020-01-10T14:00:00+0330"
       place="تهران"
       price="از ۴۴۰۰۰ تومان"
@@ -22,7 +35,7 @@ storiesOf('EventCard', module)
     <EventCard
       type="horizontal"
       title="تایتل یک رویداد نسبتا طولانی در اینجاست که باید و باید و قرار است اضافه بیاید و بزند به بیرون"
-      cover="https://static.evand.net/images/events/covers/original/2e6f40ac8e1bc78304ccf3fd77b1b3d5.jpg"
+      cover="https://static.evand.net/assets/images/defaults/event-cover.jpg"
       date="2020-01-10T14:00:00+0330"
       place="تهران"
       ads
@@ -36,7 +49,7 @@ storiesOf('EventCard', module)
     <EventCard
       type="horizontal"
       title="تایتل یک رویداد نسبتا طولانی در اینجاست که باید و باید و قرار است اضافه بیاید و بزند به بیرون"
-      cover="https://static.evand.net/images/events/covers/original/2e6f40ac8e1bc78304ccf3fd77b1b3d5.jpg"
+      cover="https://static.evand.net/assets/images/defaults/event-cover.jpg"
       date="2020-01-10T14:00:00+0330"
       place="تهران"
       finished
@@ -50,7 +63,7 @@ storiesOf('EventCard', module)
     <EventCard
       type="vertical"
       title="تایتل یک رویداد اینجاست کهن"
-      cover="https://static.evand.net/images/events/covers/original/2e6f40ac8e1bc78304ccf3fd77b1b3d5.jpg"
+      cover="https://static.evand.net/assets/images/defaults/event-cover.jpg"
       date="2020-01-10T14:00:00+0330"
       place="تهران"
       price="از ۴۴۰۰۰ تومان"
@@ -67,7 +80,7 @@ storiesOf('EventCard', module)
     <EventCard
       type="vertical"
       title="تایتل یک رویداد اینجاست کهن"
-      cover="https://static.evand.net/images/events/covers/original/2e6f40ac8e1bc78304ccf3fd77b1b3d5.jpg"
+      cover="https://static.evand.net/assets/images/defaults/event-cover.jpg"
       date="2020-01-10T14:00:00+0330"
       place="تهران"
       price="از ۴۴۰۰۰ تومان"
@@ -85,7 +98,7 @@ storiesOf('EventCard', module)
     <EventCard
       type="vertical"
       title="تایتل یک رویداد اینجاست کهن"
-      cover="https://static.evand.net/images/events/covers/original/2e6f40ac8e1bc78304ccf3fd77b1b3d5.jpg"
+      cover="https://static.evand.net/assets/images/defaults/event-cover.jpg"
       date="2020-01-10T14:00:00+0330"
       place="تهران"
       price="از ۴۴۰۰۰ تومان"
@@ -103,7 +116,7 @@ storiesOf('EventCard', module)
     <EventCard
       type="vertical"
       title="تایتل یک رویداد اینجاست کهن"
-      cover="https://static.evand.net/images/events/covers/original/2e6f40ac8e1bc78304ccf3fd77b1b3d5.jpg"
+      cover="https://static.evand.net/assets/images/defaults/event-cover.jpg"
       date="2020-01-10T14:00:00+0330"
       place="تهران"
       price="از ۴۴۰۰۰ تومان"

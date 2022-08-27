@@ -84,6 +84,12 @@ export const HorizontalCover = styled.img`
   height: auto;
 `;
 
+export const HorizontalMobileCover = styled.img`
+  width: 146px;
+  min-width: 146px;
+  height: 100%;
+`;
+
 export const HorizontalContentContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -91,6 +97,15 @@ export const HorizontalContentContainer = styled.div`
   justify-content: space-between;
   flex: 1;
   min-width: 250px;
+`;
+
+export const HorizontalMobileContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0px;
 `;
 
 export const HorizontalTitle = styled(Heading)`

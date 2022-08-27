@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes, { oneOfType } from 'prop-types';
 import GlobalStyle from '../../globalStyle';
-import { VERTICAL_CARD, HORIZONTAL_CARD } from './constants';
+import { VERTICAL_CARD, HORIZONTAL_CARD, HORIZONTAL_MOBILE_CARD } from './constants';
 import ShowDate from '../../show-date';
 import { Text } from '../../typography';
 import TitledAvatar from '../../titled-avatar';
@@ -17,6 +17,7 @@ import {
   VerticalTitle,
   HorizontalCardContainer,
   HorizontalCover,
+  HorizontalMobileCover,
   HorizontalContentContainer,
   HorizontalTitle,
   HorizontalPlacePrice,
@@ -145,11 +146,45 @@ const EventCard = (props) => {
     </HorizontalCardContainer>
   );
 
+  const renderHorizontalMobileCard = () => (
+    <HorizontalCardContainer
+      direction={type}
+      hoverToLevel={3}
+      maxWidth={560}
+      {...rest}
+    >
+      {renderEventLink(<HorizontalMobileCover data-test="horizontal-mobile-cover" src={cover || defaultCoverUrl} loading="lazy" />) }
+      <HorizontalContentContainer data-test="horizontal-content">
+        <DateBookmarkContainer>
+          <DateLabelContainer>
+            {finished && <EventCardLabel type="finished" />}
+            {!finished && ads && <EventCardLabel type="ads" />}
+            {date && <ShowDate date={date} color="gray" fontSize="10" />}
+            {showDate && (
+              <Text size="10" color="gray" data-test="show-date">{showDate}</Text>
+            )}
+          </DateLabelContainer>
+          <BookmarkIcon
+            name={isBookmarked ? 'bookmark' : 'bookmark-border'}
+            size="sm"
+            color="gray"
+            onClick={handleClickBookmark}
+            data-test={isBookmarked ? 'bookmark' : 'bookmark-border'}
+          />
+        </DateBookmarkContainer>
+        { renderEventLink(<HorizontalTitle level={4} size="sm">{title}</HorizontalTitle>) }
+        <HorizontalPlacePrice list={productPropertiesList} isHorizontal />
+      </HorizontalContentContainer>
+    </HorizontalCardContainer>
+  );
+
   const renderCard = () => {
     const { type } = props;
     switch (type) {
       case HORIZONTAL_CARD:
         return renderHorizontalCard(props);
+      case HORIZONTAL_MOBILE_CARD:
+        return renderHorizontalMobileCard(props);
       case VERTICAL_CARD:
       default:
         return renderVerticalCard(props);
