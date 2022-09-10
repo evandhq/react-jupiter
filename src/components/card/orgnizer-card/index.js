@@ -51,7 +51,7 @@ const OrgnizerCard = (props: Props) => {
   return (
     <Container>
       <ResponsiveFlex>
-        <Display display="flex" alignItems="center" justifyContent="space-between">
+        <Display display="flex" alignItems="center" justifyContent="start" width="100%">
           <Display display="flex" flexDirection="column" >
             <Margin bottom={3}>
             <Text size={12} bold textAlign="right">
@@ -81,13 +81,13 @@ const OrgnizerCard = (props: Props) => {
                             color="yellow"                            
                             stickyRight={true}
                       />
-                       {partnership === 'partner' ? 'همیار' : 'همکار'} ایوند
+                      {partnership === 'partner' ? 'همیار' : 'همکار'} ایوند
                   </PartnershipBox>
                   }
                 </Display>
               </Text>)}              
               </Display>
-            </Margin>
+          </Margin>
         </Display>
         <Responsive option={{ lessThan: defaultTheme.breakpoints.sm }}>
           <Margin top={5}/>
@@ -143,7 +143,6 @@ const OrgnizerCard = (props: Props) => {
         </Display>
         )}
       </ResponsiveFlex>
-
       {description && (
         <Display display="flex">
           <Responsive option={{ lessThan: defaultTheme.breakpoints.sm }}>
@@ -154,7 +153,6 @@ const OrgnizerCard = (props: Props) => {
           </Paragraph>
         </Display>
       )}
-
       <ResponsiveFlex>
         {!!recommendedCount && (
           <Heading level={4} size="md" color="riverBed" bold>
@@ -181,7 +179,6 @@ const OrgnizerCard = (props: Props) => {
           </Display>
         </Responsive>
       </ResponsiveFlex>
-      
     </Container>
   );
 };
