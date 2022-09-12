@@ -11,12 +11,12 @@ import MenuItem from './menu-item';
 
 storiesOf('ProductMenu', module)
   .add('ProductMenu with more', () => (
-    <Menu>
+    <Menu justifyContent="start">
       <MenuItem
         label={text('first item label(required)', 'درباره رویداد')}
         handleClick={action('trigger what you want to do in onClick function')}
       />
-      <MenuItem label="سخنرانان" />
+      <MenuItem label="سخنرانان" color="red"/>
       <MenuItem label="زمان بندی رویداد" />
       <MenuItem label="اطلاعات تکمیلی" />
       <MenuItem label="گالری تصاویر" />

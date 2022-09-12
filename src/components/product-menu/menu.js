@@ -76,7 +76,7 @@ function Menu(props : Props) {
     <ThemeProvider theme={theme}>
       <Nav data-test="product-menu">
         <Padding top={5} bottom={5}>
-          <MenuWrapper>
+          <MenuWrapper {...props}>
             {renderMenu()}
           </MenuWrapper>
         </Padding>
