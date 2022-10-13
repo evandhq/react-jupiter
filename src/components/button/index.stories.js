@@ -54,5 +54,6 @@ storiesOf('Button', module)
   .add('yellow primary disabled', () => <Button mainColor="yellow" disabled>دکمه‌ی زرد اولیه غیر فعال</Button>)
   .add('yellow secondary disabled', () => <Button styleType="secondary" mainColor="yellow" disabled>دکمه‌ی زرد ثانویه غیر فعال</Button>)
   .add('link button', () => <Button renderLink={(element) => <a href="http://google.com">{element}</a>}>لینک به گوگل</Button>)
+  .add('external link button', () => <Button linkTo="http://google.com">لینک به گوگل</Button>)
   .addDecorator(withInfo)
   .addDecorator(withKnobs);

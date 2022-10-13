@@ -6,6 +6,7 @@ const theme = {
   itemMinWidth: '120px',
   animation: defaultTheme.animation,
   shadow: defaultTheme.shadows[1],
+  breakpoints: defaultTheme.breakpoints
 };
 
 export default theme;

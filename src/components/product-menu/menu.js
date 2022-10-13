@@ -22,7 +22,7 @@ function Menu(props : Props) {
     setShowMore(!showMore);
   }
   function renderMenu() {
-    if (menuItems.length > 5) {
+    if (menuItems.length > 5 && window.innerWidth > theme.breakpoints.sm) {
       return (
         <>
           {
