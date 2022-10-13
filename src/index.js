@@ -5,7 +5,10 @@ import './index.css';
 import App from './docs/App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
   <BrowserRouter>
     <App />
   </BrowserRouter>,
