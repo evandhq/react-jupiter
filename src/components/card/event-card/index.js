@@ -21,7 +21,7 @@ import {
   HorizontalContentContainer,
   HorizontalTitle,
   HorizontalPlacePrice,
-  PartnershipBox
+  PartnershipBox,
 } from './index.style';
 import Icon from '../../icon';
 
@@ -44,6 +44,7 @@ const EventCard = (props) => {
     renderOrganizationLink,
     clickBookmark,
     showDate,
+    coverImage,
     ...rest
   } = props;
   const [isBookmarked, setIsBookmarked] = useState(bookmarked);
@@ -77,7 +78,7 @@ const EventCard = (props) => {
       maxWidth={270}
       {...rest}
     >
-      {renderEventLink(<VerticalCover data-test="vertical-cover" src={cover || defaultCoverUrl} loading="lazy" onError={(e) => { e.target.onerror = null; e.target.src = defaultCoverUrl; }} />) }
+      {renderEventLink(coverImage || <VerticalCover data-test="vertical-cover" src={cover || defaultCoverUrl} loading="lazy" onError={(e) => { e.target.onerror = null; e.target.src = defaultCoverUrl; }} />) }
       <VerticalContentContainer
         data-test="vertical-content"
         background={finished ? finishedClockLabelUrl : null}
@@ -87,11 +88,13 @@ const EventCard = (props) => {
             <DateLabelContainer>
               {finished && <EventCardLabel type="finished" />}
               {!finished && ads && <EventCardLabel type="ads" />}
-              {!!partnership?.status && 
+              {!!partnership?.status && (
               <PartnershipBox>
-                <Icon name={partnership?.status} color="yellow" stickyLeft={true} marginRight={3} /> {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
+                <Icon name={partnership?.status} color="yellow" stickyLeft marginRight={3} />
+                {' '}
+                {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
               </PartnershipBox>
-              }
+              )}
               {date && <ShowDate date={date} color="gray" fontSize="12" />}
               {showDate && (
                 <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
@@ -216,13 +219,17 @@ EventCard.propTypes = {
   organization: oneOfType([
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      logo: PropTypes.string      
+      logo: PropTypes.string,
     }),
     PropTypes.undefined,
   ]),
   renderEventLink: PropTypes.func.isRequired,
   renderOrganizationLink: PropTypes.func,
   clickBookmark: PropTypes.func.isRequired,
+  partnership: PropTypes.shape({
+    status: PropTypes.string,
+  }),
+  coverImage: PropTypes.node || null,
 };
 
 EventCard.defaultProps = {
@@ -235,6 +242,10 @@ EventCard.defaultProps = {
   renderOrganizationLink: () => false,
   date: '',
   showDate: '',
+  partnership: {
+    status: '',
+  },
+  coverImage: null,
 };
 
 export default EventCard;

@@ -4,7 +4,7 @@ import { Text } from '../typography';
 type Props = {
   label: string,
   handleClick?: () => void,
-  color: string
+  color?: string
 }
 function MenuItem({ label, handleClick, color } : Props) {
   return (
@@ -22,6 +22,6 @@ function MenuItem({ label, handleClick, color } : Props) {
 
 MenuItem.defaultProps = {
   handleClick: () => {},
-  color: "default"
+  color: 'default',
 };
 export default MenuItem;
