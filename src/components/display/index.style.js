@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import defaultTheme from '../themes';
 
 export const Flex = styled.div`
   display: flex;
@@ -18,23 +19,30 @@ export const Block = styled.div`
 
 export const DisplayStyle = styled.div`
   ${({ display }) => (display
-    ? `display: ${display}`
+    ? `display: ${display};`
     : ''
   )}
   ${({ width }) => (width
-    ? `width: ${width}`
+    ? `width: ${width};`
     : ''
   )}
   ${({ justifyContent }) => (justifyContent
-    ? `justify-content: ${justifyContent}`
+    ? `justify-content: ${justifyContent};`
     : ''
   )}
   ${({ alignItems }) => (alignItems
-    ? `align-items: ${alignItems}`
+    ? `align-items: ${alignItems};`
     : ''
   )}
   ${({ flexDirection }) => (flexDirection
-    ? `flex-direction: ${flexDirection}`
+    ? `flex-direction: ${flexDirection};`
+    : ''
+  )}
+
+  ${({ flexDirectionMobile }) => (flexDirectionMobile
+    ? `@media only screen and (max-width: ${defaultTheme.breakpoints.sm}px) {
+        flex-direction: ${flexDirectionMobile};
+      }`
     : ''
   )}
 `;
