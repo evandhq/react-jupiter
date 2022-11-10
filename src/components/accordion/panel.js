@@ -28,7 +28,7 @@ const Panel = ({ item }) => {
           <span>{item.title}</span>
         </h4>
         <div>
-          {isMobile && item.meta}
+          {!isMobile && item.meta}
           <Icon id={`icon-${item.key}`} name="arrow-drop-down" size="sm" color={item.status ? 'white' : 'darkBlue'} />
         </div>
       </a>
