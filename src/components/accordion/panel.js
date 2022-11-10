@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { isMobile } from '../utils/detectMobile';
 import { Panel as StyledPanel } from './index.styles';
 import Icon from '../icon';
 
@@ -27,7 +28,7 @@ const Panel = ({ item }) => {
           <span>{item.title}</span>
         </h4>
         <div>
-          {item.meta}
+          {isMobile && item.meta}
           <Icon id={`icon-${item.key}`} name="arrow-drop-down" size="sm" color={item.status ? 'white' : 'darkBlue'} />
         </div>
       </a>
