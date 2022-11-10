@@ -52,7 +52,7 @@ const OrgnizerCard = (props: Props) => {
     <Container>
       <ResponsiveFlex>
         <Display display="flex" alignItems="center" justifyContent="start" width="100%">
-          <Display display="flex" flexDirection="column" >
+          <Display display="flex" flexDirection="column">
             <Margin bottom={3}>
             <Text size={12} bold textAlign="right">
               برگزار‌کننده:

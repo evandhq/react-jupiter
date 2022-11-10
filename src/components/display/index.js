@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Block, Flex, DisplayStyle } from './index.style';
-import styled from 'styled-components';
+import { DisplayStyle } from './index.style';
 
 const Display = (props) => {
   const {
