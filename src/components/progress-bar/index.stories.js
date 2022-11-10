@@ -5,9 +5,9 @@ import ProgressBar from '.';
 
 const labels = ['همیار', 'همکار'];
 const points = {
-    partner: 50,
-    colleague: 200
-}
+  partner: 50,
+  colleague: 200,
+};
 storiesOf('Progress Bar', module)
-.add('Progress Bar', () => <ProgressBar width="150" labels={labels} points={points} />)
-.addDecorator(withInfo);
+  .add('Progress Bar', () => <ProgressBar width="30" labels={labels} points={points} />)
+  .addDecorator(withInfo);
