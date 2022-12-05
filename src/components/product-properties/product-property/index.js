@@ -37,8 +37,6 @@ const ProductProperty = (props: ItemProps) => {
     </>
   );
 
-  console.log(link);
-
   return (
     <Container {...rest}>
       {link ? renderWithLink() : renderWithoutLink()}
