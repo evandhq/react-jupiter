@@ -11,7 +11,7 @@ storiesOf('ProductProperty', module)
       list={[
         { iconName: 'watch-later', text: 'متن زیبا' },
         { iconName: 'alarm-off', text: 'متن دیگری' },
-        { iconName: 'aspect-ratio', text: 'و باز هم متن دیگری' },
+        { iconName: 'aspect-ratio', text: 'و sssss هم متن دیگری', link: '/user' },
       ]}
     />
   ))

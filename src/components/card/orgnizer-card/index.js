@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable react/jsx-indent */
 import React from 'react';
-import Grid from 'styled-components-grid';
 import { Heading, Text, Paragraph } from '../../typography';
 import Avatar from '../../avatar';
 import Buttons from './buttons';
@@ -9,13 +8,13 @@ import {
   Container,
   TextCenter,
   ResponsiveFlex,
-  PartnershipBox
+  PartnershipBox,
 } from './index.style';
 import { Margin } from '../../spacing';
 import Display from '../../display';
 import Responsive from '../../responsive';
 import defaultTheme from '../../themes';
-import Icon from '../../icon'
+import Icon from '../../icon';
 
 type Props = {
   name: string,
@@ -45,7 +44,7 @@ const OrgnizerCard = (props: Props) => {
     activeEventsCount,
     recommendedCount,
     renderOrganizerLink,
-    partnership
+    partnership,
   } = props;
 
   return (
@@ -68,29 +67,33 @@ const OrgnizerCard = (props: Props) => {
             <Display display="flex">
               {renderOrganizerLink(
               <Text
-                strong={true}
+                strong
                 size="md"
                 level={4}
               >
                 <Display display="inline-block">
                   {` ${name} `}
-                  {!!partnership &&
-                  <PartnershipBox>
-                      <Icon 
-                            name={partnership}
-                            color="yellow"                            
-                            stickyRight={true}
+                  {!!partnership
+                  && (
+                    <PartnershipBox>
+                      <Icon
+                        name={partnership}
+                        color="yellow"
+                        stickyRight
                       />
-                      {partnership === 'partner' ? 'همیار' : 'همکار'} ایوند
-                  </PartnershipBox>
-                  }
+                      {partnership === 'partner' ? 'همیار' : 'همکار'}
+                      {' '}
+                      ایوند
+                    </PartnershipBox>
+                  )}
                 </Display>
-              </Text>)}              
+              </Text>,
+              )}
               </Display>
           </Margin>
         </Display>
         <Responsive option={{ lessThan: defaultTheme.breakpoints.sm }}>
-          <Margin top={5}/>
+          <Margin top={5} />
         </Responsive>
         {(activeEventsCount || allEventsCount) && (
         <Display display="flex" alignItems="center" justifyContent="space-between">
@@ -146,7 +149,7 @@ const OrgnizerCard = (props: Props) => {
       {description && (
         <Display display="flex">
           <Responsive option={{ lessThan: defaultTheme.breakpoints.sm }}>
-            <Margin top={5}/>
+            <Margin top={5} />
           </Responsive>
           <Paragraph size={12} color="riverBed" bold>
             {description.slice(0, 350).concat('...')}
@@ -161,7 +164,7 @@ const OrgnizerCard = (props: Props) => {
           </Heading>
         )}
         <Responsive option={{ greaterThan: '768px' }}>
-          <Display display="flex" justifyContent="end" width={!!recommendedCount ? "50%" : "100%"}>
+          <Display display="flex" justifyContent="end" width={recommendedCount ? '50%' : '100%'}>
             <Buttons
               onClickFollowMe={onClickFollowMe}
               onClickConnectUs={onClickConnectUs}

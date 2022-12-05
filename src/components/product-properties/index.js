@@ -5,8 +5,15 @@ import GlobalStyle from '../globalStyle';
 import { ListContainer, ListItem } from './index.style';
 import ProductProperty from './product-property';
 
+type ItemProps = {
+  iconName: string,
+  text: string,
+  color: 'grey' | 'darkBlue' | 'default',
+  link: string | undefined
+}
+
 type Props = {
-  list: [],
+  list: [ItemProps],
   isHorizontal?: boolean,
   color?: 'gray' | 'darkBlue' | 'default',
 }
@@ -16,6 +23,7 @@ const ProductProperties = (props: Props) => {
     list,
     isHorizontal,
     color,
+    link,
     ...rest
   } = props;
   const propsLength = list.length > 1 && isHorizontal ? list.length : 1;
@@ -33,9 +41,9 @@ const ProductProperties = (props: Props) => {
     <>
       <GlobalStyle />
       <ListContainer isHorizontal={isHorizontal} {...rest}>
-        {list.map(({ iconName, text }, index) => (
+        {list.map(({ iconName, text, link }, index) => (
           <ListItem key={`${iconName}-${index.toString()}`} propsLength={propsLength}>
-            <ProductProperty iconName={iconName} text={text} color={color} />
+            <ProductProperty iconName={iconName} text={text} color={color} link={link} />
           </ListItem>
         ))}
       </ListContainer>
