@@ -45,4 +45,8 @@ export const DisplayStyle = styled.div`
       }`
     : ''
   )}
+  ${({ wrap }) => (wrap
+    ? 'flex-wrap: wrap;'
+    : ''
+  )}
 `;

@@ -12,7 +12,7 @@ const Display = (props) => {
       return null;
     }
 
-    return <DisplayStyle {...rest}>{children}</DisplayStyle>
+    return <DisplayStyle {...rest}>{children}</DisplayStyle>;
   };
 
   return (
