@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  .ReactModal__Body--open {
+    overflow: hidden;
+  }
 `;
 
 export default GlobalStyle;

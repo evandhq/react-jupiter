@@ -14,6 +14,7 @@ type Props = {
   onRequestClose?: () => void,
   onAfterOpen?: () => void,
   modalWidth?: string,
+  fullHeight?: boolean
 }
 
 // bind modal to the body of the app
@@ -21,29 +22,38 @@ Modal.setAppElement('body');
 
 function JupiterModal(props: Props) {
   const {
-    isOpen, onRequestClose, onAfterOpen, children, hasCloseButton, disabledClose, modalWidth,
+    isOpen,
+    onRequestClose,
+    onAfterOpen,
+    children,
+    hasCloseButton,
+    disabledClose,
+    modalWidth,
+    fullHeight
   } = props;
-
-  function closeModal() {
-    onRequestClose();
-  }
 
   return (
     <Modal
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}
-      onRequestClose={closeModal}
+      onRequestClose={onRequestClose}
       contentLabel="Example Modal"
       shouldCloseOnOverlayClick={!disabledClose}
       style={
-        customModalStyles(theme.borderRadius, theme.overlayColor, modalWidth, theme.modalShadow)
+        customModalStyles(
+          theme.borderRadius,
+          theme.overlayColor,
+          modalWidth,
+          theme.modalShadow,
+          fullHeight,
+        )
       }
     >
       <GlobalStyle />
       <StyledWrapper>
         {(!disabledClose && hasCloseButton) && (
-          <StyledIcon onClick={closeModal} aria-hidden="true">
-            <Icon name="close" size="lg" />
+          <StyledIcon onClick={onRequestClose} aria-hidden="true">
+            <Icon name="close" size="md" />
           </StyledIcon>
         )}
         {children}
@@ -58,6 +68,7 @@ JupiterModal.defaultProps = {
   hasCloseButton: true,
   disabledClose: false,
   modalWidth: '80%',
+  fullHeight: false,
 };
 
 export default JupiterModal;
