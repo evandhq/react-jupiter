@@ -30,6 +30,14 @@ export const DisplayStyle = styled.div`
     ? `justify-content: ${justifyContent};`
     : ''
   )}
+
+  ${({ justifyContentMobile }) => (justifyContentMobile
+    ? `@media only screen and (max-width: ${defaultTheme.breakpoints.sm}px) {
+        justify-content: ${justifyContentMobile};
+      }`
+    : ''
+  )}
+
   ${({ alignItems }) => (alignItems
     ? `align-items: ${alignItems};`
     : ''
