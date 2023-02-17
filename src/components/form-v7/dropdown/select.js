@@ -14,15 +14,15 @@ type Props = {
   isDisabled?: boolean,
   children: * => Node,
   errorMessage?: string,
-  inputRef?: any,
+  register?: any,
 }
 const Select = (props: Props) => {
   const {
     htmlElementName, defaultValue, handleChange, placeholder, isDisabled,
-    children, label, inputRef, errorMessage,
+    children, label, register, errorMessage,
   } = props;
 
-  function onChange(e) {
+  function onChangeHandler(e) {
     handleChange(e.target.value);
   }
 
@@ -30,12 +30,13 @@ const Select = (props: Props) => {
     <ThemeProvider theme={theme}>
       <SelectButton disabled={isDisabled}>
         <StyledSelect
-          disabled={isDisabled}
-          onChange={onChange}
           name={htmlElementName}
           defaultValue={placeholder ? '' : defaultValue}
           data-test="select"
-          ref={inputRef}
+          {...register(htmlElementName, {
+            onChange: onChangeHandler,
+            disabled: isDisabled,
+          })}
         >
           {placeholder && (
             <option value="" disabled>{placeholder}</option>
@@ -68,7 +69,7 @@ Select.defaultProps = {
   isDisabled: false,
   handleChange: () => { },
   errorMessage: '',
-  inputRef: null,
+  register: null,
 };
 
 export default Select;
