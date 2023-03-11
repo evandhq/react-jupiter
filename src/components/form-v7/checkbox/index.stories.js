@@ -1,4 +1,5 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
@@ -11,14 +12,19 @@ import {
 import Checkbox from './checkbox';
 import CheckboxOption from './checkbox-option';
 
-storiesOf('Form/Checkbox', module)
-  .add('Minimal Form/Checkbox', () => (
-    <Checkbox>
-      <CheckboxOption value="first" label="First Value" />
-      <CheckboxOption value="sec" label="Sec Value" />
-      <CheckboxOption value="third" label="Third Value" />
+storiesOf('Form-V7/Checkbox', module)
+  .add('Minimal Form/Checkbox', () => {
+    const {
+      register,
+    } = useForm();
+    return (
+      <Checkbox>
+        <CheckboxOption value="first" label="First Value" register={register} handleOnchange={e => console.log(e)} />
+        <CheckboxOption value="sec" label="Sec Value" register={register} handleOnchange={e => console.log(e)} />
+        <CheckboxOption value="third" label="Third Value" register={register} handleOnchange={e => console.log(e.target.checked)} />
     </Checkbox>
-  ))
+    )
+  })
   .add('Full option Checkbox', () => (
     <Checkbox
       groupName={text('optional groupName(but highly recommended to set manually)', 'degree')}

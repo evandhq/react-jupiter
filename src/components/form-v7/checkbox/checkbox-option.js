@@ -14,7 +14,7 @@ type Props = {
 };
 const CheckboxOption = (props: Props) => {
   const {
-    label, value, isDisabled, isChecked, groupName, register,
+    label, value, isDisabled, isChecked, groupName, register, handleOnchange
   } = props;
   const itemId = `${groupName}-${value}-${label.split(' ').join('')}`;
 
@@ -29,6 +29,7 @@ const CheckboxOption = (props: Props) => {
           defaultChecked={isChecked}
           {...register(groupName, {
             disabled: isDisabled,
+            onChange: (handleOnchange)
           })}
         />
         <Text size={14}>
