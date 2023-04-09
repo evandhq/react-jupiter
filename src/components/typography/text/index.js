@@ -109,7 +109,7 @@ renderString.propTypes = {
     PropTypes.string,
   ]).isRequired,
   size: PropTypes.number,
-  color: PropTypes.oneOf(['red', 'green', 'blue', 'yellow', 'white', 'darkBlue']),
+  color: PropTypes.oneOf(['red', 'green', 'blue', 'yellow', 'white', 'darkBlue', 'black']),
   underline: PropTypes.bool,
   lineThrough: PropTypes.bool,
   strong: PropTypes.bool,

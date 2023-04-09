@@ -27,6 +27,7 @@ const defaultTheme = {
     riverBedDark: '#3B4141',
     riverBed: '#555f61',
     white: '#FFFFFF',
+    black: '#000000',
   },
   sizes: {
     large: 'lg',

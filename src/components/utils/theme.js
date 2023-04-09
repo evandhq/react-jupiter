@@ -18,6 +18,8 @@ export const getColorFromName = (theme = defaultTheme, color) => {
       return theme.colors.white;
     case 'light':
       return theme.colors.riverBed;
+    case 'black':
+      return theme.colors.black;
     default:
     case 'default':
       return theme.defaultColor;
@@ -36,6 +38,8 @@ export const getHoverColorFromName = (theme, color) => {
       return theme.colors.yellow400;
     case 'darkBlue':
       return theme.colors.darkBlue400;
+    case 'black':
+      return theme.colors.gray600;
     default:
     case 'default':
       return theme.defaultColor;
