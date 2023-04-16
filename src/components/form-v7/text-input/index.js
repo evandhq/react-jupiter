@@ -23,6 +23,7 @@ type Props = {
   description?: string,
   errorMessage?: string,
   register?: any,
+  required?: boolean | String,
 }
 
 const TextInput = (props: Props) => {
@@ -36,6 +37,7 @@ const TextInput = (props: Props) => {
     description,
     errorMessage,
     register,
+    required,
   } = props;
   const [value, setValue] = useState('');
   const [displayedPassword, setDisplayedPassword] = useState(false);
@@ -76,6 +78,7 @@ const TextInput = (props: Props) => {
             onChange: handleChange,
             onFocus: handleFocus,
             disabled,
+            required: !!required ? 'این فیلد الزامی است' : false
           })}
         />
         {type === 'password' && (
@@ -100,6 +103,7 @@ TextInput.defaultProps = {
   description: null,
   errorMessage: '',
   register: null,
+  required: false,
 };
 
 export default TextInput;
