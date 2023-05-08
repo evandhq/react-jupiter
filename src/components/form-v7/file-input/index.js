@@ -59,7 +59,6 @@ const FileInput = (props: Props) => {
             disabled,
             required: !!required ? 'این فیلد الزامی است' : false
           })}
-          data-buttonText="Your label here."
         />
       </Label>
       <ErrorMsg errorMessage={errorMessage} />
