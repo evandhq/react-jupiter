@@ -36,7 +36,7 @@ const defaultTheme = {
   },
   borderRadius: {
     low: 2,
-    high: 3,
+    high: 5,
   },
   border: {
     lightBlue: '1px solid #E6F4FB',

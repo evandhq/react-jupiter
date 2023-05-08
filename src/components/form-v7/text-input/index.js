@@ -61,6 +61,7 @@ const TextInput = (props: Props) => {
         {label && (
           <LabelContainer bold size={14}>
             {label}
+            {!!required && <span className="required">*</span>}
           </LabelContainer>
         )}
         {description && (

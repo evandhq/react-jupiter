@@ -53,6 +53,7 @@ storiesOf('Form-v7/Dropdown', module)
         label={text('optional label', 'محل برگزاری رویداد')}
         errorMessage={text('optional error msg', 'ارور زیبا')}
         register={register}
+        required={true}
       >
         <SelectOption value="20" label="کرج" />
         <SelectOption value="30" label="تهران" />
@@ -71,6 +72,7 @@ storiesOf('Form-v7/Dropdown', module)
         handleChange={action('trigger what you want to do in onChange function')}
         isDisabled={false}
         register={register}
+        required={true}
       >
         <SelectOption
           value={text('value', '20')}

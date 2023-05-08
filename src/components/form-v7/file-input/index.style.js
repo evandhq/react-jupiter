@@ -12,6 +12,15 @@ export const Input = styled.input`
   box-sizing: border-box;
   width: 100%;
 
+  &::file-selector-button {
+    color: ${ ({ theme }) => `${theme.colors.blue}`};
+    padding: 0.5em;
+    border: ${ ({ theme }) => `thin solid ${theme.colors.blue}`};
+    border-radius: 3px;
+    width: 100px;
+    height: 80;
+  }
+
   &[disabled=""]{
     background-color: ${({ theme }) => theme.disabled.background};
     color: ${({ theme }) => theme.disabled.color};

@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../theme';
 import { Text } from '../../typography';
 import ErrorMsg from '../errorMsg';
-import { StyledSelect, SelectButton } from './index.style';
+import { StyledSelect, SelectButton, Label } from './index.style';
 
 type Props = {
   htmlElementName?: string,
@@ -15,11 +15,12 @@ type Props = {
   children: * => Node,
   errorMessage?: string,
   register?: any,
+  required?: Boolean,
 }
 const Select = (props: Props) => {
   const {
     htmlElementName, defaultValue, handleChange, placeholder, isDisabled,
-    children, label, register, errorMessage,
+    children, label, register, errorMessage, required,
   } = props;
 
   function onChangeHandler(e) {
@@ -50,12 +51,15 @@ const Select = (props: Props) => {
 
   if (label) {
     return (
-      <label htmlFor={htmlElementName}>
-        <Text size={14} bold isDisplayBlock>
-          {label}
-        </Text>
-        {renderSelect()}
-      </label>
+      <ThemeProvider theme={theme}>
+        <Label htmlFor={htmlElementName}>
+          <Text size={14} bold isDisplayBlock>
+            {label}
+            {!!required && <span className="required">*</span>}
+          </Text>
+          {renderSelect()}
+        </Label>
+      </ThemeProvider>
     );
   }
   return renderSelect();
@@ -70,6 +74,7 @@ Select.defaultProps = {
   handleChange: () => { },
   errorMessage: '',
   register: null,
+  required: false
 };
 
 export default Select;

@@ -13,12 +13,14 @@ type Props = {
   isDisabled?: boolean,
   type?: 'horizontal' | 'vertical',
   errorMessage?: string,
+  required?: boolean,
+  register: any,
 };
 
 const Radio = (props: Props) => {
   const {
     children, groupName, label, handleChange, defaultCheckedValue, isDisabled,
-    type, errorMessage,
+    type, errorMessage, register,
   } = props;
   const radioElements = React.Children.toArray(children);
 
@@ -36,9 +38,9 @@ const Radio = (props: Props) => {
         {radioElements.map(
           (radioElement) => (
             isDisabled ? (
-              React.cloneElement(radioElement, { groupName, defaultCheckedValue, isDisabled })
+              React.cloneElement(radioElement, { groupName, defaultCheckedValue, isDisabled, register })
             ) : (
-              React.cloneElement(radioElement, { groupName, defaultCheckedValue })
+              React.cloneElement(radioElement, { groupName, defaultCheckedValue, register })
             )
           ),
         )}
@@ -56,5 +58,6 @@ Radio.defaultProps = {
   isDisabled: false,
   type: 'horizontal',
   errorMessage: '',
+  required: false,
 };
 export default Radio;

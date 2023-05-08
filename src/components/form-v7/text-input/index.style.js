@@ -8,7 +8,7 @@ export const Input = styled.input`
   font-size: 12px;
   border-radius: ${({ theme }) => `${theme.borderRadius}px`};
   border: solid 1px ${({ theme }) => theme.borderColor.normal};
-  padding: 4px;
+  padding: 6px;
   box-sizing: border-box;
   width: 100%;
 
@@ -35,6 +35,10 @@ export const Input = styled.input`
 export const LabelContainer = styled(Text)`
   display: block;
   margin-bottom: 8px;
+  & > span.required {
+    color: ${({ theme }) => theme.colors.red};
+    margin-right: 5px;
+  }
 `;
 
 export const DescriptionContainer = styled(Text)`
