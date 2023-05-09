@@ -253,4 +253,8 @@ storiesOf('Icon', module)
   .add('ticket', () => <Icon name="ticket" />)
   .add('watch', () => <Icon name="watch" />)
   .add('whatsapp', () => <Icon name="Whatsapp-alt" />)
+  .add('attendees', () => <Icon name="attendees" />)
+  .add('follower', () => <Icon name="follower" />)
+  .add('speaker', () => <Icon name="speaker" />)
+  .add('categories', () => <Icon name="categories" />)
   .addDecorator(withInfo);
