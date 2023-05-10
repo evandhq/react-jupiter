@@ -30,7 +30,7 @@ const Textarea = (props: Props) => {
       <GlobalStyle />
       {label && (
         <label htmlFor={htmlElementName}>
-          <Text bold size={14}>
+          <Text size={14}>
             {label}
           </Text>
         </label>

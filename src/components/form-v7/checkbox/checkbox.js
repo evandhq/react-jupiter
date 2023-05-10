@@ -30,7 +30,7 @@ const Checkbox = (props: Props) => {
         <GlobalStyle />
         {label && (
           <legend>
-            <Text bold size={14}>
+            <Text size={14}>
               {label}
               {!!required && <span className="required">*</span>}
             </Text>

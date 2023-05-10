@@ -53,7 +53,7 @@ const Select = (props: Props) => {
     return (
       <ThemeProvider theme={theme}>
         <Label htmlFor={htmlElementName}>
-          <Text size={14} bold isDisplayBlock>
+          <Text size={14} isDisplayBlock>
             {label}
             {!!required && <span className="required">*</span>}
           </Text>

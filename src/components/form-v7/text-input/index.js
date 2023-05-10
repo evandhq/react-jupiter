@@ -59,13 +59,13 @@ const TextInput = (props: Props) => {
       <GlobalStyle />
       <Label htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`} data-test="text-input">
         {label && (
-          <LabelContainer bold size={14}>
+          <LabelContainer size={14}>
             {label}
             {!!required && <span className="required">*</span>}
           </LabelContainer>
         )}
         {description && (
-          <DescriptionContainer bold size={10} color="gray" data-test="text-input-description">
+          <DescriptionContainer size={10} color="gray" data-test="text-input-description">
             {description}
           </DescriptionContainer>
         )}

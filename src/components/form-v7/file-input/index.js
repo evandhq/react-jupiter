@@ -42,12 +42,12 @@ const FileInput = (props: Props) => {
       <GlobalStyle />
       <Label htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`} data-test="file-input">
         {label && (
-          <LabelContainer bold size={14}>
+          <LabelContainer size={14}>
             {label}
           </LabelContainer>
         )}
         {description && (
-          <DescriptionContainer bold size={10} color="gray" data-test="file-input-description">
+          <DescriptionContainer size={10} color="gray" data-test="file-input-description">
             {description}
           </DescriptionContainer>
         )}
