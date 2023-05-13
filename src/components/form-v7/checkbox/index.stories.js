@@ -33,6 +33,7 @@ storiesOf('Form-V7/Checkbox', module)
       <Checkbox
         groupName={text('optional groupName(but highly recommended to set manually)', 'degree')}
         label={text('optional label', 'در کدام موضوع ها توانایی دارید')}
+        number={4}
         handleChange={action('trigger what you want to do in onChange function')}
         isDisabled={boolean('optional disabled all', false)}
         type={select('optional type', ['horizontal', 'vertical'])}

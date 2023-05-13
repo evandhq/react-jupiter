@@ -5,12 +5,11 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../../globalStyle';
 import theme from '../theme';
 import ErrorMsg from '../errorMsg';
+import Label from '../label';
 import {
   Input,
-  LabelContainer,
   DescriptionContainer,
   PasswordIcon,
-  Label,
 } from './index.style';
 
 type Props = {
@@ -24,6 +23,7 @@ type Props = {
   errorMessage?: string,
   register?: any,
   required?: boolean | String,
+  number?: number,
 }
 
 const TextInput = (props: Props) => {
@@ -38,6 +38,7 @@ const TextInput = (props: Props) => {
     errorMessage,
     register,
     required,
+    number,
   } = props;
   const [value, setValue] = useState('');
   const [displayedPassword, setDisplayedPassword] = useState(false);
@@ -57,13 +58,7 @@ const TextInput = (props: Props) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Label htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`} data-test="text-input">
-        {label && (
-          <LabelContainer size={14}>
-            {label}
-            {!!required && <span className="required">*</span>}
-          </LabelContainer>
-        )}
+        <Label htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`} label={label} number={number} required={required} />
         {description && (
           <DescriptionContainer size={10} color="gray" data-test="text-input-description">
             {description}
@@ -89,7 +84,6 @@ const TextInput = (props: Props) => {
             onClick={handleDisplayPassword}
           />
         )}
-      </Label>
       <ErrorMsg errorMessage={errorMessage} />
     </ThemeProvider>
   );
@@ -105,6 +99,7 @@ TextInput.defaultProps = {
   errorMessage: '',
   register: null,
   required: false,
+  number: null,
 };
 
 export default TextInput;

@@ -59,6 +59,7 @@ storiesOf('Form-V7/Radio', module)
       <Radio
         groupName="degree"
         label="آخرین مدرک تحصیلی خود را انتخاب کنید"
+        number={1}
         register={register}
       >
         <RadioOption

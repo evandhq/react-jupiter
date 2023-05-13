@@ -5,11 +5,12 @@ import ErrorMsg from '../errorMsg';
 import { Fieldset, CheckboxWrapper } from './index.style';
 import theme from '../theme';
 import { ThemeProvider } from 'styled-components';
+import { toPersianNumber } from '../../utils/numbers';
+import Label from '../label';
 
 type Props = {
   children: * => Node,
   groupName?: string,
-  label?: string,
   handleChange?: () => void,
   isDisabled?: boolean,
   type?: 'horizontal' | 'vertical',
@@ -20,7 +21,7 @@ type Props = {
 
 const Checkbox = (props: Props) => {
   const {
-    children, groupName, label, handleChange, isDisabled, type, errorMessage, required, register
+    children, groupName, label, handleChange, isDisabled, type, errorMessage, required, register, number,
   } = props;
   const radioElements = React.Children.toArray(children);
 
@@ -28,14 +29,7 @@ const Checkbox = (props: Props) => {
     <ThemeProvider theme={theme}>
       <Fieldset onChange={handleChange}>
         <GlobalStyle />
-        {label && (
-          <legend>
-            <Text size={14}>
-              {label}
-              {!!required && <span className="required">*</span>}
-            </Text>
-          </legend>
-        )}
+        <Label label={label} number={number} required={required} />
         <CheckboxWrapper type={type}>
           {radioElements.map(
             (radioElement) => (
@@ -60,6 +54,7 @@ Checkbox.defaultProps = {
   isDisabled: false,
   type: 'horizontal',
   errorMessage: '',
-  required: false
+  required: false,
+  number: null,
 };
 export default Checkbox;

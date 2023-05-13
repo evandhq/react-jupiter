@@ -60,7 +60,3 @@ export const PasswordIcon = styled(Icon)`
     cursor: pointer;
   }
 `;
-
-export const Label = styled.label`
-  position: relative;
-`;

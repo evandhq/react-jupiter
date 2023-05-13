@@ -20,10 +20,12 @@ storiesOf('Form-V7/Inputs', module)
         htmlElementName="text-name-02"
         register={register}
         label={text('optional label', 'این لیبل است')}
+        number={5}
         placeholder={text('optional placeholder', 'متن پیشفرض')}
         disabled={boolean('disabled(default : false)', false)}
         description={text('optional description', 'توضیحات اضافه')}
         errorMessage={text('optional error msg', 'ارور زیبا')}
+        required={true}
       />
     )
   })

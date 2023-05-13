@@ -20,6 +20,7 @@ storiesOf('Form-V7/Inputs', module)
         htmlElementName="text-name-02"
         required={true}
         label={text('optional label', 'این لیبل است')}
+        number={23}
         register={register}
         placeholder={text('optional placeholder', 'متن پیشفرض')}
         disabled={boolean('disabled(default : false)', false)}

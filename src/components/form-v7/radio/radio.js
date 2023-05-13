@@ -1,8 +1,11 @@
 import React from 'react';
 import GlobalStyle from '../../globalStyle';
+import { ThemeProvider } from 'styled-components';
 import { Text } from '../../typography';
 import ErrorMsg from '../errorMsg';
 import { Fieldset, RadioWrapper } from './index.style';
+import Label from '../label';
+import theme from '../theme';
 
 type Props = {
   children: * => Node,
@@ -15,38 +18,35 @@ type Props = {
   errorMessage?: string,
   required?: boolean,
   register: any,
+  number?: number,
 };
 
 const Radio = (props: Props) => {
   const {
     children, groupName, label, handleChange, defaultCheckedValue, isDisabled,
-    type, errorMessage, register,
+    type, errorMessage, register, number, required,
   } = props;
   const radioElements = React.Children.toArray(children);
 
   return (
-    <Fieldset onChange={handleChange}>
-      <GlobalStyle />
-      {label && (
-        <legend>
-          <Text size={14}>
-            {label}
-          </Text>
-        </legend>
-      )}
-      <RadioWrapper type={type}>
-        {radioElements.map(
-          (radioElement) => (
-            isDisabled ? (
-              React.cloneElement(radioElement, { groupName, defaultCheckedValue, isDisabled, register })
-            ) : (
-              React.cloneElement(radioElement, { groupName, defaultCheckedValue, register })
-            )
-          ),
-        )}
-      </RadioWrapper>
-      <ErrorMsg errorMessage={errorMessage} />
-    </Fieldset>
+    <ThemeProvider theme={theme}>
+      <Fieldset onChange={handleChange}>
+        <GlobalStyle />
+        <Label label={label} number={number} required={required} />
+        <RadioWrapper type={type}>
+          {radioElements.map(
+            (radioElement) => (
+              isDisabled ? (
+                React.cloneElement(radioElement, { groupName, defaultCheckedValue, isDisabled, register })
+              ) : (
+                React.cloneElement(radioElement, { groupName, defaultCheckedValue, register })
+              )
+            ),
+          )}
+        </RadioWrapper>
+        <ErrorMsg errorMessage={errorMessage} />
+      </Fieldset>
+    </ThemeProvider>
   );
 };
 
@@ -59,5 +59,6 @@ Radio.defaultProps = {
   type: 'horizontal',
   errorMessage: '',
   required: false,
+  number: null,
 };
 export default Radio;

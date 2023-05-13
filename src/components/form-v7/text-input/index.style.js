@@ -32,15 +32,6 @@ export const Input = styled.input`
   }
 `;
 
-export const LabelContainer = styled(Text)`
-  display: block;
-  margin-bottom: 8px;
-  & > span.required {
-    color: ${({ theme }) => theme.colors.red};
-    margin-right: 5px;
-  }
-`;
-
 export const DescriptionContainer = styled(Text)`
   display: block;
   margin-bottom: 4px;
@@ -54,8 +45,4 @@ export const PasswordIcon = styled(Icon)`
   &:hover {
     cursor: pointer;
   }
-`;
-
-export const Label = styled.label`
-  position: relative;
 `;

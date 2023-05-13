@@ -51,6 +51,7 @@ storiesOf('Form-v7/Dropdown', module)
         handleChange={action('trigger what you want to do in onChange function')}
         isDisabled={boolean('disabled(default : false)', false)}
         label={text('optional label', 'محل برگزاری رویداد')}
+        number={3}
         errorMessage={text('optional error msg', 'ارور زیبا')}
         register={register}
         required={true}
