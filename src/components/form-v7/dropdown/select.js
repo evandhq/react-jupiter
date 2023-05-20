@@ -42,7 +42,7 @@ const Select = (props: Props) => {
           })}
         >
           {placeholder && (
-            <option value="" disabled>{placeholder}</option>
+            <option value="" disabled={required}>{placeholder}</option>
           )}
           {children}
         </StyledSelect>

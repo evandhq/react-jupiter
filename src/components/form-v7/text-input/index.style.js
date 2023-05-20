@@ -4,7 +4,7 @@ import Icon from '../../icon';
 
 export const Input = styled.input`
   font-family: 'IranSharp';
-  font-weight: bold;
+  font-weight: normal;
   font-size: 12px;
   border-radius: ${({ theme }) => `${theme.borderRadius}px`};
   border: solid 1px ${({ theme }) => theme.borderColor.normal};

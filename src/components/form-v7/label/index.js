@@ -16,7 +16,7 @@ function Label(props: IProps) {
         <>
         {label && (
           <StyledLabel htmlFor={htmlFor}>
-            <Text size={14}>
+            <Text bold size={14} >
               {!!number && `${toPersianNumber(number)} - `}
               {label}
               {!!required && <span className="required">*</span>}
