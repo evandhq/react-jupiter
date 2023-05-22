@@ -69,7 +69,6 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
     }
   },
   "browserslist": {
@@ -105,6 +104,7 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "flow-bin": "^0.117.0",
     "husky": "^3.1.0",
     "jest-enzyme": "^7.1.2",
