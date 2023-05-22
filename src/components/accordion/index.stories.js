@@ -3,7 +3,6 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import Accordion from '.';
 
-
 const items = [
     {
         title: 'عنوان اول',

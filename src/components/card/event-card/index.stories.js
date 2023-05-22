@@ -145,7 +145,7 @@ storiesOf('EventCard', module)
         logo: 'https://static.evand.net/images/organizations/logos/original/e90483ade453446ae2fd156e15244d04.jpg',
       }}
       partnership={{
-        status: 'partner',
+        status: 'colleague',
       }}
       clickBookmark={() => true}
       renderEventLink={(element) => <a href="/tosomewherenew">{element}</a>}
