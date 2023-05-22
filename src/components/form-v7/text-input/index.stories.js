@@ -30,5 +30,25 @@ storiesOf('Form-V7/Inputs', module)
       />
     )
   })
+  .add('LTR Text Input', () => {
+    const {
+      register,
+    } = useForm();
+    return (
+      <TextInput
+        htmlElementName="text-name-02"
+        required={true}
+        label={text('optional label', 'این لیبل است')}
+        number={23}
+        register={register}
+        placeholder={text('optional placeholder', 'متن پیشفرض')}
+        disabled={boolean('disabled(default : false)', false)}
+        description={text('optional description', 'توضیحات اضافه')}
+        errorMessage={text('optional error msg', 'ارور زیبا')}
+        type={select('select type(default : text)', ['text', 'password'])}
+        rtl={false}
+      />
+    )
+  })
   .addDecorator(withInfo)
   .addDecorator(withKnobs);

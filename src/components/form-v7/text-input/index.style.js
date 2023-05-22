@@ -11,6 +11,7 @@ export const Input = styled.input`
   padding: 6px;
   box-sizing: border-box;
   width: 100%;
+  direction: ${({ rtl }) => rtl ? 'rtl' : 'ltr'};
 
   &[disabled=""]{
     background-color: ${({ theme }) => theme.disabled.background};

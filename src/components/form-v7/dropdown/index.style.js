@@ -35,7 +35,7 @@ export const SelectButton = styled.div`
 
 export const StyledSelect = styled.select`
   font-family: 'IranSharp';
-  font-weight: bold;
+  font-weight: normal;
   font-size: 12px;
   border-radius: ${({ theme }) => `${theme.borderRadius}px`};
   border: solid 1px ${({ disabled, theme }) => (disabled ? 'transparent' : theme.borderColor.normal)};
