@@ -18,6 +18,10 @@ export const BaseButton = styled.button`
   opacity: ${({ disabled }) => (disabled ? '0.25' : '1')};
   border-radius: ${({ theme }) => `${theme.borderRadius}px`};
 
+  margin: ${({
+    theme, marginRight, marginLeft,
+  }) => `0 ${marginRight ? marginRight : 0 }px 0 ${marginLeft ? marginLeft : 0}px`};
+
   &[data-styletype="primary"] {
     border: none;
     background: ${({ theme, mainColor }) => getColorFromName(theme, mainColor)};

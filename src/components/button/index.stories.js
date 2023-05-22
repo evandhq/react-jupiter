@@ -19,6 +19,7 @@ storiesOf('Button', module)
       disabled={boolean('disabled', true)}
       styleType={select('styleType', ['primary', 'secondary', 'tertiary'])}
       mainColor={select('mainColor', ['red', 'blue', 'green', 'yellow', 'darkBlue'])}
+      marginRight={14}
     >
       {text('children text', 'متن زیبای داخل دکمه')}
     </Button>

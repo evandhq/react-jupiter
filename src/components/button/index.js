@@ -42,6 +42,8 @@ const Button = (props: Props) => {
     linkTarget,
     isLoading,
     renderLink,
+    marginLeft,
+    marginRight,
     ...rest
   } = props;
   const fontColor = setFontColor(styleType, mainColor);
@@ -53,11 +55,13 @@ const Button = (props: Props) => {
         <BaseButton
           data-test="button"
           type={htmlType}
-          wide={wide}
+          wide={false}
           size={size}
           mainColor={mainColor}
           disabled={disabled || isLoading}
           data-styletype={styleType}
+          marginLeft={marginLeft}
+          marginRight={marginRight}
           {...rest}
         >
           {
@@ -115,6 +119,8 @@ Button.defaultProps = {
   linkTarget: '_self',
   isLoading: false,
   renderLink: null,
+  marginLeft: 0,
+  marginRight: 0,
 };
 
 export default Button;
