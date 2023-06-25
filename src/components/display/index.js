@@ -28,6 +28,24 @@ Display.propTypes = {
     PropTypes.node,
     PropTypes.string,
   ]).isRequired,
+  display: PropTypes.string,
+  width: PropTypes.string,
+  justifyContent: PropTypes.string,
+  justifyContentMobile: PropTypes.string,
+  alignItems: PropTypes.string,
+  flexDirection: PropTypes.string,
+  flexDirectionMobile: PropTypes.string,
+  wrap: PropTypes.string,
+};
+Display.defaultProps = {
+  display: 'block',
+  width: 'auto',
+  justifyContent: 'start',
+  justifyContentMobile: 'start',
+  alignItems: 'start',
+  flexDirection: 'row',
+  flexDirectionMobile: 'row',
+  wrap: 'wrap',
 };
 
 export default Display;
