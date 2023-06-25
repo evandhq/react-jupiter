@@ -40,14 +40,14 @@ const TextInput = (props: Props) => {
     register,
     required,
     number,
-    rtl
+    rtl,
   } = props;
-  const [value, setValue] = useState('');
+  // const [value, setValue] = useState('');
   const [displayedPassword, setDisplayedPassword] = useState(false);
 
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
+  // function handleChange(e) {
+  //   setValue(e.target.value);
+  // }
 
   function handleDisplayPassword() {
     setDisplayedPassword(!displayedPassword);
@@ -60,33 +60,33 @@ const TextInput = (props: Props) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-        <Label htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`} label={label} number={number} required={required} />
-        {description && (
-          <DescriptionContainer size={10} color="gray" data-test="text-input-description">
-            {description}
-          </DescriptionContainer>
-        )}
-        <Input
-          id={id || `${type}-${htmlElementName.split(' ').join('')}`}
-          name={htmlElementName}
-          type={displayedPassword || type === 'text' ? 'text' : 'password'}
-          placeholder={placeholder}
-          value={value}
-          rtl={rtl}
-          {...register(htmlElementName, {
-            onChange: handleChange,
-            onFocus: handleFocus,
-            disabled,
-            required: !!required ? 'این فیلد الزامی است' : false
-          })}
-        />
-        {type === 'password' && (
-          <PasswordIcon
-            name={displayedPassword ? 'visibility-off' : 'visibility'}
-            color={displayedPassword ? 'blue' : 'gray'}
-            onClick={handleDisplayPassword}
-          />
-        )}
+      <Label htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`} label={label} number={number} required={required} />
+      {description && (
+      <DescriptionContainer size={10} color="gray" data-test="text-input-description">
+        {description}
+      </DescriptionContainer>
+      )}
+      <Input
+        id={id || `${type}-${htmlElementName.split(' ').join('')}`}
+        name={htmlElementName}
+        type={displayedPassword || type === 'text' ? 'text' : 'password'}
+        placeholder={placeholder}
+        // value={value}
+        rtl={rtl}
+        {...register(htmlElementName, {
+          // onChange: handleChange,
+          onFocus: handleFocus,
+          disabled,
+          required: required ? 'این فیلد الزامی است' : false,
+        })}
+      />
+      {type === 'password' && (
+      <PasswordIcon
+        name={displayedPassword ? 'visibility-off' : 'visibility'}
+        color={displayedPassword ? 'blue' : 'gray'}
+        onClick={handleDisplayPassword}
+      />
+      )}
       <ErrorMsg errorMessage={errorMessage} />
     </ThemeProvider>
   );

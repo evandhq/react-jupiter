@@ -1,9 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Label = styled.label`
+const Label = styled.label`
     position: relative;
+    display: block;
+    margin-bottom: 5px;
     & span.required {
         color: ${({ theme }) => theme.colors.red};
         margin-right: 5px;
     }
-  `;
+`;
+export default Label;

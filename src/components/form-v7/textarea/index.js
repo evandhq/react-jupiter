@@ -25,7 +25,7 @@ type Props = {
 const Textarea = (props: Props) => {
   const {
     htmlElementName, label, isDisabled, defaultValue, placeholder,
-    resize, minHeight, handleChange, errorMessage, register, number, required
+    resize, minHeight, handleChange, errorMessage, register, number, required,
   } = props;
 
   return (

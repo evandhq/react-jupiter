@@ -1,7 +1,6 @@
 import React from 'react';
-import GlobalStyle from '../../globalStyle';
 import { ThemeProvider } from 'styled-components';
-import { Text } from '../../typography';
+import GlobalStyle from '../../globalStyle';
 import ErrorMsg from '../errorMsg';
 import { Fieldset, RadioWrapper } from './index.style';
 import Label from '../label';
@@ -37,7 +36,9 @@ const Radio = (props: Props) => {
           {radioElements.map(
             (radioElement) => (
               isDisabled ? (
-                React.cloneElement(radioElement, { groupName, defaultCheckedValue, isDisabled, register })
+                React.cloneElement(radioElement, {
+                  groupName, defaultCheckedValue, isDisabled, register,
+                })
               ) : (
                 React.cloneElement(radioElement, { groupName, defaultCheckedValue, register })
               )

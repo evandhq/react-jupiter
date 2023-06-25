@@ -26,6 +26,8 @@ type Props = {
   linkTarget?: '_self' | '_blank',
   isLoading?: boolean,
   renderLink?: * => Node,
+  marginLeft?: number,
+  marginRight?: number,
 }
 
 const Button = (props: Props) => {

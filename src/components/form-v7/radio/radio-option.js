@@ -10,7 +10,7 @@ type Props = {
   groupName: string,
   isDisabled?: boolean,
   defaultCheckedValue?: string,
-  // register?: any,
+  register?: any,
 };
 const RadioOption = (props: Props) => {
   const {
@@ -25,7 +25,7 @@ const RadioOption = (props: Props) => {
           type="radio"
           id={itemId}
           name={groupName}
-          value={value}
+          defaultValue={value}
           defaultChecked={defaultCheckedValue === value}
           {...register(groupName, {
             disabled: isDisabled,

@@ -8,27 +8,31 @@ import {
   select,
   boolean,
 } from '@storybook/addon-knobs';
+import { useForm } from 'react-hook-form';
 import Radio from './radio';
 import RadioOption from './radio-option';
-import { useForm } from 'react-hook-form';
 
 storiesOf('Form-V7/Radio', module)
   .add('Minimal Form/Radio', () => {
     const {
-      register
-    } = useForm();
+      register,
+    } = useForm({
+      defaultValues: {
+        radio0: 'first',
+      },
+    });
 
     return (
-    <Radio groupName="radio0" label="انتخاب رادیو" register={register}>
-      <RadioOption value="first" label="First Value" />
-      <RadioOption value="sec" label="Sec Value" />
-      <RadioOption value="third" label="Third Value" />
-    </Radio>
-  )
+      <Radio groupName="radio0" label="انتخاب رادیو" register={register}>
+        <RadioOption value="first" label="First Value" />
+        <RadioOption value="sec" label="Sec Value" />
+        <RadioOption value="third" label="Third Value" />
+      </Radio>
+    );
   })
   .add('Full option Radio', () => {
     const {
-      register
+      register,
     } = useForm();
 
     return (
@@ -41,7 +45,7 @@ storiesOf('Form-V7/Radio', module)
         type={select('optional type', ['horizontal', 'vertical'])}
         errorMessage={text('optional error msg', 'ارور زیبا')}
         register={register}
-        required={true}
+        required
       >
         <RadioOption value="100" label="زیر دیپلم" />
         <RadioOption value="234" label="دیپلم" />
@@ -49,11 +53,11 @@ storiesOf('Form-V7/Radio', module)
         <RadioOption value="400" label="کارشناسی ارشد" />
         <RadioOption value="500" label="دکترا" />
       </Radio>
-    )
+    );
   })
   .add('Full option RadioOption', () => {
     const {
-      register
+      register,
     } = useForm();
     return (
       <Radio
@@ -72,7 +76,7 @@ storiesOf('Form-V7/Radio', module)
         <RadioOption value="400" label="کارشناسی ارشد" />
         <RadioOption value="500" label="دکترا" />
       </Radio>
-    )
+    );
   })
   .addDecorator(withInfo)
   .addDecorator(withKnobs);
