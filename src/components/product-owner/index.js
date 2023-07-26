@@ -43,7 +43,7 @@ const ProductOwner = (props: Props) => {
   }
 
   useEffect(() => {
-    setFollowStatus(isFollowed)
+    setFollowStatus(isFollowed);
   }, [isFollowed]);
 
   return (

@@ -82,7 +82,7 @@ const ProductPage = () => (
     <br />
 
     <Heading level={2}>
-        product-owner
+      product-owner
     </Heading>
     <br />
     <Container>

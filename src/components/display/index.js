@@ -36,16 +36,18 @@ Display.propTypes = {
   flexDirection: PropTypes.string,
   flexDirectionMobile: PropTypes.string,
   wrap: PropTypes.string,
+  className: PropTypes.string,
 };
 Display.defaultProps = {
-  display: 'block',
-  width: 'auto',
-  justifyContent: 'start',
-  justifyContentMobile: 'start',
-  alignItems: 'start',
-  flexDirection: 'row',
-  flexDirectionMobile: 'row',
-  wrap: 'wrap',
+  display: '',
+  width: '',
+  justifyContent: '',
+  justifyContentMobile: '',
+  alignItems: '',
+  flexDirection: '',
+  flexDirectionMobile: '',
+  wrap: '',
+  className: '',
 };
 
 export default Display;

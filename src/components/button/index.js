@@ -57,7 +57,7 @@ const Button = (props: Props) => {
         <BaseButton
           data-test="button"
           type={htmlType}
-          wide={false}
+          wide={wide}
           size={size}
           mainColor={mainColor}
           disabled={disabled || isLoading}

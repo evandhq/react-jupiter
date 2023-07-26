@@ -24,7 +24,7 @@ export const Title = styled(Heading)`
 
 export const SmallTitle = styled(Text)`
   margin-right: 8px;
-  white-space: nowrap;
+  white-space: break-spaces;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
