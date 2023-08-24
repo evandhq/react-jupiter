@@ -6,26 +6,25 @@ import {
   withKnobs,
   text,
   boolean,
-  select,
 } from '@storybook/addon-knobs';
-import Textarea from './index';
 import { useForm } from 'react-hook-form';
+import Textarea from './index';
 
 storiesOf('Form-V7/Textarea', module)
   .add('Minimal Textarea', () => {
     const {
-      register
+      register,
     } = useForm();
     return (
       <Textarea register={register} />
-    )
+    );
   })
   .add('Full option Textarea', () => {
     const {
-      register
+      register,
     } = useForm();
 
-    return(
+    return (
       <Textarea
         register={register}
         label={text('optional label', 'توضیجات')}
@@ -33,11 +32,12 @@ storiesOf('Form-V7/Textarea', module)
         placeholder={text('optional placeholder', 'این پلیس هولدر است')}
         minHeight={text('optional minHeight (it should be a number)', '120')}
         isDisabled={boolean('optional disabled all', false)}
-        resize={'both'}
+        resize="both"
         handleChange={action('trigger what you want to do in onChange function')}
         errorMessage={text('optional error msg', 'ارور زیبا')}
+        defaultValue="این یک باکس متنی می‌باشد"
       />
-    )
+    );
   })
   .addDecorator(withInfo)
   .addDecorator(withKnobs);

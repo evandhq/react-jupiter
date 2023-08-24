@@ -3,7 +3,7 @@ import CardTemplate from '../card-template';
 import { Heading } from '../../typography';
 import ProductProperties from '../../product-properties';
 import Icon from '../../icon';
-
+import defaultTheme from '../../themes';
 
 /* Common event card styles */
 
@@ -16,7 +16,6 @@ export const DateBookmarkContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
-
 
 export const DateLabelContainer = styled.div`
   display: inline-block;
@@ -32,12 +31,14 @@ export const BookmarkIcon = styled(Icon)`
   }
 `;
 
-
 /* Vertical event card styles */
 export const VerticalCardContainer = styled(CardTemplate)`
   background: white;
   a {
     text-decoration: none;
+  }
+  @media only screen and (min-width: ${defaultTheme.breakpoints.sm}px) {
+    min-height: 358px;
   }
 `;
 
@@ -70,7 +71,6 @@ export const VerticalTitle = styled(Heading)`
 export const VerticalPlacePrice = styled(ProductProperties)`
   margin: 4px 0;
 `;
-
 
 /* Horizontal event card styles */
 

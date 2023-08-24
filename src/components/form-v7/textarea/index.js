@@ -41,10 +41,9 @@ const Textarea = (props: Props) => {
         {...register(htmlElementName, {
           onChange: handleChange,
           disabled: isDisabled,
+          value: defaultValue,
         })}
-      >
-        {defaultValue}
-      </StyledTextarea>
+      />
       <ErrorMsg errorMessage={errorMessage} />
     </ThemeProvider>
   );
