@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
-import { Text } from '../../typography';
 import theme from '../theme';
 import ErrorMsg from '../errorMsg';
 import Label from '../label';
@@ -16,16 +16,17 @@ type Props = {
   resize?: 'horizontal' | 'vertical' | 'none' | 'both',
   minHeight?: number,
   handleChange?: () => void,
-  errorMessage?: string,
-  register?: any,
+  register: UseFormRegister<FieldValues>;
   required?: boolean | String,
   number?: number,
+  control: FormData;
 };
 
 const Textarea = (props: Props) => {
   const {
     htmlElementName, label, isDisabled, defaultValue, placeholder,
-    resize, minHeight, handleChange, errorMessage, register, number, required,
+    resize, minHeight, handleChange, register, number, required,
+    control,
   } = props;
 
   return (
@@ -33,18 +34,27 @@ const Textarea = (props: Props) => {
       <GlobalStyle />
       <Label htmlFor={htmlElementName} label={label} number={number} required={required} />
 
-      <StyledTextarea
+      <Controller
         name={htmlElementName}
-        placeholder={placeholder}
-        resize={resize}
-        minHeight={minHeight}
-        {...register(htmlElementName, {
-          onChange: handleChange,
-          disabled: isDisabled,
-          value: defaultValue,
-        })}
+        control={control}
+        rules={{ required: required ? 'این فیلد اجباری است' : false }}
+        render={({ fieldState }) => (
+          <>
+            <StyledTextarea
+              name={htmlElementName}
+              placeholder={placeholder}
+              resize={resize}
+              defaultValue={defaultValue}
+              minHeight={minHeight}
+              {...register(htmlElementName, {
+                onChange: handleChange,
+                disabled: isDisabled,
+              })}
+            />
+            <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+          </>
+        )}
       />
-      <ErrorMsg errorMessage={errorMessage} />
     </ThemeProvider>
   );
 };
@@ -58,8 +68,6 @@ Textarea.defaultProps = {
   resize: 'none',
   minHeight: 120,
   handleChange: () => { },
-  errorMessage: '',
-  register: null,
   required: false,
   number: null,
 };

@@ -19,17 +19,17 @@ storiesOf('Form-V7/Checkbox', module)
     } = useForm();
     return (
       <Checkbox register={register}>
-        <CheckboxOption value="first" label="First Value"handleOnchange={e => console.log(e)} />
-        <CheckboxOption value="sec" label="Sec Value"handleOnchange={e => console.log(e)} />
-        <CheckboxOption value="third" label="Third Value"handleOnchange={e => console.log(e.target.checked)} />
-    </Checkbox>
-    )
+        <CheckboxOption value="first" label="First Value" handleOnchange={(e) => console.log(e)} />
+        <CheckboxOption value="sec" label="Sec Value" handleOnchange={(e) => console.log(e)} />
+        <CheckboxOption value="third" label="Third Value" handleOnchange={(e) => console.log(e.target.checked)} />
+      </Checkbox>
+    );
   })
   .add('Full option Checkbox', () => {
     const {
       register,
     } = useForm();
-    return ( 
+    return (
       <Checkbox
         groupName={text('optional groupName(but highly recommended to set manually)', 'degree')}
         label={text('optional label', 'در کدام موضوع ها توانایی دارید')}
@@ -38,27 +38,29 @@ storiesOf('Form-V7/Checkbox', module)
         isDisabled={boolean('optional disabled all', false)}
         type={select('optional type', ['horizontal', 'vertical'])}
         errorMessage={text('optional error msg', 'ارور زیبا')}
-        required={true}
+        required
         register={register}
       >
-        <CheckboxOption value="100" label="ورزشی"/>
-        <CheckboxOption value="234" label="علمی"/>
-        <CheckboxOption value="300" label="مذهبی"/>
-        <CheckboxOption value="400" label="فرهنگی" isChecked/>
-        <CheckboxOption value="500" label="هنری" isChecked/>
+        <CheckboxOption value="100" label="ورزشی" />
+        <CheckboxOption value="234" label="علمی" />
+        <CheckboxOption value="300" label="مذهبی" />
+        <CheckboxOption value="400" label="فرهنگی" isChecked />
+        <CheckboxOption value="500" label="هنری" isChecked />
       </Checkbox>
-    )
+    );
   })
   .add('Full option CheckboxOption', () => {
     const {
       register,
+      control,
     } = useForm();
     return (
       <Checkbox
         groupName="degree"
-        required={true}
+        required
         label="در کدام موضوع ها توانایی دارید"
         register={register}
+        control={control}
       >
         <CheckboxOption
           label={text('label', 'ورزشی')}
@@ -67,12 +69,12 @@ storiesOf('Form-V7/Checkbox', module)
           isChecked={boolean('optional checked item', false)}
           register={register}
         />
-        <CheckboxOption value="200" label="علمی"/>
-        <CheckboxOption value="300" label="مذهبی"/>
-        <CheckboxOption value="400" label="فرهنگی"/>
-        <CheckboxOption value="500" label="هنری"/>
+        <CheckboxOption value="200" label="علمی" />
+        <CheckboxOption value="300" label="مذهبی" />
+        <CheckboxOption value="400" label="فرهنگی" />
+        <CheckboxOption value="500" label="هنری" />
       </Checkbox>
-    )
+    );
   })
   .addDecorator(withInfo)
   .addDecorator(withKnobs);

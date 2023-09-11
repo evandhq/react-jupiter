@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import {
   withKnobs,
-  select,
   text,
   boolean,
 } from '@storybook/addon-knobs';
@@ -17,7 +16,7 @@ storiesOf('Form-V7/Inputs', module)
     } = useForm();
     return (
       <FileInput
-        htmlElementName="text-name-02"
+        htmlElementName="file-input"
         register={register}
         label={text('optional label', 'این لیبل است')}
         description="حجم فایل ارسالی باید کمتر از ۴ مگابایت باشد"

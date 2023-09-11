@@ -1,11 +1,10 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
-import { Text } from '../../typography';
 import ErrorMsg from '../errorMsg';
 import { Fieldset, CheckboxWrapper } from './index.style';
 import theme from '../theme';
-import { ThemeProvider } from 'styled-components';
-import { toPersianNumber } from '../../utils/numbers';
 import Label from '../label';
 
 type Props = {
@@ -13,15 +12,17 @@ type Props = {
   groupName?: string,
   handleChange?: () => void,
   isDisabled?: boolean,
+  label?: string,
   type?: 'horizontal' | 'vertical',
-  errorMessage?: string,
   required?: boolean,
-  register: any,
+  register: UseFormRegister<FieldValues>;
+  control: FormData;
 };
 
 const Checkbox = (props: Props) => {
   const {
-    children, groupName, label, handleChange, isDisabled, type, errorMessage, required, register, number,
+    children, groupName, label, handleChange, isDisabled, type,
+    required, register, number, control,
   } = props;
   const radioElements = React.Children.toArray(children);
 
@@ -30,18 +31,27 @@ const Checkbox = (props: Props) => {
       <Fieldset onChange={handleChange}>
         <GlobalStyle />
         <Label label={label} number={number} required={required} />
-        <CheckboxWrapper type={type}>
-          {radioElements.map(
-            (radioElement) => (
-              isDisabled ? (
-                React.cloneElement(radioElement, { groupName, isDisabled, register })
-              ) : (
-                React.cloneElement(radioElement, { groupName, register })
-              )
-            ),
+        <Controller
+          name={groupName}
+          control={control}
+          rules={{ required: required ? 'این فیلد اجباری است' : false }}
+          render={({ fieldState }) => (
+            <>
+              <CheckboxWrapper type={type}>
+                {radioElements.map(
+                  (radioElement) => (
+                    isDisabled ? (
+                      React.cloneElement(radioElement, { groupName, isDisabled, register })
+                    ) : (
+                      React.cloneElement(radioElement, { groupName, register })
+                    )
+                  ),
+                )}
+              </CheckboxWrapper>
+              <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+            </>
           )}
-        </CheckboxWrapper>
-        <ErrorMsg errorMessage={errorMessage} />
+        />
       </Fieldset>
     </ThemeProvider>
   );
@@ -53,8 +63,6 @@ Checkbox.defaultProps = {
   handleChange: () => { },
   isDisabled: false,
   type: 'horizontal',
-  errorMessage: '',
   required: false,
-  number: null,
 };
 export default Checkbox;

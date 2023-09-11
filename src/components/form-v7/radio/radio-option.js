@@ -10,7 +10,8 @@ type Props = {
   groupName: string,
   isDisabled?: boolean,
   defaultCheckedValue?: string,
-  register?: any,
+  register: UseFormRegister<FieldValues>;
+  control: FormData;
 };
 const RadioOption = (props: Props) => {
   const {
@@ -42,7 +43,6 @@ const RadioOption = (props: Props) => {
 RadioOption.defaultProps = {
   isDisabled: false,
   defaultCheckedValue: '',
-  register: null,
 };
 
 export default RadioOption;

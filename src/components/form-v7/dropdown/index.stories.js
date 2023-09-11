@@ -54,7 +54,7 @@ storiesOf('Form-v7/Dropdown', module)
         number={3}
         errorMessage={text('optional error msg', 'ارور زیبا')}
         register={register}
-        required={true}
+        required
       >
         <SelectOption value="20" label="کرج" />
         <SelectOption value="30" label="تهران" />
@@ -65,6 +65,7 @@ storiesOf('Form-v7/Dropdown', module)
   .add('Full option SelectOption', () => {
     const {
       register,
+      control,
     } = useForm();
     return (
       <Select
@@ -73,7 +74,8 @@ storiesOf('Form-v7/Dropdown', module)
         handleChange={action('trigger what you want to do in onChange function')}
         isDisabled={false}
         register={register}
-        required={true}
+        required
+        control={control}
       >
         <SelectOption
           value={text('value', '20')}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
 import ErrorMsg from '../errorMsg';
 import { Fieldset, RadioWrapper } from './index.style';
@@ -14,16 +15,16 @@ type Props = {
   defaultCheckedValue?: string,
   isDisabled?: boolean,
   type?: 'horizontal' | 'vertical',
-  errorMessage?: string,
   required?: boolean,
-  register: any,
+  register: UseFormRegister<FieldValues>;
   number?: number,
+  control: FormData;
 };
 
 const Radio = (props: Props) => {
   const {
     children, groupName, label, handleChange, defaultCheckedValue, isDisabled,
-    type, errorMessage, register, number, required,
+    type, register, number, required, control,
   } = props;
   const radioElements = React.Children.toArray(children);
 
@@ -32,20 +33,29 @@ const Radio = (props: Props) => {
       <Fieldset onChange={handleChange}>
         <GlobalStyle />
         <Label label={label} number={number} required={required} />
-        <RadioWrapper type={type}>
-          {radioElements.map(
-            (radioElement) => (
-              isDisabled ? (
-                React.cloneElement(radioElement, {
-                  groupName, defaultCheckedValue, isDisabled, register,
-                })
-              ) : (
-                React.cloneElement(radioElement, { groupName, defaultCheckedValue, register })
-              )
-            ),
+        <Controller
+          name={groupName}
+          control={control}
+          rules={{ required: required ? 'این فیلد اجباری است' : false }}
+          render={({ fieldState }) => (
+            <>
+              <RadioWrapper type={type}>
+                {radioElements.map(
+                  (radioElement) => (
+                    isDisabled ? (
+                      React.cloneElement(radioElement, {
+                        groupName, defaultCheckedValue, isDisabled, register,
+                      })
+                    ) : (
+                      React.cloneElement(radioElement, { groupName, defaultCheckedValue, register })
+                    )
+                  ),
+                )}
+              </RadioWrapper>
+              <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+            </>
           )}
-        </RadioWrapper>
-        <ErrorMsg errorMessage={errorMessage} />
+        />
       </Fieldset>
     </ThemeProvider>
   );
@@ -58,7 +68,6 @@ Radio.defaultProps = {
   defaultCheckedValue: '',
   isDisabled: false,
   type: 'horizontal',
-  errorMessage: '',
   required: false,
   number: null,
 };

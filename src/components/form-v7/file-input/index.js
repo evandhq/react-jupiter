@@ -1,28 +1,28 @@
 // @flow
 
-import React, { useState } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
 import theme from '../theme';
 import ErrorMsg from '../errorMsg';
 import Label from '../label';
 import {
   Input,
-  LabelContainer,
   DescriptionContainer,
-  PasswordIcon,
 } from './index.style';
 
 type Props = {
+  type?: string,
   label?: string,
   htmlElementName: string,
   id?: string,
   disabled?: boolean,
   description?: string,
-  errorMessage?: string,
-  register?: any,
+  register: UseFormRegister<FieldValues>;
   required?: boolean | String,
   number?: number;
+  control: FormData;
 }
 
 const FileInput = (props: Props) => {
@@ -33,10 +33,10 @@ const FileInput = (props: Props) => {
     id,
     disabled,
     description,
-    errorMessage,
     register,
     required,
     number,
+    control,
   } = props;
 
   return (
@@ -48,16 +48,26 @@ const FileInput = (props: Props) => {
           {description}
         </DescriptionContainer>
       )}
-      <Input
-        id={id || `${type}-${htmlElementName.split(' ').join('')}`}
+
+      <Controller
         name={htmlElementName}
-        type={'file'}
-        {...register(htmlElementName, {
-          disabled,
-          required: !!required ? 'این فیلد الزامی است' : false
-        })}
+        control={control}
+        rules={{ required: required ? 'این فیلد اجباری است' : false }} // Add required rule
+        render={({ fieldState }) => (
+          <>
+            <Input
+              id={id || `${type}-${htmlElementName.split(' ').join('')}`}
+              name={htmlElementName}
+              type="file"
+              {...register(htmlElementName, {
+                disabled,
+                required: required ? 'این فیلد الزامی است' : false,
+              })}
+            />
+            <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+          </>
+        )}
       />
-      <ErrorMsg errorMessage={errorMessage} />
     </ThemeProvider>
   );
 };
@@ -66,11 +76,8 @@ FileInput.defaultProps = {
   type: 'text',
   label: null,
   id: null,
-  placeholder: null,
   disabled: false,
   description: null,
-  errorMessage: '',
-  register: null,
   required: false,
   number: null,
 };

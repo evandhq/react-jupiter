@@ -10,11 +10,11 @@ type Props = {
   groupName: string,
   isDisabled?: boolean,
   isChecked?: boolean,
-  register?: any,
+  register: UseFormRegister<FieldValues>;
 };
 const CheckboxOption = (props: Props) => {
   const {
-    label, value, isDisabled, isChecked, groupName, register, handleOnchange
+    label, value, isDisabled, isChecked, groupName, register, handleOnchange,
   } = props;
   const itemId = `${groupName}-${value}-${label.split(' ').join('')}`;
 
@@ -29,7 +29,7 @@ const CheckboxOption = (props: Props) => {
           defaultChecked={isChecked}
           {...register(groupName, {
             disabled: isDisabled,
-            onChange: (handleOnchange)
+            onChange: (handleOnchange),
           })}
         />
         <Text size={14}>
@@ -43,7 +43,6 @@ const CheckboxOption = (props: Props) => {
 CheckboxOption.defaultProps = {
   isDisabled: false,
   isChecked: false,
-  inputRef: null,
 };
 
 export default CheckboxOption;

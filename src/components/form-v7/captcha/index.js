@@ -13,7 +13,8 @@ import {
 type Props = {
   src: string,
   errorMessage?: string,
-  inputRef?: any,
+  register: UseFormRegister<FieldValues>;
+  control: FormData;
   handleCaptchaError?: () => void;
   handleRetryCaptcha?: () => void;
 };
@@ -22,7 +23,8 @@ function Captcha(props: Props) {
   const {
     src,
     errorMessage,
-    inputRef,
+    register,
+    control,
     handleCaptchaError,
     handleRetryCaptcha,
   } = props;
@@ -45,7 +47,8 @@ function Captcha(props: Props) {
           label="کد تصویری"
           errorMessage={errorMessage}
           type="text"
-          register={inputRef}
+          register={register}
+          control={control}
         />
       </InputConiatiner>
       <Container>
@@ -86,7 +89,6 @@ function Captcha(props: Props) {
 
 Captcha.defaultProps = {
   errorMessage: '',
-  inputRef: null,
   handleCaptchaError: () => {},
   handleRetryCaptcha: null,
 };

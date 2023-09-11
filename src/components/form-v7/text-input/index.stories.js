@@ -18,7 +18,7 @@ storiesOf('Form-V7/Inputs', module)
     return (
       <TextInput
         htmlElementName="text-name-02"
-        required={true}
+        required
         label={text('optional label', 'این لیبل است')}
         number={23}
         register={register}
@@ -28,7 +28,7 @@ storiesOf('Form-V7/Inputs', module)
         errorMessage={text('optional error msg', 'ارور زیبا')}
         type={select('select type(default : text)', ['text', 'password'])}
       />
-    )
+    );
   })
   .add('LTR Text Input', () => {
     const {
@@ -37,7 +37,7 @@ storiesOf('Form-V7/Inputs', module)
     return (
       <TextInput
         htmlElementName="text-name-02"
-        required={true}
+        required
         label={text('optional label', 'این لیبل است')}
         number={23}
         register={register}
@@ -48,7 +48,7 @@ storiesOf('Form-V7/Inputs', module)
         type={select('select type(default : text)', ['text', 'password'])}
         rtl={false}
       />
-    )
+    );
   })
   .addDecorator(withInfo)
   .addDecorator(withKnobs);

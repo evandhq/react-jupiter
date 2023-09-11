@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
+import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
 import theme from '../theme';
 import ErrorMsg from '../errorMsg';
@@ -20,8 +21,8 @@ type Props = {
   placeholder?: string,
   disabled?: boolean,
   description?: string,
-  errorMessage?: string,
-  register?: any,
+  register: UseFormRegister<FieldValues>;
+  control: FormData;
   required?: boolean | String,
   number?: number,
   rtl?: boolean,
@@ -36,18 +37,14 @@ const TextInput = (props: Props) => {
     placeholder,
     disabled,
     description,
-    errorMessage,
     register,
     required,
     number,
     rtl,
+    control,
   } = props;
-  // const [value, setValue] = useState('');
-  const [displayedPassword, setDisplayedPassword] = useState(false);
 
-  // function handleChange(e) {
-  //   setValue(e.target.value);
-  // }
+  const [displayedPassword, setDisplayedPassword] = useState(false);
 
   function handleDisplayPassword() {
     setDisplayedPassword(!displayedPassword);
@@ -66,28 +63,35 @@ const TextInput = (props: Props) => {
         {description}
       </DescriptionContainer>
       )}
-      <Input
-        id={id || `${type}-${htmlElementName.split(' ').join('')}`}
+      <Controller
         name={htmlElementName}
-        type={displayedPassword || type === 'text' ? 'text' : 'password'}
-        placeholder={placeholder}
-        // value={value}
-        rtl={rtl}
-        {...register(htmlElementName, {
-          // onChange: handleChange,
-          onFocus: handleFocus,
-          disabled,
-          required: required ? 'این فیلد الزامی است' : false,
-        })}
+        control={control}
+        rules={{ required: required ? 'این فیلد اجباری است' : false }}
+        render={({ fieldState }) => (
+          <>
+            <Input
+              id={id || `${type}-${htmlElementName.split(' ').join('')}`}
+              name={htmlElementName}
+              type={displayedPassword || type === 'text' ? 'text' : 'password'}
+              placeholder={placeholder}
+              rtl={rtl}
+              {...register(htmlElementName, {
+                // onChange: handleChange,
+                onFocus: handleFocus,
+                disabled,
+              })}
+            />
+            {type === 'password' && (
+              <PasswordIcon
+                name={displayedPassword ? 'visibility-off' : 'visibility'}
+                color={displayedPassword ? 'blue' : 'gray'}
+                onClick={handleDisplayPassword}
+              />
+            )}
+            <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+          </>
+        )}
       />
-      {type === 'password' && (
-      <PasswordIcon
-        name={displayedPassword ? 'visibility-off' : 'visibility'}
-        color={displayedPassword ? 'blue' : 'gray'}
-        onClick={handleDisplayPassword}
-      />
-      )}
-      <ErrorMsg errorMessage={errorMessage} />
     </ThemeProvider>
   );
 };
@@ -99,8 +103,6 @@ TextInput.defaultProps = {
   placeholder: null,
   disabled: false,
   description: null,
-  errorMessage: '',
-  register: null,
   required: false,
   number: null,
   rtl: true,
