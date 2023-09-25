@@ -5,7 +5,6 @@ import { withInfo } from '@storybook/addon-info';
 import { useForm } from 'react-hook-form';
 import {
   withKnobs,
-  text,
 } from '@storybook/addon-knobs';
 import Captcha from './index';
 
@@ -19,10 +18,11 @@ storiesOf('Form-v7/Captcha', module)
       <Captcha
         register={register}
         control={control}
-        errorMessage={text('optional error msg', 'ارور زیبا')}
-        src={text('captcha img src', 'https://static.evand.net/captcha/12c178c8006cb0cea5253a83db6a96db.jpg')}
-        handleCaptchaError={action('trigger what you want to do when captcha src has an err')}
-        handleRetryCaptcha={action('trigger what you want to do when click on retry button')}
+        label="کد تصویری"
+        htmlElementName="captcha"
+        imageUrl="https://static.evand.net/captcha/0bb5a9832be7b86a2a0a646ae2fd1649.jpg"
+        handleChange={action('trigger what you want to do in onChange function')}
+        fetchData={() => console.log('fetching')}
       />
     );
   })

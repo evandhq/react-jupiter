@@ -1,96 +1,91 @@
-// @flow
-
-import React, { useState } from 'react';
-import TextInput from '../text-input';
+import React from 'react';
+import { Controller } from 'react-hook-form';
+import { ThemeProvider } from 'styled-components';
+import theme from '../theme';
+import ErrorMsg from '../errorMsg';
+import Icon from '../../icon';
 import Button from '../../button';
-import {
-  CaptchaBoxContainer,
-  Loading,
-  InputConiatiner,
-  Container,
-} from './index.style';
+import Label from '../label';
+import { Input } from '../text-input/index.style';
+import Display from '../../display';
 
 type Props = {
-  src: string,
-  errorMessage?: string,
+  htmlElementName: String,
+  label: String,
+  imageUrl: string,
   register: UseFormRegister<FieldValues>;
   control: FormData;
-  handleCaptchaError?: () => void;
-  handleRetryCaptcha?: () => void;
+  classNames?: String,
+  fetchData: () => {},
+  loading?: boolean,
+  number?: number,
 };
 
 function Captcha(props: Props) {
   const {
-    src,
-    errorMessage,
+    htmlElementName,
+    label,
+    classNames,
+    imageUrl,
     register,
     control,
-    handleCaptchaError,
-    handleRetryCaptcha,
+    fetchData,
+    loading,
+    number,
   } = props;
-  const [imageLoadingStatus, setImageLoadingStatus] = useState('loading');
-
-  function hanelImgLoading() {
-    setImageLoadingStatus('loaded');
-  }
-  function handleImgError() {
-    setImageLoadingStatus('failedToLoad');
-    handleCaptchaError();
-  }
 
   return (
-    <CaptchaBoxContainer data-test="captcha-box">
-      <InputConiatiner>
-        <TextInput
-          data-test="captcha-input"
-          htmlElementName="captcha-input"
-          label="کد تصویری"
-          errorMessage={errorMessage}
-          type="text"
-          register={register}
+    <ThemeProvider theme={theme}>
+      <div className={classNames}>
+        <Controller
+          name={htmlElementName}
           control={control}
+          rules={{ required: 'این فیلد اجباری است' }}
+          render={({ fieldState }) => (
+            <Display display="block">
+              <Label htmlFor={htmlElementName} label={label} number={number} required />
+              <Display display="flex">
+                <Display display="flex" width="100%">
+                  <Input
+                    id={`${'text'}-${htmlElementName.split(' ').join('')}`}
+                    name={htmlElementName}
+                    type="text"
+                    rtl={false}
+                    className="captcha-input"
+                    {...register(htmlElementName, {
+                      pattern: {
+                        value: /^[0-9]{4}$/,
+                        message: 'لطفا اعداد انگلیسی وارد کنید.',
+                      },
+                    })}
+                  />
+                  <img
+                    width="auto"
+                    height="40px"
+                    src={imageUrl}
+                    alt="captcha-img"
+                    loading="lazy"
+                    data-test="captcha-img"
+                  />
+                </Display>
+                <Button type="button" size="sm" styleType="tertiary" onClick={fetchData} disabled={loading}>
+                  <Icon name={loading ? 'loading' : 'refresh'} />
+                </Button>
+              </Display>
+              <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+            </Display>
+          )}
         />
-      </InputConiatiner>
-      <Container>
-        {imageLoadingStatus !== 'loaded' && (
-          <Loading />
-        )}
-        <img
-          className={`${imageLoadingStatus === 'loaded' ? '' : 'hide'}`}
-          width="120px"
-          height="32px"
-          src={src}
-          alt="captcha-img"
-          loading="lazy"
-          onLoad={hanelImgLoading}
-          onError={handleImgError}
-          data-test="captcha-img"
-        />
-      </Container>
-      {handleRetryCaptcha && (
-        <Container>
-          <Button
-            data-test="captcha-retry"
-            htmlType="button"
-            icon="restore"
-            isLoading={imageLoadingStatus === 'loading'}
-            onClick={handleRetryCaptcha}
-            mainColor="blue"
-            size="sm"
-            styleType={imageLoadingStatus === 'failedToLoad' ? 'primary' : 'tertiary'}
-          >
-            کد تصویری جدید
-          </Button>
-        </Container>
-      )}
-    </CaptchaBoxContainer>
+
+      </div>
+    </ThemeProvider>
   );
 }
 
 Captcha.defaultProps = {
-  errorMessage: '',
-  handleCaptchaError: () => {},
-  handleRetryCaptcha: null,
+  classNames: '',
+  loading: false,
+  number: null,
 };
 
 export default Captcha;

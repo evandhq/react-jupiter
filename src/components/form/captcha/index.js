@@ -69,7 +69,7 @@ function Captcha(props: Props) {
           <Button
             data-test="captcha-retry"
             htmlType="button"
-            icon="restore"
+            icon="refresh"
             isLoading={imageLoadingStatus === 'loading'}
             onClick={handleRetryCaptcha}
             mainColor="blue"
