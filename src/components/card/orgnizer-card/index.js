@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-closing-tag-location */
-/* eslint-disable react/jsx-indent */
 import React from 'react';
 import { Heading, Text, Paragraph } from '../../typography';
 import Avatar from '../../avatar';
@@ -28,7 +26,7 @@ type Props = {
   onClickFollowMe?: () => boolean,
   onClickConnectUs?: () => void,
   renderOrganizerLink: * => Node,
-  partnership?: string
+  partnership: string
 }
 
 const OrgnizerCard = (props: Props) => {
@@ -53,9 +51,9 @@ const OrgnizerCard = (props: Props) => {
         <Display display="flex" alignItems="center" justifyContent="start" width="100%">
           <Display display="flex" flexDirection="column">
             <Margin bottom={3}>
-            <Text size={12} bold textAlign="right">
-              برگزار‌کننده:
-            </Text>
+              <Text size={12} bold textAlign="right">
+                برگزار‌کننده:
+              </Text>
             </Margin>
             {renderOrganizerLink(<Avatar
               alt={name}
@@ -66,14 +64,14 @@ const OrgnizerCard = (props: Props) => {
           <Margin right={4}>
             <Display display="flex">
               {renderOrganizerLink(
-              <Text
-                strong
-                size="md"
-                level={4}
-              >
-                <Display display="inline-block">
-                  {` ${name} `}
-                  {!!partnership
+                <Text
+                  strong
+                  size="md"
+                  level={4}
+                >
+                  <Display display="inline-block">
+                    {` ${name} `}
+                    {!!partnership
                   && (
                     <PartnershipBox>
                       <Icon
@@ -86,10 +84,10 @@ const OrgnizerCard = (props: Props) => {
                       ایوند
                     </PartnershipBox>
                   )}
-                </Display>
-              </Text>,
+                  </Display>
+                </Text>,
               )}
-              </Display>
+            </Display>
           </Margin>
         </Display>
         <Responsive option={{ lessThan: defaultTheme.breakpoints.sm }}>
@@ -159,7 +157,7 @@ const OrgnizerCard = (props: Props) => {
       <ResponsiveFlex>
         {!!recommendedCount && (
           <Heading level={4} size="md" color="riverBed" bold>
-          {` ${recommendedCount} `}
+            {` ${recommendedCount} `}
             این برگزارکننده را توصیه کرده‌اند.
           </Heading>
         )}

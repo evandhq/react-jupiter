@@ -18,6 +18,7 @@ import TextInput from '../text-input';
 import Textarea from '../textarea';
 import Checkbox from '../checkbox/checkbox';
 import CheckboxOption from '../checkbox/checkbox-option';
+import Captcha from '../captcha';
 
 storiesOf('Form-V7/Sample Form', module)
   .add('Sample Form', () => {
@@ -75,7 +76,7 @@ storiesOf('Form-V7/Sample Form', module)
             number={3}
             register={register}
             control={control}
-            required
+            required={false}
           >
             <RadioOption
               label={text('label', 'زیر دیپلم')}
@@ -92,17 +93,16 @@ storiesOf('Form-V7/Sample Form', module)
         <Margin top={8}>
           <TextInput
             htmlElementName="text-input"
-            required
+            required={false}
             label={text('optional label', 'این لیبل است')}
             number={23}
             register={register}
             control={control}
             placeholder={text('optional placeholder', 'متن پیشفرض')}
             disabled={boolean('disabled(default : false)', false)}
-            description={text('optional description', 'توضیحات اضافه')}
             errorMessage={text('optional error msg', 'ارور زیبا')}
             type={select('select type(default : text)', ['text', 'password'])}
-            rtl={false}
+            rtl
           />
         </Margin>
 
@@ -115,7 +115,7 @@ storiesOf('Form-V7/Sample Form', module)
             placeholder={text('optional placeholder', 'این پلیس هولدر است')}
             minHeight={text('optional minHeight (it should be a number)', '120')}
             isDisabled={false}
-            required
+            required={false}
             resize="both"
             handleChange={action('trigger what you want to do in onChange function')}
             defaultValue="این یک باکس متنی می‌باشد"
@@ -142,6 +142,18 @@ storiesOf('Form-V7/Sample Form', module)
             <CheckboxOption value="400" label="فرهنگی" />
             <CheckboxOption value="500" label="هنری" />
           </Checkbox>
+        </Margin>
+
+        <Margin top={8}>
+          <Captcha
+            register={register}
+            control={control}
+            label="کد تصویری"
+            htmlElementName="captcha"
+            imageUrl="https://static.evand.net/captcha/0bb5a9832be7b86a2a0a646ae2fd1649.jpg"
+            handleChange={action('trigger what you want to do in onChange function')}
+            fetchData={() => console.log('fetching')}
+          />
         </Margin>
 
         <Margin top={8}>
