@@ -11,34 +11,34 @@ const { sizes } = theme;
 
 const Heading = (props) => {
   const {
-    children, size, level, ...rest
+    children, size, level, color, ...rest
   } = props;
 
-  const renderLevel = (children, size, level) => {
+  const renderLevel = () => {
     if (children === undefined) {
       return null;
     }
     switch (level) {
       case 6:
-        return (<H6 size={size} data-test="h6-tag" {...rest}>{children}</H6>);
+        return (<H6 size={size} data-test="h6-tag" color={color} {...rest}>{children}</H6>);
       case 5:
-        return (<H5 size={size} data-test="h5-tag" {...rest}>{children}</H5>);
+        return (<H5 size={size} data-test="h5-tag" color={color} {...rest}>{children}</H5>);
       case 4:
-        return (<H4 size={size} data-test="h4-tag" {...rest}>{children}</H4>);
+        return (<H4 size={size} data-test="h4-tag" color={color} {...rest}>{children}</H4>);
       case 3:
-        return (<H3 size={size} data-test="h3-tag" {...rest}>{children}</H3>);
+        return (<H3 size={size} data-test="h3-tag" color={color} {...rest}>{children}</H3>);
       case 2:
-        return (<H2 size={size} data-test="h2-tag" {...rest}>{children}</H2>);
+        return (<H2 size={size} data-test="h2-tag" color={color} {...rest}>{children}</H2>);
       case 1:
       default:
-        return (<H1 size={size} data-test="h1-tag" {...rest}>{children}</H1>);
+        return (<H1 size={size} data-test="h1-tag" color={color} {...rest}>{children}</H1>);
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      {renderLevel(children, size, level)}
+      {renderLevel()}
     </ThemeProvider>
   );
 };
@@ -51,11 +51,13 @@ Heading.propTypes = {
   ]).isRequired,
   size: PropTypes.oneOf([sizes.large, sizes.medium, sizes.small]),
   level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+  color: PropTypes.oneOf(['red', 'green', 'blue', 'yellow', 'white', 'darkBlue']),
 };
 
 Heading.defaultProps = {
   size: sizes.medium,
   level: 1,
+  color: 'default',
 };
 
 export default Heading;

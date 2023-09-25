@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { getSizeOfHeading, getMarginOfHeading } from '../utils';
+import { getColorFromName } from '../../utils/theme';
 
 export const H1 = styled.h1`
   font-family: 'IranSharp';
@@ -8,7 +9,7 @@ export const H1 = styled.h1`
   line-height: ${({ theme, size }) => `
     ${getSizeOfHeading(theme, size, 1) * theme.lineHeightRatio}px;
   `}
-  color: ${({ theme }) => (`${theme.defaultColor}`)};
+  color: ${({ theme, color }) => getColorFromName(theme, color)};
   font-weight: bold;
 `;
 
@@ -19,7 +20,7 @@ export const H2 = styled.h2`
   line-height: ${({ theme, size }) => `
     ${getSizeOfHeading(theme, size, 2) * theme.lineHeightRatio}px;
   `}
-  color: ${({ theme }) => (`${theme.defaultColor}`)};
+  color: ${({ theme, color }) => getColorFromName(theme, color)};
   font-weight: bold;
 `;
 
@@ -30,7 +31,7 @@ export const H3 = styled.h3`
   line-height: ${({ theme, size }) => `
     ${getSizeOfHeading(theme, size, 3) * theme.lineHeightRatio}px;
   `}
-  color: ${({ theme }) => (`${theme.defaultColor}`)};
+  color: ${({ theme, color }) => getColorFromName(theme, color)};
   font-weight: bold;
 `;
 
@@ -41,7 +42,7 @@ export const H4 = styled.h4`
   line-height: ${({ theme, size }) => `
     ${getSizeOfHeading(theme, size, 4) * theme.lineHeightRatio}px;
   `}
-  color: ${({ theme }) => (`${theme.defaultColor}`)};
+  color: ${({ theme, color }) => getColorFromName(theme, color)};
   font-weight: bold;
 `;
 
@@ -52,7 +53,7 @@ export const H5 = styled.h5`
   line-height: ${({ theme, size }) => `
     ${getSizeOfHeading(theme, size, 5) * theme.lineHeightRatio}px;
   `}
-  color: ${({ theme }) => (`${theme.defaultColor}`)};
+  color: ${({ theme, color }) => getColorFromName(theme, color)};
   font-weight: bold;
 `;
 
@@ -63,6 +64,6 @@ export const H6 = styled.h6`
   line-height: ${({ theme, size }) => `
     ${getSizeOfHeading(theme, size, 6) * theme.lineHeightRatio}px;
   `}
-  color: ${({ theme }) => (`${theme.defaultColor}`)};
+  color: ${({ theme, color }) => getColorFromName(theme, color)};
   font-weight: bold;
 `;

@@ -11,6 +11,8 @@ const actions = {
 storiesOf('Heading', module)
   .add('Heading default', () => <Heading>این یک اچ دیفالت است</Heading>)
   .add('H1 default', () => <Heading level={1}>این یک اچ یک دیفالت است</Heading>)
+  .add('H1 blue', () => <Heading level={1} color="blue">این یک اچ یک دیفالت است</Heading>)
+  .add('H1 red', () => <Heading level={1} color="red">این یک اچ یک دیفالت است</Heading>)
   .add('H1 small', () => <Heading level={1} size="sm">این یک اچ یک کوچک است</Heading>)
   .add('H1 medium', () => <Heading level={1} size="md">این یک اچ یک متسوط است</Heading>)
   .add('H1 large', () => <Heading level={1} size="lg">این یک اچ یک بزرگ است</Heading>)
