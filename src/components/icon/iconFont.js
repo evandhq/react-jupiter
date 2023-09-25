@@ -17,6 +17,9 @@ const FontStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .new-icon-refresh:before {
+    content: "\\e9fa";
+  }
   .new-icon-account-balance-wallet:before {
     content: "\\e900";
   }
@@ -234,6 +237,7 @@ const FontStyle = createGlobalStyle`
   }
   .new-icon-colleague:before {
     content: "\\e947";
+    color: #595959;
   }
   .new-icon-commute:before {
     content: "\\e948";
