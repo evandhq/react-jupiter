@@ -237,7 +237,6 @@ const FontStyle = createGlobalStyle`
   }
   .new-icon-colleague:before {
     content: "\\e947";
-    color: #595959;
   }
   .new-icon-commute:before {
     content: "\\e948";
