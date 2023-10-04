@@ -30,6 +30,7 @@ function Captcha(props: Props) {
     register,
     control,
     fetchData,
+    setValue,
     loading,
     number,
   } = props;
@@ -41,7 +42,9 @@ function Captcha(props: Props) {
           name={htmlElementName}
           control={control}
           rules={{ required: 'این فیلد اجباری است' }}
-          render={({ fieldState }) => (
+          render={({
+            fieldState,
+          }) => (
             <Display display="block">
               <Label htmlFor={htmlElementName} label={label} number={number} required />
               <Display display="flex">
@@ -51,12 +54,14 @@ function Captcha(props: Props) {
                     name={htmlElementName}
                     type="text"
                     rtl={false}
+                    // onChange={(e) => onChange(e.target.value.replace(/[٠-٩۰-۹]/g, (a) => a.charCodeAt(0) && 15))}
                     className="captcha-input"
                     {...register(htmlElementName, {
                       pattern: {
-                        value: /^[0-9]{4}$/,
+                        value: /^[۰۱۲۳۴۵۶۷۸۹0-9]{4}$/,
                         message: 'لطفا اعداد انگلیسی وارد کنید.',
                       },
+                      onChange: (e) => setValue(htmlElementName, e.target.value.replace(/[\u0660-\u0669\u06f0-\u06f9]/g, (c) => c.charCodeAt(0) & 0xf)),
                     })}
                   />
                   <img

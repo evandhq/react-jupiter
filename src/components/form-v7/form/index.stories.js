@@ -26,6 +26,7 @@ storiesOf('Form-V7/Sample Form', module)
       register,
       handleSubmit,
       control,
+      setValue,
     } = useForm();
 
     const onSubmit = (data) => {
@@ -153,6 +154,7 @@ storiesOf('Form-V7/Sample Form', module)
             imageUrl="https://static.evand.net/captcha/0bb5a9832be7b86a2a0a646ae2fd1649.jpg"
             handleChange={action('trigger what you want to do in onChange function')}
             fetchData={() => console.log('fetching')}
+            setValue={setValue}
           />
         </Margin>
 
