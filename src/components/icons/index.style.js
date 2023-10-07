@@ -14,7 +14,6 @@ const IconElement = styled.i`
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-  speak: none;
   text-transform: none;
   font-size: ${({ size }) => `${getSizeOfIcon(size)}px;`}
   margin-left: ${({ size }) => `${getMarginOfIcon(size)}px;`}

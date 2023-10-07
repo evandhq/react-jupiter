@@ -20,6 +20,12 @@ const theme = {
       minWidth: 80,
       height: 36,
     },
+    xs: {
+      padding: '2px 8px',
+      font: 8,
+      minWidth: 64,
+      height: 32,
+    },
   },
   colors: defaultTheme.colors,
   borderRadius: defaultTheme.borderRadius.low,
