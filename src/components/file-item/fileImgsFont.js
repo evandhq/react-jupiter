@@ -4,7 +4,6 @@ const FontStyle = createGlobalStyle`
   span.jupiter-file-font {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'JupiterfilesImgs' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;

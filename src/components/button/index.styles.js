@@ -20,7 +20,7 @@ export const BaseButton = styled.button`
 
   margin: ${({
     theme, marginRight, marginLeft,
-  }) => `0 ${marginRight ? marginRight : 0 }px 0 ${marginLeft ? marginLeft : 0}px`};
+  }) => `0 ${marginRight || 0}px 0 ${marginLeft || 0}px`};
 
   &[data-styletype="primary"] {
     border: none;
@@ -58,7 +58,7 @@ export const BaseButton = styled.button`
       }
     }
   }
-  
+
   &[data-styletype="tertiary"] {
     border: none;
     background: transparent;
