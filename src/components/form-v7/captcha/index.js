@@ -13,7 +13,6 @@ type Props = {
   htmlElementName: String,
   label: String,
   imageUrl: string,
-  register: UseFormRegister<FieldValues>;
   control: FormData;
   classNames?: String,
   fetchData: () => {},
@@ -27,13 +26,23 @@ function Captcha(props: Props) {
     label,
     classNames,
     imageUrl,
-    register,
     control,
     fetchData,
-    setValue,
     loading,
     number,
   } = props;
+
+  const persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g]; const arabicNumbers = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
+
+  const fixNumbers = (str) => {
+    let result = str;
+    if (typeof str === 'string') {
+      for (let i = 0; i < 10; i++) {
+        result = result.replace(persianNumbers[i], i).replace(arabicNumbers[i], i);
+      }
+    }
+    return result;
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -41,10 +50,15 @@ function Captcha(props: Props) {
         <Controller
           name={htmlElementName}
           control={control}
-          rules={{ required: 'این فیلد اجباری است' }}
-          render={({
-            fieldState,
-          }) => (
+          rules={{
+            required: 'این فیلد اجباری است',
+            pattern: {
+              value: /^[۰۱۲۳۴۵۶۷۸۹0-9]{4}$/,
+              message: 'لطفا فقط عدد وارد کنید.',
+            },
+          }}
+          defaultValue=""
+          render={({ field: { onChange, value }, fieldState }) => (
             <Display display="block">
               <Label htmlFor={htmlElementName} label={label} number={number} required />
               <Display display="flex">
@@ -54,15 +68,11 @@ function Captcha(props: Props) {
                     name={htmlElementName}
                     type="text"
                     rtl={false}
-                    // onChange={(e) => onChange(e.target.value.replace(/[٠-٩۰-۹]/g, (a) => a.charCodeAt(0) && 15))}
+                    value={value}
+                    onChange={(e) => {
+                      onChange(fixNumbers(e.target.value));
+                    }}
                     className="captcha-input"
-                    {...register(htmlElementName, {
-                      pattern: {
-                        value: /^[۰۱۲۳۴۵۶۷۸۹0-9]{4}$/,
-                        message: 'لطفا اعداد انگلیسی وارد کنید.',
-                      },
-                      onChange: (e) => setValue(htmlElementName, e.target.value.replace(/[\u0660-\u0669\u06f0-\u06f9]/g, (c) => c.charCodeAt(0) & 0xf)),
-                    })}
                   />
                   <img
                     width="auto"
