@@ -1,6 +1,6 @@
 {
   "name": "react-jupiter",
-  "version": "5.9.61",
+  "version": "5.9.64",
   "main": "./index.js",
   "license": "MIT",
   "keywords": [
@@ -11,10 +11,10 @@
     "styled-component"
   ],
   "contributors": [
+    "@mehranshiri",
     "@arashmanteghi",
     "https://github.com/marzzy",
-    "https://github.com/mehrdad-shokri",
-    "@mehranshiri"
+    "https://github.com/mehrdad-shokri"
   ],
   "publishConfig": {
     "access": "public"
@@ -36,12 +36,5 @@
     "styled-components-spacing": "^3.1.1",
     "react-lazy-load-image-component": "^1.4.1",
     "styled-media-query": "^2.1.2"
-  },
-  "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^4.3.1"
-  },
-  "devDependencies": {
   }
 }
