@@ -58,38 +58,40 @@ function Captcha(props: Props) {
             },
           }}
           defaultValue=""
-          render={({ field: { onChange, value }, fieldState }) => (
-            <Display display="block">
-              <Label htmlFor={htmlElementName} label={label} number={number} required />
-              <Display display="flex">
-                <Display display="flex" width="100%">
-                  <Input
-                    id={`${'text'}-${htmlElementName.split(' ').join('')}`}
-                    name={htmlElementName}
-                    type="text"
-                    rtl={false}
-                    value={value}
-                    onChange={(e) => {
-                      onChange(fixNumbers(e.target.value));
-                    }}
-                    className="captcha-input"
-                  />
-                  <img
-                    width="auto"
-                    height="40px"
-                    src={imageUrl}
-                    alt="captcha-img"
-                    loading="lazy"
-                    data-test="captcha-img"
-                  />
+          render={({ field: { onChange, value }, fieldState }) => {
+            return (
+              <Display display="block">
+                <Label htmlFor={htmlElementName} label={label} number={number} required />
+                <Display display="flex">
+                  <Display display="flex" width="100%">
+                    <Input
+                      id={`${'text'}-${htmlElementName.split(' ').join('')}`}
+                      name={htmlElementName}
+                      type="text"
+                      rtl={false}
+                      value={value}
+                      onChange={(e) => {
+                        onChange(fixNumbers(e.target.value));
+                      }}
+                      className="captcha-input"
+                    />
+                    <img
+                      width="auto"
+                      height="40px"
+                      src={imageUrl}
+                      alt="captcha-img"
+                      loading="lazy"
+                      data-test="captcha-img"
+                    />
+                  </Display>
+                  <Button type="button" size="sm" styleType="tertiary" onClick={fetchData} disabled={loading}>
+                    <Icon name={loading ? 'loading' : 'refresh'} />
+                  </Button>
                 </Display>
-                <Button type="button" size="sm" styleType="tertiary" onClick={fetchData} disabled={loading}>
-                  <Icon name={loading ? 'loading' : 'refresh'} />
-                </Button>
+                <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
               </Display>
-              <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
-            </Display>
-          )}
+            );
+          }}
         />
 
       </div>

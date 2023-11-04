@@ -27,10 +27,16 @@ storiesOf('Form-V7/Sample Form', module)
       handleSubmit,
       control,
       setValue,
+      setError,
     } = useForm();
 
     const onSubmit = (data) => {
       console.log(data);
+      setError({
+        message: '\u06a9\u067e\u0686\u0627 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a .',
+        errors: { captcha: ['\u06a9\u067e\u0686\u0627 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a .'] },
+        status_code: 422,
+      });
     };
     const options = [
       'question 1',

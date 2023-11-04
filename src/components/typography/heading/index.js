@@ -51,7 +51,7 @@ Heading.propTypes = {
   ]).isRequired,
   size: PropTypes.oneOf([sizes.large, sizes.medium, sizes.small]),
   level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-  color: PropTypes.oneOf(['red', 'green', 'blue', 'yellow', 'white', 'darkBlue']),
+  color: PropTypes.oneOf(['red', 'green', 'blue', 'yellow', 'white', 'darkBlue', 'default']),
 };
 
 Heading.defaultProps = {
