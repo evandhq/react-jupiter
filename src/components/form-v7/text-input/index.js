@@ -12,6 +12,7 @@ import {
   DescriptionContainer,
   PasswordIcon,
 } from './index.style';
+import { Fieldset } from '../index.style';
 
 type Props = {
   type?: 'text' | 'password',
@@ -56,42 +57,44 @@ const TextInput = (props: Props) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Label htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`} label={label} number={number} required={required} />
-      {description && (
-      <DescriptionContainer size={10} color="gray" data-test="text-input-description">
-        {description}
-      </DescriptionContainer>
-      )}
-      <Controller
-        name={htmlElementName}
-        control={control}
-        rules={{ required: required ? 'این فیلد اجباری است' : false }}
-        render={({ fieldState }) => (
-          <>
-            <Input
-              id={id || `${type}-${htmlElementName.split(' ').join('')}`}
-              name={htmlElementName}
-              type={displayedPassword || type === 'text' ? 'text' : 'password'}
-              placeholder={placeholder}
-              rtl={rtl}
-              {...register(htmlElementName, {
-                // onChange: handleChange,
-                onFocus: handleFocus,
-                disabled,
-              })}
-            />
-            {type === 'password' && (
-              <PasswordIcon
-                name={displayedPassword ? 'visibility-off' : 'visibility'}
-                color={displayedPassword ? 'blue' : 'gray'}
-                onClick={handleDisplayPassword}
-              />
-            )}
-            <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
-          </>
+      <Fieldset>
+        <GlobalStyle />
+        <Label htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`} label={label} number={number} required={required} />
+        {description && (
+        <DescriptionContainer size={10} color="gray" data-test="text-input-description">
+          {description}
+        </DescriptionContainer>
         )}
-      />
+        <Controller
+          name={htmlElementName}
+          control={control}
+          rules={{ required: required ? 'این فیلد اجباری است' : false }}
+          render={({ fieldState }) => (
+            <>
+              {type === 'password' && (
+                <PasswordIcon
+                  name={displayedPassword ? 'visibility-off' : 'visibility'}
+                  color={displayedPassword ? 'blue' : 'gray'}
+                  onClick={handleDisplayPassword}
+                />
+              )}
+              <Input
+                id={id || `${type}-${htmlElementName.split(' ').join('')}`}
+                name={htmlElementName}
+                type={displayedPassword || type === 'text' ? 'text' : 'password'}
+                placeholder={placeholder}
+                rtl={rtl}
+                {...register(htmlElementName, {
+                  // onChange: handleChange,
+                  onFocus: handleFocus,
+                  disabled,
+                })}
+              />
+              <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+            </>
+          )}
+        />
+      </Fieldset>
     </ThemeProvider>
   );
 };

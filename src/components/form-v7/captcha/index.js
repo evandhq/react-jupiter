@@ -8,6 +8,7 @@ import Button from '../../button';
 import Label from '../label';
 import { Input } from '../text-input/index.style';
 import Display from '../../display';
+import { Fieldset } from '../index.style';
 
 type Props = {
   htmlElementName: String,
@@ -46,55 +47,56 @@ function Captcha(props: Props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className={classNames}>
-        <Controller
-          name={htmlElementName}
-          control={control}
-          rules={{
-            required: 'این فیلد اجباری است',
-            pattern: {
-              value: /^[۰۱۲۳۴۵۶۷۸۹0-9]{4}$/,
-              message: 'لطفا فقط عدد وارد کنید.',
-            },
-          }}
-          defaultValue=""
-          render={({ field: { onChange, value }, fieldState }) => {
-            return (
-              <Display display="block">
-                <Label htmlFor={htmlElementName} label={label} number={number} required />
-                <Display display="flex">
-                  <Display display="flex" width="100%">
-                    <Input
-                      id={`${'text'}-${htmlElementName.split(' ').join('')}`}
-                      name={htmlElementName}
-                      type="text"
-                      rtl={false}
-                      value={value}
-                      onChange={(e) => {
-                        onChange(fixNumbers(e.target.value));
-                      }}
-                      className="captcha-input"
-                    />
-                    <img
-                      width="auto"
-                      height="40px"
-                      src={imageUrl}
-                      alt="captcha-img"
-                      loading="lazy"
-                      data-test="captcha-img"
-                    />
+      <Fieldset>
+        <div className={classNames}>
+          <Controller
+            name={htmlElementName}
+            control={control}
+            rules={{
+              required: 'این فیلد اجباری است',
+              pattern: {
+                value: /^[۰۱۲۳۴۵۶۷۸۹0-9]{4}$/,
+                message: 'لطفا فقط عدد وارد کنید.',
+              },
+            }}
+            defaultValue=""
+            render={({ field: { onChange, value }, fieldState }) => {
+              return (
+                <Display display="block">
+                  <Label htmlFor={htmlElementName} label={label} number={number} required />
+                  <Display display="flex">
+                    <Display display="flex" width="100%">
+                      <Input
+                        id={`${'text'}-${htmlElementName.split(' ').join('')}`}
+                        name={htmlElementName}
+                        type="text"
+                        rtl={false}
+                        value={value}
+                        onChange={(e) => {
+                          onChange(fixNumbers(e.target.value));
+                        }}
+                        className="captcha-input"
+                      />
+                      <img
+                        width="auto"
+                        height="40px"
+                        src={imageUrl}
+                        alt="captcha-img"
+                        loading="lazy"
+                        data-test="captcha-img"
+                      />
+                    </Display>
+                    <Button type="button" size="sm" styleType="tertiary" onClick={fetchData} disabled={loading}>
+                      <Icon name={loading ? 'loading' : 'refresh'} />
+                    </Button>
                   </Display>
-                  <Button type="button" size="sm" styleType="tertiary" onClick={fetchData} disabled={loading}>
-                    <Icon name={loading ? 'loading' : 'refresh'} />
-                  </Button>
+                  <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
                 </Display>
-                <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
-              </Display>
-            );
-          }}
-        />
-
-      </div>
+              );
+            }}
+          />
+        </div>
+      </Fieldset>
     </ThemeProvider>
   );
 }

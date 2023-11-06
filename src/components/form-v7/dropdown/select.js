@@ -5,6 +5,7 @@ import theme from '../theme';
 import ErrorMsg from '../errorMsg';
 import { StyledSelect, SelectButton } from './index.style';
 import Label from '../label';
+import { Fieldset } from '../index.style';
 
 type Props = {
   htmlElementName?: string,
@@ -53,8 +54,10 @@ const Select = (props: Props) => {
   if (label) {
     return (
       <ThemeProvider theme={theme}>
-        <Label htmlFor={htmlElementName} label={label} number={number} required={required} />
-        {renderSelect()}
+        <Fieldset>
+          <Label htmlFor={htmlElementName} label={label} number={number} required={required} />
+          {renderSelect()}
+        </Fieldset>
       </ThemeProvider>
     );
   }

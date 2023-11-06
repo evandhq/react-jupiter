@@ -41,7 +41,7 @@ export const DescriptionContainer = styled(Text)`
 export const PasswordIcon = styled(Icon)`
   position: absolute;
   left: 0;
-  bottom: 6px;
+  bottom: 3px;
 
   &:hover {
     cursor: pointer;

@@ -3,7 +3,8 @@ import { ThemeProvider } from 'styled-components';
 import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
 import ErrorMsg from '../errorMsg';
-import { Fieldset, CheckboxWrapper } from './index.style';
+import { CheckboxWrapper } from './index.style';
+import { Fieldset } from '../index.style';
 import theme from '../theme';
 import Label from '../label';
 

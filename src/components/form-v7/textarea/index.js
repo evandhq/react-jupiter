@@ -6,6 +6,7 @@ import theme from '../theme';
 import ErrorMsg from '../errorMsg';
 import Label from '../label';
 import StyledTextarea from './index.style';
+import { Fieldset } from '../index.style';
 
 type Props = {
   htmlElementName?: string,
@@ -31,30 +32,32 @@ const Textarea = (props: Props) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Label htmlFor={htmlElementName} label={label} number={number} required={required} />
+      <Fieldset>
+        <GlobalStyle />
+        <Label htmlFor={htmlElementName} label={label} number={number} required={required} />
 
-      <Controller
-        name={htmlElementName}
-        control={control}
-        rules={{ required: required ? 'این فیلد اجباری است' : false }}
-        render={({ fieldState }) => (
-          <>
-            <StyledTextarea
-              name={htmlElementName}
-              placeholder={placeholder}
-              resize={resize}
-              defaultValue={defaultValue}
-              minHeight={minHeight}
-              {...register(htmlElementName, {
-                onChange: handleChange,
-                disabled: isDisabled,
-              })}
-            />
-            <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
-          </>
-        )}
-      />
+        <Controller
+          name={htmlElementName}
+          control={control}
+          rules={{ required: required ? 'این فیلد اجباری است' : false }}
+          render={({ fieldState }) => (
+            <>
+              <StyledTextarea
+                name={htmlElementName}
+                placeholder={placeholder}
+                resize={resize}
+                defaultValue={defaultValue}
+                minHeight={minHeight}
+                {...register(htmlElementName, {
+                  onChange: handleChange,
+                  disabled: isDisabled,
+                })}
+              />
+              <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+            </>
+          )}
+        />
+      </Fieldset>
     </ThemeProvider>
   );
 };
