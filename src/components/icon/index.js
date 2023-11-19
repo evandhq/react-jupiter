@@ -42,7 +42,7 @@ const Icon = (props) => {
 
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['lg', 'md', 'sm']),
+  size: PropTypes.oneOf(['lg', 'md', 'sm', 'xs']),
   color: PropTypes.oneOf(['default', 'red', 'green', 'blue', 'yellow', 'white', 'darkBlue', 'gray']),
   className: PropTypes.string,
   stickyLeft: PropTypes.bool,
