@@ -11,7 +11,6 @@ import { useForm } from 'react-hook-form';
 import { action } from '@storybook/addon-actions';
 import { Select, SelectOption } from '../dropdown';
 import FileInput from '../file-input';
-import { Margin } from '../../spacing';
 import RadioOption from '../radio/radio-option';
 import Radio from '../radio/radio';
 import TextInput from '../text-input';

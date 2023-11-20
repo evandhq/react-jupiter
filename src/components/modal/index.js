@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Modal from 'react-modal';
 import GlobalStyle from '../globalStyle';
@@ -29,7 +28,7 @@ function JupiterModal(props: Props) {
     hasCloseButton,
     disabledClose,
     modalWidth,
-    fullHeight
+    fullHeight,
   } = props;
 
   return (

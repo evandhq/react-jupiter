@@ -27,6 +27,7 @@ type Props = {
   required?: boolean | String,
   number?: number,
   rtl?: boolean,
+  value?: string | number,
 }
 
 const TextInput = (props: Props) => {
@@ -43,6 +44,7 @@ const TextInput = (props: Props) => {
     number,
     rtl,
     control,
+    value,
   } = props;
 
   const [displayedPassword, setDisplayedPassword] = useState(false);
@@ -83,6 +85,7 @@ const TextInput = (props: Props) => {
                 name={htmlElementName}
                 type={displayedPassword || type === 'text' ? 'text' : 'password'}
                 placeholder={placeholder}
+                defaultValue={value}
                 rtl={rtl}
                 {...register(htmlElementName, {
                   // onChange: handleChange,
@@ -109,6 +112,7 @@ TextInput.defaultProps = {
   required: false,
   number: null,
   rtl: true,
+  value: '',
 };
 
 export default TextInput;
