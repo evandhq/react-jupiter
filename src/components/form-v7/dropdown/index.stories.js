@@ -15,12 +15,42 @@ storiesOf('Form-v7/Dropdown', module)
   .add('Minimal Select', () => {
     const {
       register,
+      handleSubmit,
+      control,
+      setError,
     } = useForm();
+
+    const onSubmit = (data) => {
+      console.log(data);
+      setError({
+        message: '\u06a9\u067e\u0686\u0627 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a .',
+        errors: { captcha: ['\u06a9\u067e\u0686\u0627 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a .'] },
+        status_code: 422,
+      });
+    };
+    const options = [
+      'question 1',
+      'question 2',
+      'question 3',
+    ];
+
     return (
-      <Select register={register}>
-        <SelectOption value="first" label="First Value" />
-        <SelectOption value="sec" label="2nd Value" />
-      </Select>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Select
+          htmlElementName="select"
+          placeholder="یک گزینه را انتخاب کنید"
+          register={register}
+          control={control}
+          defaultValue={0}
+          label="select box"
+          number={1}
+          required={false}
+        >
+          {!!options && options.map((option, key) => (
+            <SelectOption key={key} value={option} label={option} />
+          ))}
+        </Select>
+      </form>
     );
   })
   .add('Select with placeholder', () => {

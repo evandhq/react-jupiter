@@ -20,11 +20,13 @@ type Props = {
   number?: number;
   control: FormData;
   width?: string;
+  handleChange?: (value) => void,
 }
 const Select = (props: Props) => {
   const {
     htmlElementName, placeholder, isDisabled,
     children, label, required, number, control, width,
+    handleChange,
   } = props;
 
   const renderSelect = () => (
@@ -38,6 +40,13 @@ const Select = (props: Props) => {
             <>
               <StyledSelect
                 {...field}
+                onChange={(e) => {
+                  if (handleChange) {
+                    handleChange(e.target.value);
+                  }
+                  // Update RHF's state
+                  field.onChange(e);
+                }}
                 width={width}
               >
                 {placeholder && (
@@ -72,6 +81,7 @@ Select.defaultProps = {
   placeholder: '',
   label: '',
   width: '100%',
+  handleChange: undefined,
   isDisabled: false,
   errorMessage: '',
   required: false,
