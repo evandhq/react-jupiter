@@ -41,7 +41,7 @@ storiesOf('Form-v7/Dropdown', module)
           placeholder="یک گزینه را انتخاب کنید"
           register={register}
           control={control}
-          defaultValue={0}
+          defaultValue="question 2"
           label="select box"
           number={1}
           required={false}

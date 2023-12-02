@@ -9,7 +9,7 @@ import { Fieldset } from '../index.style';
 
 type Props = {
   htmlElementName?: string,
-  defaultValue?: string,
+  defaultValue?: string | number,
   label?: string,
   placeholder?: string,
   isDisabled?: boolean,
@@ -26,7 +26,7 @@ const Select = (props: Props) => {
   const {
     htmlElementName, placeholder, isDisabled,
     children, label, required, number, control, width,
-    handleChange,
+    handleChange, defaultValue,
   } = props;
 
   const renderSelect = () => (
@@ -40,6 +40,7 @@ const Select = (props: Props) => {
             <>
               <StyledSelect
                 {...field}
+                defaultValue={defaultValue}
                 onChange={(e) => {
                   if (handleChange) {
                     handleChange(e.target.value);
