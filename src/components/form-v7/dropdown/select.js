@@ -19,11 +19,12 @@ type Props = {
   required?: Boolean,
   number?: number;
   control: FormData;
+  width?: string;
 }
 const Select = (props: Props) => {
   const {
     htmlElementName, placeholder, isDisabled,
-    children, label, required, number, control,
+    children, label, required, number, control, width,
   } = props;
 
   const renderSelect = () => (
@@ -69,6 +70,7 @@ Select.defaultProps = {
   defaultValue: '',
   placeholder: '',
   label: '',
+  width: '100%',
   isDisabled: false,
   errorMessage: '',
   required: false,

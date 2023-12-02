@@ -41,7 +41,7 @@ export const StyledSelect = styled.select`
   border: solid 1px ${({ disabled, theme }) => (disabled ? 'transparent' : theme.borderColor.normal)};
   padding: 4px;
   box-sizing: border-box;
-  width: 100%;
+  width: ${({ width }) => width};
   background: ${({ disabled, theme }) => (disabled ? theme.disabled.background : 'white')};
   ${({ disabled, theme }) => (disabled ? `color: ${theme.disabled.color};` : '')}
   ${({ disabled, theme }) => (disabled ? `color: ${theme.disabled.color};` : '')}
