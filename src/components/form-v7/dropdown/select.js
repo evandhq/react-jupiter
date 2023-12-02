@@ -38,6 +38,7 @@ const Select = (props: Props) => {
             <>
               <StyledSelect
                 {...field}
+                width={width}
               >
                 {placeholder && (
                 <option value="">{placeholder}</option>
