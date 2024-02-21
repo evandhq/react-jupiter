@@ -1,6 +1,6 @@
 // @flow
 
-import React, { type Node, useState } from 'react';
+import React, { type Node } from 'react';
 import TitledAvatar from '../../titled-avatar';
 import NumericSummeryReport from '../../numeric-summery-report';
 import Button from '../../button';
@@ -24,18 +24,11 @@ const OrganizationCard = (props: Props) => {
     title, logo, followed, report, onClickFollow, renderLink,
   } = props;
 
-  const [isFollowed, setFollowed] = useState(followed);
-
   const reportData = [
     { id: 1, title: 'برگزار شده', count: report.heldEventsNumber },
     { id: 2, title: 'فعال', count: report.activeEventsNumber },
     { id: 3, title: 'دنبال‌کننده‌ها', count: report.followingNumber },
   ];
-
-  const handleClickButton = () => {
-    setFollowed(!isFollowed);
-    onClickFollow();
-  };
 
   return (
     <Container
@@ -51,13 +44,13 @@ const OrganizationCard = (props: Props) => {
       />
       <NumericSummeryReport data={reportData} />
       <Button
-        styleType={isFollowed ? 'secondary' : 'primary'}
-        onClick={handleClickButton}
+        styleType={followed ? 'secondary' : 'primary'}
+        onClick={onClickFollow}
         mainColor="blue"
         size="sm"
         wide
       >
-        {isFollowed ? 'دنبال نکنید' : 'دنبال کنید'}
+        {followed ? 'دنبال نکنید' : 'دنبال کنید'}
       </Button>
     </Container>
   );

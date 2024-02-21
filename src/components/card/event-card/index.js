@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes, { oneOfType } from 'prop-types';
 import GlobalStyle from '../../globalStyle';
 import { VERTICAL_CARD, HORIZONTAL_CARD, HORIZONTAL_MOBILE_CARD } from './constants';
@@ -47,7 +47,6 @@ const EventCard = (props) => {
     coverImage,
     ...rest
   } = props;
-  const [isBookmarked, setIsBookmarked] = useState(bookmarked);
   // date param used on main evand and because it wrong to use moment-jalali in react jupiter
   // we ommmit it in evand-next and use showDate param instead but its still used in evand
   // TODO: remove date params if no longer needed (in evand project)
@@ -63,13 +62,6 @@ const EventCard = (props) => {
   if (organization && organization.logo === 'unset') {
     productPropertiesList.push({ iconName: 'supervisor-account', text: organization.name });
   }
-
-  const handleClickBookmark = () => {
-    const returnedValue = clickBookmark();
-    if (returnedValue !== false) {
-      setIsBookmarked(!isBookmarked);
-    }
-  };
 
   const renderVerticalCard = () => (
     <VerticalCardContainer
@@ -101,10 +93,10 @@ const EventCard = (props) => {
               )}
             </DateLabelContainer>
             <BookmarkIcon
-              name={isBookmarked ? 'bookmark' : 'bookmark-border'}
+              name={bookmarked ? 'bookmark' : 'bookmark-border'}
               size="lg"
               color="gray"
-              onClick={handleClickBookmark}
+              onClick={clickBookmark}
             />
           </DateBookmarkContainer>
           { renderEventLink(<VerticalTitle level={2} size="sm">{title}</VerticalTitle>)}
@@ -136,11 +128,11 @@ const EventCard = (props) => {
             )}
           </DateLabelContainer>
           <BookmarkIcon
-            name={isBookmarked ? 'bookmark' : 'bookmark-border'}
+            name={bookmarked ? 'bookmark' : 'bookmark-border'}
             size="lg"
             color="gray"
-            onClick={handleClickBookmark}
-            data-test={isBookmarked ? 'bookmark' : 'bookmark-border'}
+            onClick={clickBookmark}
+            data-test={bookmarked ? 'bookmark' : 'bookmark-border'}
           />
         </DateBookmarkContainer>
         { renderEventLink(<HorizontalTitle level={2} size="sm">{title}</HorizontalTitle>) }
@@ -168,11 +160,11 @@ const EventCard = (props) => {
             )}
           </DateLabelContainer>
           <BookmarkIcon
-            name={isBookmarked ? 'bookmark' : 'bookmark-border'}
+            name={bookmarked ? 'bookmark' : 'bookmark-border'}
             size="sm"
             color="gray"
-            onClick={handleClickBookmark}
-            data-test={isBookmarked ? 'bookmark' : 'bookmark-border'}
+            onClick={clickBookmark}
+            data-test={bookmarked ? 'bookmark' : 'bookmark-border'}
           />
         </DateBookmarkContainer>
         { renderEventLink(<HorizontalTitle level={4} size="sm">{title}</HorizontalTitle>) }

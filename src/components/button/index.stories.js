@@ -9,6 +9,7 @@ import {
 } from '@storybook/addon-knobs';
 import Button from './index';
 import '../storybook.css';
+import { Text } from '../typography';
 
 storiesOf('Button', module)
   .add('default button', () => (
@@ -59,5 +60,6 @@ storiesOf('Button', module)
   .add('yellow secondary disabled', () => <Button styleType="secondary" mainColor="yellow" disabled>دکمه‌ی زرد ثانویه غیر فعال</Button>)
   .add('link button', () => <Button renderLink={(element) => <a href="http://google.com">{element}</a>}>لینک به گوگل</Button>)
   .add('external link button', () => <Button linkTo="http://google.com">لینک به گوگل</Button>)
+  .add('button with react node children', () => <Button size="md"><Text color="white">این یک متن  تستی است</Text></Button>)
   .addDecorator(withInfo)
   .addDecorator(withKnobs);

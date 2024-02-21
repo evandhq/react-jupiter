@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
@@ -47,12 +47,6 @@ const TextInput = (props: Props) => {
     value,
   } = props;
 
-  const [displayedPassword, setDisplayedPassword] = useState(false);
-
-  function handleDisplayPassword() {
-    setDisplayedPassword(!displayedPassword);
-  }
-
   function handleFocus(e) {
     e.target.setSelectionRange(0, 0);
   }
@@ -75,15 +69,14 @@ const TextInput = (props: Props) => {
             <>
               {type === 'password' && (
                 <PasswordIcon
-                  name={displayedPassword ? 'visibility-off' : 'visibility'}
-                  color={displayedPassword ? 'blue' : 'gray'}
-                  onClick={handleDisplayPassword}
+                  name="visibility"
+                  color="gray"
                 />
               )}
               <Input
                 id={id || `${type}-${htmlElementName.split(' ').join('')}`}
                 name={htmlElementName}
-                type={displayedPassword || type === 'text' ? 'text' : 'password'}
+                type={type === 'text' ? 'text' : 'password'}
                 placeholder={placeholder}
                 defaultValue={value}
                 rtl={rtl}

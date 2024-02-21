@@ -1,6 +1,4 @@
-// @flow
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import TitledAvatar from '../titled-avatar';
 import { ButtonContainer, StyledButton } from './index.style';
 import Responsive from '../responsive';
@@ -25,26 +23,12 @@ const ProductOwner = (props: Props) => {
     name,
     avatar,
     isFollowed,
+    isLoading,
     renderTitledAvatarLink,
     renderDescriptionLink,
     onClickFollowMe,
     onClickConnectUs,
   } = props;
-  const [isFollow, setFollowStatus] = useState(isFollowed);
-  const [isLoading, setLoadingStatus] = useState(false);
-
-  async function handleClickFollowMe() {
-    setLoadingStatus(true);
-    const updatedIsFollowStatus = await onClickFollowMe();
-    setLoadingStatus(false);
-    if (updatedIsFollowStatus) {
-      setFollowStatus(!isFollowed);
-    }
-  }
-
-  useEffect(() => {
-    setFollowStatus(isFollowed);
-  }, [isFollowed]);
 
   return (
     <div data-test="product-owner">
@@ -70,14 +54,14 @@ const ProductOwner = (props: Props) => {
         <ButtonContainer>
           <StyledButton
             className="follow-button"
-            styleType={isFollow ? 'secondary' : 'primary'}
+            styleType={isFollowed ? 'secondary' : 'primary'}
             htmlType="button"
             mainColor="blue"
             size={generalTheme.sizes.small}
             isLoading={isLoading}
-            onClick={handleClickFollowMe}
+            onClick={onClickFollowMe}
           >
-            {isFollow ? 'دنبال میکنید' : 'دنبال کنید' }
+            {isFollowed ? 'دنبال میکنید' : 'دنبال کنید' }
           </StyledButton>
           <StyledButton
             styleType="secondary"
