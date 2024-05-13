@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '../button';
-import { ShowMoreButton, ActionCellContainer, ActionsContainer } from './index.style';
+import { ActionCellContainer, ActionsContainer } from './index.style';
 
 type Props = {
   callToActions: [{
@@ -10,12 +10,6 @@ type Props = {
 };
 
 function ActionCell({ callToActions }: Props) {
-  const [isShowingMore, setIsShowingMore] = useState(false);
-
-  function toggleShowMore() {
-    setIsShowingMore(!isShowingMore);
-  }
-
   return (
     <td>
       <ActionCellContainer>
@@ -32,32 +26,26 @@ function ActionCell({ callToActions }: Props) {
 
         {callToActions.length > 1 && (
           <>
-            <ShowMoreButton type="button" onClick={toggleShowMore}>
-              ...
-            </ShowMoreButton>
-
-            {isShowingMore && (
-              <ActionsContainer>
-                {callToActions.map((item, index) => {
-                  if (index === 0) {
-                    return null;
-                  }
-                  return (
-                    <Button
-                      key={item.text}
-                      {...item.props}
-                      htmlType="button"
-                      mainColor="blue"
-                      styleType="tertiary"
-                      size="sm"
-                      wide
-                    >
-                      {item.text}
-                    </Button>
-                  );
-                })}
-              </ActionsContainer>
-            )}
+            <ActionsContainer>
+              {callToActions.map((item, index) => {
+                if (index === 0) {
+                  return null;
+                }
+                return (
+                  <Button
+                    key={item.text}
+                    {...item.props}
+                    htmlType="button"
+                    mainColor="blue"
+                    styleType="tertiary"
+                    size="sm"
+                    wide
+                  >
+                    {item.text}
+                  </Button>
+                );
+              })}
+            </ActionsContainer>
 
           </>
         )}
