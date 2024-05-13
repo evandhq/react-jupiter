@@ -16,7 +16,7 @@ export const StyledWrapper = styled.div`
 `;
 
 export function customModalStyles(
-  borderRadius, overlayBackground, width, shadow, fullHeight,
+  borderRadius, overlayBackground, width, widthMobile, shadow, fullHeight,
 ) {
   return {
     content: {
@@ -29,7 +29,7 @@ export function customModalStyles(
       border: '0',
       padding: isMobile ? '50px 0' : '0',
       margin: '0',
-      width,
+      width: isMobile ? widthMobile : width,
       boxShadow: `0 0 ${shadow.blur}px ${shadow.spread}px rgba(0, 0, 0, ${shadow.opacity})`,
       height: fullHeight ? '100%' : 'auto',
     },

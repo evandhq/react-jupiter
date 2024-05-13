@@ -76,13 +76,18 @@ const Button = (props: Props) => {
                 />
               )
           }
-          <Text
-            size={theme.size[size].font}
-            color={fontColor}
-            bold
-          >
-            {isLoading ? 'صبر کنید...' : children}
-          </Text>
+          {typeof children === 'string' ? (
+            <Text
+              size={theme.size[size].font}
+              color={fontColor}
+              bold
+            >
+              {isLoading ? 'صبر کنید...' : children}
+            </Text>
+
+          ) : (
+            children
+          )}
         </BaseButton>
       </ThemeProvider>
     );

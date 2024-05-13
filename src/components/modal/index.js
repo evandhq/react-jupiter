@@ -13,6 +13,7 @@ type Props = {
   onRequestClose?: () => void,
   onAfterOpen?: () => void,
   modalWidth?: string,
+  modalWidthMobile?: string,
   fullHeight?: boolean
 }
 
@@ -29,6 +30,7 @@ function JupiterModal(props: Props) {
     disabledClose,
     modalWidth,
     fullHeight,
+    modalWidthMobile,
   } = props;
 
   return (
@@ -43,6 +45,7 @@ function JupiterModal(props: Props) {
           theme.borderRadius,
           theme.overlayColor,
           modalWidth,
+          modalWidthMobile,
           theme.modalShadow,
           fullHeight,
         )
@@ -67,6 +70,7 @@ JupiterModal.defaultProps = {
   hasCloseButton: true,
   disabledClose: false,
   modalWidth: '80%',
+  modalWidthMobile: '100%',
   fullHeight: false,
 };
 
