@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import Grid from 'styled-components-grid';
+import React from 'react';
 import Button from '../../button';
-import { Margin } from '../../spacing';
 import Responsive from '../../responsive';
 import {
   LTRContainer,
@@ -21,21 +19,6 @@ const Buttons = (props: Props) => {
     onClickConnectUs,
     isFollowed,
   } = props;
-  const [isFollow, setFollowStatus] = useState(isFollowed);
-  const [isLoading, setLoadingStatus] = useState(false);
-
-  useEffect(() => {
-    setFollowStatus(isFollowed)
-  }, [isFollowed]);
-
-  async function handleClickFollowMe() {
-    setLoadingStatus(true);
-    const updatedIsFollowStatus = await onClickFollowMe();
-    setLoadingStatus(false);
-    if (updatedIsFollowStatus) {
-      setFollowStatus(!isFollowed);
-    }
-  }
 
   return (
     <>
@@ -55,10 +38,9 @@ const Buttons = (props: Props) => {
             styleType="primary"
             htmlType="button"
             size="sm"
-            isLoading={isLoading}
-            onClick={handleClickFollowMe}
+            onClick={onClickFollowMe}
           >
-            {isFollow ? 'دنبال میکنید' : 'دنبال کنید'}
+            {isFollowed ? 'دنبال میکنید' : 'دنبال کنید'}
           </StyledButton>
         </LTRContainer>
       </Responsive>
@@ -80,11 +62,10 @@ const Buttons = (props: Props) => {
             styleType="secondary"
             htmlType="button"
             size="sm"
-            isLoading={isLoading}
-            onClick={handleClickFollowMe}
+            onClick={onClickFollowMe}
             wide
           >
-            {isFollow ? 'دنبال میکنید' : 'دنبال کنید'}
+            {isFollowed ? 'دنبال میکنید' : 'دنبال کنید'}
           </Button>
         </Display>
       </Responsive>

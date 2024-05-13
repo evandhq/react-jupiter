@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Text } from '../typography';
 import { Padding } from '../spacing';
@@ -11,23 +11,17 @@ import {
 import theme from './theme';
 
 type Props = {
-  children: * => Node,
+  showMore: boolean;
+  windowWith: number;
+  handleToggleShowMore: () => void;
+  children: * => Node;
 }
 function Menu(props : Props) {
-  const { children } = props;
-  const [showMore, setShowMore] = useState(false);
-  const [windowWith, setWindowWidth] = useState(0);
+  const {
+    showMore, windowWith, handleToggleShowMore, children,
+  } = props;
   const menuItems = React.Children.toArray(children);
 
-  useEffect(() => {
-    if (window && window.innerWidth) {
-      setWindowWidth(window.innerWidth);
-    }
-  }, []);
-
-  function handleToggleShowMore() {
-    setShowMore(!showMore);
-  }
   function renderMenu() {
     if (menuItems.length > 5 && windowWith > theme.breakpoints.sm) {
       return (
