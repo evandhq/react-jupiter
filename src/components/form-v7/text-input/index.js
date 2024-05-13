@@ -13,6 +13,7 @@ import {
   PasswordIcon,
 } from './index.style';
 import { Fieldset } from '../index.style';
+import { fixNumbers } from '../../utils/numbers';
 
 type Props = {
   type?: 'text' | 'password',
@@ -28,6 +29,8 @@ type Props = {
   number?: number,
   rtl?: boolean,
   value?: string | number,
+  onFocus?: (e: FocusEvent) => void,
+  readOnly?: boolean,
 }
 
 const TextInput = (props: Props) => {
@@ -44,7 +47,8 @@ const TextInput = (props: Props) => {
     number,
     rtl,
     control,
-    value,
+    onFocus,
+    readOnly,
   } = props;
 
   function handleFocus(e) {
@@ -65,7 +69,7 @@ const TextInput = (props: Props) => {
           name={htmlElementName}
           control={control}
           rules={{ required: required ? 'این فیلد اجباری است' : false }}
-          render={({ fieldState }) => (
+          render={({ field: { value }, fieldState }) => (
             <>
               {type === 'password' && (
                 <PasswordIcon
@@ -81,10 +85,12 @@ const TextInput = (props: Props) => {
                 defaultValue={value}
                 rtl={rtl}
                 {...register(htmlElementName, {
-                  // onChange: handleChange,
                   onFocus: handleFocus,
                   disabled,
+                  onChange: (e) => fixNumbers(e),
                 })}
+                onFocus={onFocus}
+                readOnly={readOnly}
               />
               <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
             </>
@@ -106,6 +112,8 @@ TextInput.defaultProps = {
   number: null,
   rtl: true,
   value: '',
+  onFocus: () => {},
+  readOnly: false,
 };
 
 export default TextInput;

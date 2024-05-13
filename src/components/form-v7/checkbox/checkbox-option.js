@@ -16,7 +16,7 @@ const CheckboxOption = (props: Props) => {
   const {
     label, value, isDisabled, isChecked, groupName, register, handleOnchange,
   } = props;
-  const itemId = `${groupName}-${value}-${label.split(' ').join('')}`;
+  const itemId = `${groupName}-${value}`;
 
   return (
     <ThemeProvider theme={theme}>

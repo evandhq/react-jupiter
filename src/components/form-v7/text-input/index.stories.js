@@ -14,6 +14,7 @@ storiesOf('Form-V7/Inputs', module)
   .add('Full option Text Input', () => {
     const {
       register,
+      control,
     } = useForm();
     return (
       <TextInput
@@ -22,6 +23,7 @@ storiesOf('Form-V7/Inputs', module)
         label={text('optional label', 'این لیبل است')}
         number={23}
         register={register}
+        control={control}
         placeholder={text('optional placeholder', 'متن پیشفرض')}
         disabled={boolean('disabled(default : false)', false)}
         description={text('optional description', 'توضیحات اضافه')}
