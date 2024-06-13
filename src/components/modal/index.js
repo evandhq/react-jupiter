@@ -55,27 +55,19 @@ function JupiterModal(props: Props) {
       <style>
         {`
           .modal {
-            position: relative;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            right: auto;
+            bottom: auto;
+            transform: translate(-50%, -50%);
             width: ${modalWidth};
-            transform: translate(0,0);
             height: ${fullHeight ? '100%' : 'auto'};
           }
           @media(max-width: 767px){
             .modal {
               width: ${modalWidthMobile};
             }
-          }
-          .ReactModal__Overlay {
-            opacity: 0;
-            transition: opacity 100ms ease-in-out;
-          }
-          
-          .ReactModal__Overlay--after-open{
-            opacity: 1;
-          }
-          
-          .ReactModal__Overlay--before-close{
-            opacity: 0;
           }
           .overlay {
             background: ${theme.overlayColor};
@@ -92,9 +84,9 @@ function JupiterModal(props: Props) {
             background-color: #fff;
             background-clip: padding-box;
             border: 1px solid rgba(0,0,0,.2);
-            border-radius: .3rem;
+            border-radius: .2rem;
             outline: 0;
-            padding: 1rem;
+            padding: 5px;
           }
         `}
       </style>

@@ -2,6 +2,8 @@ import defaultTheme from '../themes';
 
 const iconTheme = {
   size: {
+    xxlg: 48,
+    xlg: 32,
     lg: 24,
     md: 20,
     sm: 16,

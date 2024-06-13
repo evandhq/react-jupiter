@@ -6,12 +6,12 @@ export const StyledIcon = styled.span`
   position: absolute;
   left: 0;
   top: 8px;
+  z-index: 999;
 `;
 
 export const StyledWrapper = styled.div`
   width: 100%;
   min-height: 300px;
-  padding: 0 24px;
   box-sizing: border-box;
 `;
 

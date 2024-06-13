@@ -15,7 +15,7 @@ storiesOf('Modal', module)
     return (
       <div>
         <button type="button" onClick={() => setShow(true)}>نمایش مودال</button>
-        <Modal isOpen={show} modalWidth="50%" modalWidthMobile="100%" onRequestClose={() => setShow(false)}>
+        <Modal isOpen={show} modalWidth="30%" modalWidthMobile="80%" onRequestClose={() => setShow(false)}>
           <h1>
             سلام
           </h1>

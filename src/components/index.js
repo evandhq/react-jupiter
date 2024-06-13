@@ -12,7 +12,7 @@ import Card from './card';
 import ProductProperties from './product-properties';
 import Cover from './cover';
 import Form from './form';
-import FormV7 from './form-v7';
+import Display from './display';
 import Responsive from './responsive';
 import ProductOwner from './product-owner';
 import FileItem from './file-item';
@@ -47,6 +47,7 @@ export { default as ProductMenu } from './product-menu';
 export { default as Table } from './table';
 export { default as Tab } from './tabs';
 export { colors as jupiterColors };
+export { default as Display } from './display';
 
 export default {
   Grid,
@@ -70,4 +71,5 @@ export default {
   ProductMenu,
   Table,
   Tab,
+  Display,
 };
