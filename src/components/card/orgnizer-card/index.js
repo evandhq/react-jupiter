@@ -32,17 +32,17 @@ type Props = {
 const OrgnizerCard = (props: Props) => {
   const {
     name,
-    description,
     logo,
-    followersCount,
-    onClickFollowMe,
-    onClickConnectUs,
-    isFollowed,
-    allEventsCount,
-    activeEventsCount,
-    recommendedCount,
     renderOrganizerLink,
     partnership,
+    isFollowed = false,
+    onClickFollowMe = () => false,
+    onClickConnectUs = () => { },
+    allEventsCount = null,
+    activeEventsCount = null,
+    recommendedCount = null,
+    description = null,
+    followersCount = '',
   } = props;
 
   return (
@@ -182,17 +182,6 @@ const OrgnizerCard = (props: Props) => {
       </ResponsiveFlex>
     </Container>
   );
-};
-
-OrgnizerCard.defaultProps = {
-  isFollowed: false,
-  onClickFollowMe: () => false,
-  onClickConnectUs: () => { },
-  allEventsCount: null,
-  activeEventsCount: null,
-  recommendedCount: null,
-  description: null,
-  followersCount: '',
 };
 
 export default OrgnizerCard;

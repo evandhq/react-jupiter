@@ -30,24 +30,23 @@ type Props = {
   marginRight?: number,
 }
 
-const Button = (props: Props) => {
-  const {
-    htmlType,
-    icon,
-    children,
-    wide,
-    disabled,
-    size,
-    mainColor,
-    styleType,
-    linkTo,
-    linkTarget,
-    isLoading,
-    renderLink,
-    marginLeft,
-    marginRight,
-    ...rest
-  } = props;
+const Button = ({
+  htmlType = 'submit',
+  icon = null,
+  wide = false,
+  disabled = false,
+  size = 'md',
+  mainColor = 'darkBlue',
+  styleType = 'primary',
+  linkTo = null,
+  linkTarget = '_self',
+  isLoading = false,
+  renderLink = null,
+  marginLeft = 0,
+  marginRight = 0,
+  children,
+  ...rest
+} :Props) => {
   const fontColor = setFontColor(styleType, mainColor);
 
   function RenderButtonContext() {
@@ -112,22 +111,6 @@ const Button = (props: Props) => {
   return (
     <RenderButtonContext />
   );
-};
-
-Button.defaultProps = {
-  htmlType: 'submit',
-  icon: null,
-  wide: false,
-  disabled: false,
-  size: 'md',
-  mainColor: 'darkBlue',
-  styleType: 'primary',
-  linkTo: null,
-  linkTarget: '_self',
-  isLoading: false,
-  renderLink: null,
-  marginLeft: 0,
-  marginRight: 0,
 };
 
 export default Button;

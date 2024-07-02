@@ -14,7 +14,6 @@ type Props = {
   placeholder?: string,
   isDisabled?: boolean,
   children: * => Node,
-  errorMessage?: string,
   register: UseFormRegister<FieldValues>;
   required?: Boolean,
   number?: number;
@@ -22,13 +21,19 @@ type Props = {
   width?: string;
   handleChange?: (value) => void,
 }
-const Select = (props: Props) => {
-  const {
-    htmlElementName, placeholder, isDisabled,
-    children, label, required, number, control, width,
-    handleChange, defaultValue,
-  } = props;
-
+const Select = ({
+  htmlElementName = 'select-element',
+  defaultValue = '',
+  placeholder = '',
+  label = '',
+  width = '100%',
+  handleChange = undefined,
+  isDisabled = false,
+  required = false,
+  number = null,
+  control,
+  children,
+}: Props) => {
   const renderSelect = () => (
     <ThemeProvider theme={theme}>
       <SelectButton disabled={isDisabled}>
@@ -74,19 +79,6 @@ const Select = (props: Props) => {
     );
   }
   return renderSelect();
-};
-
-Select.defaultProps = {
-  htmlElementName: 'select-element',
-  defaultValue: '',
-  placeholder: '',
-  label: '',
-  width: '100%',
-  handleChange: undefined,
-  isDisabled: false,
-  errorMessage: '',
-  required: false,
-  number: null,
 };
 
 export default Select;

@@ -6,7 +6,7 @@ type Props = {
   handleClick?: () => void,
   color?: string
 }
-function MenuItem({ label, handleClick, color } : Props) {
+function MenuItem({ label, handleClick = () => {}, color = 'default' } : Props) {
   return (
     <Text
       size={14}
@@ -20,8 +20,4 @@ function MenuItem({ label, handleClick, color } : Props) {
   );
 }
 
-MenuItem.defaultProps = {
-  handleClick: () => {},
-  color: 'default',
-};
 export default MenuItem;

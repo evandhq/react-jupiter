@@ -16,7 +16,13 @@ type Props = {
 
 const Checkbox = (props: Props) => {
   const {
-    children, groupName, label, handleChange, isDisabled, type, errorMessage,
+    groupName = 'radio-element',
+    label = '',
+    handleChange = () => { },
+    isDisabled = false,
+    type = 'horizontal',
+    errorMessage = '',
+    children,
   } = props;
   const radioElements = React.Children.toArray(children);
 
@@ -44,14 +50,5 @@ const Checkbox = (props: Props) => {
       <ErrorMsg errorMessage={errorMessage} />
     </Fieldset>
   );
-};
-
-Checkbox.defaultProps = {
-  groupName: 'radio-element',
-  label: '',
-  handleChange: () => { },
-  isDisabled: false,
-  type: 'horizontal',
-  errorMessage: '',
 };
 export default Checkbox;

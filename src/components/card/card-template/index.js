@@ -5,11 +5,16 @@ import GlobalStyle from '../../globalStyle';
 import generalTheme from '../../themes';
 import TemplateContainer from './index.style';
 
-const CardTemplate = (props) => {
-  const {
-    maxWidth, children, level, hoverToLevel, renderLink, direction, background, ...rest
-  } = props;
-
+const CardTemplate = ({
+  level = 1,
+  hoverToLevel = 1,
+  maxWidth = null,
+  renderLink = undefined,
+  direction = 'vertical',
+  background = '',
+  children,
+  ...rest
+}) => {
   const renderContent = () => {
     if (renderLink) {
       return renderLink(
@@ -64,15 +69,6 @@ CardTemplate.propTypes = {
   renderLink: PropTypes.func,
   direction: PropTypes.oneOf(['vertical', 'horizontal']),
   background: PropTypes.string,
-};
-
-CardTemplate.defaultProps = {
-  level: 1,
-  hoverToLevel: 1,
-  maxWidth: null,
-  renderLink: undefined,
-  direction: 'vertical',
-  background: '',
 };
 
 export default CardTemplate;

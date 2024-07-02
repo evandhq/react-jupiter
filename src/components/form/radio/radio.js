@@ -15,11 +15,16 @@ type Props = {
   errorMessage?: string,
 };
 
-const Radio = (props: Props) => {
-  const {
-    children, groupName, label, handleChange, defaultCheckedValue, isDisabled,
-    type, errorMessage,
-  } = props;
+const Radio = ({
+  groupName = 'radio-element',
+  label = '',
+  handleChange = () => { },
+  defaultCheckedValue = '',
+  isDisabled = false,
+  type = 'horizontal',
+  errorMessage = '',
+  children,
+}: Props) => {
   const radioElements = React.Children.toArray(children);
 
   return (
@@ -48,13 +53,4 @@ const Radio = (props: Props) => {
   );
 };
 
-Radio.defaultProps = {
-  groupName: 'radio-element',
-  label: '',
-  handleChange: () => { },
-  defaultCheckedValue: '',
-  isDisabled: false,
-  type: 'horizontal',
-  errorMessage: '',
-};
 export default Radio;

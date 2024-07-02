@@ -20,19 +20,17 @@ type Props = {
 // bind modal to the body of the app
 Modal.setAppElement('body');
 
-function JupiterModal(props: Props) {
-  const {
-    isOpen,
-    onRequestClose,
-    onAfterOpen,
-    children,
-    hasCloseButton,
-    disabledClose,
-    modalWidth,
-    fullHeight,
-    modalWidthMobile,
-  } = props;
-
+function JupiterModal({
+  onRequestClose = () => {},
+  onAfterOpen = () => {},
+  hasCloseButton = true,
+  disabledClose = false,
+  modalWidth = '80%',
+  modalWidthMobile = '100%',
+  fullHeight = false,
+  isOpen,
+  children,
+}: Props) {
   return (
     <Modal
       isOpen={isOpen}
@@ -93,15 +91,5 @@ function JupiterModal(props: Props) {
     </Modal>
   );
 }
-
-JupiterModal.defaultProps = {
-  onRequestClose: () => {},
-  onAfterOpen: () => {},
-  hasCloseButton: true,
-  disabledClose: false,
-  modalWidth: '80%',
-  modalWidthMobile: '100%',
-  fullHeight: false,
-};
 
 export default JupiterModal;

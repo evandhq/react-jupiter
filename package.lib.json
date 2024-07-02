@@ -1,6 +1,6 @@
 {
   "name": "react-jupiter",
-  "version": "5.10.7",
+  "version": "5.11.0",
   "main": "./index.js",
   "license": "MIT",
   "keywords": [
@@ -12,7 +12,6 @@
   ],
   "contributors": [
     "@mehranshiri",
-    "@arashmanteghi",
     "https://github.com/marzzy"
   ],
   "publishConfig": {

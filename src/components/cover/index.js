@@ -7,7 +7,6 @@ const defaultImageUrl = 'https://static.evand.net/assets/images/defaults/event-c
 
 type Props = {
   src?: string,
-  srcSet?: string,
   alt?: string,
   minHeight?: number,
   linkTo?: string,
@@ -18,14 +17,13 @@ type Props = {
 
 const Cover = (props: Props) => {
   const {
-    src,
-    srcSet,
-    alt,
-    minHeight,
-    linkTo,
-    linkTarget,
-    renderLink,
-    isLazy,
+    alt = 'کاور',
+    src = defaultImageUrl,
+    minHeight = 151,
+    renderLink = undefined,
+    linkTo = undefined,
+    linkTarget = '_blank',
+    isLazy = false,
     ...rest
   } = props;
 
@@ -71,17 +69,6 @@ const Cover = (props: Props) => {
       {renderCover()}
     </Container>
   );
-};
-
-Cover.defaultProps = {
-  alt: 'کاور',
-  src: defaultImageUrl,
-  srcSet: undefined,
-  minHeight: 151,
-  renderLink: undefined,
-  linkTo: undefined,
-  linkTarget: '_blank',
-  isLazy: false,
 };
 
 export default Cover;

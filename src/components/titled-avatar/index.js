@@ -15,11 +15,13 @@ type Props = {
   titleSize?: 10 | 12,
 };
 
-const TitledAvatar = (props: Props) => {
-  const {
-    title, avatar, renderAvatarLink, avatarSize, titleSize,
-  } = props;
-
+const TitledAvatar = ({
+  title,
+  avatar,
+  renderAvatarLink = undefined,
+  avatarSize = 'md',
+  titleSize = 12,
+}: Props) => {
   const renderTitle = () => {
     if (titleSize === 10) {
       return <SmallTitle size={10}>{title}</SmallTitle>;
@@ -44,12 +46,6 @@ const TitledAvatar = (props: Props) => {
       {renderTitle()}
     </Container>
   );
-};
-
-TitledAvatar.defaultProps = {
-  renderAvatarLink: undefined,
-  avatarSize: 'md',
-  titleSize: 12,
 };
 
 export default TitledAvatar;

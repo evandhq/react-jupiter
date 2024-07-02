@@ -18,16 +18,15 @@ type Props = {
   onClick?: () => void,
 }
 
-const FileItem = (props: Props) => {
+const FileItem = ({
+  type = 'zip',
+  title = 'فایل دانلودی',
+  description = '',
+  price,
+  fileSize = '',
+  onClick = () => null,
+}: Props) => {
   const [isActive, setActivateValue] = useState(false);
-  const {
-    type,
-    title,
-    description,
-    price,
-    fileSize,
-    onClick,
-  } = props;
 
   function startHover() {
     setActivateValue(true);
@@ -97,14 +96,6 @@ const FileItem = (props: Props) => {
       </Wrapper>
     </ThemeProvider>
   );
-};
-
-FileItem.defaultProps = {
-  type: 'zip',
-  title: 'فایل دانلودی',
-  description: '',
-  fileSize: '',
-  onClick: () => null,
 };
 
 export default FileItem;

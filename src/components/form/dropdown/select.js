@@ -16,12 +16,17 @@ type Props = {
   errorMessage?: string,
   inputRef?: any,
 }
-const Select = (props: Props) => {
-  const {
-    htmlElementName, defaultValue, handleChange, placeholder, isDisabled,
-    children, label, inputRef, errorMessage,
-  } = props;
-
+const Select = ({
+  htmlElementName = 'select-element',
+  defaultValue = '',
+  placeholder = '',
+  label = '',
+  isDisabled = false,
+  handleChange = () => { },
+  errorMessage = '',
+  inputRef = null,
+  children,
+}: Props) => {
   function onChange(e) {
     handleChange(e.target.value);
   }
@@ -58,17 +63,6 @@ const Select = (props: Props) => {
     );
   }
   return renderSelect();
-};
-
-Select.defaultProps = {
-  htmlElementName: 'select-element',
-  defaultValue: '',
-  placeholder: '',
-  label: '',
-  isDisabled: false,
-  handleChange: () => { },
-  errorMessage: '',
-  inputRef: null,
 };
 
 export default Select;

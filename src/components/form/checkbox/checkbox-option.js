@@ -14,7 +14,7 @@ type Props = {
 };
 const CheckboxOption = (props: Props) => {
   const {
-    label, value, isDisabled, isChecked, groupName, inputRef,
+    label, value, isDisabled = false, isChecked = false, inputRef = null, groupName,
   } = props;
   const itemId = `${groupName}-${value}-${label.split(' ').join('')}`;
 
@@ -36,12 +36,6 @@ const CheckboxOption = (props: Props) => {
       </label>
     </ThemeProvider>
   );
-};
-
-CheckboxOption.defaultProps = {
-  isDisabled: false,
-  isChecked: false,
-  inputRef: null,
 };
 
 export default CheckboxOption;

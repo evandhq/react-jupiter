@@ -10,10 +10,9 @@ type IProps = {
     required?: Boolean,
 }
 
-function Label(props: IProps) {
-  const {
-    htmlFor, label, number, required,
-  } = props;
+function Label({
+  label = null, number = null, required = false, htmlFor = null,
+}: IProps) {
   return (
     <>
       {label && (
@@ -28,11 +27,5 @@ function Label(props: IProps) {
     </>
   );
 }
-Label.defaultProps = {
-  label: null,
-  number: null,
-  required: false,
-  htmlFor: null,
-};
 
 export default Label;

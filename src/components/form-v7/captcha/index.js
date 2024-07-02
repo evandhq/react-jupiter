@@ -21,18 +21,16 @@ type Props = {
   number?: number,
 };
 
-function Captcha(props: Props) {
-  const {
-    htmlElementName,
-    label,
-    classNames,
-    imageUrl,
-    control,
-    fetchData,
-    loading,
-    number,
-  } = props;
-
+function Captcha({
+  classNames = '',
+  loading = false,
+  number = null,
+  htmlElementName,
+  label,
+  imageUrl,
+  control,
+  fetchData,
+}: Props) {
   const persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
   const arabicNumbers = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
 
@@ -61,51 +59,43 @@ function Captcha(props: Props) {
               },
             }}
             defaultValue=""
-            render={({ field: { onChange, value }, fieldState }) => {
-              return (
-                <Display display="block">
-                  <Label htmlFor={htmlElementName} label={label} number={number} required />
-                  <Display display="flex">
-                    <Display display="flex" width="100%">
-                      <Input
-                        id={`${'text'}-${htmlElementName.split(' ').join('')}`}
-                        name={htmlElementName}
-                        type="text"
-                        rtl={false}
-                        value={value}
-                        onChange={(e) => {
-                          onChange(fixNumbers(e.target.value));
-                        }}
-                        className="captcha-input"
-                      />
-                      <img
-                        width="auto"
-                        height="40px"
-                        src={imageUrl}
-                        alt="captcha-img"
-                        loading="lazy"
-                        data-test="captcha-img"
-                      />
-                    </Display>
-                    <Button type="button" size="sm" styleType="tertiary" onClick={fetchData} disabled={loading}>
-                      <Icon name={loading ? 'loading' : 'refresh'} />
-                    </Button>
+            render={({ field: { onChange, value }, fieldState }) => (
+              <Display display="block">
+                <Label htmlFor={htmlElementName} label={label} number={number} required />
+                <Display display="flex">
+                  <Display display="flex" width="100%">
+                    <Input
+                      id={`${'text'}-${htmlElementName.split(' ').join('')}`}
+                      name={htmlElementName}
+                      type="text"
+                      rtl={false}
+                      value={value}
+                      onChange={(e) => {
+                        onChange(fixNumbers(e.target.value));
+                      }}
+                      className="captcha-input"
+                    />
+                    <img
+                      width="auto"
+                      height="40px"
+                      src={imageUrl}
+                      alt="captcha-img"
+                      loading="lazy"
+                      data-test="captcha-img"
+                    />
                   </Display>
-                  <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+                  <Button type="button" size="sm" styleType="tertiary" onClick={fetchData} disabled={loading}>
+                    <Icon name={loading ? 'loading' : 'refresh'} />
+                  </Button>
                 </Display>
-              );
-            }}
+                <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+              </Display>
+            )}
           />
         </div>
       </Fieldset>
     </ThemeProvider>
   );
 }
-
-Captcha.defaultProps = {
-  classNames: '',
-  loading: false,
-  number: null,
-};
 
 export default Captcha;

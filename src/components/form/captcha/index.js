@@ -18,14 +18,13 @@ type Props = {
   handleRetryCaptcha?: () => void;
 };
 
-function Captcha(props: Props) {
-  const {
-    src,
-    errorMessage,
-    inputRef,
-    handleCaptchaError,
-    handleRetryCaptcha,
-  } = props;
+function Captcha({
+  src,
+  errorMessage = '',
+  inputRef = null,
+  handleCaptchaError = () => {},
+  handleRetryCaptcha = null,
+}: Props) {
   const [imageLoadingStatus, setImageLoadingStatus] = useState('loading');
 
   function hanelImgLoading() {
@@ -83,12 +82,5 @@ function Captcha(props: Props) {
     </CaptchaBoxContainer>
   );
 }
-
-Captcha.defaultProps = {
-  errorMessage: '',
-  inputRef: null,
-  handleCaptchaError: () => {},
-  handleRetryCaptcha: null,
-};
 
 export default Captcha;

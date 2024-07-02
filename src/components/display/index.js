@@ -3,16 +3,13 @@ import PropTypes from 'prop-types';
 import { DisplayStyle } from './index.style';
 
 const Display = (props) => {
-  const {
-    children, ...rest
-  } = props;
-
   const renderDisplay = () => {
+    const { children } = props;
     if (children === undefined) {
       return null;
     }
 
-    return <DisplayStyle {...rest}>{children}</DisplayStyle>;
+    return <DisplayStyle {...props}>{children}</DisplayStyle>;
   };
 
   return (
@@ -37,17 +34,6 @@ Display.propTypes = {
   flexDirectionMobile: PropTypes.string,
   wrap: PropTypes.string,
   className: PropTypes.string,
-};
-Display.defaultProps = {
-  display: '',
-  width: '',
-  justifyContent: '',
-  justifyContentMobile: '',
-  alignItems: '',
-  flexDirection: '',
-  flexDirectionMobile: '',
-  wrap: '',
-  className: '',
 };
 
 export default Display;

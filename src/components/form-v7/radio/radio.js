@@ -22,11 +22,19 @@ type Props = {
   control: FormData;
 };
 
-const Radio = (props: Props) => {
-  const {
-    children, groupName, label, handleChange, defaultCheckedValue, isDisabled,
-    type, register, number, required, control,
-  } = props;
+const Radio = ({
+  groupName = 'radio-element',
+  label = '',
+  handleChange = () => { },
+  defaultCheckedValue = '',
+  isDisabled = false,
+  type = 'horizontal',
+  required = false,
+  number = null,
+  control,
+  register,
+  children,
+}: Props) => {
   const radioElements = React.Children.toArray(children);
 
   return (
@@ -62,14 +70,4 @@ const Radio = (props: Props) => {
   );
 };
 
-Radio.defaultProps = {
-  groupName: 'radio-element',
-  label: '',
-  handleChange: () => { },
-  defaultCheckedValue: '',
-  isDisabled: false,
-  type: 'horizontal',
-  required: false,
-  number: null,
-};
 export default Radio;

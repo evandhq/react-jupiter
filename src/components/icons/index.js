@@ -5,10 +5,12 @@ import { ThemeProvider } from 'styled-components';
 import generalTheme from '../themes';
 import IconElement from './index.style';
 
-const Icons = (props) => {
-  const {
-    type, size, color, ...rest
-  } = props;
+const Icons = ({
+  size = generalTheme.sizes.medium,
+  color = 'default',
+  type,
+  ...rest
+}) => {
   if (type === undefined) return null;
 
   return (
@@ -22,11 +24,6 @@ Icons.propTypes = {
   type: PropTypes.string.isRequired,
   size: PropTypes.string,
   color: PropTypes.oneOf(['default', 'red', 'green', 'blue', 'yellow', 'white', 'darkBlue', 'gray']),
-};
-
-Icons.defaultProps = {
-  size: generalTheme.sizes.medium,
-  color: 'default',
 };
 
 export default Icons;

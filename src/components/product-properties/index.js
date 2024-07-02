@@ -21,8 +21,8 @@ type Props = {
 const ProductProperties = (props: Props) => {
   const {
     list,
-    isHorizontal,
-    color,
+    isHorizontal = false,
+    color = 'gray',
     link,
     ...rest
   } = props;
@@ -49,11 +49,6 @@ const ProductProperties = (props: Props) => {
       </ListContainer>
     </>
   );
-};
-
-ProductProperties.defaultProps = {
-  isHorizontal: false,
-  color: 'gray',
 };
 
 export default ProductProperties;

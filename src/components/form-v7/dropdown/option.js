@@ -5,22 +5,14 @@ type Props = {
   value: string,
   isDisabled?: boolean,
 }
-const SelectOption = (props: Props) => {
-  const { label, value, isDisabled } = props;
-
-  return (
-    <option
-      disabled={isDisabled}
-      value={value}
-      data-test="select-option"
-    >
-      {label}
-    </option>
-  );
-};
-
-SelectOption.defaultProps = {
-  isDisabled: false,
-};
+const SelectOption = ({ label, value, isDisabled = false }: Props) => (
+  <option
+    disabled={isDisabled}
+    value={value}
+    data-test="select-option"
+  >
+    {label}
+  </option>
+);
 
 export default SelectOption;

@@ -27,26 +27,27 @@ import Icon from '../../icon';
 
 const finishedClockLabelUrl = 'https://evand-storage.oss-eu-central-1.aliyuncs.com/assets/images/other/finished-clock-label.svg';
 const defaultCoverUrl = 'https://static.evand.net/assets/images/defaults/event-cover.jpg';
-const EventCard = (props) => {
-  const {
-    title,
-    bookmarked,
-    type,
-    price,
-    place,
-    date,
-    cover,
-    ads,
-    finished,
-    partnership,
-    organization,
-    renderEventLink,
-    renderOrganizationLink,
-    clickBookmark,
-    showDate,
-    coverImage,
-    ...rest
-  } = props;
+const EventCard = ({
+  title,
+  price,
+  place,
+  renderEventLink,
+  clickBookmark,
+  bookmarked = false,
+  cover = '',
+  type = VERTICAL_CARD,
+  ads = false,
+  finished = false,
+  organization = undefined,
+  renderOrganizationLink = () => false,
+  date = '',
+  showDate = '',
+  partnership = {
+    status: '',
+  },
+  coverImage = null,
+  ...rest
+}) => {
   // date param used on main evand and because it wrong to use moment-jalali in react jupiter
   // we ommmit it in evand-next and use showDate param instead but its still used in evand
   // TODO: remove date params if no longer needed (in evand project)
@@ -174,15 +175,14 @@ const EventCard = (props) => {
   );
 
   const renderCard = () => {
-    const { type } = props;
     switch (type) {
       case HORIZONTAL_CARD:
-        return renderHorizontalCard(props);
+        return renderHorizontalCard();
       case HORIZONTAL_MOBILE_CARD:
-        return renderHorizontalMobileCard(props);
+        return renderHorizontalMobileCard();
       case VERTICAL_CARD:
       default:
-        return renderVerticalCard(props);
+        return renderVerticalCard();
     }
   };
 
@@ -222,22 +222,6 @@ EventCard.propTypes = {
     status: PropTypes.string,
   }),
   coverImage: PropTypes.node || null,
-};
-
-EventCard.defaultProps = {
-  bookmarked: false,
-  cover: '',
-  type: VERTICAL_CARD,
-  ads: false,
-  finished: false,
-  organization: undefined,
-  renderOrganizationLink: () => false,
-  date: '',
-  showDate: '',
-  partnership: {
-    status: '',
-  },
-  coverImage: null,
 };
 
 export default EventCard;

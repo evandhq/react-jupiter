@@ -11,8 +11,11 @@ type Props = {
   onChange?: () => void,
 };
 
-function Tabs(props: Props) {
-  const { children, defaultTab, onChange } = props;
+function Tabs({
+  defaultTab = '',
+  onChange = () => {},
+  children,
+}: Props) {
   const tabPanels = React.Children.toArray(children);
   const [activeTabKey, setActiveTabKey] = useState(defaultTab || tabPanels[0].props.tabKey);
   const selectedTabPanel = tabPanels.find((item) => item.props.tabKey === activeTabKey);
@@ -64,10 +67,5 @@ function Tabs(props: Props) {
     </ThemeProvider>
   );
 }
-
-Tabs.defaultProps = {
-  defaultTab: '',
-  onChange: () => {},
-};
 
 export default Tabs;

@@ -6,19 +6,17 @@ import FontStyle from './iconFont';
 import iconTheme from './theme';
 import StyledIcon from './index.styles';
 
-const Icon = (props) => {
-  const {
-    name,
-    size,
-    color,
-    className,
-    stickyLeft,
-    stickyRight,
-    marginLeft,
-    marginRight,
-    ...rest
-  } = props;
-
+const Icon = ({
+  name,
+  size = 'md',
+  color = 'default',
+  className = '',
+  stickyLeft = false,
+  stickyRight = false,
+  marginLeft = 0,
+  marginRight = 0,
+  ...rest
+}) => {
   if (name === undefined) return null;
 
   return (
@@ -49,16 +47,6 @@ Icon.propTypes = {
   stickyRight: PropTypes.bool,
   marginLeft: PropTypes.number,
   marginRight: PropTypes.number,
-};
-
-Icon.defaultProps = {
-  size: 'md',
-  color: 'default',
-  className: '',
-  stickyLeft: false,
-  stickyRight: false,
-  marginLeft: 0,
-  marginRight: 0,
 };
 
 export default Icon;

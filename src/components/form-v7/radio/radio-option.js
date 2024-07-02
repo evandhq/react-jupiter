@@ -15,7 +15,7 @@ type Props = {
 };
 const RadioOption = (props: Props) => {
   const {
-    label, value, isDisabled, defaultCheckedValue, groupName, register,
+    label, value, isDisabled = false, defaultCheckedValue = '', groupName, register,
   } = props;
   const itemId = `${groupName}-${value}-${label.split(' ').join('')}`;
 
@@ -38,11 +38,6 @@ const RadioOption = (props: Props) => {
       </label>
     </ThemeProvider>
   );
-};
-
-RadioOption.defaultProps = {
-  isDisabled: false,
-  defaultCheckedValue: '',
 };
 
 export default RadioOption;

@@ -25,18 +25,17 @@ type Props = {
   inputRef?: any,
 }
 
-const TextInput = (props: Props) => {
-  const {
-    type,
-    label,
-    htmlElementName,
-    id,
-    placeholder,
-    disabled,
-    description,
-    errorMessage,
-    inputRef,
-  } = props;
+const TextInput = ({
+  type = 'text',
+  label = null,
+  id = null,
+  placeholder = null,
+  disabled = false,
+  description = null,
+  errorMessage = '',
+  inputRef = null,
+  htmlElementName,
+}: Props) => {
   const [value, setValue] = useState('');
   const [displayedPassword, setDisplayedPassword] = useState(false);
 
@@ -88,17 +87,6 @@ const TextInput = (props: Props) => {
       <ErrorMsg errorMessage={errorMessage} />
     </ThemeProvider>
   );
-};
-
-TextInput.defaultProps = {
-  type: 'text',
-  label: null,
-  id: null,
-  placeholder: null,
-  disabled: false,
-  description: null,
-  errorMessage: '',
-  inputRef: null,
 };
 
 export default TextInput;

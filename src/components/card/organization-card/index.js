@@ -21,7 +21,7 @@ type Props = {
 
 const OrganizationCard = (props: Props) => {
   const {
-    title, logo, followed, report, onClickFollow, renderLink,
+    title, logo, followed = false, report, onClickFollow, renderLink,
   } = props;
 
   const reportData = [
@@ -54,10 +54,6 @@ const OrganizationCard = (props: Props) => {
       </Button>
     </Container>
   );
-};
-
-OrganizationCard.defaultProps = {
-  followed: false,
 };
 
 export default OrganizationCard;

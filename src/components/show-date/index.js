@@ -4,15 +4,11 @@ import { Text } from '../typography';
 import { convertToJalaali } from '../utils/date';
 import { englishNumberToPersianInString } from '../utils/numbers';
 
-const ShowDate = (props) => {
-  const { date, fontSize, color } = props;
-
-  return (
-    <Text size={fontSize} color={color} data-test="show-date">
-      {englishNumberToPersianInString(convertToJalaali(date, 'dddd jD jMMMM jYYYY ساعت HH:mm'))}
-    </Text>
-  );
-};
+const ShowDate = ({ fontSize = 12, color = 'default', date }) => (
+  <Text size={fontSize} color={color} data-test="show-date">
+    {englishNumberToPersianInString(convertToJalaali(date, 'dddd jD jMMMM jYYYY ساعت HH:mm'))}
+  </Text>
+);
 
 ShowDate.propTypes = {
   date: PropTypes.oneOfType([
@@ -25,11 +21,5 @@ ShowDate.propTypes = {
   ]),
   color: PropTypes.oneOf(['default', 'red', 'green', 'blue', 'yellow', 'white', 'darkBlue', 'gray']),
 };
-
-ShowDate.defaultProps = {
-  fontSize: 12,
-  color: 'default',
-};
-
 
 export default ShowDate;

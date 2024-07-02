@@ -7,25 +7,23 @@ import {
   String, Strong, Emphasized, SubScript, SupScript,
 } from './index.styles';
 
-const renderString = (props) => {
-  const {
-    children,
-    size,
-    color,
-    underline,
-    lineThrough,
-    strong,
-    bold,
-    emphasized,
-    subScript,
-    supScript,
-    marked,
-    label,
-    isDisplayBlock,
-    isCutWithEllipsis,
-    ...rest
-  } = props;
-
+const renderString = ({
+  size = theme.defaultSize,
+  color = 'default',
+  underline = false,
+  lineThrough = false,
+  strong = false,
+  bold = false,
+  emphasized = false,
+  subScript = false,
+  supScript = false,
+  marked = false,
+  label = false,
+  isDisplayBlock = false,
+  isCutWithEllipsis = false,
+  children,
+  ...rest
+}) => {
   if (children === undefined) return null;
 
   let typeOfText;
@@ -123,23 +121,6 @@ renderString.propTypes = {
   isCutWithEllipsis: PropTypes.bool,
 };
 
-renderString.defaultProps = {
-  size: theme.defaultSize,
-  color: 'default',
-  underline: false,
-  lineThrough: false,
-  strong: false,
-  bold: false,
-  emphasized: false,
-  subScript: false,
-  supScript: false,
-  marked: false,
-  label: false,
-  isDisplayBlock: false,
-  isCutWithEllipsis: false,
-  textAlign: 'right',
-};
-
 const Text = (props) => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
@@ -166,7 +147,6 @@ Text.prototype = {
   label: PropTypes.bool,
   isDisplayBlock: PropTypes.bool,
   isCutWithEllipsis: PropTypes.bool,
-  textAlign: PropTypes.string,
 };
 
 Text.defaultProps = renderString.defaultProps;

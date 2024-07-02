@@ -6,7 +6,7 @@ type Props = {
   isDisabled?: boolean,
 }
 const SelectOption = (props: Props) => {
-  const { label, value, isDisabled } = props;
+  const { label, value, isDisabled = false } = props;
 
   return (
     <option
@@ -17,10 +17,6 @@ const SelectOption = (props: Props) => {
       {label}
     </option>
   );
-};
-
-SelectOption.defaultProps = {
-  isDisabled: false,
 };
 
 export default SelectOption;

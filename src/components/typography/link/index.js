@@ -6,10 +6,16 @@ import defaultTheme from '../theme';
 import Text from '../text';
 import ExternalLink from './index.styles';
 
-const generateLink = (props) => {
-  const {
-    external, children, href, linkContent, target, size, strong, emphasized, ...rest
-  } = props;
+const generateLink = ({
+  href = '',
+  target = '_self',
+  size = 14,
+  strong = false,
+  emphasized = false,
+  linkContent,
+  children,
+  ...rest
+}) => {
   if (typeof href === 'function') {
     return href(
       <Text
@@ -58,15 +64,6 @@ generateLink.propTypes = {
   emphasized: PropTypes.bool,
 };
 
-generateLink.defaultProps = {
-  href: '',
-  external: false,
-  target: '_self',
-  size: 14,
-  strong: false,
-  emphasized: false,
-};
-
 const Link = (props) => {
   const { children, linkContent } = props;
   if (children === undefined && linkContent === undefined) return null;
@@ -77,7 +74,6 @@ const Link = (props) => {
     </ThemeProvider>
   );
 };
-
 
 Link.propTypes = generateLink.propTypes;
 

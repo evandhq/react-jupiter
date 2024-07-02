@@ -10,6 +10,8 @@ const iconTheme = {
     xs: 12,
   },
   marginSize: {
+    xxlg: 18,
+    xlg: 16,
     lg: 12,
     md: 10,
     sm: 8,

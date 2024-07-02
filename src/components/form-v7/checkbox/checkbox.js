@@ -20,11 +20,18 @@ type Props = {
   control: FormData;
 };
 
-const Checkbox = (props: Props) => {
-  const {
-    children, groupName, label, handleChange, isDisabled, type,
-    required, register, number, control,
-  } = props;
+const Checkbox = ({
+  groupName = 'radio-element',
+  label = '',
+  handleChange = () => { },
+  isDisabled = false,
+  type = 'horizontal',
+  required = false,
+  register,
+  number,
+  control,
+  children,
+}: Props) => {
   const radioElements = React.Children.toArray(children);
 
   return (
@@ -58,12 +65,4 @@ const Checkbox = (props: Props) => {
   );
 };
 
-Checkbox.defaultProps = {
-  groupName: 'radio-element',
-  label: '',
-  handleChange: () => { },
-  isDisabled: false,
-  type: 'horizontal',
-  required: false,
-};
 export default Checkbox;

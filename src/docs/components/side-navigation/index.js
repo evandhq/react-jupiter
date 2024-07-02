@@ -9,7 +9,7 @@ import {
 const NavItem = (props) => {
   const context = React.useContext(NavContext);
   const { selected } = context;
-  const { title, ltr } = props;
+  const { title, ltr = false } = props;
   return (
     <NavItemContainer selected={selected} ltr={ltr}>
       <NavItemTitle>{title}</NavItemTitle>
@@ -22,12 +22,7 @@ NavItem.propTypes = {
   ltr: PropTypes.bool,
 };
 
-NavItem.defaultProps = {
-  ltr: false,
-};
-
-
-const SideNavigation = ({ ltr }) => (
+const SideNavigation = ({ ltr = false }) => (
   <Container ltr={ltr}>
     <NavTitle>معرفی</NavTitle>
     <SideNav defaultSelectedPath="1">
@@ -104,10 +99,6 @@ const SideNavigation = ({ ltr }) => (
 
 SideNavigation.propTypes = {
   ltr: PropTypes.bool,
-};
-
-SideNavigation.defaultProps = {
-  ltr: false,
 };
 
 export default SideNavigation;

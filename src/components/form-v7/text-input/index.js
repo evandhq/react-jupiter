@@ -28,29 +28,26 @@ type Props = {
   required?: boolean | String,
   number?: number,
   rtl?: boolean,
-  value?: string | number,
   onFocus?: (e: FocusEvent) => void,
   readOnly?: boolean,
 }
 
-const TextInput = (props: Props) => {
-  const {
-    type,
-    label,
-    htmlElementName,
-    id,
-    placeholder,
-    disabled,
-    description,
-    register,
-    required,
-    number,
-    rtl,
-    control,
-    onFocus,
-    readOnly,
-  } = props;
-
+const TextInput = ({
+  type = 'text',
+  label = null,
+  htmlElementName,
+  id = null,
+  placeholder = null,
+  disabled = false,
+  description = null,
+  required = false,
+  number = null,
+  rtl = true,
+  onFocus = () => {},
+  readOnly = false,
+  register,
+  control,
+}: Props) => {
   function handleFocus(e) {
     e.target.setSelectionRange(0, 0);
   }
@@ -99,21 +96,6 @@ const TextInput = (props: Props) => {
       </Fieldset>
     </ThemeProvider>
   );
-};
-
-TextInput.defaultProps = {
-  type: 'text',
-  label: null,
-  id: null,
-  placeholder: null,
-  disabled: false,
-  description: null,
-  required: false,
-  number: null,
-  rtl: true,
-  value: '',
-  onFocus: () => {},
-  readOnly: false,
 };
 
 export default TextInput;

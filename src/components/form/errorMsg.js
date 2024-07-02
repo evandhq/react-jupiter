@@ -3,7 +3,7 @@ import Icon from '../icon';
 import { Text } from '../typography';
 import { Margin } from '../spacing';
 
-const ErrorMsg = ({ errorMessage }: { errorMessage?: string }) => {
+const ErrorMsg = ({ errorMessage = '' }: { errorMessage?: string }) => {
   if (errorMessage) {
     return (
       <Margin top={4}>
@@ -16,10 +16,6 @@ const ErrorMsg = ({ errorMessage }: { errorMessage?: string }) => {
   }
 
   return null;
-};
-
-ErrorMsg.defaultProps = {
-  errorMessage: '',
 };
 
 export default ErrorMsg;

@@ -9,11 +9,13 @@ import {
 
 const { sizes } = theme;
 
-const Heading = (props) => {
-  const {
-    children, size, level, color, ...rest
-  } = props;
-
+const Heading = ({
+  size = sizes.medium,
+  level = 1,
+  color = 'default',
+  children,
+  ...rest
+}) => {
   const renderLevel = () => {
     if (children === undefined) {
       return null;
@@ -52,12 +54,6 @@ Heading.propTypes = {
   size: PropTypes.oneOf([sizes.large, sizes.medium, sizes.small]),
   level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   color: PropTypes.oneOf(['red', 'green', 'blue', 'yellow', 'white', 'darkBlue', 'default']),
-};
-
-Heading.defaultProps = {
-  size: sizes.medium,
-  level: 1,
-  color: 'default',
 };
 
 export default Heading;
