@@ -35,6 +35,7 @@ Display.propTypes = {
   wrap: PropTypes.string,
   className: PropTypes.string,
   flex: PropTypes.string,
+  alignSelf: PropTypes.string,
 };
 
 export default Display;

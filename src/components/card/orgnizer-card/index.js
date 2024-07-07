@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Text, Paragraph } from '../../typography';
+import { Text, Paragraph } from '../../typography';
 import Buttons from './buttons';
 import {
   Container,
@@ -8,9 +8,7 @@ import {
 } from './index.style';
 import { Margin } from '../../spacing';
 import Display from '../../display';
-import Responsive from '../../responsive';
 import Icon from '../../icon';
-import defaultTheme from '../../themes';
 import Avatar from '../../avatar';
 
 type Props = {
@@ -53,6 +51,7 @@ const OrgnizerCard = (props: Props) => {
               alt={name}
               src={logo}
               size="md"
+              sizeMobile="lg"
               className="avatar"
             />)}
             <div className="mr">
@@ -90,7 +89,7 @@ const OrgnizerCard = (props: Props) => {
             </div>
           </Display>
         </Display>
-        <Display display="flex" alignItems="start" flexDirection="column" justifyContent="space-between" width="100%" flex="2 1">
+        <Display display="flex" alignItems="start" flexDirection="column" justifyContent="space-between" width="100%" flex="2 1" alignSelf="stretch">
           <Display className="statistics" display="flex" alignItems="start" flexDirection="row" justifyContent="space-between" width="100%">
             {followersCount && (
               <Display display="block">
@@ -149,6 +148,10 @@ const OrgnizerCard = (props: Props) => {
       </Display>
       <style>
         {`
+          .recommend {
+            display: block;
+            margin: 10px auto;
+          }
           @media (max-width: 768px) {
             .avatar {
               margin: 5px auto 10px;
@@ -156,11 +159,7 @@ const OrgnizerCard = (props: Props) => {
               .statistics {
                 margin: 25px auto;
               }
-              .recommend {
-                display: block;
-                margin: 10px auto;
               }
-          }
           @media (min-width: 768px) {
             .mr {
               margin-right: 15px;

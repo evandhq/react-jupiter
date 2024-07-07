@@ -61,4 +61,8 @@ export const DisplayStyle = styled.div`
     ? `flex: ${flex};`
     : ''
   )}
+  ${({ alignSelf }) => (alignSelf
+    ? `align-self: ${alignSelf};`
+    : ''
+  )}
 `;
