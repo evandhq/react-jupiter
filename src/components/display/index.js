@@ -34,6 +34,7 @@ Display.propTypes = {
   flexDirectionMobile: PropTypes.string,
   wrap: PropTypes.string,
   className: PropTypes.string,
+  flex: PropTypes.string,
 };
 
 export default Display;
