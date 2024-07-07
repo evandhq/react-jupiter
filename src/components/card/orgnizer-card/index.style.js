@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import CardTemplate from '../card-template';
 import Button from '../../button';
 import defaultTheme from '../../themes';
+import Avatar from '../../avatar';
 
 export const Container = styled(CardTemplate)`
-  padding: 16px 32px;
+  padding: 16px;
 `;
 
 export const LTRContainer = styled.div`
@@ -46,12 +47,12 @@ export const ResponsiveFlex = styled.div`
 `;
 
 export const PartnershipBox = styled.span`
-    background: rgba(255, 199, 39, 0.1);
-    border-radius: 5px;
-    color: #FFD324;
-    margin-right: 10px;
-    display: initial;
-    align-items: center;
-    width: 110px;
-    height: 25px;
-  `;
+  display: block;
+  background: rgba(255, 199, 39, 0.1);
+  border-radius: 5px;
+  color: #FFD324;
+  margin-top: 10px;
+  align-items: center;
+  width: 110px;
+  height: 25px;
+`;
