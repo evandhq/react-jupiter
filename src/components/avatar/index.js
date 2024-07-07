@@ -10,12 +10,13 @@ const defaultImageUrl = 'https://evand-storage.oss-eu-central-1.aliyuncs.com/ass
 const Avatar = ({
   alt = 'آواتار',
   size = 'md',
+  sizeMobile = 'md',
   src = defaultImageUrl,
   ...rest
 }) => (
   <ThemeProvider theme={avatarTheme}>
     <GlobalStyle />
-    <Image src={src} alt={alt} size={size} data-test="avatar" {...rest} />
+    <Image src={src} alt={alt} size={size} sizeMobile={sizeMobile} data-test="avatar" {...rest} />
   </ThemeProvider>
 );
 
@@ -23,6 +24,7 @@ Avatar.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
   size: PropTypes.oneOf(['lg', 'md', 'sm']),
+  sizeMobile: PropTypes.oneOf(['lg', 'md', 'sm']),
 };
 
 export default Avatar;

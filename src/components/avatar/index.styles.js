@@ -1,14 +1,16 @@
 import styled from 'styled-components';
-
-const defaultImageUrl = 'https://evand-storage.oss-eu-central-1.aliyuncs.com/assets/images/defaults/avatar.svg';
+import defaultTheme from '../themes';
 
 const Image = styled.img`
   font-family: 'IranSharp';
   width: ${({ theme, size }) => `${theme.size[size]}px`};
   height: ${({ theme, size }) => `${theme.size[size]}px`};
+  @media only screen and (max-width: ${defaultTheme.breakpoints.sm}px) {
+    width: ${({ theme, sizeMobile }) => `${theme.size[sizeMobile]}px`};
+    height: ${({ theme, sizeMobile }) => `${theme.size[sizeMobile]}px`};
+  }
   border-radius: ${({ theme }) => `${theme.borderRadius}px`};
   display: block;
-  // background-image: url(${defaultImageUrl});
   background-size: cover;
 `;
 
