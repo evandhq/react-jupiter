@@ -5,10 +5,13 @@ import GlobalStyle from '../../globalStyle';
 import theme from '../theme';
 import Content from './index.styles';
 
-const Paragraph = (props) => {
-  const {
-    children, size, color, bold, ...rest
-  } = props;
+const Paragraph = ({
+  size = theme.defaultSize,
+  color = 'riverBedDark',
+  bold = false,
+  children,
+  ...rest
+}) => {
   if (children === undefined) return null;
   return (
     <ThemeProvider theme={theme}>
@@ -29,12 +32,6 @@ Paragraph.propTypes = {
   size: PropTypes.number,
   color: PropTypes.oneOf(['riverBedDark', 'riverBed']),
   bold: PropTypes.bool,
-};
-
-Paragraph.defaultProps = {
-  size: theme.defaultSize,
-  color: 'riverBedDark',
-  bold: false,
 };
 
 export default Paragraph;

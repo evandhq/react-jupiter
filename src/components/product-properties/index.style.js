@@ -7,9 +7,17 @@ export const ListContainer = styled.ul`
 `;
 
 export const ListItem = styled.li`
-    margin: 2px 0;
-    min-width: calc(100% / ${({ propsLength }) => propsLength});
-    &:first-child { margin-top: 0; }
-    &:last-child { margin-bottom: 0; }
-
+  width: auto;
+  margin: ${({ isHorizontal }) => (isHorizontal ? '2px 10px' : '2px 0')};
+  &:first-child { 
+    margin-top: 0;
+    margin-right: 0;
+  }
+  &:last-child { 
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+  padding: 5px 10px;
+  border-radius: 2px;
+  background: ${({ theme }) => (theme.colors.gray400)};
 `;
