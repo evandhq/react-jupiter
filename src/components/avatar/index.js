@@ -12,18 +12,20 @@ const Avatar = ({
   size = 'md',
   sizeMobile = 'md',
   src = defaultImageUrl,
+  round = false,
   ...rest
 }) => (
   <ThemeProvider theme={avatarTheme}>
     <GlobalStyle />
-    <Image src={src} alt={alt} size={size} sizeMobile={sizeMobile} data-test="avatar" {...rest} />
+    <Image src={src} alt={alt} size={size} sizeMobile={sizeMobile} data-test="avatar" round={round} {...rest} />
   </ThemeProvider>
 );
 
 Avatar.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
-  size: PropTypes.oneOf(['lg', 'md', 'sm']),
+  round: PropTypes.bool,
+  size: PropTypes.oneOf(['lg', 'md', 'sm', 'xs']),
   sizeMobile: PropTypes.oneOf(['lg', 'md', 'sm']),
 };
 

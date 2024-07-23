@@ -9,7 +9,7 @@ const Image = styled.img`
     width: ${({ theme, sizeMobile }) => `${theme.size[sizeMobile]}px`};
     height: ${({ theme, sizeMobile }) => `${theme.size[sizeMobile]}px`};
   }
-  border-radius: ${({ theme }) => `${theme.borderRadius}px`};
+  border-radius: ${({ theme, round }) => (round ? '50%' : `${theme.borderRadius}px`)};
   display: block;
   background-size: cover;
 `;

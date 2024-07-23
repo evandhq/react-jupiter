@@ -33,7 +33,7 @@ const TitledAvatar = ({
     return renderAvatarLink(
       <Container data-test="titled-avatar">
         <GlobalStyle />
-        <Avatar src={avatar} size={avatarSize} />
+        <Avatar src={avatar} size={avatarSize} round />
         {renderTitle()}
       </Container>,
     );
@@ -42,7 +42,7 @@ const TitledAvatar = ({
   return (
     <Container data-test="titled-avatar">
       <GlobalStyle />
-      <Avatar src={avatar} size={avatarSize} />
+      <Avatar src={avatar} size={avatarSize} round />
       {renderTitle()}
     </Container>
   );

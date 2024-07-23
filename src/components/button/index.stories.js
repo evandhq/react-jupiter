@@ -26,6 +26,7 @@ storiesOf('Button', module)
     </Button>
   ))
   .add('button with icon', () => <Button icon="watch-later">دکمه‌ با آیکون</Button>)
+  .add('button with specific width', () => <Button icon="watch-later" width="184px">دکمه‌ با آیکون</Button>)
   .add('wide button', () => <Button wide>دکمه‌ی تمام عرض</Button>)
   .add('extra small button', () => <Button size="xs">دکمه‌ی خیلی کوچک</Button>)
   .add('small button', () => <Button size="sm">دکمه‌ی کوچک</Button>)

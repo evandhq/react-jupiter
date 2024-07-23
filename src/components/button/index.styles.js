@@ -7,9 +7,10 @@ export const BaseButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  width: ${({ wide }) => (wide ? '100%' : 'auto')};
-  min-width: ${({ size, theme }) => (`${theme.size[size].minWidth}px`)};
-  min-height: ${({ size, theme }) => (`${theme.size[size].height}px`)};
+  width: ${({ width, wide }) => (width ? `${width}` : wide ? '100%' : 'auto')};
+  height: ${({ height }) => (height ? `${height}` : 'auto')};
+  min-width: ${({ size, theme, width }) => (width ? `${width}` : `${theme.size[size].minWidth}px`)};
+  min-height: ${({ size, theme, height }) => (height ? `${height}` : `${theme.size[size].height}px`)};
 
   padding: ${({ size, theme }) => theme.size[size].padding};
   box-sizing: border-box;
@@ -19,7 +20,7 @@ export const BaseButton = styled.button`
   border-radius: ${({ theme }) => `${theme.borderRadius}px`};
 
   margin: ${({
-    theme, marginRight, marginLeft,
+    marginRight, marginLeft,
   }) => `0 ${marginRight || 0}px 0 ${marginLeft || 0}px`};
 
   &[data-styletype="primary"] {

@@ -52,14 +52,17 @@ const OrgnizerCard = (props: Props) => {
               src={logo}
               size="md"
               sizeMobile="lg"
+              round
             />)}
           </Display>
           <div className="mr">
             <Display display="flex" alignItems="baseline">
-              <Text size={14} textAlign="right" bold>برگزار‌کننده:</Text>
-              &nbsp;
               {renderOrganizerLink(
-                <Text size={14} textAlign="right" bold>{name}</Text>,
+                <Text size={14} textAlign="right" bold>
+                  برگزار‌کننده:
+                  {' '}
+                  {name}
+                </Text>,
               )}
             </Display>
             {!!partnership
@@ -91,50 +94,44 @@ const OrgnizerCard = (props: Props) => {
           </div>
         </Display>
         <Display display="flex" alignItems="start" flexDirection="column" justifyContent="space-between" width="100%" flex="2 1" alignSelf="stretch">
-          <Display className="statistics" display="flex" alignItems="start" flexDirection="row" justifyContent="space-between" width="100%">
+          <Display className="statistics" display="flex" alignItems="start" flexDirection="row" justifyContent="space-evenly" width="100%">
             {followersCount && (
               <Display display="block">
-                <Margin left={6}>
-                  <TextCenter>
-                    <Text size={16} bold>
-                      {followersCount}
-                    </Text>
-                    <br />
-                    <Text size={12} bold>
-                      دنبال کننده
-                    </Text>
-                  </TextCenter>
-                </Margin>
+                <TextCenter>
+                  <Text size={16} bold>
+                    {followersCount}
+                  </Text>
+                  <br />
+                  <Text size={12} bold>
+                    دنبال کننده
+                  </Text>
+                </TextCenter>
               </Display>
             )}
             {allEventsCount && (
               <Display display="block">
-                <Margin left={6} right={6}>
-                  <TextCenter>
-                    <Text size={16} bold>
-                      {allEventsCount}
-                    </Text>
-                    <br />
-                    <Text size={12} bold>
-                      کل رویدادها
-                    </Text>
-                  </TextCenter>
-                </Margin>
+                <TextCenter>
+                  <Text size={16} bold>
+                    {allEventsCount}
+                  </Text>
+                  <br />
+                  <Text size={12} bold>
+                    کل رویدادها
+                  </Text>
+                </TextCenter>
               </Display>
             )}
             {activeEventsCount && (
               <Display display="block">
-                <Margin left={4} right={6}>
-                  <TextCenter>
-                    <Text size={16} bold>
-                      {activeEventsCount}
-                    </Text>
-                    <br />
-                    <Text size={12} bold>
-                      رویداد فعال
-                    </Text>
-                  </TextCenter>
-                </Margin>
+                <TextCenter>
+                  <Text size={16} bold>
+                    {activeEventsCount}
+                  </Text>
+                  <br />
+                  <Text size={12} bold>
+                    رویداد فعال
+                  </Text>
+                </TextCenter>
               </Display>
             )}
           </Display>

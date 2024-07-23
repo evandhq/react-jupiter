@@ -46,14 +46,14 @@ const Buttons = (props: Props) => {
       </Responsive>
 
       <Responsive option={{ lessThan: '768px' }}>
-        <Display display="flex" justifyContent="center" width="100%">
+        <Display display="flex" justifyContent="space-evenly" width="100%">
           <Button
             styleType="secondary"
             htmlType="button"
             mainColor="blue"
+            width="100px"
             size="sm"
             onClick={onClickConnectUs}
-            wide
           >
             تماس
           </Button>
@@ -62,8 +62,8 @@ const Buttons = (props: Props) => {
             styleType="secondary"
             htmlType="button"
             size="sm"
+            width="100px"
             onClick={onClickFollowMe}
-            wide
           >
             {isFollowed ? 'دنبال میکنید' : 'دنبال کنید'}
           </Button>

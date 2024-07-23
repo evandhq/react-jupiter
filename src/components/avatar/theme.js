@@ -6,6 +6,7 @@ const avatarTheme = {
     lg: 128,
     md: 64,
     sm: 32,
+    xs: 24,
   },
 };
 
