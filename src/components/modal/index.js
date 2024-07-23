@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Modal from 'react-modal';
 import GlobalStyle from '../globalStyle';
 import { StyledIcon, StyledWrapper } from './index.style';
@@ -31,15 +31,44 @@ function JupiterModal({
   isOpen,
   children,
 }: Props) {
+  const customStyles = {
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    },
+    content: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      maxWidth: '990px',
+      padding: '20px',
+      backgroundColor: 'white',
+      height: fullHeight ? '100%' : 'auto',
+      display: 'flex',
+      flexDirection: 'column',
+      pointerEvents: 'auto',
+      backgroundClip: 'padding-box',
+      border: '1px solid rgba(0,0,0,.2)',
+      borderRadius: '.2rem',
+    },
+  };
   return (
     <Modal
       isOpen={isOpen}
       onAfterOpen={onAfterOpen}
       onRequestClose={onRequestClose}
-      contentLabel="Example Modal"
       shouldCloseOnOverlayClick={!disabledClose}
       overlayClassName="modal"
-      className="overlay"
+      className="content"
+      style={customStyles}
     >
       <GlobalStyle />
       <StyledWrapper>
@@ -52,39 +81,13 @@ function JupiterModal({
       </StyledWrapper>
       <style>
         {`
-          .modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            right: auto;
-            bottom: auto;
-            transform: translate(-50%, -50%);
+          .content {
             width: ${modalWidth};
-            height: ${fullHeight ? '100%' : 'auto'};
           }
           @media(max-width: 767px){
-            .modal {
+            .content {
               width: ${modalWidthMobile};
             }
-          }
-          .overlay {
-            background: ${theme.overlayColor};
-            position: relative;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            width: 100%;
-            pointer-events: auto;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid rgba(0,0,0,.2);
-            border-radius: .2rem;
-            outline: 0;
-            padding: 5px;
           }
         `}
       </style>

@@ -42,6 +42,12 @@ export const DisplayStyle = styled.div`
     ? `align-items: ${alignItems};`
     : ''
   )}
+  ${({ alignItemsMobile }) => (alignItemsMobile
+    ? `@media only screen and (max-width: ${defaultTheme.breakpoints.sm}px) {
+        align-items: ${alignItemsMobile};
+      }`
+    : ''
+  )}
   ${({ flexDirection }) => (flexDirection
     ? `flex-direction: ${flexDirection};`
     : ''
