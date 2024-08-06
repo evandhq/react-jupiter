@@ -15,8 +15,8 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   font-family: 'IranSharp';
-  margin: ${({ theme, size }) => getMarginOfHeading(theme, size, 2)}
-  font-size: ${({ theme, size }) => `${getSizeOfHeading(theme, size, 2)}px;`}
+  margin: ${({ theme, size }) => getMarginOfHeading(theme, size, 2)};
+  font-size: ${({ theme, size }) => `${getSizeOfHeading(theme, size, 2)}`}px;
   line-height: ${({ theme, size }) => `
     ${getSizeOfHeading(theme, size, 2) * theme.lineHeightRatio}px;
   `}

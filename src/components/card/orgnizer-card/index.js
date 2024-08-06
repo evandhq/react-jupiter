@@ -6,7 +6,6 @@ import {
   TextCenter,
   PartnershipBox,
 } from './index.style';
-import { Margin } from '../../spacing';
 import Display from '../../display';
 import Icon from '../../icon';
 import Avatar from '../../avatar';

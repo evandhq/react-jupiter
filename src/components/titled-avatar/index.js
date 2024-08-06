@@ -22,18 +22,15 @@ const TitledAvatar = ({
   avatarSize = 'md',
   titleSize = 12,
 }: Props) => {
-  const renderTitle = () => {
-    if (titleSize === 10) {
-      return <SmallTitle size={10}>{title}</SmallTitle>;
-    }
-    return <Title level={4} size="md">{title}</Title>;
-  };
+  const renderTitle = () => (
+    <SmallTitle size={titleSize}>{title}</SmallTitle>
+  );
 
   if (renderAvatarLink) {
     return renderAvatarLink(
       <Container data-test="titled-avatar">
         <GlobalStyle />
-        <Avatar src={avatar} size={avatarSize} round />
+        <Avatar src={avatar} size={avatarSize} sizeMobile={avatarSize} round />
         {renderTitle()}
       </Container>,
     );
@@ -42,7 +39,7 @@ const TitledAvatar = ({
   return (
     <Container data-test="titled-avatar">
       <GlobalStyle />
-      <Avatar src={avatar} size={avatarSize} round />
+      <Avatar src={avatar} size={avatarSize} sizeMobile={avatarSize} round />
       {renderTitle()}
     </Container>
   );

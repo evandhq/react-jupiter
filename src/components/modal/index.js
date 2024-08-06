@@ -14,7 +14,8 @@ type Props = {
   onAfterOpen?: () => void,
   modalWidth?: string,
   modalWidthMobile?: string,
-  fullHeight?: boolean
+  fullHeight?: boolean,
+  className?: String,
 }
 
 // bind modal to the body of the app
@@ -29,6 +30,7 @@ function JupiterModal({
   modalWidthMobile = '100%',
   fullHeight = false,
   isOpen,
+  className = '',
   children,
 }: Props) {
   const customStyles = {
@@ -67,7 +69,7 @@ function JupiterModal({
       onRequestClose={onRequestClose}
       shouldCloseOnOverlayClick={!disabledClose}
       overlayClassName="modal"
-      className="content"
+      className={`content ${className}`}
       style={customStyles}
     >
       <GlobalStyle />

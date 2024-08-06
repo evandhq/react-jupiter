@@ -104,7 +104,7 @@ const EventCard = ({
           <VerticalPlacePrice list={productPropertiesList} />
         </div>
         {(organization && organization.logo !== 'unset') && (
-          <TitledAvatar title={organization.name} titleSize={10} avatar={organization.logo} avatarSize="xs" renderAvatarLink={renderOrganizationLink} />
+          <TitledAvatar title={organization.name} titleSize={12} avatar={organization.logo} avatarSize="xs" renderAvatarLink={renderOrganizationLink} />
         )}
       </VerticalContentContainer>
     </VerticalCardContainer>
