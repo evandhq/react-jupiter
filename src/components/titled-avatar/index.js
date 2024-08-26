@@ -4,13 +4,13 @@ import React, { type Node } from 'react';
 import GlobalStyle from '../globalStyle';
 import Avatar from '../avatar';
 import {
-  Container, Title, SmallTitle,
+  Container, SmallTitle,
 } from './index.style';
 
 type Props = {
   title: string,
   avatar: string,
-  renderAvatarLink?: * => Node,
+  renderAvatarLink?: * => Node | boolean,
   avatarSize?: 'sm' | 'md',
   titleSize?: 10 | 12,
 };
@@ -18,7 +18,7 @@ type Props = {
 const TitledAvatar = ({
   title,
   avatar,
-  renderAvatarLink = undefined,
+  renderAvatarLink = () => false,
   avatarSize = 'md',
   titleSize = 12,
 }: Props) => {

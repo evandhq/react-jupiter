@@ -24,24 +24,28 @@ const Buttons = (props: Props) => {
     <>
       <Responsive option={{ greaterThan: '768px' }}>
         <LTRContainer>
-          <StyledButton
+          <Button
             styleType="secondary"
             htmlType="button"
             mainColor="blue"
+            width="100px"
             size="sm"
             onClick={onClickConnectUs}
           >
             تماس
-          </StyledButton>
-          <StyledButton
+          </Button>
+          <Button
             className="follow-button"
             styleType="primary"
+            mainColor="blue"
             htmlType="button"
             size="sm"
+            width="100px"
             onClick={onClickFollowMe}
+            style={{ marginLeft: '12px' }}
           >
             {isFollowed ? 'دنبال میکنید' : 'دنبال کنید'}
-          </StyledButton>
+          </Button>
         </LTRContainer>
       </Responsive>
 

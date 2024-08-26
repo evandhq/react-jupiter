@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import CardTemplate from '../card-template';
 import Button from '../../button';
 import defaultTheme from '../../themes';
-import Avatar from '../../avatar';
 
 export const Container = styled(CardTemplate)`
   padding: 16px;
@@ -16,9 +15,9 @@ export const LTRContainer = styled.div`
 export const StyledButton = styled(Button)`
   margin: 4px 8px;
   direction: rtl;
+  min-width: 120px;
 
   &.follow-button {
-    min-width: 120px;
   }
 `;
 

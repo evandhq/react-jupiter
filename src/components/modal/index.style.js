@@ -4,7 +4,7 @@ import { isMobile } from '../utils/detectMobile';
 export const StyledIcon = styled.span`
   cursor: pointer;
   position: absolute;
-  left: 0;
+  right: 0;
   top: 8px;
   z-index: 999;
 `;
