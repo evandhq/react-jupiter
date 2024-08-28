@@ -72,9 +72,11 @@ const OrgnizerCard = (props: Props) => {
                   color="yellow"
                   stickyRight
                 />
-                {partnership === 'partner' ? 'همیار' : 'همکار'}
-                {' '}
-                ایوند
+                <span>
+                  {partnership === 'partner' ? 'همیار' : 'همکار'}
+                  {' '}
+                  ایوند
+                </span>
               </PartnershipBox>
             )}
             {description && (

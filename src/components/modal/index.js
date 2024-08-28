@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 import GlobalStyle from '../globalStyle';
 import { StyledIcon, StyledWrapper } from './index.style';
 import Icon from '../icon';
-import theme from './theme';
 
 type Props = {
   children: * => Node,

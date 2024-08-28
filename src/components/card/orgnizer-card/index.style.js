@@ -8,7 +8,6 @@ export const Container = styled(CardTemplate)`
 `;
 
 export const LTRContainer = styled.div`
-  direction: ltr;
   display: flex;
 `;
 
@@ -45,8 +44,10 @@ export const ResponsiveFlex = styled.div`
   justify-content: space-between;
 `;
 
-export const PartnershipBox = styled.span`
-  display: block;
+export const PartnershipBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgba(255, 199, 39, 0.1);
   border-radius: 5px;
   color: #FFD324;

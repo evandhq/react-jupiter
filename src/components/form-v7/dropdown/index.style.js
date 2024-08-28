@@ -10,7 +10,7 @@ export const SelectButton = styled.div`
     height: 7px;
     position: absolute;
     left: 13px;
-    top: 11px;
+    top: 9px;
     border: solid ${({ disabled, theme }) => (disabled ? theme.disabled.color : theme.borderColor.normal)};
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
