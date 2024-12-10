@@ -52,6 +52,8 @@ const OrgnizerCard = (props: Props) => {
               size="md"
               sizeMobile="lg"
               round
+              width={64}
+              height={64}
             />)}
           </Display>
           <div className="mr">

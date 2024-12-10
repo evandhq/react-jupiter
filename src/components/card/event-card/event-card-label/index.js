@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImageLabel from './index.style';
 
-const adsLabelUrl = 'https://evand-storage.oss-eu-central-1.aliyuncs.com/assets/images/other/ads-label.svg';
+const adsLabelUrl = 'https://static.evand.net/assets/images/other/ads-label.svg';
 // const adsLabelUrl = require('../../../../docs/assets/ads-label.svg');
 
-const finishedLabelUrl = 'https://evand-storage.oss-eu-central-1.aliyuncs.com/assets/images/other/finished-text-label.svg';
+const finishedLabelUrl = 'https://static.evand.net/assets/images/other/finished-text-label.svg';
 
 const EventCardLabel = ({ type }) => {
   switch (type) {

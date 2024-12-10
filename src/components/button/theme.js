@@ -10,19 +10,19 @@ const theme = {
     },
     md: {
       padding: '4px 32px',
-      font: 14,
+      font: 16,
       minWidth: 128,
       height: 48,
     },
     sm: {
       padding: '2px 16px',
-      font: 10,
+      font: 13,
       minWidth: 80,
       height: 36,
     },
     xs: {
       padding: '2px 8px',
-      font: 8,
+      font: 10,
       minWidth: 64,
       height: 32,
     },

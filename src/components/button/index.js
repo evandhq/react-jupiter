@@ -79,7 +79,7 @@ const Button = ({
             <Text
               size={theme.size[size].font}
               color={fontColor}
-              bold
+              fontWeight={600}
             >
               {isLoading ? 'صبر کنید...' : children}
             </Text>

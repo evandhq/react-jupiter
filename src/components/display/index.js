@@ -27,6 +27,7 @@ Display.propTypes = {
   ]).isRequired,
   display: PropTypes.string,
   width: PropTypes.string,
+  widthMobile: PropTypes.string,
   justifyContent: PropTypes.string,
   justifyContentMobile: PropTypes.string,
   alignItems: PropTypes.string,

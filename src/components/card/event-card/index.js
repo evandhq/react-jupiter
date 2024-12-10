@@ -25,7 +25,7 @@ import {
 } from './index.style';
 import Icon from '../../icon';
 
-const finishedClockLabelUrl = 'https://evand-storage.oss-eu-central-1.aliyuncs.com/assets/images/other/finished-clock-label.svg';
+const finishedClockLabelUrl = 'https://static.evand.net/assets/images/other/finished-clock-label.svg';
 const defaultCoverUrl = 'https://static.evand.net/assets/images/defaults/event-cover.jpg';
 const EventCard = ({
   title,

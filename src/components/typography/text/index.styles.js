@@ -36,7 +36,7 @@ export const String = styled.span`
   ${({ underline }) => (underline ? 'text-decoration: underline;' : '')}
   ${({ lineThrough }) => (lineThrough ? 'text-decoration: line-through;' : '')}
   color: ${({ theme, spanColor }) => getColorFromName(theme, spanColor)};
-  ${({ bold }) => (bold ? 'font-weight: bold;' : '')}
+  font-weight: ${({ bold, fontWeight }) => (bold ? 'bold' : fontWeight)};
   ${({ theme, marked }) => (marked ? `background-color: ${theme.colors.blue200};` : '')}
   ${({ theme, isLabel }) => (isLabel
     ? `background-color: ${theme.colors.gray400}; padding: 2px 8px; border-radius: 2px;`
