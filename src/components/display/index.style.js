@@ -26,6 +26,12 @@ export const DisplayStyle = styled.div`
     ? `width: ${width};`
     : ''
   )}
+  ${({ widthMobile }) => (widthMobile
+    ? `@media only screen and (max-width: ${defaultTheme.breakpoints.sm}px) {
+        width: ${widthMobile};
+      }`
+    : ''
+  )}
   ${({ justifyContent }) => (justifyContent
     ? `justify-content: ${justifyContent};`
     : ''

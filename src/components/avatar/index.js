@@ -5,7 +5,7 @@ import GlobalStyle from '../globalStyle';
 import Image from './index.styles';
 import avatarTheme from './theme';
 
-const defaultImageUrl = 'https://evand-storage.oss-eu-central-1.aliyuncs.com/assets/images/defaults/avatar.svg';
+const defaultImageUrl = 'https://static.evand.net/assets/images/defaults/avatar.svg';
 
 const Avatar = ({
   alt = 'آواتار',
