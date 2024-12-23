@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
@@ -32,83 +32,100 @@ type Props = {
   readOnly?: boolean,
 };
 
-const TextInput = ({
-  type = 'text',
-  label = null,
-  htmlElementName,
-  id = null,
-  placeholder = null,
-  disabled = false,
-  description = null,
-  required = false,
-  number = null,
-  rtl = true,
-  onFocus = () => {},
-  readOnly = false,
-  register,
-  control,
-}: Props) => {
-  const [showPassword, setShowPassword] = useState(false);
+type State = {
+  showPassword: boolean,
+};
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
-  };
-
-  function handleFocus(e) {
-    e.target.setSelectionRange(0, 0);
+class TextInput extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      showPassword: false,
+    };
   }
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Fieldset>
-        <GlobalStyle />
-        <Label
-          htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`}
-          label={label}
-          number={number}
-          required={required}
-        />
-        {description && (
-          <DescriptionContainer size={10} color="gray" data-test="text-input-description">
-            {description}
-          </DescriptionContainer>
-        )}
-        <Controller
-          name={htmlElementName}
-          control={control}
-          rules={{ required: required ? 'این فیلد اجباری است' : false }}
-          render={({ field: { value }, fieldState }) => (
-            <>
-              {type === 'password' && (
-                <PasswordIcon
-                  name={showPassword ? 'visibility-off' : 'visibility'}
-                  color="gray"
-                  onClick={togglePasswordVisibility}
-                  style={{ cursor: 'pointer' }}
-                />
-              )}
-              <Input
-                id={id || `${type}-${htmlElementName.split(' ').join('')}`}
-                name={htmlElementName}
-                type={showPassword ? 'text' : type}
-                placeholder={placeholder}
-                defaultValue={value}
-                rtl={rtl}
-                {...register(htmlElementName, {
-                  onFocus: handleFocus,
-                  disabled,
-                  onChange: (e) => fixNumbers(e),
-                })}
-                onFocus={onFocus}
-                readOnly={readOnly}
-              />
-              <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
-            </>
+  togglePasswordVisibility = () => {
+    this.setState((prevState) => ({ showPassword: !prevState.showPassword }));
+  };
+
+  handleFocus = (e) => {
+    e.target.setSelectionRange(0, 0);
+  };
+
+  render() {
+    const {
+      type = 'text',
+      label = null,
+      htmlElementName,
+      id = null,
+      placeholder = null,
+      disabled = false,
+      description = null,
+      required = false,
+      number = null,
+      rtl = true,
+      onFocus = () => {},
+      readOnly = false,
+      register,
+      control,
+    } = this.props;
+
+    const { showPassword } = this.state;
+
+    return (
+      <ThemeProvider theme={theme}>
+        <Fieldset>
+          <GlobalStyle />
+          <Label
+            htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`}
+            label={label}
+            number={number}
+            required={required}
+          />
+          {description && (
+            <DescriptionContainer size={10} color="gray" data-test="text-input-description">
+              {description}
+            </DescriptionContainer>
           )}
-        />
-      </Fieldset>
-    </ThemeProvider>
-  );
-};
+          <Controller
+            name={htmlElementName}
+            control={control}
+            rules={{ required: required ? 'این فیلد اجباری است' : false }}
+            render={({ field: { value }, fieldState }) => (
+              <div style={{ position: 'relative' }}>
+                {type === 'password' && (
+                  <PasswordIcon
+                    name={showPassword ? 'visibility-off' : 'visibility'}
+                    color="gray"
+                    onClick={this.togglePasswordVisibility}
+                    style={{
+                      cursor: 'pointer', position: 'absolute', top: '50%', left: '10px', transform: 'translateY(-50%)',
+                    }}
+                  />
+                )}
+                <Input
+                  id={id || `${type}-${htmlElementName.split(' ').join('')}`}
+                  name={htmlElementName}
+                  type={showPassword ? 'text' : type}
+                  placeholder={placeholder}
+                  defaultValue={value}
+                  rtl={rtl}
+                  {...register(htmlElementName, {
+                    onFocus: this.handleFocus,
+                    disabled,
+                    onChange: (e) => fixNumbers(e),
+                  })}
+                  onFocus={onFocus}
+                  readOnly={readOnly}
+                />
+                <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
+              </div>
+            )}
+          />
+        </Fieldset>
+      </ThemeProvider>
+    );
+  }
+}
 
 export default TextInput;
