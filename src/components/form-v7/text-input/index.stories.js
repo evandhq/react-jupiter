@@ -52,5 +52,26 @@ storiesOf('Form-V7/Inputs', module)
       />
     );
   })
+  .add('Password input', () => {
+    const {
+      register,
+      control,
+    } = useForm();
+    return (
+      <TextInput
+        htmlElementName="text-name-03"
+        required
+        label={text('optional label', 'این لیبل است')}
+        number={23}
+        register={register}
+        control={control}
+        placeholder={text('optional placeholder', 'متن پیشفرض')}
+        disabled={boolean('disabled(default : false)', false)}
+        description={text('optional description', 'توضیحات اضافه')}
+        errorMessage={text('optional error msg', 'ارور زیبا')}
+        type="password"
+      />
+    );
+  })
   .addDecorator(withInfo)
   .addDecorator(withKnobs);

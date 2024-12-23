@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
@@ -30,7 +30,7 @@ type Props = {
   rtl?: boolean,
   onFocus?: (e: FocusEvent) => void,
   readOnly?: boolean,
-}
+};
 
 const TextInput = ({
   type = 'text',
@@ -48,6 +48,12 @@ const TextInput = ({
   register,
   control,
 }: Props) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   function handleFocus(e) {
     e.target.setSelectionRange(0, 0);
   }
@@ -56,11 +62,16 @@ const TextInput = ({
     <ThemeProvider theme={theme}>
       <Fieldset>
         <GlobalStyle />
-        <Label htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`} label={label} number={number} required={required} />
+        <Label
+          htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`}
+          label={label}
+          number={number}
+          required={required}
+        />
         {description && (
-        <DescriptionContainer size={10} color="gray" data-test="text-input-description">
-          {description}
-        </DescriptionContainer>
+          <DescriptionContainer size={10} color="gray" data-test="text-input-description">
+            {description}
+          </DescriptionContainer>
         )}
         <Controller
           name={htmlElementName}
@@ -70,14 +81,16 @@ const TextInput = ({
             <>
               {type === 'password' && (
                 <PasswordIcon
-                  name="visibility"
+                  name={showPassword ? 'visibility-off' : 'visibility'}
                   color="gray"
+                  onClick={togglePasswordVisibility}
+                  style={{ cursor: 'pointer' }}
                 />
               )}
               <Input
                 id={id || `${type}-${htmlElementName.split(' ').join('')}`}
                 name={htmlElementName}
-                type={type === 'text' ? 'text' : 'password'}
+                type={showPassword ? 'text' : type}
                 placeholder={placeholder}
                 defaultValue={value}
                 rtl={rtl}
