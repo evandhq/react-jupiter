@@ -9,12 +9,12 @@ const theme = {
   },
   disabled: {
     background: defaultTheme.colors.gray200,
-    color: defaultTheme.colors.gray400,
+    color: defaultTheme.colors.gray800,
   },
   colors: {
     red: defaultTheme.colors.red600,
-    blue: defaultTheme.colors.blue600
-  }
+    blue: defaultTheme.colors.blue600,
+  },
 };
 
 export default theme;

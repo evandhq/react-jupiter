@@ -36,9 +36,9 @@ export const Input = styled.input`
   }
 
   &:checked {
-    border: 5px solid ${({ disabled, theme }) => (disabled ? theme.disabled.background : 'white')};
-    width: 8px;
-    height: 8px;
+    border: 1px solid ${({ theme }) => (theme.borderColor.normal)};
+    width: 16px;
+    height: 16px;
     background: ${({ disabled, theme }) => (disabled ? theme.disabled.color : theme.borderColor.focus)};
 
     &:after {
