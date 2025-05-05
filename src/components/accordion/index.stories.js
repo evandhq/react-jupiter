@@ -1,6 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import Accordion from '.';
 
 const items = [
@@ -39,9 +37,46 @@ const items = [
         body: <div>
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
             </div>,
-    }
-]
+    },
+];
 
-storiesOf('Accordion', module)
-.add('accordions example', () => <Accordion items={items} />)
-.addDecorator(withInfo);
+export default {
+  title: 'Components/Accordion',
+  component: Accordion,
+  argTypes: {
+    items: {
+      control: 'object',
+      description: 'Array of accordion items',
+    },
+  },
+};
+
+const Template = (args) => <Accordion {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  items,
+};
+
+export const WithCustomStyling = Template.bind({});
+WithCustomStyling.args = {
+  items: [
+    { title: 'Styled Item 1', content: 'Styled content 1' },
+    { title: 'Styled Item 2', content: 'Styled content 2' },
+  ],
+  style: { border: '1px solid blue', borderRadius: '8px' },
+};
+
+export const SingleItemExpanded = Template.bind({});
+SingleItemExpanded.args = {
+  items: [
+    { title: 'Expanded Item', content: 'This item starts expanded', expanded: true },
+  ],
+};
+
+export const WithIcons = Template.bind({});
+WithIcons.args = {
+  items: [
+    { title: 'Item with Icon', content: 'Content for item with icon', icon: 'info' },
+  ],
+};

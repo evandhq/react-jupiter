@@ -1,70 +1,110 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import CardTemplate from './index';
-import '../../storybook.css';
 
-storiesOf('CardTemplate', module)
-  .add('default level', () => (
-    <CardTemplate>
-      <div style={{ height: '100px' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .add('level 2', () => (
-    <CardTemplate level={2} style={{ marginTop: '50px' }}>
-      <div style={{ height: '100px' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .add('level 3', () => (
-    <CardTemplate level={3} style={{ marginTop: '50px' }}>
-      <div style={{ height: '100px' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .add('level 4', () => (
-    <CardTemplate level={4} style={{ marginTop: '50px' }}>
-      <div style={{ height: '100px' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .add('level 5', () => (
-    <CardTemplate level={5} style={{ marginTop: '50px' }}>
-      <div style={{ height: '100px' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .add('hover level 1 to 4', () => (
-    <CardTemplate level={1} hoverToLevel={4} style={{ marginTop: '50px' }}>
-      <div style={{ height: '100px' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .add('with link', () => (
-    <CardTemplate renderLink={(el) => <a href="http://google.com">{el}</a>}>
-      <div style={{ height: '100px' }}>with link to google</div>
-    </CardTemplate>
-  ))
-  .add('vertical direction', () => (
-    <CardTemplate direction="vertical">
+export default {
+  title: 'Components/Card/CardTemplate',
+  component: CardTemplate,
+  argTypes: {
+    level: {
+      control: 'number',
+      description: 'The level of the card (1-5)',
+    },
+    hoverToLevel: {
+      control: 'number',
+      description: 'The level to hover to',
+    },
+    direction: {
+      control: 'select',
+      options: ['vertical', 'horizontal'],
+      description: 'The direction of the card content',
+    },
+    background: {
+      control: 'text',
+      description: 'The background image URL',
+    },
+    renderLink: {
+      control: 'function',
+      description: 'Function to render a link wrapper',
+    },
+    style: {
+      control: 'object',
+      description: 'Additional styles to apply',
+    },
+    children: {
+      control: 'text',
+      description: 'The content of the card',
+    },
+  },
+};
+
+const Template = (args) => (
+  <CardTemplate {...args}>
+    <div style={{ height: '100px' }}>Hello card template.</div>
+  </CardTemplate>
+);
+
+export const Default = Template.bind({});
+
+export const Level2 = Template.bind({});
+Level2.args = {
+  level: 2,
+  style: { marginTop: '50px' },
+};
+
+export const Level3 = Template.bind({});
+Level3.args = {
+  level: 3,
+  style: { marginTop: '50px' },
+};
+
+export const Level4 = Template.bind({});
+Level4.args = {
+  level: 4,
+  style: { marginTop: '50px' },
+};
+
+export const Level5 = Template.bind({});
+Level5.args = {
+  level: 5,
+  style: { marginTop: '50px' },
+};
+
+export const HoverLevel1To4 = Template.bind({});
+HoverLevel1To4.args = {
+  level: 1,
+  hoverToLevel: 4,
+  style: { marginTop: '50px' },
+};
+
+export const WithLink = Template.bind({});
+WithLink.args = {
+  renderLink: (el) => <a href="http://google.com">{el}</a>,
+  children: <div style={{ height: '100px' }}>with link to google</div>,
+};
+
+export const VerticalDirection = Template.bind({});
+VerticalDirection.args = {
+  direction: 'vertical',
+  children: (
+    <>
       <div style={{ height: '100px', backgroundColor: 'lightgray' }}>Hello card template.</div>
       <div style={{ height: '100px', backgroundColor: 'oldlace' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .add('horizontal direction', () => (
-    <CardTemplate direction="horizontal">
+    </>
+  ),
+};
+
+export const HorizontalDirection = Template.bind({});
+HorizontalDirection.args = {
+  direction: 'horizontal',
+  children: (
+    <>
       <div style={{ height: '100px', backgroundColor: 'lightgray' }}>Hello card template.</div>
       <div style={{ height: '100px', backgroundColor: 'oldlace' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .add('with background', () => (
-    <CardTemplate background="http://static.simpledesktops.com/uploads/desktops/2019/11/08/Jupiter.png">
-      <div style={{ height: '100px' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .add('default level', () => (
-    <CardTemplate>
-      <div style={{ height: '100px' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .add('default level', () => (
-    <CardTemplate>
-      <div style={{ height: '100px' }}>Hello card template.</div>
-    </CardTemplate>
-  ))
-  .addDecorator(withInfo);
+    </>
+  ),
+};
+
+export const WithBackground = Template.bind({});
+WithBackground.args = {
+  background: 'http://static.simpledesktops.com/uploads/desktops/2019/11/08/Jupiter.png',
+};

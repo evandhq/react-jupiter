@@ -1,13 +1,33 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import ProgressBar from '.';
+import ProgressBar from './index';
 
-const labels = ['همیار', 'همکار'];
-const points = {
-  partner: 50,
-  colleague: 200,
+export default {
+  title: 'Components/ProgressBar',
+  component: ProgressBar,
+  argTypes: {
+    width: {
+      control: 'number',
+      description: 'Current progress value',
+    },
+    labels: {
+      control: 'array',
+      description: 'Labels for different thresholds',
+    },
+    points: {
+      control: 'object',
+      description: 'Object containing partner and colleague threshold points',
+    },
+  },
 };
-storiesOf('Progress Bar', module)
-  .add('Progress Bar', () => <ProgressBar width="30" labels={labels} points={points} />)
-  .addDecorator(withInfo);
+
+const Template = (args) => <ProgressBar {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  width: 50,
+  labels: ['Label 1', 'Label 2'],
+  points: {
+    partner: 75,
+    colleague: 100,
+  },
+};

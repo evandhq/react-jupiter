@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { Controller } from 'react-hook-form';
+import { Controller, UseFormRegister, FieldValues } from 'react-hook-form';
 import theme from '../theme';
 import ErrorMsg from '../errorMsg';
 import { StyledSelect, SelectButton } from './index.style';

@@ -1,77 +1,96 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import {
-  withKnobs,
-  select,
-  text,
-  boolean,
-} from '@storybook/addon-knobs';
+
 import TextInput from './index';
 
-storiesOf('Form-V7/Inputs', module)
-  .add('Full option Text Input', () => {
-    const {
-      register,
-      control,
-    } = useForm();
-    return (
-      <TextInput
-        htmlElementName="text-name-02"
-        required
-        label={text('optional label', 'این لیبل است')}
-        number={23}
-        register={register}
-        control={control}
-        placeholder={text('optional placeholder', 'متن پیشفرض')}
-        disabled={boolean('disabled(default : false)', false)}
-        description={text('optional description', 'توضیحات اضافه')}
-        errorMessage={text('optional error msg', 'ارور زیبا')}
-        type={select('select type(default : text)', ['text', 'password'])}
-      />
-    );
-  })
-  .add('LTR Text Input', () => {
-    const {
-      register,
-    } = useForm();
-    return (
-      <TextInput
-        htmlElementName="text-name-02"
-        required
-        label={text('optional label', 'این لیبل است')}
-        number={23}
-        register={register}
-        placeholder={text('optional placeholder', 'متن پیشفرض')}
-        disabled={boolean('disabled(default : false)', false)}
-        description={text('optional description', 'توضیحات اضافه')}
-        errorMessage={text('optional error msg', 'ارور زیبا')}
-        type={select('select type(default : text)', ['text', 'password'])}
-        rtl={false}
-      />
-    );
-  })
-  .add('Password input', () => {
-    const {
-      register,
-      control,
-    } = useForm();
-    return (
-      <TextInput
-        htmlElementName="text-name-03"
-        required
-        label={text('optional label', 'این لیبل است')}
-        number={23}
-        register={register}
-        control={control}
-        placeholder={text('optional placeholder', 'متن پیشفرض')}
-        disabled={boolean('disabled(default : false)', false)}
-        description={text('optional description', 'توضیحات اضافه')}
-        errorMessage={text('optional error msg', 'ارور زیبا')}
-        type="password"
-      />
-    );
-  })
-  .addDecorator(withInfo)
-  .addDecorator(withKnobs);
+export default {
+  title: 'Form-V7/Text Input',
+  component: TextInput,
+  
+  argTypes: {
+    htmlElementName: {
+      control: 'text',
+      defaultValue: 'text-name-02',
+    },
+    label: {
+      control: 'text',
+      defaultValue: 'این لیبل است',
+    },
+    placeholder: {
+      control: 'text',
+      defaultValue: 'متن پیشفرض',
+    },
+    disabled: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    description: {
+      control: 'text',
+      defaultValue: 'توضیحات اضافه',
+    },
+    errorMessage: {
+      control: 'text',
+      defaultValue: 'ارور زیبا',
+    },
+    type: {
+      control: 'select',
+      options: ['text', 'password'],
+      defaultValue: 'text',
+    },
+    rtl: {
+      control: 'boolean',
+      defaultValue: true,
+    },
+    required: {
+      control: 'boolean',
+      defaultValue: true,
+    },
+    number: {
+      control: 'number',
+      defaultValue: 23,
+    },
+  },
+};
+
+const Template = (args) => {
+  const { register, control } = useForm();
+  return <TextInput {...args} register={register} control={control} />;
+};
+
+export const FullOptions = Template.bind({});
+FullOptions.args = {
+  htmlElementName: 'text-name-02',
+  required: true,
+  label: 'این لیبل است',
+  number: 23,
+  placeholder: 'متن پیشفرض',
+  disabled: false,
+  description: 'توضیحات اضافه',
+  errorMessage: 'ارور زیبا',
+  type: 'text',
+  rtl: true,
+};
+
+export const LTR = Template.bind({});
+LTR.args = {
+  ...FullOptions.args,
+  rtl: false,
+};
+
+export const Password = Template.bind({});
+Password.args = {
+  ...FullOptions.args,
+  type: 'password',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...FullOptions.args,
+  disabled: true,
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  ...FullOptions.args,
+  errorMessage: 'لطفا این فیلد را پر کنید',
+};

@@ -1,121 +1,130 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
+
 import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  text,
-  boolean,
-} from '@storybook/addon-knobs';
 import Select from './select';
 import SelectOption from './option';
 
-storiesOf('Form-v7/Dropdown', module)
-  .add('Minimal Select', () => {
-    const {
-      register,
-      handleSubmit,
-      control,
-      setError,
-    } = useForm();
+export default {
+  title: 'Form-v7/Dropdown',
+  component: Select,
+  
+  argTypes: {
+    htmlElementName: {
+      control: 'text',
+      defaultValue: 'استان',
+    },
+    placeholder: {
+      control: 'text',
+      defaultValue: '__استان مورد نظر خود را انتخاب کنید__',
+    },
+    defaultValue: {
+      control: 'text',
+      defaultValue: '30',
+    },
+    isDisabled: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    label: {
+      control: 'text',
+      defaultValue: 'محل برگزاری رویداد',
+    },
+    number: {
+      control: 'number',
+      defaultValue: 3,
+    },
+    errorMessage: {
+      control: 'text',
+      defaultValue: 'ارور زیبا',
+    },
+    required: {
+      control: 'boolean',
+      defaultValue: true,
+    },
+  },
+};
 
-    const onSubmit = (data) => {
-      console.log(data);
-      setError({
-        message: '\u06a9\u067e\u0686\u0627 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a .',
-        errors: { captcha: ['\u06a9\u067e\u0686\u0627 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a .'] },
-        status_code: 422,
-      });
-    };
-    const options = [
-      'question 1',
-      'question 2',
-      'question 3',
-    ];
+const Template = (args) => {
+  const { register, control } = useForm();
+  return (
+    <Select {...args} register={register} control={control}>
+      <SelectOption value="20" label="کرج" />
+      <SelectOption value="30" label="تهران" />
+      <SelectOption value="40" label="فم" />
+    </Select>
+  );
+};
 
-    return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Select
-          htmlElementName="select"
-          placeholder="یک گزینه را انتخاب کنید"
-          register={register}
-          control={control}
-          defaultValue="question 2"
-          label="select box"
-          number={1}
-          required={false}
-        >
-          {!!options && options.map((option, key) => (
-            <SelectOption key={key} value={option} label={option} />
-          ))}
-        </Select>
-      </form>
-    );
-  })
-  .add('Select with placeholder', () => {
-    const {
-      register,
-    } = useForm();
-    return (
-      <Select
-        htmlElementName={text('optional htmlElementName', 'استان')}
-        placeholder={text('optional placeholder', '__استان مورد نظر خود را انتخاب کنید__')}
-        handleChange={action('trigger what you want to do in onChange function')}
-        register={register}
-      >
-        <SelectOption value="20" label="کرج" />
-        <SelectOption value="30" label="تهران" />
-        <SelectOption value="40" label="فم" />
-      </Select>
-    );
-  })
-  .add('Full option Select(no placeholder)', () => {
-    const {
-      register,
-    } = useForm();
-    return (
-      <Select
-        htmlElementName={text('optional htmlElementName', 'استان')}
-        defaultValue={text('optional defaultValue(if its not et or set wrong get the first option)', '30')}
-        handleChange={action('trigger what you want to do in onChange function')}
-        isDisabled={boolean('disabled(default : false)', false)}
-        label={text('optional label', 'محل برگزاری رویداد')}
-        number={3}
-        errorMessage={text('optional error msg', 'ارور زیبا')}
-        register={register}
-        required
-      >
-        <SelectOption value="20" label="کرج" />
-        <SelectOption value="30" label="تهران" />
-        <SelectOption value="40" label="فم" isDisabled />
-      </Select>
-    );
-  })
-  .add('Full option SelectOption', () => {
-    const {
-      register,
-      control,
-    } = useForm();
-    return (
-      <Select
-        htmlElementName="استان"
-        defaultValue="30"
-        handleChange={action('trigger what you want to do in onChange function')}
-        isDisabled={false}
-        register={register}
-        required
-        control={control}
-      >
-        <SelectOption
-          value={text('value', '20')}
-          label={text('label', 'کرج')}
-          isDisabled={boolean('disabled(default : false)', false)}
-        />
-        <SelectOption value="30" label="تهران" />
-        <SelectOption value="40" label="فم" />
-      </Select>
-    );
-  })
-  .addDecorator(withInfo)
-  .addDecorator(withKnobs);
+export const Minimal = Template.bind({});
+Minimal.args = {
+  htmlElementName: 'select',
+  placeholder: 'یک گزینه را انتخاب کنید',
+  defaultValue: 'question 2',
+  label: 'select box',
+  number: 1,
+  required: false,
+};
+
+export const WithPlaceholder = Template.bind({});
+WithPlaceholder.args = {
+  htmlElementName: 'استان',
+  placeholder: '__استان مورد نظر خود را انتخاب کنید__',
+  handleChange: action('trigger what you want to do in onChange function'),
+};
+
+export const FullOptions = Template.bind({});
+FullOptions.args = {
+  htmlElementName: 'استان',
+  defaultValue: '30',
+  handleChange: action('trigger what you want to do in onChange function'),
+  isDisabled: false,
+  label: 'محل برگزاری رویداد',
+  number: 3,
+  errorMessage: 'ارور زیبا',
+  required: true,
+};
+
+export const WithPlaceholderAndOptions = Template.bind({});
+WithPlaceholderAndOptions.args = {
+  ...FullOptions.args,
+  placeholder: '__استان مورد نظر خود را انتخاب کنید__',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...FullOptions.args,
+  isDisabled: true,
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  ...FullOptions.args,
+  errorMessage: 'لطفا یک گزینه را انتخاب کنید',
+};
+
+const SelectOptionTemplate = (args) => {
+  const { register, control } = useForm();
+  return (
+    <Select
+      htmlElementName="استان"
+      defaultValue="30"
+      handleChange={action('trigger what you want to do in onChange function')}
+      isDisabled={false}
+      register={register}
+      required
+      control={control}
+    >
+      <SelectOption {...args} />
+      <SelectOption value="30" label="تهران" />
+      <SelectOption value="40" label="فم" />
+    </Select>
+  );
+};
+
+export const CustomOption = SelectOptionTemplate.bind({});
+CustomOption.args = {
+  value: '20',
+  label: 'کرج',
+  isDisabled: false,
+};

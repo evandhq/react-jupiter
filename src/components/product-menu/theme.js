@@ -6,7 +6,11 @@ const theme = {
   itemMinWidth: '120px',
   animation: defaultTheme.animation,
   shadow: defaultTheme.shadows[1],
-  breakpoints: defaultTheme.breakpoints
+  breakpoints: defaultTheme.breakpoints,
+  text: {
+    color: '#333',
+    fontWeight: 'normal',
+  },
 };
 
 export default theme;

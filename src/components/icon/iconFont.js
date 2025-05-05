@@ -1,6 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
+import IconMoonWoff from '../../docs/assets/fonts/icomoon.woff';
+
 
 const FontStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Jupiterico';
+    src: url(${IconMoonWoff}) format('woff'); /* Updated path based on staticDirs */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block; /* Helps prevent invisible text during font load */
+  }
+
   i.jupiter-icon {
     /* use !important to prevent issues with browser extensions that change fonts */
     display: inline-block;

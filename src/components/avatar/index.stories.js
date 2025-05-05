@@ -1,13 +1,59 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import Avatar from './index';
 
-storiesOf('Avatar', module)
-  .add('default avatar', () => <Avatar src="https://i.pravatar.cc/150?img=56" />)
-  .add('small avatar', () => <Avatar size="sm" src="https://i.pravatar.cc/150?img=68" />)
-  .add('medium avatar', () => <Avatar size="md" src="https://i.pravatar.cc/150?img=69" />)
-  .add('large avatar', () => <Avatar size="lg" src="https://i.pravatar.cc/150?img=66" />)
-  .add('not found avatar', () => <Avatar src="https://i.pravatarsdsf.cc/150?img=66" />)
-  .add('undefined avatar', () => <Avatar />)
-  .addDecorator(withInfo);
+export default {
+  title: 'Components/Avatar',
+  component: Avatar,
+  argTypes: {
+    avatar: {
+      control: 'text',
+      description: 'URL of the avatar image',
+    },
+    size: {
+      control: 'text',
+      description: 'Size of the avatar',
+    },
+    showTooltip: {
+      control: 'boolean',
+      description: 'Whether to show a tooltip on hover',
+    },
+    tooltipText: {
+      control: 'text',
+      description: 'Text to display in the tooltip',
+    },
+  },
+};
+
+const Template = (args) => <Avatar {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  avatar: 'https://via.placeholder.com/40',
+  size: "md",
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  avatar: 'https://via.placeholder.com/40',
+  size: "sm",
+};
+
+export const Medium = Template.bind({});
+Medium.args = {
+  avatar: 'https://via.placeholder.com/60',
+  size: "md",
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  avatar: 'https://via.placeholder.com/80',
+  size: "lg",
+};
+
+export const WithTooltip = Template.bind({});
+WithTooltip.args = {
+  avatar: 'https://via.placeholder.com/40',
+  size: "md",
+  showTooltip: true,
+  tooltipText: 'User Avatar',
+};

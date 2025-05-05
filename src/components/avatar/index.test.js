@@ -1,13 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import findByTestAtrr from '../utils/test';
-
+import { render, screen } from '../../test-utils';
 import Avatar from './index';
 
-describe('avatar', () => {
-  it('render avatar component', () => {
-    const component = shallow(<Avatar />);
-    const wrapper = findByTestAtrr(component, 'avatar');
-    expect(wrapper.length).toBe(1);
+describe('Avatar', () => {
+  it('renders avatar component', () => {
+    render(<Avatar data-testid="avatar" />);
+    expect(screen.getByTestId('avatar')).toBeInTheDocument();
   });
 });

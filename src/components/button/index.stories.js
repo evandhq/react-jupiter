@@ -1,66 +1,304 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import {
-  withKnobs,
-  select,
-  text,
-  boolean,
-} from '@storybook/addon-knobs';
 import Button from './index';
-import '../storybook.css';
+// import '../storybook.css';
 import { Text } from '../typography';
 
-storiesOf('Button', module)
-  .add('default button', () => (
-    <Button
-      size={select('size', ['sm', 'md', 'lg'])}
-      icon={select('icon(these icon-name and all other available)', ['warning', 'watch-later', 'notification-important', 'help'])}
-      wide={boolean('wide', true)}
-      disabled={boolean('disabled', true)}
-      styleType={select('styleType', ['primary', 'secondary', 'tertiary'])}
-      mainColor={select('mainColor', ['red', 'blue', 'green', 'yellow', 'darkBlue'])}
-      marginRight={14}
-    >
-      {text('children text', 'متن زیبای داخل دکمه')}
-    </Button>
-  ))
-  .add('button with icon', () => <Button icon="watch-later">دکمه‌ با آیکون</Button>)
-  .add('button with specific width', () => <Button icon="watch-later" width="184px">دکمه‌ با آیکون</Button>)
-  .add('wide button', () => <Button wide>دکمه‌ی تمام عرض</Button>)
-  .add('extra small button', () => <Button size="xs">دکمه‌ی خیلی کوچک</Button>)
-  .add('small button', () => <Button size="sm">دکمه‌ی کوچک</Button>)
-  .add('medium button', () => <Button size="md">دکمه‌ی متوسط</Button>)
-  .add('large button', () => <Button size="lg">دکمه‌ی بزرگ</Button>)
-  .add('extra small button with icon', () => <Button size="xs" icon="watch-later">دکمه‌ی خیلی کوچک با آیکون</Button>)
-  .add('small button with icon', () => <Button size="sm" icon="watch-later">دکمه‌ی کوچک با آیکون</Button>)
-  .add('medium button with icon', () => <Button size="md" icon="watch-later">دکمه‌ی متوسط با آیکون</Button>)
-  .add('large button with icon', () => <Button size="lg" icon="watch-later">دکمه‌ی بزرگ با آیکون</Button>)
-  .add('default primary', () => <Button styleType="primary">دکمه‌ی دیفالت اولیه</Button>)
-  .add('default secondary', () => <Button styleType="secondary">دکمه‌ی دیفالت ثانویه</Button>)
-  .add('default tertiary', () => <Button styleType="tertiary">دکمه‌ی دیفالت ثالثیه</Button>)
-  .add('primary disabled', () => <Button disabled>دکمه‌ی دیفالت غیر فعال</Button>)
-  .add('secondary disabled', () => <Button styleType="secondary" disabled>دکمه‌ی دیفالت ثانویه غیر فعال</Button>)
-  .add('tertiary disabled', () => <Button styleType="tertiary" disabled>دکمه‌ی دیفالت ثالثیه غیر فعال</Button>)
-  .add('red primary', () => <Button styleType="primary" mainColor="red">دکمه‌ی قرمز اولیه</Button>)
-  .add('red secondary', () => <Button styleType="secondary" mainColor="red">دکمه‌ی قرمز ثانویه</Button>)
-  .add('red primary disabled', () => <Button mainColor="red" disabled>دکمه‌ی قرمز اولیه غیر فعال</Button>)
-  .add('red secondary disabled', () => <Button styleType="secondary" mainColor="red" disabled>دکمه‌ی قرمز ثانویه غیر فعال</Button>)
-  .add('blue primary', () => <Button styleType="primary" mainColor="blue">دکمه‌ی آبی اولیه</Button>)
-  .add('blue secondary', () => <Button styleType="secondary" mainColor="blue">دکمه‌ی آبی ثانویه</Button>)
-  .add('blue primary disabled', () => <Button mainColor="blue" disabled>دکمه‌ی آبی اولیه غیر فعال</Button>)
-  .add('blue secondary disabled', () => <Button styleType="secondary" mainColor="blue" disabled>دکمه‌ی آبیه ثانویه غیر فعال</Button>)
-  .add('gray primary', () => <Button styleType="primary" mainColor="gray" icon="watch-later">دکمه‌ی خاکستری اولیه</Button>)
-  .add('green primary', () => <Button styleType="primary" mainColor="green">دکمه‌ی سبز اولیه</Button>)
-  .add('green secondary', () => <Button styleType="secondary" mainColor="green">دکمه‌ی سبز ثانویه</Button>)
-  .add('green primary disabled', () => <Button mainColor="green" disabled>دکمه‌ی سبز اولیه غیر فعال</Button>)
-  .add('green secondary disabled', () => <Button styleType="secondary" mainColor="green" disabled>دکمه‌ی سبز ثانویه غیر فعال</Button>)
-  .add('yellow primary', () => <Button styleType="primary" mainColor="yellow">دکمه‌ی زرد اولیه</Button>)
-  .add('yellow secondary', () => <Button styleType="secondary" mainColor="yellow">دکمه‌ی زرد ثانویه</Button>)
-  .add('yellow primary disabled', () => <Button mainColor="yellow" disabled>دکمه‌ی زرد اولیه غیر فعال</Button>)
-  .add('yellow secondary disabled', () => <Button styleType="secondary" mainColor="yellow" disabled>دکمه‌ی زرد ثانویه غیر فعال</Button>)
-  .add('link button', () => <Button renderLink={(element) => <a href="http://google.com">{element}</a>}>لینک به گوگل</Button>)
-  .add('external link button', () => <Button linkTo="http://google.com">لینک به گوگل</Button>)
-  .add('button with react node children', () => <Button size="md"><Text color="white">این یک متن  تستی است</Text></Button>)
-  .addDecorator(withInfo)
-  .addDecorator(withKnobs);
+export default {
+  title: 'Button',
+  component: Button,
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg', 'xs'],
+      defaultValue: 'md',
+    },
+    icon: {
+      control: 'select',
+      options: ['warning', 'arrow-down-on-square', 'bell-alert', 'help'],
+      defaultValue: undefined,
+    },
+    wide: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    disabled: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    styleType: {
+      control: 'select',
+      options: ['primary', 'secondary', 'tertiary'],
+      defaultValue: 'primary',
+    },
+    mainColor: {
+      control: 'select',
+      options: ['red', 'blue', 'green', 'yellow', 'darkBlue', 'gray'],
+      defaultValue: 'blue',
+    },
+    children: {
+      control: 'text',
+      defaultValue: 'متن زیبای داخل دکمه',
+    },
+  },
+};
+
+const Template = (args) => <Button {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  size: 'md',
+  styleType: 'primary',
+  mainColor: 'blue',
+  children: 'متن زیبای داخل دکمه',
+};
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  icon: 'watch-later',
+  children: 'دکمه‌ با آیکون',
+};
+
+export const WithSpecificWidth = Template.bind({});
+WithSpecificWidth.args = {
+  icon: 'watch-later',
+  width: '184px',
+  children: 'دکمه‌ با آیکون',
+};
+
+export const WideButton = Template.bind({});
+WideButton.args = {
+  wide: true,
+  children: 'دکمه‌ی تمام عرض',
+};
+
+export const ExtraSmall = Template.bind({});
+ExtraSmall.args = {
+  size: 'xs',
+  children: 'دکمه‌ی خیلی کوچک',
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  size: 'sm',
+  children: 'دکمه‌ی کوچک',
+};
+
+export const Medium = Template.bind({});
+Medium.args = {
+  size: 'md',
+  children: 'دکمه‌ی متوسط',
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  size: 'lg',
+  children: 'دکمه‌ی بزرگ',
+};
+
+export const ExtraSmallWithIcon = Template.bind({});
+ExtraSmallWithIcon.args = {
+  size: 'xs',
+  icon: 'watch-later',
+  children: 'دکمه‌ی خیلی کوچک با آیکون',
+};
+
+export const SmallWithIcon = Template.bind({});
+SmallWithIcon.args = {
+  size: 'sm',
+  icon: 'watch-later',
+  children: 'دکمه‌ی کوچک با آیکون',
+};
+
+export const MediumWithIcon = Template.bind({});
+MediumWithIcon.args = {
+  size: 'md',
+  icon: 'watch-later',
+  children: 'دکمه‌ی متوسط با آیکون',
+};
+
+export const LargeWithIcon = Template.bind({});
+LargeWithIcon.args = {
+  size: 'lg',
+  icon: 'watch-later',
+  children: 'دکمه‌ی بزرگ با آیکون',
+};
+
+export const Primary = Template.bind({});
+Primary.args = {
+  styleType: 'primary',
+  children: 'دکمه‌ی دیفالت اولیه',
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  styleType: 'secondary',
+  children: 'دکمه‌ی دیفالت ثانویه',
+};
+
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+  styleType: 'tertiary',
+  children: 'دکمه‌ی دیفالت ثالثیه',
+};
+
+export const PrimaryDisabled = Template.bind({});
+PrimaryDisabled.args = {
+  disabled: true,
+  children: 'دکمه‌ی دیفالت غیر فعال',
+};
+
+export const SecondaryDisabled = Template.bind({});
+SecondaryDisabled.args = {
+  styleType: 'secondary',
+  disabled: true,
+  children: 'دکمه‌ی دیفالت ثانویه غیر فعال',
+};
+
+export const TertiaryDisabled = Template.bind({});
+TertiaryDisabled.args = {
+  styleType: 'tertiary',
+  disabled: true,
+  children: 'دکمه‌ی دیفالت ثالثیه غیر فعال',
+};
+
+export const RedPrimary = Template.bind({});
+RedPrimary.args = {
+  styleType: 'primary',
+  mainColor: 'red',
+  children: 'دکمه‌ی قرمز اولیه',
+};
+
+export const RedSecondary = Template.bind({});
+RedSecondary.args = {
+  styleType: 'secondary',
+  mainColor: 'red',
+  children: 'دکمه‌ی قرمز ثانویه',
+};
+
+export const RedPrimaryDisabled = Template.bind({});
+RedPrimaryDisabled.args = {
+  mainColor: 'red',
+  disabled: true,
+  children: 'دکمه‌ی قرمز اولیه غیر فعال',
+};
+
+export const RedSecondaryDisabled = Template.bind({});
+RedSecondaryDisabled.args = {
+  styleType: 'secondary',
+  mainColor: 'red',
+  disabled: true,
+  children: 'دکمه‌ی قرمز ثانویه غیر فعال',
+};
+
+export const BluePrimary = Template.bind({});
+BluePrimary.args = {
+  styleType: 'primary',
+  mainColor: 'blue',
+  children: 'دکمه‌ی آبی اولیه',
+};
+
+export const BlueSecondary = Template.bind({});
+BlueSecondary.args = {
+  styleType: 'secondary',
+  mainColor: 'blue',
+  children: 'دکمه‌ی آبی ثانویه',
+};
+
+export const BluePrimaryDisabled = Template.bind({});
+BluePrimaryDisabled.args = {
+  mainColor: 'blue',
+  disabled: true,
+  children: 'دکمه‌ی آبی اولیه غیر فعال',
+};
+
+export const BlueSecondaryDisabled = Template.bind({});
+BlueSecondaryDisabled.args = {
+  styleType: 'secondary',
+  mainColor: 'blue',
+  disabled: true,
+  children: 'دکمه‌ی آبیه ثانویه غیر فعال',
+};
+
+export const GrayPrimary = Template.bind({});
+GrayPrimary.args = {
+  styleType: 'primary',
+  mainColor: 'gray',
+  icon: 'watch-later',
+  children: 'دکمه‌ی خاکستری اولیه',
+};
+
+export const GreenPrimary = Template.bind({});
+GreenPrimary.args = {
+  styleType: 'primary',
+  mainColor: 'green',
+  children: 'دکمه‌ی سبز اولیه',
+};
+
+export const GreenSecondary = Template.bind({});
+GreenSecondary.args = {
+  styleType: 'secondary',
+  mainColor: 'green',
+  children: 'دکمه‌ی سبز ثانویه',
+};
+
+export const GreenPrimaryDisabled = Template.bind({});
+GreenPrimaryDisabled.args = {
+  mainColor: 'green',
+  disabled: true,
+  children: 'دکمه‌ی سبز اولیه غیر فعال',
+};
+
+export const GreenSecondaryDisabled = Template.bind({});
+GreenSecondaryDisabled.args = {
+  styleType: 'secondary',
+  mainColor: 'green',
+  disabled: true,
+  children: 'دکمه‌ی سبز ثانویه غیر فعال',
+};
+
+export const YellowPrimary = Template.bind({});
+YellowPrimary.args = {
+  styleType: 'primary',
+  mainColor: 'yellow',
+  children: 'دکمه‌ی زرد اولیه',
+};
+
+export const YellowSecondary = Template.bind({});
+YellowSecondary.args = {
+  styleType: 'secondary',
+  mainColor: 'yellow',
+  children: 'دکمه‌ی زرد ثانویه',
+};
+
+export const YellowPrimaryDisabled = Template.bind({});
+YellowPrimaryDisabled.args = {
+  mainColor: 'yellow',
+  disabled: true,
+  children: 'دکمه‌ی زرد اولیه غیر فعال',
+};
+
+export const YellowSecondaryDisabled = Template.bind({});
+YellowSecondaryDisabled.args = {
+  styleType: 'secondary',
+  mainColor: 'yellow',
+  disabled: true,
+  children: 'دکمه‌ی زرد ثانویه غیر فعال',
+};
+
+export const LinkButton = Template.bind({});
+LinkButton.args = {
+  renderLink: (element) => <a href="http://google.com">{element}</a>,
+  children: 'لینک به گوگل',
+};
+
+export const ExternalLinkButton = Template.bind({});
+ExternalLinkButton.args = {
+  linkTo: 'http://google.com',
+  children: 'لینک به گوگل',
+};
+
+export const WithReactNodeChildren = Template.bind({});
+WithReactNodeChildren.args = {
+  size: 'md',
+  children: <Text color="white">این یک متن  تستی است</Text>,
+};

@@ -1,6 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import Table from './index';
 import Icon from '../icon';
 
@@ -17,6 +15,7 @@ const data = [
     firstTitle: 'سارا',
   },
 ];
+
 const columns02 = [
   {
     key: 'firstTitle',
@@ -34,6 +33,7 @@ const columns02 = [
     dataType: 'text',
   },
 ];
+
 const columns03 = [
   {
     key: 'firstTitle',
@@ -61,6 +61,7 @@ const columns03 = [
     dataType: 'node',
   },
 ];
+
 const data03 = [
   {
     key: 'firstRow',
@@ -117,14 +118,71 @@ const data03 = [
   },
 ];
 
-storiesOf('Table', module)
-  .add('minimal Table', () => (
-    <Table columns={columns} data={data} />
-  ))
-  .add('Table example 02', () => (
-    <Table columns={columns02} data={data} />
-  ))
-  .add('full option Table', () => (
-    <Table columns={columns03} data={data03} />
-  ))
-  .addDecorator(withInfo);
+export default {
+  title: 'Components/Table',
+  component: Table,
+  argTypes: {
+    columns: {
+      control: 'array',
+      description: 'Array of column definitions',
+    },
+    data: {
+      control: 'array',
+      description: 'Array of data rows',
+    },
+  },
+};
+
+const Template = (args) => <Table {...args} />;
+
+export const Minimal = Template.bind({});
+Minimal.args = {
+  columns: [
+    { id: 'name', label: 'Name' },
+    { id: 'age', label: 'Age' },
+    { id: 'city', label: 'City' },
+  ],
+  data: [
+    { id: 1, name: 'John Doe', age: 30, city: 'New York' },
+    { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' },
+    { id: 3, name: 'Bob Johnson', age: 35, city: 'Chicago' },
+  ],
+};
+
+export const WithActions = Template.bind({});
+WithActions.args = {
+  columns: [
+    { id: 'name', label: 'Name' },
+    { id: 'age', label: 'Age' },
+    { id: 'city', label: 'City' },
+    { id: 'actions', label: 'Actions' },
+  ],
+  data: [
+    { id: 1, name: 'John Doe', age: 30, city: 'New York' },
+    { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' },
+    { id: 3, name: 'Bob Johnson', age: 35, city: 'Chicago' },
+  ],
+  renderActions: (row) => (
+    <div>
+      <Icon name="edit" size="small" />
+      <Icon name="delete" size="small" />
+    </div>
+  ),
+};
+
+export const WithSorting = Template.bind({});
+WithSorting.args = {
+  columns: [
+    { id: 'name', label: 'Name', sortable: true },
+    { id: 'age', label: 'Age', sortable: true },
+    { id: 'city', label: 'City', sortable: true },
+  ],
+  data: [
+    { id: 1, name: 'John Doe', age: 30, city: 'New York' },
+    { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles' },
+    { id: 3, name: 'Bob Johnson', age: 35, city: 'Chicago' },
+  ],
+  onSort: (columnId, direction) => {
+    console.log(`Sorting ${columnId} in ${direction} direction`);
+  },
+};

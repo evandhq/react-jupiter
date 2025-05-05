@@ -1,29 +1,37 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import NumericSummeryReport from './index';
-import '../storybook.css';
 
-storiesOf('NumericSummeryReport', module)
-  .add('with short list', () => (
-    <NumericSummeryReport
-      data={[
-        { id: 1, title: 'برگزار شده', count: 12 },
-        { id: 2, title: 'فعال', count: 2 },
-      ]}
-    />
-  ))
-  .add('with long list', () => (
-    <NumericSummeryReport
-      data={[
-        { id: 1, title: 'برگزار شده', count: 12 },
-        { id: 2, title: 'فعال', count: 2 },
-        { id: 3, title: 'نامزدی ها', count: 90 },
-        { id: 4, title: 'جوایز', count: 34 },
-        { id: 5, title: 'تعداد کارمندان', count: 234 },
-        { id: 6, title: 'دارایی', count: 3436 },
-        { id: 7, title: 'پیشرفت', count: 10 },
-      ]}
-    />
-  ))
-  .addDecorator(withInfo);
+export default {
+  title: 'Components/NumericSummeryReport',
+  component: NumericSummeryReport,
+  argTypes: {
+    title: {
+      control: 'text',
+      description: 'Title of the report',
+    },
+    value: {
+      control: 'number',
+      description: 'Numeric value to display',
+    },
+    textColor: {
+      control: 'color',
+      description: 'Color of the text',
+    },
+  },
+};
+
+const Template = (args) => <NumericSummeryReport {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  title: 'Total Users',
+  value: 1234,
+  textColor: '#000000',
+};
+
+export const WithColor = Template.bind({});
+WithColor.args = {
+  title: 'Active Users',
+  value: 567,
+  textColor: '#2196F3',
+};

@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { Controller } from 'react-hook-form';
+import { Controller, UseFormRegister, FieldValues } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
 import ErrorMsg from '../errorMsg';
 import { CheckboxWrapper } from './index.style';
 import { Fieldset } from '../index.style';
 import theme from '../theme';
 import Label from '../label';
+import { Text } from '../../typography';
 
 type Props = {
   children: * => Node,

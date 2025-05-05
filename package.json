@@ -27,49 +27,38 @@
   },
   "dependencies": {
     "@mdx-js/react": "^2.1.5",
-    "@storybook/addon-actions": "^5.3.21",
-    "@storybook/addon-info": "^5.3.21",
-    "@storybook/addon-knobs": "^5.3.21",
-    "@storybook/addon-links": "^5.3.21",
-    "@storybook/addon-storyshots": "^5.3.21",
-    "@storybook/addons": "^5.3.21",
-    "@storybook/react": "^6.4.9",
     "babel-plugin-macros": "^2.8.0",
     "babel-preset-react-app": "^9.1.2",
+    "marked": "^15.0.7",
     "moment-jalaali": "^0.9.4",
     "prop-types": "^15.8.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-hook-form": "^7.38.0",
     "react-lazy-load-image-component": "^1.5.1",
     "react-modal": "3.16.1",
     "react-responsive": "^8.2.0",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "^3.4.4",
-    "react-sidenav": "^4.0.6",
+    "react-scripts": "^5.0.1",
     "styled-components": "^5.3.11",
-    "styled-components-grid": "^2.2.2",
-    "styled-components-spacing": "^3.1.1",
-    "styled-media-query": "^2.1.2"
+    "styled-media-query": "^2.1.2",
+    "tailwind-merge": "^3.2.0",
+    "webpack-dev-middleware": "^7.4.2"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build:doc": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom --silent",
-    "test:coverage": "react-app-rewired test --silent --coverage",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "build:lib": "babel src --out-dir dist --copy-files",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "lint": "./node_modules/.bin/eslint ./src",
     "lint:fix": "./node_modules/.bin/eslint ./src --fix",
-    "build:lib": "del-cli ./lib && babel src/components -d lib --presets minify && cp package.lib.json lib/package.json && cp README.md lib/ && cp CHANGELOG.md lib/ && cp LICENSE lib/ && del-cli ./lib/**/*.stories.js && del-cli ./lib/**/*.test.js",
-    "version": "auto-changelog -p && git add CHANGELOG.md",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build:storybook": "build-storybook -s public",
-    "deploy:storybook": "storybook-to-ghpages",
-    "build-storybook": "build-storybook -s public"
+    "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "husky": {
-    "hooks": {
-    }
+    "hooks": {}
   },
   "browserslist": {
     "production": [
@@ -88,30 +77,53 @@
     "@babel/core": "^7.16.7",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/preset-flow": "^7.16.7",
-    "@storybook/addon-essentials": "^6.4.9",
-    "@storybook/node-logger": "^6.4.9",
-    "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/storybook-deployer": "2.8.6",
+    "@storybook/addon-actions": "^8.6.4",
+    "@storybook/addon-essentials": "^8.6.4",
+    "@storybook/addon-interactions": "^8.6.12",
+    "@storybook/addon-links": "^8.6.4",
+    "@storybook/builder-webpack5": "^8.6.4",
+    "@storybook/cli": "^8.6.4",
+    "@storybook/preset-create-react-app": "^8.6.4",
+    "@storybook/react": "^8.6.4",
+    "@storybook/react-webpack5": "^8.6.4",
+    "@storybook/test": "^8.6.12",
+    "@storybook/testing-library": "^0.2.2",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "auto-changelog": "^1.16.4",
+    "autoprefixer": "^10.4.21",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^24.9.0",
+    "babel-jest": "^29.7.0",
     "babel-minify": "^0.5.1",
+    "babel-plugin-styled-components": "^2.1.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-minify": "^0.5.1",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^7.1.2",
     "del-cli": "^2.0.0",
-    "enzyme": "^3.11.0",
-    "enzyme-to-json": "^3.6.2",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint": "^8.57.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.4",
+    "file-loader": "^6.2.0",
     "flow-bin": "^0.117.0",
     "husky": "^3.1.0",
-    "jest-enzyme": "^7.1.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-jsdom": "^29.7.0",
     "jest-styled-components": "^7.2.0",
-    "node-sass": "7.0.3",
-    "react-app-rewired": "^2.1.11",
-    "react-test-renderer": "^16.14.0",
-    "require-context.macro": "^1.2.2"
+    "postcss": "^8.5.3",
+    "postcss-import": "^16.1.0",
+    "react-app-rewired": "^2.2.1",
+    "react-is": "^19.0.0",
+    "react-refresh": "^0.16.0",
+    "react-test-renderer": "^18.3.1",
+    "sass": "^1.85.1",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^4.9.5",
+    "webpack": "^5.98.0"
   },
   "eslintConfig": {
     "overrides": [
@@ -120,9 +132,33 @@
           "**/*.stories.*"
         ],
         "rules": {
-          "import/no-anonymous-default-export": "off"
+          "import/no-anonymous-default-export": "off",
+          "no-trailing-spaces": "off",
+          "comma-dangle": ["error", "always-multiline"]
         }
       }
+    ]
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ],
+    "testEnvironment": "jsdom",
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+    },
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
     ]
   }
 }

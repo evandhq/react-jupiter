@@ -1,26 +1,77 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
-import {
-  withKnobs,
-  select,
-  text,
-  boolean,
-} from '@storybook/addon-knobs';
+
 import TextInput from './index';
 
-storiesOf('Form/Inputs', module)
-  .add('Minimal Text Input', () => <TextInput htmlElementName="text-name-01" label="این لیبل است" />)
-  .add('Full option Text Input', () => (
-    <TextInput
-      htmlElementName="text-name-02"
-      label={text('optional label', 'این لیبل است')}
-      placeholder={text('optional placeholder', 'متن پیشفرض')}
-      disabled={boolean('disabled(default : false)', false)}
-      description={text('optional description', 'توضیحات اضافه')}
-      errorMessage={text('optional error msg', 'ارور زیبا')}
-      type={select('select type(default : text)', ['text', 'password'])}
-    />
-  ))
-  .addDecorator(withInfo)
-  .addDecorator(withKnobs);
+export default {
+  title: 'Form/Inputs',
+  component: TextInput,
+  
+  argTypes: {
+    htmlElementName: {
+      control: 'text',
+      defaultValue: 'text-name-01',
+    },
+    label: {
+      control: 'text',
+      defaultValue: 'این لیبل است',
+    },
+    placeholder: {
+      control: 'text',
+      defaultValue: 'متن پیشفرض',
+    },
+    disabled: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    description: {
+      control: 'text',
+      defaultValue: 'توضیحات اضافه',
+    },
+    errorMessage: {
+      control: 'text',
+      defaultValue: 'ارور زیبا',
+    },
+    type: {
+      control: 'select',
+      options: ['text', 'password'],
+      defaultValue: 'text',
+    },
+  },
+};
+
+const Template = (args) => <TextInput {...args} />;
+
+export const Minimal = Template.bind({});
+Minimal.args = {
+  htmlElementName: 'text-name-01',
+  label: 'این لیبل است',
+};
+
+export const FullOptions = Template.bind({});
+FullOptions.args = {
+  htmlElementName: 'text-name-02',
+  label: 'این لیبل است',
+  placeholder: 'متن پیشفرض',
+  disabled: false,
+  description: 'توضیحات اضافه',
+  errorMessage: 'ارور زیبا',
+  type: 'text',
+};
+
+export const Password = Template.bind({});
+Password.args = {
+  ...FullOptions.args,
+  type: 'password',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...FullOptions.args,
+  disabled: true,
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  ...FullOptions.args,
+  errorMessage: 'این فیلد الزامی است',
+};

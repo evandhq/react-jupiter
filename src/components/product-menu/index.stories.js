@@ -1,37 +1,33 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  text,
-} from '@storybook/addon-knobs';
 import Menu from './menu';
 import MenuItem from './menu-item';
 
-storiesOf('ProductMenu', module)
-  .add('ProductMenu with more', () => (
-    <Menu justifyContent="start">
-      <MenuItem
-        label={text('first item label(required)', 'درباره رویداد')}
-        handleClick={action('trigger what you want to do in onClick function')}
-      />
-      <MenuItem label="سخنرانان" color="red"/>
-      <MenuItem label="زمان بندی رویداد" />
-      <MenuItem label="اطلاعات تکمیلی" />
-      <MenuItem label="گالری تصاویر" />
-      <MenuItem label="درباره ما" />
-    </Menu>
-  ))
-  .add('ProductMenu without more', () => (
-    <Menu>
-      <MenuItem
-        label={text('first item label(required)', 'درباره رویداد')}
-        handleClick={action('trigger what you want to do in onClick function')}
-      />
-      <MenuItem label="سخنرانان" />
-      <MenuItem label="زمان بندی رویداد" />
-    </Menu>
-  ))
-  .addDecorator(withInfo)
-  .addDecorator(withKnobs);
+export default {
+  title: 'Components/ProductMenu',
+  component: Menu,
+  argTypes: {
+  },
+};
+
+const Template = (args) => (
+  <Menu {...args}>
+    <MenuItem label="Dashboard" handleClick={action('dashboard-clicked')} />
+    <MenuItem label="Profile" handleClick={action('profile-clicked')} />
+    <MenuItem label="Settings" handleClick={action('settings-clicked')} />
+  </Menu>
+);
+
+export const Default = Template.bind({});
+Default.args = {
+};
+
+export const WithCustomColorItem = (args) => (
+  <Menu {...args}>
+    <MenuItem label="Dashboard" handleClick={action('dashboard-clicked')} color="blue" />
+    <MenuItem label="Profile" handleClick={action('profile-clicked')} />
+    <MenuItem label="Settings" handleClick={action('settings-clicked')} />
+  </Menu>
+);
+WithCustomColorItem.args = {
+};

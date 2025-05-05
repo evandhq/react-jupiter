@@ -1,8 +1,9 @@
 // @flow
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { Controller } from 'react-hook-form';
+import { Controller, UseFormRegister, FieldValues } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
 import theme from '../theme';
 import ErrorMsg from '../errorMsg';

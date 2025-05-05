@@ -1,4 +1,4 @@
-import Grid from 'styled-components-grid';
+import Grid from './grid';
 import Spacing from './spacing';
 import utils from './utils';
 import Typography from './typography';
@@ -24,7 +24,7 @@ import defaultTheme from './themes';
 
 const { colors } = defaultTheme;
 
-export { default as Grid } from 'styled-components-grid';
+export { default as Grid } from './grid';
 export { default as Spacing } from './spacing';
 export { default as utils } from './utils';
 export { default as Typography } from './typography';

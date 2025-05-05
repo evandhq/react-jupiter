@@ -1,45 +1,91 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
+
 import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  text,
-} from '@storybook/addon-knobs';
 import { useForm } from 'react-hook-form';
 import Textarea from './index';
 
-storiesOf('Form-V7/Textarea', module)
-  .add('Minimal Textarea', () => {
-    const {
-      register,
-      control,
-    } = useForm();
-    return (
-      <Textarea register={register} control={control} />
-    );
-  })
-  .add('Full option Textarea', () => {
-    const {
-      register,
-      control,
-    } = useForm();
+export default {
+  title: 'Form-V7/Textarea',
+  component: Textarea,
+  
+  argTypes: {
+    label: {
+      control: 'text',
+      defaultValue: 'توضیجات',
+    },
+    htmlElementName: {
+      control: 'text',
+      defaultValue: 'html-element-name',
+    },
+    placeholder: {
+      control: 'text',
+      defaultValue: 'این پلیس هولدر است',
+    },
+    minHeight: {
+      control: 'text',
+      defaultValue: '120',
+    },
+    isDisabled: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    required: {
+      control: 'boolean',
+      defaultValue: true,
+    },
+    resize: {
+      control: 'select',
+      options: ['both', 'horizontal', 'vertical', 'none'],
+      defaultValue: 'both',
+    },
+    defaultValue: {
+      control: 'text',
+      defaultValue: 'این یک باکس متنی می‌باشد',
+    },
+  },
+};
 
-    return (
-      <Textarea
-        register={register}
-        control={control}
-        label={text('optional label', 'توضیجات')}
-        htmlElementName={text('optional html-element-name', 'html-element-name')}
-        placeholder={text('optional placeholder', 'این پلیس هولدر است')}
-        minHeight={text('optional minHeight (it should be a number)', '120')}
-        isDisabled={false}
-        required
-        resize="both"
-        handleChange={action('trigger what you want to do in onChange function')}
-        defaultValue="این یک باکس متنی می‌باشد"
-      />
-    );
-  })
-  .addDecorator(withInfo)
-  .addDecorator(withKnobs);
+const Template = (args) => {
+  const { register, control } = useForm();
+  return <Textarea {...args} register={register} control={control} />;
+};
+
+export const Minimal = Template.bind({});
+Minimal.args = {};
+
+export const FullOptions = Template.bind({});
+FullOptions.args = {
+  label: 'توضیجات',
+  htmlElementName: 'html-element-name',
+  placeholder: 'این پلیس هولدر است',
+  minHeight: '120',
+  isDisabled: false,
+  required: true,
+  resize: 'both',
+  handleChange: action('trigger what you want to do in onChange function'),
+  defaultValue: 'این یک باکس متنی می‌باشد',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...FullOptions.args,
+  isDisabled: true,
+};
+
+export const NoResize = Template.bind({});
+NoResize.args = {
+  ...FullOptions.args,
+  resize: 'none',
+};
+
+export const HorizontalResize = Template.bind({});
+HorizontalResize.args = {
+  ...FullOptions.args,
+  resize: 'horizontal',
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  ...FullOptions.args,
+  errorMessage: 'لطفا متن را وارد کنید',
+};

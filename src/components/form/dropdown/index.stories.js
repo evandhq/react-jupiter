@@ -1,62 +1,119 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
+
 import { action } from '@storybook/addon-actions';
-import {
-  withKnobs,
-  text,
-  boolean,
-} from '@storybook/addon-knobs';
 import Select from './select';
 import SelectOption from './option';
 
-storiesOf('Form/Dropdown', module)
-  .add('Minimal Select', () => (
-    <Select>
-      <SelectOption value="first" label="First Value" />
-      <SelectOption value="sec" label="2nd Value" />
-    </Select>
-  ))
-  .add('Select with placeholder', () => (
-    <Select
-      htmlElementName={text('optional htmlElementName', 'استان')}
-      placeholder={text('optional placeholder', '__استان مورد نظر خود را انتخاب کنید__')}
-      handleChange={action('trigger what you want to do in onChange function')}
-    >
-      <SelectOption value="20" label="کرج" />
-      <SelectOption value="30" label="تهران" />
-      <SelectOption value="40" label="فم" />
-    </Select>
-  ))
-  .add('Full option Select(no placeholder)', () => (
-    <Select
-      htmlElementName={text('optional htmlElementName', 'استان')}
-      defaultValue={text('optional defaultValue(if its not et or set wrong get the first option)', '30')}
-      handleChange={action('trigger what you want to do in onChange function')}
-      isDisabled={boolean('disabled(default : false)', false)}
-      label={text('optional label', 'محل برگزاری رویداد')}
-      errorMessage={text('optional error msg', 'ارور زیبا')}
-    >
-      <SelectOption value="20" label="کرج" />
-      <SelectOption value="30" label="تهران" />
-      <SelectOption value="40" label="فم" isDisabled />
-    </Select>
-  ))
-  .add('Full option SelectOption', () => (
-    <Select
-      htmlElementName="استان"
-      defaultValue="30"
-      handleChange={action('trigger what you want to do in onChange function')}
-      isDisabled={false}
-    >
-      <SelectOption
-        value={text('value', '20')}
-        label={text('label', 'کرج')}
-        isDisabled={boolean('disabled(default : false)', false)}
-      />
-      <SelectOption value="30" label="تهران" />
-      <SelectOption value="40" label="فم" />
-    </Select>
-  ))
-  .addDecorator(withInfo)
-  .addDecorator(withKnobs);
+export default {
+  title: 'Form/Dropdown',
+  component: Select,
+  
+  argTypes: {
+    htmlElementName: {
+      control: 'text',
+      defaultValue: 'استان',
+    },
+    placeholder: {
+      control: 'text',
+      defaultValue: '__استان مورد نظر خود را انتخاب کنید__',
+    },
+    defaultValue: {
+      control: 'text',
+      defaultValue: '30',
+    },
+    isDisabled: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    label: {
+      control: 'text',
+      defaultValue: 'محل برگزاری رویداد',
+    },
+    errorMessage: {
+      control: 'text',
+      defaultValue: 'ارور زیبا',
+    },
+    handleChange: {
+      action: 'handleChange',
+    },
+  },
+};
+
+const Template = (args) => (
+  <Select {...args}>
+    <SelectOption value="first" label="First Value" />
+    <SelectOption value="sec" label="2nd Value" />
+  </Select>
+);
+
+export const Minimal = Template.bind({});
+Minimal.args = {};
+
+export const WithPlaceholder = Template.bind({});
+WithPlaceholder.args = {
+  htmlElementName: 'استان',
+  placeholder: '__استان مورد نظر خود را انتخاب کنید__',
+  handleChange: action('trigger what you want to do in onChange function'),
+};
+
+const WithOptionsTemplate = (args) => (
+  <Select {...args}>
+    <SelectOption value="20" label="کرج" />
+    <SelectOption value="30" label="تهران" />
+    <SelectOption value="40" label="فم" isDisabled />
+  </Select>
+);
+
+export const FullOptions = WithOptionsTemplate.bind({});
+FullOptions.args = {
+  htmlElementName: 'استان',
+  defaultValue: '30',
+  handleChange: action('trigger what you want to do in onChange function'),
+  isDisabled: false,
+  label: 'محل برگزاری رویداد',
+  errorMessage: 'ارور زیبا',
+};
+
+export const WithPlaceholderAndOptions = WithOptionsTemplate.bind({});
+WithPlaceholderAndOptions.args = {
+  ...FullOptions.args,
+  placeholder: '__استان مورد نظر خود را انتخاب کنید__',
+};
+
+export const Disabled = WithOptionsTemplate.bind({});
+Disabled.args = {
+  ...FullOptions.args,
+  isDisabled: true,
+};
+
+export const WithError = WithOptionsTemplate.bind({});
+WithError.args = {
+  ...FullOptions.args,
+  errorMessage: 'لطفا یک گزینه را انتخاب کنید',
+};
+
+const SelectOptionTemplate = (args) => (
+  <Select
+    htmlElementName="استان"
+    defaultValue="30"
+    handleChange={action('trigger what you want to do in onChange function')}
+    isDisabled={false}
+  >
+    <SelectOption {...args} />
+    <SelectOption value="30" label="تهران" />
+    <SelectOption value="40" label="فم" />
+  </Select>
+);
+
+export const CustomOption = SelectOptionTemplate.bind({});
+CustomOption.args = {
+  value: '20',
+  label: 'کرج',
+  isDisabled: false,
+};
+
+export const DisabledOption = SelectOptionTemplate.bind({});
+DisabledOption.args = {
+  ...CustomOption.args,
+  isDisabled: true,
+};

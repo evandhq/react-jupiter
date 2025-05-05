@@ -1,7 +1,7 @@
 {
   "name": "react-jupiter",
-  "version": "5.11.34",
-  "main": "./index.js",
+  "version": "5.12.0",
+  "main": "index.js",
   "license": "MIT",
   "keywords": [
     "evand",
@@ -11,28 +11,37 @@
     "styled-component"
   ],
   "contributors": [
-    "@mehranshiri",
-    "https://github.com/marzzy"
+    "@arashmanteghi",
+    "https://github.com/marzzy",
+    "@mehranshiri"
   ],
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/evandhq/jupiter-react"
+    "url": "https://github.com/evandhq/react-jupiter"
   },
   "bugs": {
-    "url": "https://github.com/evandhq/jupiter-react/issues"
+    "url": "https://github.com/evandhq/react-jupiter/issues"
   },
   "scripts": {
   },
   "dependencies": {
-    "moment-jalaali": "^0.9.1",
-    "react-responsive": "^8.0.3",
-    "styled-components": "^4.4.1",
-    "styled-components-spacing": "^3.1.1",
-    "styled-components-grid": "^2.2.2",
-    "react-lazy-load-image-component": "^1.4.1",
+    "moment-jalaali": "^0.9.4",
+    "prop-types": "^15.8.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.38.0",
+    "react-lazy-load-image-component": "^1.5.1",
+    "react-modal": "3.16.1",
+    "react-responsive": "^8.2.0",
+    "react-router-dom": "^5.3.0",
+    "styled-components": "^5.3.11",
     "styled-media-query": "^2.1.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   }
 }

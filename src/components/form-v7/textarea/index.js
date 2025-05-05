@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { UseFormRegister, FieldValues, Controller } from 'react-hook-form';
 import { ThemeProvider } from 'styled-components';
-import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
 import theme from '../theme';
 import ErrorMsg from '../errorMsg';

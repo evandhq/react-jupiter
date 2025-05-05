@@ -1,41 +1,94 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withInfo } from '@storybook/addon-info';
 import Heading from './index';
 
-const actions = {
-  SmallH1: action('small h1'),
+export default {
+  title: 'Components/Typography/Heading',
+  component: Heading,
+  argTypes: {
+    level: {
+      control: 'select',
+      options: [1, 2, 3, 4, 5, 6],
+      description: 'Heading level (h1-h6)',
+    },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large'],
+      description: 'Size of the heading',
+    },
+    color: {
+      control: 'color',
+      description: 'Color of the heading text',
+    },
+    children: {
+      control: 'text',
+      description: 'Heading content',
+    },
+  },
 };
 
-storiesOf('Heading', module)
-  .add('Heading default', () => <Heading>این یک اچ دیفالت است</Heading>)
-  .add('H1 default', () => <Heading level={1}>این یک اچ یک دیفالت است</Heading>)
-  .add('H1 blue', () => <Heading level={1} color="blue">این یک اچ یک دیفالت است</Heading>)
-  .add('H1 red', () => <Heading level={1} color="red">این یک اچ یک دیفالت است</Heading>)
-  .add('H1 small', () => <Heading level={1} size="sm">این یک اچ یک کوچک است</Heading>)
-  .add('H1 medium', () => <Heading level={1} size="md">این یک اچ یک متسوط است</Heading>)
-  .add('H1 large', () => <Heading level={1} size="lg">این یک اچ یک بزرگ است</Heading>)
-  .add('H2 default', () => <Heading level={2}>این یک اچ دو دیفالت است</Heading>)
-  .add('H2 small', () => <Heading level={2} size="sm">این یک دو یک کوچک است</Heading>)
-  .add('H2 medium', () => <Heading level={2} size="md">این یک اچ دو متسوط است</Heading>)
-  .add('H2 medium', () => <Heading level={2} size="lg">این یک اچ دو بزرگ است</Heading>)
-  .add('H3 default', () => <Heading level={3}>این یک اچ سه دیفالت است</Heading>)
-  .add('H3 small', () => <Heading level={3} size="sm">این یک اچ سه کوچک است</Heading>)
-  .add('H3 medium', () => <Heading level={3} size="md">این یک اچ سه متسوط است</Heading>)
-  .add('H3 large', () => <Heading level={3} size="lg">این یک اچ سه بزرگ است</Heading>)
-  .add('H4 default', () => <Heading level={4}>این یک اچ چهار دیفالت است</Heading>)
-  .add('H4 small', () => <Heading level={4} size="sm">این یک اچ چهار کوچک است</Heading>)
-  .add('H4 medium', () => <Heading level={4} size="md">این یک اچ چهار متسوط است</Heading>)
-  .add('H4 large', () => <Heading level={4} size="lg">این یک اچ چهار بزرگ است</Heading>)
-  .add('H5 default', () => <Heading level={5}>این یک اچ پنج دیفالت است</Heading>)
-  .add('H5 small', () => <Heading level={5} size="sm">این یک اچ پنج کوچک است</Heading>)
-  .add('H5 medium', () => <Heading level={5} size="md">این یک اچ پنج متسوط است</Heading>)
-  .add('H5 large', () => <Heading level={5} size="lg">این یک اچ پنج بزرگ است</Heading>)
-  .add('H6 default', () => <Heading level={6}>این یک اچ شش دیفالت است</Heading>)
-  .add('H6 small', () => <Heading level={6} size="sm">این یک اچ شش کوچک است</Heading>)
-  .add('H6 medium', () => <Heading level={6} size="md">این یک اچ شش متسوط است</Heading>)
-  .add('H6 large', () => <Heading level={6} size="lg">این یک اچ شش بزرگ است</Heading>)
-  .addDecorator(withInfo);
+const Template = (args) => <Heading {...args} />;
 
-export default actions;
+export const H1 = Template.bind({});
+H1.args = {
+  level: 1,
+  size: 'large',
+  color: '#000000',
+  children: 'Heading 1',
+};
+
+export const H2 = Template.bind({});
+H2.args = {
+  level: 2,
+  size: 'medium',
+  color: '#000000',
+  children: 'Heading 2',
+};
+
+export const H3 = Template.bind({});
+H3.args = {
+  level: 3,
+  size: 'medium',
+  color: '#000000',
+  children: 'Heading 3',
+};
+
+export const H4 = Template.bind({});
+H4.args = {
+  level: 4,
+  size: 'small',
+  color: '#000000',
+  children: 'Heading 4',
+};
+
+export const H5 = Template.bind({});
+H5.args = {
+  level: 5,
+  size: 'small',
+  color: '#000000',
+  children: 'Heading 5',
+};
+
+export const H6 = Template.bind({});
+H6.args = {
+  level: 6,
+  size: 'small',
+  color: '#000000',
+  children: 'Heading 6',
+};
+
+export const CustomColor = Template.bind({});
+CustomColor.args = {
+  level: 1,
+  size: 'large',
+  color: '#2196F3',
+  children: 'Blue Heading',
+};
+
+export const CustomSize = Template.bind({});
+CustomSize.args = {
+  level: 1,
+  size: 'small',
+  color: '#000000',
+  children: 'Small Heading',
+};
