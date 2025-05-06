@@ -26,6 +26,7 @@
     "url": "https://github.com/evandhq/react-jupiter/issues"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@mdx-js/react": "^2.1.5",
     "babel-plugin-macros": "^2.8.0",
     "babel-preset-react-app": "^9.1.2",
@@ -134,7 +135,10 @@
         "rules": {
           "import/no-anonymous-default-export": "off",
           "no-trailing-spaces": "off",
-          "comma-dangle": ["error", "always-multiline"]
+          "comma-dangle": [
+            "error",
+            "always-multiline"
+          ]
         }
       }
     ]

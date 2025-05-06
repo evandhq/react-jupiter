@@ -33,25 +33,40 @@ const base = 'inline-flex items-center justify-center border box-border rounded 
 
 // Style type templates
 const getStyleClasses = (styleType, color) => {
-  const colors = colorMap[color] || colorMap.darkBlue;
+  const colorClasses = {
+    darkBlue: {
+      primary: 'bg-main border-main text-white hover:bg-secondary active:bg-opacity-80 focus-visible:ring-main',
+      secondary: 'bg-transparent border-main text-main hover:bg-opacity-10 active:bg-opacity-20 focus-visible:ring-main',
+      tertiary: 'bg-transparent border-transparent text-main hover:bg-opacity-10 active:bg-opacity-20 focus-visible:ring-main'
+    },
+    red: {
+      primary: 'bg-red-600 border-red-600 text-white hover:bg-red-700 active:bg-red-800 focus-visible:ring-red-600',
+      secondary: 'bg-transparent border-red-600 text-red-600 hover:bg-red-50 active:bg-red-100 focus-visible:ring-red-600',
+      tertiary: 'bg-transparent border-transparent text-red-600 hover:bg-red-50 active:bg-red-100 focus-visible:ring-red-600'
+    },
+    green: {
+      primary: 'bg-green-600 border-green-600 text-white hover:bg-green-700 active:bg-green-800 focus-visible:ring-green-600',
+      secondary: 'bg-transparent border-green-600 text-green-600 hover:bg-green-50 active:bg-green-100 focus-visible:ring-green-600',
+      tertiary: 'bg-transparent border-transparent text-green-600 hover:bg-green-50 active:bg-green-100 focus-visible:ring-green-600'
+    },
+    yellow: {
+      primary: 'bg-yellow-600 border-yellow-600 text-white hover:bg-yellow-700 active:bg-yellow-800 focus-visible:ring-yellow-600',
+      secondary: 'bg-transparent border-yellow-600 text-yellow-600 hover:bg-yellow-50 active:bg-yellow-100 focus-visible:ring-yellow-600',
+      tertiary: 'bg-transparent border-transparent text-yellow-600 hover:bg-yellow-50 active:bg-yellow-100 focus-visible:ring-yellow-600'
+    },
+    blue: {
+      primary: 'bg-sky-600 border-sky-600 text-white hover:bg-sky-700 active:bg-sky-800 focus-visible:ring-sky-600',
+      secondary: 'bg-transparent border-sky-600 text-sky-600 hover:bg-sky-50 active:bg-sky-100 focus-visible:ring-sky-600',
+      tertiary: 'bg-transparent border-transparent text-sky-600 hover:bg-sky-50 active:bg-sky-100 focus-visible:ring-sky-600'
+    },
+    gray: {
+      primary: 'bg-gray-600 border-gray-600 text-white hover:bg-gray-700 active:bg-gray-800 focus-visible:ring-gray-600',
+      secondary: 'bg-transparent border-gray-600 text-gray-600 hover:bg-gray-50 active:bg-gray-100 focus-visible:ring-gray-600',
+      tertiary: 'bg-transparent border-transparent text-gray-600 hover:bg-gray-50 active:bg-gray-100 focus-visible:ring-gray-600'
+    }
+  };
 
-  switch (styleType) {
-    case 'primary':
-      return `bg-${colors.base} border-${colors.base} text-white hover:bg-${colors.hover} active:bg-${colors.active} focus-visible:ring-${colors.base}`;
-    case 'secondary':
-      return `bg-transparent border-${colors.base} text-${colors.base} hover:bg-${colors.light} active:bg-${colors.lighter} focus-visible:ring-${colors.base}`;
-    case 'tertiary':
-      return `bg-transparent border-transparent text-${colors.base} hover:bg-${colors.light} active:bg-${colors.lighter} focus-visible:ring-${colors.base}`;
-    default:
-      return `bg-${colors.base} border-${colors.base} text-white hover:bg-${colors.hover} active:bg-${colors.active} focus-visible:ring-${colors.base}`;
-  }
-};
-
-// Base styles for each styleType
-const styleTypes = {
-  primary: 'bg-{color} border-{color} text-white hover:bg-{color}/90 active:bg-{color}/80 focus-visible:ring-{color}',
-  secondary: 'bg-transparent border-{color} text-{color} hover:bg-{color}/10 active:bg-{color}/20 focus-visible:ring-{color}',
-  tertiary: 'bg-transparent border-transparent text-{color} hover:bg-{color}/10 active:bg-{color}/20 focus-visible:ring-{color}',
+  return colorClasses[color]?.[styleType] || colorClasses.darkBlue.primary;
 };
 
 // Color mapping

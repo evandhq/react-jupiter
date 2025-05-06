@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
+import * as HeroIcons from '@heroicons/react/24/outline';
+import * as HeroIconsSolid from '@heroicons/react/24/solid';
 
 type Props = {
   name: string,
@@ -10,6 +12,7 @@ type Props = {
   className?: string,
   style?: Object,
   onClick?: (SyntheticMouseEvent<HTMLDivElement>) => void,
+  variant?: 'outline' | 'solid',
 }
 
 const Icon = ({ 
@@ -19,6 +22,7 @@ const Icon = ({
   className,
   style,
   onClick,
+  variant = 'outline',
   ...rest 
 }: Props) => {
   // Map old size values to new size values in pixels
@@ -69,6 +73,17 @@ const Icon = ({
     }
   };
 
+  // Get the appropriate Heroicon component
+  const getHeroIcon = () => {
+    const iconName = name
+      .split('-')
+      .map((part, index) => index === 0 ? part.charAt(0).toUpperCase() + part.slice(1) : part.charAt(0).toUpperCase() + part.slice(1))
+      .join('') + 'Icon';
+    const icons = variant === 'solid' ? HeroIconsSolid : HeroIcons;
+    console.log(iconName, icons[iconName]);
+    return icons[iconName];
+  };
+
   // Apply styles and colors
   const iconSize = getSizeInPixels();
   const iconColor = getColor();
@@ -79,16 +94,21 @@ const Icon = ({
     width: iconSize,
     height: iconSize
   };
+
+  const HeroIcon = getHeroIcon();
+  if (!HeroIcon) {
+    console.log(`Icon "${HeroIcon}" not found in Heroicons`);
+    return null;
+  }
   
   return (
     <div 
-      style={iconStyle} 
       className={twMerge('inline-block', className)}
       onClick={onClick}
       aria-hidden="true"
       {...rest}
     >
-      {/* Icon SVG content will be added here */}
+      <HeroIcon style={iconStyle} />
     </div>
   );
 };

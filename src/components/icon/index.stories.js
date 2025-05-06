@@ -12,7 +12,7 @@ export default {
     },
     size: {
       control: 'select',
-      options: ['xxlg', 'xlg', 'lg', 'md', 'sm', 'xs'],
+      options: ['2xl', 'xl', 'lg', 'md', 'sm', 'xs'],
       description: 'Size of the icon',
     },
   },
@@ -22,24 +22,24 @@ const Template = (args) => <Icon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  name: 'search',
+  name: 'academic-cap',
   size: 'md',
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  name: 'search',
+  name: 'academic-cap',
   size: 'sm',
 };
 
 export const Medium = Template.bind({});
 Medium.args = {
-  name: 'search',
+  name: 'academic-cap',
   size: 'md',
 };
 
 export const Large = Template.bind({});
 Large.args = {
-  name: 'search',
+  name: 'academic-cap',
   size: 'lg',
 };
