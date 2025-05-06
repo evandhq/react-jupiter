@@ -1,0 +1,489 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button(snapshot testing) Button sizes 1`] = `
+<button
+  class="sc-jTzLTM bPiCCv"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hoSuqg"
+    data-test="span"
+  >
+    my small button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) Button sizes 2`] = `
+<button
+  class="sc-jTzLTM fAtMAU"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my default size(md) button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) Button sizes 3`] = `
+<button
+  class="sc-jTzLTM ePFeCJ"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs edVoHP"
+    data-test="span"
+  >
+    my large button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) Button-default 1`] = `
+<button
+  class="sc-jTzLTM fAtMAU"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my simple button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) blue Buttons 1`] = `
+<button
+  class="sc-jTzLTM jtxzEe"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my primary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) blue Buttons 2`] = `
+<button
+  class="sc-jTzLTM jtxzEe"
+  data-styletype="secondary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs fpPlvV"
+    data-test="span"
+  >
+    my secoundrry button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) blue Buttons 3`] = `
+<button
+  class="sc-jTzLTM jtxzEe"
+  data-styletype="tertiary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hwgZet"
+    data-test="span"
+  >
+    my tertiary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) darkblue Buttons(default) 1`] = `
+<button
+  class="sc-jTzLTM ddcniZ"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my primary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) darkblue Buttons(default) 2`] = `
+<button
+  class="sc-jTzLTM ddcniZ"
+  data-styletype="secondary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs enMAUV"
+    data-test="span"
+  >
+    my secoundrry button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) darkblue Buttons(default) 3`] = `
+<button
+  class="sc-jTzLTM ddcniZ"
+  data-styletype="tertiary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hwgZet"
+    data-test="span"
+  >
+    my tertiary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) darkblue Buttons(default) 4`] = `
+<button
+  class="sc-jTzLTM fAtMAU"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my primary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) darkblue Buttons(default) 5`] = `
+<button
+  class="sc-jTzLTM fAtMAU"
+  data-styletype="secondary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hwgZet"
+    data-test="span"
+  >
+    my secoundrry button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) darkblue Buttons(default) 6`] = `
+<button
+  class="sc-jTzLTM fAtMAU"
+  data-styletype="tertiary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hwgZet"
+    data-test="span"
+  >
+    my tertiary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) disabled Buttons 1`] = `
+<button
+  class="sc-jTzLTM kxGMqg"
+  data-styletype="primary"
+  data-test="button"
+  disabled=""
+  type="submit"
+>
+  <i
+    class="sc-VigVT kHRZAv jupiter-icon new-icon-watch-later sc-fjdhpX fIxiFv"
+    data-test="icon"
+  />
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my blue iconic disabled primary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) disabled Buttons 2`] = `
+<button
+  class="sc-jTzLTM TOQck"
+  data-styletype="secondary"
+  data-test="button"
+  disabled=""
+  type="submit"
+>
+  <span
+    class="sc-htoDjs jNBVeN"
+    data-test="span"
+  >
+    my red disabled secoundrry button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) disabled Buttons 3`] = `
+<button
+  class="sc-jTzLTM geuVEN"
+  data-styletype="tertiary"
+  data-test="button"
+  disabled=""
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hwgZet"
+    data-test="span"
+  >
+    my disabled tertiary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) disabled Buttons 4`] = `
+<button
+  class="sc-jTzLTM geuVEN"
+  data-styletype="primary"
+  data-test="button"
+  disabled=""
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my disabled primary linked-button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) full-width button 1`] = `
+<button
+  class="sc-jTzLTM aBDOI"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my wide button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) green Buttons 1`] = `
+<button
+  class="sc-jTzLTM cAptOh"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my primary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) green Buttons 2`] = `
+<button
+  class="sc-jTzLTM cAptOh"
+  data-styletype="secondary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs eOHBQj"
+    data-test="span"
+  >
+    my secoundrry button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) green Buttons 3`] = `
+<button
+  class="sc-jTzLTM cAptOh"
+  data-styletype="tertiary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hwgZet"
+    data-test="span"
+  >
+    my tertiary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) linked Buttons 1`] = `
+<a
+  class="sc-jzJRlG hZewTx"
+  href="/avatar"
+  target="_self"
+>
+  <button
+    class="sc-jTzLTM fAtMAU"
+    data-styletype="primary"
+    data-test="button"
+    type="submit"
+  >
+    <span
+      class="sc-htoDjs hCbsRl"
+      data-test="span"
+    >
+      my simplest linked button
+    </span>
+  </button>
+</a>
+`;
+
+exports[`Button(snapshot testing) linked Buttons 2`] = `
+<a
+  class="sc-jzJRlG hZewTx"
+  href="https://sciencebusiness.net/categories/dfgdfg"
+  target="_blank"
+>
+  <button
+    class="sc-jTzLTM fAtMAU"
+    data-styletype="secondary"
+    data-test="button"
+    type="submit"
+  >
+    <i
+      class="sc-VigVT lppHbR jupiter-icon new-icon-watch-later sc-fjdhpX fIxiFv"
+      data-test="icon"
+    />
+    <span
+      class="sc-htoDjs hwgZet"
+      data-test="span"
+    >
+      my secoundrry external-linked button
+    </span>
+  </button>
+</a>
+`;
+
+exports[`Button(snapshot testing) red Buttons 1`] = `
+<button
+  class="sc-jTzLTM bUvQjd"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my primary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) red Buttons 2`] = `
+<button
+  class="sc-jTzLTM bUvQjd"
+  data-styletype="secondary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs jNBVeN"
+    data-test="span"
+  >
+    my secoundrry button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) red Buttons 3`] = `
+<button
+  class="sc-jTzLTM bUvQjd"
+  data-styletype="tertiary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hwgZet"
+    data-test="span"
+  >
+    my tertiary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) yellow Buttons 1`] = `
+<button
+  class="sc-jTzLTM gZYzwA"
+  data-styletype="primary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hCbsRl"
+    data-test="span"
+  >
+    my primary button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) yellow Buttons 2`] = `
+<button
+  class="sc-jTzLTM gZYzwA"
+  data-styletype="secondary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs cBpZXc"
+    data-test="span"
+  >
+    my secoundrry button
+  </span>
+</button>
+`;
+
+exports[`Button(snapshot testing) yellow Buttons 3`] = `
+<button
+  class="sc-jTzLTM gZYzwA"
+  data-styletype="tertiary"
+  data-test="button"
+  type="submit"
+>
+  <span
+    class="sc-htoDjs hwgZet"
+    data-test="span"
+  >
+    my tertiary button
+  </span>
+</button>
+`;
