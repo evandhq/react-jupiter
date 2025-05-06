@@ -51,7 +51,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:lib": "babel src --out-dir dist --copy-files",
+    "build:lib": "del-cli ./lib && babel src/components -d lib --presets minify && cp package.lib.json lib/package.json && cp README.md lib/ && cp CHANGELOG.md lib/ && cp LICENSE lib/ && del-cli ./lib/**/*.stories.js && del-cli ./lib/**/*.test.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "./node_modules/.bin/eslint ./src",
