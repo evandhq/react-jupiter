@@ -4,6 +4,7 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import * as HeroIcons from '@heroicons/react/24/outline';
 import * as HeroIconsSolid from '@heroicons/react/24/solid';
+import { legacyIconMap } from './iconFont';
 
 type Props = {
   name: string,
@@ -75,12 +76,16 @@ const Icon = ({
 
   // Get the appropriate Heroicon component
   const getHeroIcon = () => {
-    const iconName = name
+    // Use the mapping if available, otherwise fallback to the original name
+    const mappedName = legacyIconMap[name] || name;
+
+    // Convert to Heroicons PascalCase convention
+    const iconName = mappedName
       .split('-')
-      .map((part, index) => index === 0 ? part.charAt(0).toUpperCase() + part.slice(1) : part.charAt(0).toUpperCase() + part.slice(1))
+      .map(part => part.charAt(0).toUpperCase() + part.slice(1))
       .join('') + 'Icon';
+
     const icons = variant === 'solid' ? HeroIconsSolid : HeroIcons;
-    console.log(iconName, icons[iconName]);
     return icons[iconName];
   };
 
