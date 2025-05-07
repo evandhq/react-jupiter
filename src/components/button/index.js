@@ -35,8 +35,8 @@ const base = 'inline-flex items-center justify-center border box-border rounded 
 const getStyleClasses = (styleType, color) => {
   const colorClasses = {
     darkBlue: {
-      primary: 'bg-main border-main text-white hover:bg-secondary active:bg-opacity-80 focus-visible:ring-main',
-      secondary: 'bg-transparent border-main text-main hover:bg-opacity-10 active:bg-opacity-20 focus-visible:ring-main',
+      primary: 'bg-main border-main text-white hover:bg-opacity-80 active:bg-opacity-95 focus-visible:ring-main',
+      secondary: 'bg-transparent border-main text-main hover:bg-blue-50 active:bg-blue-100 focus-visible:ring-main',
       tertiary: 'bg-transparent border-transparent text-main hover:bg-opacity-10 active:bg-opacity-20 focus-visible:ring-main'
     },
     red: {
