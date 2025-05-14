@@ -1,10 +1,8 @@
-// @flow
-
-import React from 'react';
+import React, { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 import { twMerge } from 'tailwind-merge';
-import * as HeroIcons from '@heroicons/react/24/outline';
-import * as HeroIconsSolid from '@heroicons/react/24/solid';
-import { legacyIconMap } from './iconFont';
+import './assets/styles.css';
+import { legacyIconMap } from './legacyIcons';
 
 type Props = {
   name: string,
@@ -12,20 +10,31 @@ type Props = {
   color?: string,
   className?: string,
   style?: Object,
-  onClick?: (SyntheticMouseEvent<HTMLDivElement>) => void,
-  variant?: 'outline' | 'solid',
+  variant?: 'outline' | 'solid' | 'filled' | 'duotone',
 }
 
-const Icon = ({ 
-  name, 
-  size = 'md', 
-  color,
-  className,
-  style,
-  onClick,
-  variant = 'outline',
-  ...rest 
-}: Props) => {
+/**
+ * KeenIcon component for rendering Keenicons font icons.
+ *
+ * @param {Object} props
+ * @param {string} props.icon - The icon name (e.g., 'refresh')
+ * @param {'duotone'|'filled'|'solid'|'outline'} [props.style] - The icon style
+ * @param {string} [props.className] - Additional CSS classes
+ */
+export const Icon = forwardRef(function KeenIcon(
+  { 
+    name, 
+    size = 'md', 
+    color,
+    className,
+    style,
+    onClick,
+    variant = 'solid',
+    ...rest 
+  }: Props,
+  ref
+) {
+
   // Map old size values to new size values in pixels
   const getSizeInPixels = () => {
     switch (size) {
@@ -74,48 +83,25 @@ const Icon = ({
     }
   };
 
-  // Get the appropriate Heroicon component
-  const getHeroIcon = () => {
-    // Use the mapping if available, otherwise fallback to the original name
-    const mappedName = legacyIconMap[name] || name;
-
-    // Convert to Heroicons PascalCase convention
-    const iconName = mappedName
-      .split('-')
-      .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-      .join('') + 'Icon';
-
-    const icons = variant === 'solid' ? HeroIconsSolid : HeroIcons;
-    return icons[iconName];
-  };
-
   // Apply styles and colors
   const iconSize = getSizeInPixels();
   const iconColor = getColor();
+  const mappedName = legacyIconMap[name] || name;
   
   const iconStyle = {
     ...style,
     color: iconColor,
-    width: iconSize,
-    height: iconSize
+    fontSize: iconSize,
   };
 
-  const HeroIcon = getHeroIcon();
-  if (!HeroIcon) {
-    console.log(`Icon "${HeroIcon}" not found in Heroicons`);
-    return null;
-  }
-  
   return (
-    <div 
-      className={twMerge('inline-block', className)}
-      onClick={onClick}
-      aria-hidden="true"
+    <i
+      ref={ref}
       {...rest}
-    >
-      <HeroIcon style={iconStyle} />
-    </div>
+      className={twMerge(`ki-${variant}`, `ki-${mappedName}`, className)}
+      style={iconStyle}
+    />
   );
-};
+});
 
 export default Icon; 

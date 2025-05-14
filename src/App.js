@@ -1,6 +1,5 @@
 import React from 'react';
 import Playground from './playground';
-import './index.css';
 
 function App() {
   return (

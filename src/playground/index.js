@@ -14,6 +14,8 @@ import { ProductMenu } from '../components/product-menu';
 import { ProductProperties } from '../components/product-properties';
 import { ProgressBar } from '../components/progress-bar';
 import { NumericSummeryReport } from '../components/numeric-summery-report';
+import '../components/icon/assets/styles.css';
+
 
 const PlaygroundContainer = styled.div`
   padding: 2rem;

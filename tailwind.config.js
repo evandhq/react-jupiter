@@ -5,6 +5,12 @@ module.exports = {
     "./.storybook/**/*.{js,jsx,ts,tsx}",
     "./stories/**/*.{js,jsx,ts,tsx}",
   ],
+  safelist: [
+    'ki-filled',
+    'ki-outline',
+    'ki-duotone',
+    'ki-solid',
+  ],
   theme: {
     extend: {
       colors: {
