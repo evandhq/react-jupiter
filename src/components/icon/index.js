@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { twMerge } from 'tailwind-merge';
-import './assets/styles.css';
 import { legacyIconMap } from './legacyIcons';
 
 type Props = {
@@ -68,7 +67,7 @@ export const Icon = forwardRef(function KeenIcon(
       case 'darkGray':
         return '#374151'; // gray-700
       case 'darkBlue':
-        return '#6941C6'; // primary-700
+        return '#132A3E'; // primary-700
       case 'red':
         return '#EF4444'; // error-500
       case 'green':
