@@ -1,3 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import './components/icon/assets/styles.css';
+
+@theme {
+    --color-main: #132A3E;
+    --color-secondary: #0095DB;
+}
