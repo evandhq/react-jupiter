@@ -43,15 +43,24 @@ export default {
 };
 
 const Template = (args) => {
-  const { register, control } = useForm();
+  const { register, control, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    console.log('submit');
+    console.log(data);
+  };
+
   return (
-    <Checkbox {...args} register={register} control={control}>
-      <CheckboxOption value="100" label="ورزشی" />
-      <CheckboxOption value="234" label="علمی" />
-      <CheckboxOption value="300" label="مذهبی" />
-      <CheckboxOption value="400" label="فرهنگی" />
-      <CheckboxOption value="500" label="هنری" />
-    </Checkbox>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Checkbox {...args} register={register} control={control}>
+        <CheckboxOption value="100" label="ورزشی" />
+        <CheckboxOption value="234" label="علمی" />
+        <CheckboxOption value="300" label="مذهبی" />
+        <CheckboxOption value="400" label="فرهنگی" />
+        <CheckboxOption value="500" label="هنری" />
+      </Checkbox>
+      <button type="submit" style={{ marginTop: '10px', width: '100%', backgroundColor: 'blue', color: 'white', padding: '10px', borderRadius: '5px' }}>Submit</button>
+    </form>
   );
 };
 
@@ -95,7 +104,7 @@ const CheckboxOptionTemplate = (args) => {
   const { register } = useForm();
   return (
     <Checkbox groupName="degree" required label="در کدام موضوع ها توانایی دارید" register={register}>
-      <CheckboxOption {...args} register={register} />
+      <CheckboxOption {...args} />
       <CheckboxOption value="200" label="علمی" />
       <CheckboxOption value="300" label="مذهبی" />
       <CheckboxOption value="400" label="فرهنگی" />

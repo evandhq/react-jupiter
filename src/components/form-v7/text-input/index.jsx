@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider } from 'styled-components';
-import { Controller, UseFormRegister, FieldValues } from 'react-hook-form';
-import GlobalStyle from '../../globalStyle';
-import theme from '../theme';
+import { Controller } from 'react-hook-form';
+import { twMerge } from 'tailwind-merge';
 import ErrorMsg from '../errorMsg';
 import Label from '../label';
+import Icon from '../../icon';
+import { Text } from '../../typography';
+import { fixNumbers } from '../../utils/numbers';
 import {
   Input,
   DescriptionContainer,
   PasswordIcon,
 } from './index.style';
-import { Fieldset } from '../index.style';
-import { fixNumbers } from '../../utils/numbers';
 
 class TextInput extends Component {
   constructor(props) {
@@ -46,14 +45,14 @@ class TextInput extends Component {
       readOnly = false,
       register,
       control,
+      className = '',
     } = this.props;
 
     const { showPassword } = this.state;
 
     return (
-      <ThemeProvider theme={theme}>
-        <Fieldset>
-          <GlobalStyle />
+      <>
+        <fieldset className="w-full">
           <Label
             htmlFor={id || `${type}-${htmlElementName.split(' ').join('')}`}
             label={label}
@@ -61,16 +60,21 @@ class TextInput extends Component {
             required={required}
           />
           {description && (
-            <DescriptionContainer size={10} color="gray" data-test="text-input-description">
+            <Text 
+              size={10} 
+              color="gray" 
+              data-test="text-input-description"
+              className="block mb-1"
+            >
               {description}
-            </DescriptionContainer>
+            </Text>
           )}
           <Controller
             name={htmlElementName}
             control={control}
             rules={{ required: required ? 'این فیلد اجباری است' : false }}
-            render={({ field: { value }, fieldState }) => (
-              <div style={{ position: 'relative' }}>
+            render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
+              <div className="flex flex-col gap-1.5 relative">
                 {type === 'password' && (
                   <PasswordIcon
                     name={showPassword ? 'visibility-off' : 'visibility'}
@@ -81,27 +85,40 @@ class TextInput extends Component {
                     }}
                   />
                 )}
-                <Input
+                <input
                   id={id || `${type}-${htmlElementName.split(' ').join('')}`}
                   name={htmlElementName}
+                  className={twMerge(`
+                    w-full !box-border px-3 py-2 text-sm font-normal font-['IranSharp']
+                    border border-gray-300 rounded-md
+                    ${rtl ? 'text-right' : 'text-left'}
+                    ${disabled ? 'bg-gray-100 text-gray-500 border-transparent cursor-not-allowed' : 'bg-white text-gray-900 hover:border-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'}
+                    focus:outline-none transition-colors duration-200
+                    ${type === 'password' ? 'pr-3 pl-10' : 'px-3'}
+                  `, className)}
                   type={showPassword ? 'text' : type}
                   placeholder={placeholder}
                   defaultValue={value}
-                  rtl={rtl}
+                  disabled={disabled}
+                  dir={rtl ? 'rtl' : 'ltr'}
                   {...register(htmlElementName, {
                     onFocus: this.handleFocus,
                     disabled,
                     onChange: (e) => fixNumbers(e),
                   })}
-                  onFocus={onFocus}
+                  onChange={(e) => {
+                    fixNumbers(e)
+                    onChange(e)
+                  }}
+                  onFocus={this.handleFocus}
                   readOnly={readOnly}
                 />
                 <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
               </div>
             )}
           />
-        </Fieldset>
-      </ThemeProvider>
+        </fieldset>
+      </>
     );
   }
 }

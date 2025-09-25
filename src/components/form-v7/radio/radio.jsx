@@ -1,14 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { Controller, UseFormRegister, FieldValues } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
 import ErrorMsg from '../errorMsg';
 import { RadioWrapper } from './index.style';
 import { Fieldset } from '../index.style';
 import Label from '../label';
 import theme from '../theme';
-import { Text } from '../../typography';
 
 const Radio = ({
   groupName = 'radio-element',

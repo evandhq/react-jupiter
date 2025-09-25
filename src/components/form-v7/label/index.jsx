@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text } from '../../typography';
 import { toPersianNumber } from '../../utils/numbers';
-import StyledLabel from './index.style';
 
 function Label({
   label = null, number = null, required = false, htmlFor = null,
@@ -9,13 +8,13 @@ function Label({
   return (
     <>
       {label && (
-      <StyledLabel htmlFor={htmlFor}>
-        <Text bold size={14}>
-          {!!number && `${toPersianNumber(number)}- `}
-          {label}
-          {!!required && <span className="required">*</span>}
-        </Text>
-      </StyledLabel>
+        <label htmlFor={htmlFor} className="relative block mb-1.5">
+          <Text bold size={14}>
+            {!!number && `${toPersianNumber(number)}- `}
+            {label}
+            {!!required && <span className="text-red-600 mr-1.5">*</span>}
+          </Text>
+        </label>
       )}
     </>
   );

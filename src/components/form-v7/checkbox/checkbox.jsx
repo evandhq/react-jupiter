@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { Controller, UseFormRegister, FieldValues } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import GlobalStyle from '../../globalStyle';
 import ErrorMsg from '../errorMsg';
 import { CheckboxWrapper } from './index.style';

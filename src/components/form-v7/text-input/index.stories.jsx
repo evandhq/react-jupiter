@@ -53,8 +53,17 @@ export default {
 };
 
 const Template = (args) => {
-  const { register, control } = useForm();
-  return <TextInput {...args} register={register} control={control} />;
+  const { register, control, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <TextInput {...args} register={register} control={control} />
+    </form>
+  );
 };
 
 export const FullOptions = Template.bind({});

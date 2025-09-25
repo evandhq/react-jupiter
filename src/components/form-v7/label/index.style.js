@@ -5,7 +5,7 @@ const Label = styled.label`
     display: block;
     margin-bottom: 5px;
     & span.required {
-        color: ${({ theme }) => theme.colors.red};
+        color: #dc2626; /* red-600 */
         margin-right: 5px;
     }
 `;

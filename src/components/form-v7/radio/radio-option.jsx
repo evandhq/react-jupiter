@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UseFormRegister, FieldValues } from 'react-hook-form';
 import { ThemeProvider } from 'styled-components';
 import { Text } from '../../typography';
-import { Input, InputContainer, Label } from './index.style';
+import { Input } from './index.style';
 import theme from '../theme';
 
 const RadioOption = (props) => {
