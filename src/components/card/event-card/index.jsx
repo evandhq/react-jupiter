@@ -22,6 +22,7 @@ import {
   HorizontalTitle,
   HorizontalPlacePrice,
   PartnershipBox,
+  FileBadge,
 } from './index.style';
 import Icon from '../../icon';
 
@@ -47,6 +48,7 @@ const EventCard = ({
     status: '',
   },
   coverImage = null,
+  hasFile = false,
   ...rest
 }) => {
   // date param used on main evand and because it wrong to use moment-jalali in react jupiter
@@ -73,6 +75,7 @@ const EventCard = ({
       {...rest}
     >
       {renderEventLink(coverImage || <VerticalCover className="aspect-[16/9]" data-test="vertical-cover" src={cover || defaultCoverUrl} loading="lazy" onError={(e) => { e.target.onerror = null; e.target.src = defaultCoverUrl; }} />) }
+      {hasFile && <FileBadge>حاوی ویدیوی ضبط‌ شده رویداد</FileBadge> }
       <VerticalContentContainer
         data-test="vertical-content"
         background={finished ? finishedClockLabelUrl : null}

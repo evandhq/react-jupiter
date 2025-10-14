@@ -33,6 +33,7 @@ export const BookmarkIcon = styled(Icon)`
 
 /* Vertical event card styles */
 export const VerticalCardContainer = styled(CardTemplate)`
+  position: relative;
   background: white;
   a {
     text-decoration: none;
@@ -126,4 +127,16 @@ export const PartnershipBox = styled.div`
   min-width: 60px;
   height: 25px;
   justify-content: center;
+`;
+
+export const FileBadge = styled.span`
+  position: absolute;
+  top: 125px;
+  left: 0;
+  background: #800080;
+  width: fit-content;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
 `;

@@ -164,3 +164,15 @@ VerticalWithPartnership.args = {
   },
   renderEventLink: (element) => <a href="/tosomewherenew">{element}</a>,
 };
+
+export const VerticalWithFile = Template.bind({});
+VerticalWithFile.args = {
+  ...defaultArgs,
+  ...organizationArgs,
+  type: 'vertical',
+  title: 'تایتل یک رویداد اینجاست کهن',
+  ads: false,
+  hasFile: true,
+  finished: false,
+  renderEventLink: (element) => <a href="/tosomewherenew">{element}</a>,
+};
