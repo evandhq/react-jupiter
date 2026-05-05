@@ -27,7 +27,6 @@ export const Input = styled.input`
   margin-right: 5px;
 
   position: relative;
-  top: 10px;
   
   &:hover {
     border-color: ${({ disabled, theme }) => (disabled ? theme.disabled.color : theme.borderColor.hover)};

@@ -31,7 +31,9 @@ const TextInput = ({
     setValue(e.target.value);
   }
 
-  function handleDisplayPassword() {
+  function handleDisplayPassword(e) {
+    e.preventDefault();
+    e.stopPropagation();
     setDisplayedPassword(!displayedPassword);
   }
 

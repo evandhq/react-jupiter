@@ -46,6 +46,9 @@ export const PasswordIcon = styled(Icon)`
   position: absolute;
   left: 0;
   bottom: 6px;
+  z-index: 1;
+  pointer-events: auto;
+  user-select: none;
 
   &:hover {
     cursor: pointer;

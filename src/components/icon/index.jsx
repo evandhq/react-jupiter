@@ -46,8 +46,16 @@ export const Icon = forwardRef(function KeenIcon(
     }
   };
 
-  // Map old color values to new color tokens
+  // Check if color is a Tailwind class (starts with "text-")
+  const isTailwindColorClass = color && typeof color === 'string' && color.startsWith('text-');
+
+  // Map old color values to new color tokens (for backward compatibility)
   const getColor = () => {
+    // If it's a Tailwind class, don't return inline color
+    if (isTailwindColorClass) {
+      return undefined;
+    }
+    
     switch (color) {
       case 'white':
         return 'white';
@@ -80,15 +88,24 @@ export const Icon = forwardRef(function KeenIcon(
   
   const iconStyle = {
     ...style,
-    color: iconColor,
+    ...(iconColor && { color: iconColor }),
     fontSize: iconSize,
   };
+
+  // Build className with optional Tailwind color class
+  const iconClassName = twMerge(
+    `ki-${variant}`,
+    `ki-${mappedName}`,
+    isTailwindColorClass ? color : undefined,
+    className
+  );
 
   return (
     <i
       ref={ref}
+      onClick={onClick}
       {...rest}
-      className={twMerge(`ki-${variant}`, `ki-${mappedName}`, className)}
+      className={iconClassName}
       style={iconStyle}
     />
   );

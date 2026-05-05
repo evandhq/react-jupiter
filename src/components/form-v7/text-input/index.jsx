@@ -74,45 +74,47 @@ class TextInput extends Component {
             control={control}
             rules={{ required: required ? 'این فیلد اجباری است' : false }}
             render={({ field: { onChange, onBlur, value, ref }, fieldState }) => (
-              <div className="flex flex-col gap-1.5 relative">
-                {type === 'password' && (
-                  <PasswordIcon
-                    name={showPassword ? 'visibility-off' : 'visibility'}
-                    color="gray"
-                    onClick={this.togglePasswordVisibility}
-                    style={{
-                      cursor: 'pointer', position: 'absolute', top: '50%', left: '10px', transform: 'translateY(-50%)',
+              <div className="flex flex-col gap-1.5">
+                <div className="relative">
+                  {type === 'password' && (
+                    <PasswordIcon
+                      name={showPassword ? 'visibility-off' : 'visibility'}
+                      color="gray"
+                      onClick={this.togglePasswordVisibility}
+                      style={{
+                        cursor: 'pointer', position: 'absolute', top: '50%', left: '10px', transform: 'translateY(-50%)',
+                      }}
+                    />
+                  )}
+                  <input
+                    id={id || `${type}-${htmlElementName.split(' ').join('')}`}
+                    name={htmlElementName}
+                    className={twMerge(`
+                      w-full !box-border px-3 py-2 text-sm font-normal font-['IranSharp']
+                      border border-gray-300 rounded-md
+                      ${rtl ? 'text-right' : 'text-left'}
+                      ${disabled ? 'bg-gray-100 text-gray-500 border-transparent cursor-not-allowed' : 'bg-white text-gray-900 hover:border-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'}
+                      focus:outline-none transition-colors duration-200
+                      ${type === 'password' ? 'pr-3 pl-10' : 'px-3'}
+                    `, className)}
+                    type={showPassword ? 'text' : type}
+                    placeholder={placeholder}
+                    defaultValue={value}
+                    disabled={disabled}
+                    dir={rtl ? 'rtl' : 'ltr'}
+                    {...register(htmlElementName, {
+                      onFocus: this.handleFocus,
+                      disabled,
+                      onChange: (e) => fixNumbers(e),
+                    })}
+                    onChange={(e) => {
+                      fixNumbers(e)
+                      onChange(e)
                     }}
+                    onFocus={this.handleFocus}
+                    readOnly={readOnly}
                   />
-                )}
-                <input
-                  id={id || `${type}-${htmlElementName.split(' ').join('')}`}
-                  name={htmlElementName}
-                  className={twMerge(`
-                    w-full !box-border px-3 py-2 text-sm font-normal font-['IranSharp']
-                    border border-gray-300 rounded-md
-                    ${rtl ? 'text-right' : 'text-left'}
-                    ${disabled ? 'bg-gray-100 text-gray-500 border-transparent cursor-not-allowed' : 'bg-white text-gray-900 hover:border-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'}
-                    focus:outline-none transition-colors duration-200
-                    ${type === 'password' ? 'pr-3 pl-10' : 'px-3'}
-                  `, className)}
-                  type={showPassword ? 'text' : type}
-                  placeholder={placeholder}
-                  defaultValue={value}
-                  disabled={disabled}
-                  dir={rtl ? 'rtl' : 'ltr'}
-                  {...register(htmlElementName, {
-                    onFocus: this.handleFocus,
-                    disabled,
-                    onChange: (e) => fixNumbers(e),
-                  })}
-                  onChange={(e) => {
-                    fixNumbers(e)
-                    onChange(e)
-                  }}
-                  onFocus={this.handleFocus}
-                  readOnly={readOnly}
-                />
+                </div>
                 <ErrorMsg errorMessage={fieldState && fieldState.error?.message} />
               </div>
             )}

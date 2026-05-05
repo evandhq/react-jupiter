@@ -11,7 +11,7 @@ const CheckboxOption = (props) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <label htmlFor={itemId}>
+      <label className="flex gap-2" htmlFor={itemId}>
         <Input
           type="checkbox"
           id={itemId}

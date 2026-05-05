@@ -78,12 +78,12 @@ const EventCard = ({
       {hasFile && <FileBadge>حاوی ویدیوی ضبط‌ شده رویداد</FileBadge> }
       <VerticalContentContainer
         data-test="vertical-content"
-        background={finished ? finishedClockLabelUrl : null}
+        background={finished && !hasFile ? finishedClockLabelUrl : null}
       >
         <div>
           <DateBookmarkContainer data-test="vertical-date-bookmark">
             <DateLabelContainer>
-              {finished && <EventCardLabel type="finished" />}
+              {(finished && !hasFile) && <EventCardLabel type="finished" />}
               {!finished && ads && <EventCardLabel type="ads" />}
               {!!partnership?.status && (
               <PartnershipBox>
@@ -125,7 +125,7 @@ const EventCard = ({
       <HorizontalContentContainer data-test="horizontal-content">
         <DateBookmarkContainer>
           <DateLabelContainer>
-            {finished && <EventCardLabel type="finished" />}
+            {(finished && !hasFile) && <EventCardLabel type="finished" />}
             {!finished && ads && <EventCardLabel type="ads" />}
             {date && <ShowDate date={date} color="gray" fontSize="12" />}
             {showDate && (
@@ -157,7 +157,7 @@ const EventCard = ({
       <HorizontalContentContainer data-test="horizontal-content">
         <DateBookmarkContainer>
           <DateLabelContainer>
-            {finished && <EventCardLabel type="finished" />}
+            {(finished && !hasFile) && <EventCardLabel type="finished" />}
             {!finished && ads && <EventCardLabel type="ads" />}
             {date && <ShowDate date={date} color="gray" fontSize="10" />}
             {showDate && (
