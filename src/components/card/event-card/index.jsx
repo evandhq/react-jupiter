@@ -1,34 +1,16 @@
 import React from 'react';
 import PropTypes, { oneOfType } from 'prop-types';
-import GlobalStyle from '../../globalStyle';
 import { VERTICAL_CARD, HORIZONTAL_CARD, HORIZONTAL_MOBILE_CARD } from './constants';
 import ShowDate from '../../show-date';
 import { Text } from '../../typography';
 import TitledAvatar from '../../titled-avatar';
 import EventCardLabel from './event-card-label';
-import {
-  VerticalCardContainer,
-  VerticalCover,
-  VerticalContentContainer,
-  DateLabelContainer,
-  DateBookmarkContainer,
-  BookmarkIcon,
-  VerticalPlacePrice,
-  VerticalTitle,
-  HorizontalCardContainer,
-  HorizontalCover,
-  HorizontalMobileCover,
-  HorizontalContentContainer,
-  HorizontalTitle,
-  HorizontalPlacePrice,
-  PartnershipBox,
-  FileBadge,
-} from './index.style';
 import Icon from '../../icon';
 
 const finishedClockLabelUrl = 'https://static.evand.net/assets/images/other/finished-clock-label.svg';
 // const defaultCoverUrl = 'https://static.evand.net/assets/images/defaults/event-cover.jpg';
 const defaultCoverUrl = 'https://evand.com/images/defaults/events-cover/cover-1.jpg';
+
 const EventCard = ({
   title,
   price,
@@ -68,114 +50,190 @@ const EventCard = ({
   }
 
   const renderVerticalCard = () => (
-    <VerticalCardContainer
-      direction={type}
-      hoverToLevel={3}
-      maxWidth={270}
+    <div
+      className="relative flex flex-col bg-white rounded-xl overflow-hidden shadow-[0_0_8px_0_rgba(0,0,0,0.08)] hover:shadow-[0_0_16px_0_rgba(0,0,0,0.16)] transition-all duration-300 max-w-[270px] min-h-[358px]"
+      dir="rtl"
+      data-test="vertical-card"
       {...rest}
     >
-      {renderEventLink(coverImage || <VerticalCover className="aspect-[16/9]" data-test="vertical-cover" src={cover || defaultCoverUrl} loading="lazy" onError={(e) => { e.target.onerror = null; e.target.src = defaultCoverUrl; }} />) }
-      {hasFile && <FileBadge>حاوی ویدیوی ضبط‌ شده رویداد</FileBadge> }
-      <VerticalContentContainer
+      {renderEventLink(
+        coverImage || (
+          <img
+            className="w-full min-w-[270px] h-auto min-h-[150px] aspect-[16/9] object-cover"
+            data-test="vertical-cover"
+            src={cover || defaultCoverUrl}
+            loading="lazy"
+            onError={(e) => { e.target.onerror = null; e.target.src = defaultCoverUrl; }}
+            alt={title}
+          />
+        )
+      )}
+      {hasFile && (
+        <span className="absolute top-[125px] left-0 bg-[#800080] w-fit text-white px-2 py-1 rounded text-xs z-10">
+          حاوی ویدیوی ضبط‌ شده رویداد
+        </span>
+      )}
+      <div
+        className="flex flex-col justify-between p-3 px-4 pb-4 min-h-[180px] max-h-[200px] text-right"
         data-test="vertical-content"
-        background={finished && !hasFile ? finishedClockLabelUrl : null}
+        style={finished && !hasFile ? { backgroundImage: `url(${finishedClockLabelUrl})`, backgroundSize: 'cover' } : {}}
       >
         <div>
-          <DateBookmarkContainer data-test="vertical-date-bookmark">
-            <DateLabelContainer>
+          <div className="flex flex-row justify-between" data-test="vertical-date-bookmark">
+            <div className="inline-block">
               {(finished && !hasFile) && <EventCardLabel type="finished" />}
               {!finished && ads && <EventCardLabel type="ads" />}
               {!!partnership?.status && (
-              <PartnershipBox>
-                <Icon name={partnership?.status} color="yellow" stickyLeft marginRight={3} />
-                {' '}
-                {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
-              </PartnershipBox>
+                <span className="inline-flex items-center justify-center bg-[#FFC72724] rounded min-w-[60px] h-[25px] ml-1 text-[#FFD324] text-xs">
+                  <Icon name={partnership?.status} color="yellow" stickyLeft marginRight={3} />
+                  {' '}
+                  {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
+                </span>
               )}
               {date && <ShowDate date={date} color="gray" fontSize="12" />}
               {showDate && (
                 <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
               )}
-            </DateLabelContainer>
-            <BookmarkIcon
+            </div>
+            <Icon
               name={bookmarked ? 'bookmark' : 'bookmark-border'}
               size="lg"
               color="gray"
               onClick={clickBookmark}
+              className="ml-0 cursor-pointer"
             />
-          </DateBookmarkContainer>
-          { renderEventLink(<VerticalTitle level={2} size="sm">{title}</VerticalTitle>)}
-          <VerticalPlacePrice list={productPropertiesList} />
+          </div>
+          {renderEventLink(
+            <h2 className="m-0 overflow-hidden h-[60px] text-sm font-semibold leading-snug text-gray-900 text-right">
+              {title}
+            </h2>
+          )}
+          <ul className="flex flex-col flex-wrap m-0 p-0 list-none">
+            {productPropertiesList.map(({ iconName: propIconName, text: propText }, index) => (
+              <li key={`${propIconName}-${index.toString()}`} className="my-0.5 first:mt-0 last:mb-0">
+                <span className="inline-flex items-center gap-1 text-xs text-gray-600">
+                  <Icon name={propIconName} size="sm" color="gray" />
+                  <span>{propText}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
         {(organization && organization.logo !== 'unset') && (
-          <TitledAvatar title={organization.name} titleSize={12} avatar={organization.logo} avatarSize="xs" renderAvatarLink={renderOrganizationLink} />
+          <div dir="rtl">
+            <TitledAvatar title={organization.name} titleSize={12} avatar={organization.logo} avatarSize="xs" renderAvatarLink={renderOrganizationLink} />
+          </div>
         )}
-      </VerticalContentContainer>
-    </VerticalCardContainer>
+      </div>
+    </div>
   );
 
   const renderHorizontalCard = () => (
-    <HorizontalCardContainer
-      direction={type}
-      hoverToLevel={3}
-      maxWidth={560}
+    <div
+      className="relative flex flex-row bg-white rounded-xl overflow-hidden shadow-[0_0_8px_0_rgba(0,0,0,0.08)] hover:shadow-[0_0_16px_0_rgba(0,0,0,0.16)] transition-all duration-300 max-w-[560px] h-[116px]"
+      dir="rtl"
+      data-test="horizontal-card"
       {...rest}
     >
-      {renderEventLink(<HorizontalCover data-test="horizontal-cover" src={cover || defaultCoverUrl} loading="lazy" />) }
-      <HorizontalContentContainer data-test="horizontal-content">
-        <DateBookmarkContainer>
-          <DateLabelContainer>
+      {renderEventLink(
+        <img
+          className="w-[206px] min-w-[206px] h-auto object-cover"
+          data-test="horizontal-cover"
+          src={cover || defaultCoverUrl}
+          loading="lazy"
+          alt={title}
+        />
+      )}
+      <div className="flex flex-col p-4 justify-between flex-1 min-w-[250px] text-right" data-test="horizontal-content">
+        <div className="flex flex-row justify-between">
+          <div className="inline-block">
             {(finished && !hasFile) && <EventCardLabel type="finished" />}
             {!finished && ads && <EventCardLabel type="ads" />}
             {date && <ShowDate date={date} color="gray" fontSize="12" />}
             {showDate && (
               <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
             )}
-          </DateLabelContainer>
-          <BookmarkIcon
+          </div>
+          <Icon
             name={bookmarked ? 'bookmark' : 'bookmark-border'}
             size="lg"
             color="gray"
             onClick={clickBookmark}
+            className="ml-0 cursor-pointer"
             data-test={bookmarked ? 'bookmark' : 'bookmark-border'}
           />
-        </DateBookmarkContainer>
-        { renderEventLink(<HorizontalTitle level={2} size="sm">{title}</HorizontalTitle>) }
-        <HorizontalPlacePrice list={productPropertiesList} isHorizontal />
-      </HorizontalContentContainer>
-    </HorizontalCardContainer>
+        </div>
+        {renderEventLink(
+          <h2 className="text-sm font-semibold leading-snug text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-right">
+            {title}
+          </h2>
+        )}
+        <ul className="flex flex-row flex-wrap m-0 p-0 list-none">
+          {productPropertiesList.map(({ iconName: propIconName, text: propText }, index) => (
+            <li key={`${propIconName}-${index.toString()}`} className="min-w-[50%] my-0.5 first:mt-0 last:mb-0">
+              <span className="inline-flex items-center gap-1 text-xs text-gray-600">
+                <Icon name={propIconName} size="sm" color="gray" />
+                <span>{propText}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 
   const renderHorizontalMobileCard = () => (
-    <HorizontalCardContainer
-      direction={type}
-      hoverToLevel={3}
-      maxWidth={560}
+    <div
+      className="relative flex flex-row bg-white rounded-xl overflow-hidden shadow-[0_0_8px_0_rgba(0,0,0,0.08)] hover:shadow-[0_0_16px_0_rgba(0,0,0,0.16)] transition-all duration-300 max-w-[560px] h-[116px]"
+      dir="rtl"
+      data-test="horizontal-mobile-card"
       {...rest}
     >
-      {renderEventLink(<HorizontalMobileCover data-test="horizontal-mobile-cover" src={cover || defaultCoverUrl} loading="lazy" />) }
-      <HorizontalContentContainer data-test="horizontal-content">
-        <DateBookmarkContainer>
-          <DateLabelContainer>
+      {renderEventLink(
+        <img
+          className="w-[146px] min-w-[146px] h-full object-cover"
+          data-test="horizontal-mobile-cover"
+          src={cover || defaultCoverUrl}
+          loading="lazy"
+          alt={title}
+        />
+      )}
+      <div className="flex flex-col p-4 justify-between flex-1 min-w-[250px] text-right" data-test="horizontal-content">
+        <div className="flex flex-row justify-between">
+          <div className="inline-block">
             {(finished && !hasFile) && <EventCardLabel type="finished" />}
             {!finished && ads && <EventCardLabel type="ads" />}
             {date && <ShowDate date={date} color="gray" fontSize="10" />}
             {showDate && (
               <Text size="10" color="gray" data-test="show-date">{showDate}</Text>
             )}
-          </DateLabelContainer>
-          <BookmarkIcon
+          </div>
+          <Icon
             name={bookmarked ? 'bookmark' : 'bookmark-border'}
             size="sm"
             color="gray"
             onClick={clickBookmark}
+            className="ml-0 cursor-pointer"
             data-test={bookmarked ? 'bookmark' : 'bookmark-border'}
           />
-        </DateBookmarkContainer>
-        { renderEventLink(<HorizontalTitle level={4} size="sm">{title}</HorizontalTitle>) }
-        <HorizontalPlacePrice list={productPropertiesList} isHorizontal />
-      </HorizontalContentContainer>
-    </HorizontalCardContainer>
+        </div>
+        {renderEventLink(
+          <h4 className="text-xs font-semibold leading-snug text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-right">
+            {title}
+          </h4>
+        )}
+        <ul className="flex flex-row flex-wrap m-0 p-0 list-none">
+          {productPropertiesList.map(({ iconName: propIconName, text: propText }, index) => (
+            <li key={`${propIconName}-${index.toString()}`} className="min-w-[50%] my-0.5 first:mt-0 last:mb-0">
+              <span className="inline-flex items-center gap-1 text-xs text-gray-600">
+                <Icon name={propIconName} size="sm" color="gray" />
+                <span>{propText}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 
   const renderCard = () => {
@@ -190,12 +248,7 @@ const EventCard = ({
     }
   };
 
-  return (
-    <>
-      <GlobalStyle />
-      {renderCard()}
-    </>
-  );
+  return renderCard();
 };
 
 EventCard.propTypes = {

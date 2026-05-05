@@ -1,7 +1,6 @@
 import React from 'react';
 import EventCard from './index';
 // import '../storybook.css';
-import { VerticalCover } from './index.style';
 
 const defaultArgs = {
   title: "تایتل یک رویداد نسبتا طولانی در اینجاست که باید و باید و قرار است اضافه بیاید و بزند به بیرون",
@@ -130,7 +129,7 @@ VerticalWithCustomCover.args = {
   type: 'vertical',
   title: 'تایتل یک رویداد اینجاست کهن',
   renderEventLink: (element) => <a href="/tosomewherenew">{element}</a>,
-  coverImage: <VerticalCover src="https://static.evand.net/assets/images/defaults/event-cover.jpg" />,
+  coverImage: <img src="https://static.evand.net/assets/images/defaults/event-cover.jpg" className="w-full min-w-[270px] h-auto min-h-[150px] aspect-[16/9] object-cover" alt="cover" />,
 };
 
 export const VerticalWithFinished = Template.bind({});

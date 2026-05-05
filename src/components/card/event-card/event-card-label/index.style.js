@@ -1,10 +1,4 @@
-import styled from 'styled-components';
-
-const ImageLabel = styled.img`
-  display: inline-block;
-  margin-left: 12px;
-  // margin-bottom: 5px;
-  width: 33px;
-`;
-
-export default ImageLabel;
+// This file is deprecated.
+// All styles have been migrated to Tailwind CSS classes in index.jsx.
+// Keep this file as a placeholder to avoid import errors in case any external
+// code still references these exports.
