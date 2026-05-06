@@ -56,53 +56,62 @@ const EventCard = ({
       data-test="vertical-card"
       {...rest}
     >
-      {renderEventLink(
-        coverImage || (
-          <img
-            className="w-full min-w-64 h-36 object-cover"
-            data-test="vertical-cover"
-            src={cover || defaultCoverUrl}
-            loading="lazy"
-            onError={(e) => { e.target.onerror = null; e.target.src = defaultCoverUrl; }}
-            alt={title}
-          />
-        )
-      )}
-      {hasFile && (
-        <span className="absolute top-32 left-0 bg-purple-800 w-fit text-white px-2 py-1 rounded text-xs z-10">
-          حاوی ویدیو
-        </span>
-      )}
+      <div className="relative">
+        {renderEventLink(
+          coverImage || (
+            <img
+              className="w-full min-w-64 h-36 object-cover"
+              data-test="vertical-cover"
+              src={cover || defaultCoverUrl}
+              loading="lazy"
+              onError={(e) => { e.target.onerror = null; e.target.src = defaultCoverUrl; }}
+              alt={title}
+            />
+          )
+        )}
+        <div className="absolute -bottom-3 left-2 right-2 z-10 flex items-end justify-between">
+          <div className="flex items-center gap-1">
+            {(finished && !hasFile) && (
+              <span className="bg-red-500 text-white px-2 py-1 rounded text-xs shadow-sm">
+                تمام شده
+              </span>
+            )}
+            {!finished && ads && (
+              <span className="bg-blue-500 text-white px-2 py-1 rounded text-xs shadow-sm">
+                تبلیغات
+              </span>
+            )}
+            {!!partnership?.status && (
+              <span className="inline-flex items-center justify-center bg-yellow-400 rounded min-w-14 h-6 text-white text-xs shadow-sm">
+                <Icon name={partnership?.status} color="white" stickyLeft marginRight={3} />
+                {' '}
+                {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
+              </span>
+            )}
+          </div>
+          <div className="flex items-center gap-1">
+            {hasFile && (
+              <span className="bg-purple-800 text-white px-2 py-1 rounded text-xs shadow-sm">
+                حاوی ویدیو
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
       <div
         className="flex flex-col justify-between p-3 px-4 pb-4 flex-1 text-right"
         data-test="vertical-content"
         style={finished && !hasFile ? { backgroundImage: `url(${finishedClockLabelUrl})`, backgroundSize: 'cover' } : {}}
       >
-        <div>
-          <div className="flex flex-row justify-between" data-test="vertical-date-bookmark">
-            <div className="inline-flex items-center flex-wrap gap-1">
-              {(finished && !hasFile) && <EventCardLabel type="finished" />}
-              {!finished && ads && <EventCardLabel type="ads" />}
-              {!!partnership?.status && (
-                <span className="inline-flex items-center justify-center bg-yellow-400/15 rounded min-w-14 h-6 text-yellow-400 text-xs">
-                  <Icon name={partnership?.status} color="yellow" stickyLeft marginRight={3} />
-                  {' '}
-                  {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
-                </span>
-              )}
+        <div className="flex flex-col gap-2">
+          {(date || showDate) && (
+            <div className="text-xs text-gray-600 text-right">
               {date && <ShowDate date={date} color="gray" fontSize="12" />}
               {showDate && (
                 <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
               )}
             </div>
-            <Icon
-              name={bookmarked ? 'bookmark' : 'bookmark-border'}
-              size="lg"
-              color="gray"
-              onClick={clickBookmark}
-              className="ml-0 cursor-pointer"
-            />
-          </div>
+          )}
           {renderEventLink(
             <h2 className="m-0 overflow-hidden h-14 text-sm font-semibold leading-snug text-gray-900 text-right">
               {title}
@@ -145,23 +154,13 @@ const EventCard = ({
         />
       )}
       <div className="flex flex-col p-4 justify-between flex-1 min-w-64 text-right" data-test="horizontal-content">
-        <div className="flex flex-row justify-between">
-          <div className="inline-block">
-            {(finished && !hasFile) && <EventCardLabel type="finished" />}
-            {!finished && ads && <EventCardLabel type="ads" />}
-            {date && <ShowDate date={date} color="gray" fontSize="12" />}
-            {showDate && (
-              <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
-            )}
-          </div>
-          <Icon
-            name={bookmarked ? 'bookmark' : 'bookmark-border'}
-            size="lg"
-            color="gray"
-            onClick={clickBookmark}
-            className="ml-0 cursor-pointer"
-            data-test={bookmarked ? 'bookmark' : 'bookmark-border'}
-          />
+        <div className="inline-block">
+          {(finished && !hasFile) && <EventCardLabel type="finished" />}
+          {!finished && ads && <EventCardLabel type="ads" />}
+          {date && <ShowDate date={date} color="gray" fontSize="12" />}
+          {showDate && (
+            <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
+          )}
         </div>
         {renderEventLink(
           <h2 className="text-sm font-semibold leading-snug text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-right">
@@ -199,23 +198,13 @@ const EventCard = ({
         />
       )}
       <div className="flex flex-col p-4 justify-between flex-1 min-w-64 text-right" data-test="horizontal-content">
-        <div className="flex flex-row justify-between">
-          <div className="inline-block">
-            {(finished && !hasFile) && <EventCardLabel type="finished" />}
-            {!finished && ads && <EventCardLabel type="ads" />}
-            {date && <ShowDate date={date} color="gray" fontSize="10" />}
-            {showDate && (
-              <Text size="10" color="gray" data-test="show-date">{showDate}</Text>
-            )}
-          </div>
-          <Icon
-            name={bookmarked ? 'bookmark' : 'bookmark-border'}
-            size="sm"
-            color="gray"
-            onClick={clickBookmark}
-            className="ml-0 cursor-pointer"
-            data-test={bookmarked ? 'bookmark' : 'bookmark-border'}
-          />
+        <div className="inline-block">
+          {(finished && !hasFile) && <EventCardLabel type="finished" />}
+          {!finished && ads && <EventCardLabel type="ads" />}
+          {date && <ShowDate date={date} color="gray" fontSize="10" />}
+          {showDate && (
+            <Text size="10" color="gray" data-test="show-date">{showDate}</Text>
+          )}
         </div>
         {renderEventLink(
           <h4 className="text-xs font-semibold leading-snug text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-right">
