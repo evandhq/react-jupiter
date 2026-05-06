@@ -56,49 +56,49 @@ const EventCard = ({
       data-test="vertical-card"
       {...rest}
     >
-      {renderEventLink(
-        coverImage || (
-          <img
-            className="w-full min-w-64 h-36 object-cover"
-            data-test="vertical-cover"
-            src={cover || defaultCoverUrl}
-            loading="lazy"
-            onError={(e) => { e.target.onerror = null; e.target.src = defaultCoverUrl; }}
-            alt={title}
-          />
-        )
-      )}
-      {hasFile && (
-        <span className="absolute top-32 left-0 bg-purple-800 w-fit text-white px-2 py-1 rounded text-xs z-10">
-          حاوی ویدیو
-        </span>
-      )}
+      <div className="relative">
+        {renderEventLink(
+          coverImage || (
+            <img
+              className="w-full min-w-64 h-36 object-cover"
+              data-test="vertical-cover"
+              src={cover || defaultCoverUrl}
+              loading="lazy"
+              onError={(e) => { e.target.onerror = null; e.target.src = defaultCoverUrl; }}
+              alt={title}
+            />
+          )
+        )}
+        <Icon
+          name={bookmarked ? 'bookmark' : 'bookmark-border'}
+          size="lg"
+          color="white"
+          onClick={clickBookmark}
+          className="absolute top-2 left-2 cursor-pointer z-10"
+        />
+        <div className="absolute bottom-2 right-2 z-10 flex items-center gap-1">
+          {(finished && !hasFile) && <EventCardLabel type="finished" />}
+          {!finished && ads && <EventCardLabel type="ads" />}
+          {!!partnership?.status && (
+            <span className="inline-flex items-center justify-center bg-yellow-400/15 rounded min-w-14 h-6 text-yellow-400 text-xs">
+              <Icon name={partnership?.status} color="yellow" stickyLeft marginRight={3} />
+              {' '}
+              {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
+            </span>
+          )}
+        </div>
+        {hasFile && (
+          <span className="absolute bottom-2 left-2 bg-purple-800 w-fit text-white px-2 py-1 rounded text-xs z-10">
+            حاوی ویدیو
+          </span>
+        )}
+      </div>
       <div
         className="flex flex-col justify-between p-3 px-4 pb-4 flex-1 text-right"
         data-test="vertical-content"
         style={finished && !hasFile ? { backgroundImage: `url(${finishedClockLabelUrl})`, backgroundSize: 'cover' } : {}}
       >
         <div className="flex flex-col gap-2">
-          <div className="flex flex-row justify-between" data-test="vertical-date-bookmark">
-            <div className="inline-flex items-center flex-wrap gap-1">
-              {(finished && !hasFile) && <EventCardLabel type="finished" />}
-              {!finished && ads && <EventCardLabel type="ads" />}
-              {!!partnership?.status && (
-                <span className="inline-flex items-center justify-center bg-yellow-400/15 rounded min-w-14 h-6 text-yellow-400 text-xs">
-                  <Icon name={partnership?.status} color="yellow" stickyLeft marginRight={3} />
-                  {' '}
-                  {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
-                </span>
-              )}
-            </div>
-            <Icon
-              name={bookmarked ? 'bookmark' : 'bookmark-border'}
-              size="lg"
-              color="gray"
-              onClick={clickBookmark}
-              className="ml-0 cursor-pointer"
-            />
-          </div>
           {(date || showDate) && (
             <div className="text-xs text-gray-600 text-right">
               {date && <ShowDate date={date} color="gray" fontSize="12" />}
