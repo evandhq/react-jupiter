@@ -51,7 +51,7 @@ const EventCard = ({
 
   const renderVerticalCard = () => (
     <div
-      className="relative flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 max-w-68 min-h-90"
+      className="relative flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 max-w-68 h-90"
       dir="rtl"
       data-test="vertical-card"
       {...rest}
@@ -59,7 +59,7 @@ const EventCard = ({
       {renderEventLink(
         coverImage || (
           <img
-            className="w-full min-w-68 h-auto min-h-36 aspect-[16/9] object-cover"
+            className="w-full min-w-68 h-36 object-cover"
             data-test="vertical-cover"
             src={cover || defaultCoverUrl}
             loading="lazy"
@@ -70,11 +70,11 @@ const EventCard = ({
       )}
       {hasFile && (
         <span className="absolute top-32 left-0 bg-purple-800 w-fit text-white px-2 py-1 rounded text-xs z-10">
-          حاوی ویدیوی ضبط‌ شده رویداد
+          حاوی ویدیو
         </span>
       )}
       <div
-        className="flex flex-col justify-between p-3 px-4 pb-4 min-h-44 max-h-48 text-right"
+        className="flex flex-col justify-between p-3 px-4 pb-4 flex-1 text-right"
         data-test="vertical-content"
         style={finished && !hasFile ? { backgroundImage: `url(${finishedClockLabelUrl})`, backgroundSize: 'cover' } : {}}
       >
@@ -120,7 +120,7 @@ const EventCard = ({
           </ul>
         </div>
         {(organization && organization.logo !== 'unset') && (
-          <div dir="rtl">
+          <div dir="rtl" className="overflow-hidden">
             <TitledAvatar title={organization.name} titleSize={12} avatar={organization.logo} avatarSize="xs" renderAvatarLink={renderOrganizationLink} />
           </div>
         )}
