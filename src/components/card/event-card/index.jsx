@@ -78,7 +78,7 @@ const EventCard = ({
         data-test="vertical-content"
         style={finished && !hasFile ? { backgroundImage: `url(${finishedClockLabelUrl})`, backgroundSize: 'cover' } : {}}
       >
-        <div>
+        <div className="flex flex-col gap-2">
           <div className="flex flex-row justify-between" data-test="vertical-date-bookmark">
             <div className="inline-flex items-center flex-wrap gap-1">
               {(finished && !hasFile) && <EventCardLabel type="finished" />}
@@ -90,10 +90,6 @@ const EventCard = ({
                   {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
                 </span>
               )}
-              {date && <ShowDate date={date} color="gray" fontSize="12" />}
-              {showDate && (
-                <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
-              )}
             </div>
             <Icon
               name={bookmarked ? 'bookmark' : 'bookmark-border'}
@@ -103,6 +99,14 @@ const EventCard = ({
               className="ml-0 cursor-pointer"
             />
           </div>
+          {(date || showDate) && (
+            <div className="text-xs text-gray-600 text-right">
+              {date && <ShowDate date={date} color="gray" fontSize="12" />}
+              {showDate && (
+                <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
+              )}
+            </div>
+          )}
           {renderEventLink(
             <h2 className="m-0 overflow-hidden h-14 text-sm font-semibold leading-snug text-gray-900 text-right">
               {title}
