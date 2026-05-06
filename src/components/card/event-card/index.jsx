@@ -69,29 +69,34 @@ const EventCard = ({
             />
           )
         )}
-        <Icon
-          name={bookmarked ? 'bookmark' : 'bookmark-border'}
-          size="lg"
-          color="white"
-          onClick={clickBookmark}
-          className="absolute top-2 left-2 cursor-pointer z-10"
-        />
-        <div className="absolute bottom-2 right-2 z-10 flex items-center gap-1">
-          {(finished && !hasFile) && <EventCardLabel type="finished" />}
-          {!finished && ads && <EventCardLabel type="ads" />}
-          {!!partnership?.status && (
-            <span className="inline-flex items-center justify-center bg-yellow-400/15 rounded min-w-14 h-6 text-yellow-400 text-xs">
-              <Icon name={partnership?.status} color="yellow" stickyLeft marginRight={3} />
-              {' '}
-              {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
-            </span>
-          )}
+        <div className="absolute -bottom-3 left-2 right-2 z-10 flex items-end justify-between">
+          <div className="flex items-center gap-1">
+            {(finished && !hasFile) && (
+              <span className="bg-red-500 text-white px-2 py-1 rounded text-xs shadow-sm">
+                تمام شده
+              </span>
+            )}
+            {!finished && ads && (
+              <span className="bg-blue-500 text-white px-2 py-1 rounded text-xs shadow-sm">
+                تبلیغات
+              </span>
+            )}
+            {!!partnership?.status && (
+              <span className="inline-flex items-center justify-center bg-yellow-400 rounded min-w-14 h-6 text-white text-xs shadow-sm">
+                <Icon name={partnership?.status} color="white" stickyLeft marginRight={3} />
+                {' '}
+                {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
+              </span>
+            )}
+          </div>
+          <div className="flex items-center gap-1">
+            {hasFile && (
+              <span className="bg-purple-800 text-white px-2 py-1 rounded text-xs shadow-sm">
+                حاوی ویدیو
+              </span>
+            )}
+          </div>
         </div>
-        {hasFile && (
-          <span className="absolute bottom-2 left-2 bg-purple-800 w-fit text-white px-2 py-1 rounded text-xs z-10">
-            حاوی ویدیو
-          </span>
-        )}
       </div>
       <div
         className="flex flex-col justify-between p-3 px-4 pb-4 flex-1 text-right"
@@ -149,23 +154,13 @@ const EventCard = ({
         />
       )}
       <div className="flex flex-col p-4 justify-between flex-1 min-w-64 text-right" data-test="horizontal-content">
-        <div className="flex flex-row justify-between">
-          <div className="inline-block">
-            {(finished && !hasFile) && <EventCardLabel type="finished" />}
-            {!finished && ads && <EventCardLabel type="ads" />}
-            {date && <ShowDate date={date} color="gray" fontSize="12" />}
-            {showDate && (
-              <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
-            )}
-          </div>
-          <Icon
-            name={bookmarked ? 'bookmark' : 'bookmark-border'}
-            size="lg"
-            color="gray"
-            onClick={clickBookmark}
-            className="ml-0 cursor-pointer"
-            data-test={bookmarked ? 'bookmark' : 'bookmark-border'}
-          />
+        <div className="inline-block">
+          {(finished && !hasFile) && <EventCardLabel type="finished" />}
+          {!finished && ads && <EventCardLabel type="ads" />}
+          {date && <ShowDate date={date} color="gray" fontSize="12" />}
+          {showDate && (
+            <Text size="12" color="gray" data-test="show-date">{showDate}</Text>
+          )}
         </div>
         {renderEventLink(
           <h2 className="text-sm font-semibold leading-snug text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-right">
@@ -203,23 +198,13 @@ const EventCard = ({
         />
       )}
       <div className="flex flex-col p-4 justify-between flex-1 min-w-64 text-right" data-test="horizontal-content">
-        <div className="flex flex-row justify-between">
-          <div className="inline-block">
-            {(finished && !hasFile) && <EventCardLabel type="finished" />}
-            {!finished && ads && <EventCardLabel type="ads" />}
-            {date && <ShowDate date={date} color="gray" fontSize="10" />}
-            {showDate && (
-              <Text size="10" color="gray" data-test="show-date">{showDate}</Text>
-            )}
-          </div>
-          <Icon
-            name={bookmarked ? 'bookmark' : 'bookmark-border'}
-            size="sm"
-            color="gray"
-            onClick={clickBookmark}
-            className="ml-0 cursor-pointer"
-            data-test={bookmarked ? 'bookmark' : 'bookmark-border'}
-          />
+        <div className="inline-block">
+          {(finished && !hasFile) && <EventCardLabel type="finished" />}
+          {!finished && ads && <EventCardLabel type="ads" />}
+          {date && <ShowDate date={date} color="gray" fontSize="10" />}
+          {showDate && (
+            <Text size="10" color="gray" data-test="show-date">{showDate}</Text>
+          )}
         </div>
         {renderEventLink(
           <h4 className="text-xs font-semibold leading-snug text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis m-0 text-right">
