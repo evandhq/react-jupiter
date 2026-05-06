@@ -9,10 +9,10 @@ const finishedLabelUrl = 'https://static.evand.net/assets/images/other/finished-
 const EventCardLabel = ({ type }) => {
   switch (type) {
     case 'ads':
-      return <img src={adsLabelUrl} data-test="ads-label" className="inline-block ml-3 w-[33px]" alt="ads" />;
+      return <img src={adsLabelUrl} data-test="ads-label" className="inline-block ml-3 w-8" alt="ads" />;
     case 'finished':
     default:
-      return <img src={finishedLabelUrl} data-test="finished-label" className="inline-block ml-3 w-[33px]" alt="finished" />;
+      return <img src={finishedLabelUrl} data-test="finished-label" className="inline-block ml-3 w-8" alt="finished" />;
   }
 };
 

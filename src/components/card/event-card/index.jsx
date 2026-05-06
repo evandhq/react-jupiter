@@ -51,7 +51,7 @@ const EventCard = ({
 
   const renderVerticalCard = () => (
     <div
-      className="relative flex flex-col bg-white rounded-xl overflow-hidden shadow-[0_0_8px_0_rgba(0,0,0,0.08)] hover:shadow-[0_0_16px_0_rgba(0,0,0,0.16)] transition-all duration-300 max-w-[270px] min-h-[358px]"
+      className="relative flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 max-w-68 min-h-90"
       dir="rtl"
       data-test="vertical-card"
       {...rest}
@@ -59,7 +59,7 @@ const EventCard = ({
       {renderEventLink(
         coverImage || (
           <img
-            className="w-full min-w-[270px] h-auto min-h-[150px] aspect-[16/9] object-cover"
+            className="w-full min-w-68 h-auto min-h-36 aspect-[16/9] object-cover"
             data-test="vertical-cover"
             src={cover || defaultCoverUrl}
             loading="lazy"
@@ -69,22 +69,22 @@ const EventCard = ({
         )
       )}
       {hasFile && (
-        <span className="absolute top-[125px] left-0 bg-[#800080] w-fit text-white px-2 py-1 rounded text-xs z-10">
+        <span className="absolute top-32 left-0 bg-purple-800 w-fit text-white px-2 py-1 rounded text-xs z-10">
           حاوی ویدیوی ضبط‌ شده رویداد
         </span>
       )}
       <div
-        className="flex flex-col justify-between p-3 px-4 pb-4 min-h-[180px] max-h-[200px] text-right"
+        className="flex flex-col justify-between p-3 px-4 pb-4 min-h-44 max-h-48 text-right"
         data-test="vertical-content"
         style={finished && !hasFile ? { backgroundImage: `url(${finishedClockLabelUrl})`, backgroundSize: 'cover' } : {}}
       >
         <div>
           <div className="flex flex-row justify-between" data-test="vertical-date-bookmark">
-            <div className="inline-block">
+            <div className="inline-flex items-center flex-wrap gap-1">
               {(finished && !hasFile) && <EventCardLabel type="finished" />}
               {!finished && ads && <EventCardLabel type="ads" />}
               {!!partnership?.status && (
-                <span className="inline-flex items-center justify-center bg-[#FFC72724] rounded min-w-[60px] h-[25px] ml-1 text-[#FFD324] text-xs">
+                <span className="inline-flex items-center justify-center bg-yellow-400/15 rounded min-w-14 h-6 text-yellow-400 text-xs">
                   <Icon name={partnership?.status} color="yellow" stickyLeft marginRight={3} />
                   {' '}
                   {partnership?.status === 'colleague' ? 'همکار' : 'همیار'}
@@ -104,7 +104,7 @@ const EventCard = ({
             />
           </div>
           {renderEventLink(
-            <h2 className="m-0 overflow-hidden h-[60px] text-sm font-semibold leading-snug text-gray-900 text-right">
+            <h2 className="m-0 overflow-hidden h-14 text-sm font-semibold leading-snug text-gray-900 text-right">
               {title}
             </h2>
           )}
@@ -130,21 +130,21 @@ const EventCard = ({
 
   const renderHorizontalCard = () => (
     <div
-      className="relative flex flex-row bg-white rounded-xl overflow-hidden shadow-[0_0_8px_0_rgba(0,0,0,0.08)] hover:shadow-[0_0_16px_0_rgba(0,0,0,0.16)] transition-all duration-300 max-w-[560px] h-[116px]"
+      className="relative flex flex-row bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 max-w-xl h-28"
       dir="rtl"
       data-test="horizontal-card"
       {...rest}
     >
       {renderEventLink(
         <img
-          className="w-[206px] min-w-[206px] h-auto object-cover"
+          className="w-52 min-w-52 h-auto object-cover"
           data-test="horizontal-cover"
           src={cover || defaultCoverUrl}
           loading="lazy"
           alt={title}
         />
       )}
-      <div className="flex flex-col p-4 justify-between flex-1 min-w-[250px] text-right" data-test="horizontal-content">
+      <div className="flex flex-col p-4 justify-between flex-1 min-w-64 text-right" data-test="horizontal-content">
         <div className="flex flex-row justify-between">
           <div className="inline-block">
             {(finished && !hasFile) && <EventCardLabel type="finished" />}
@@ -170,7 +170,7 @@ const EventCard = ({
         )}
         <ul className="flex flex-row flex-wrap m-0 p-0 list-none">
           {productPropertiesList.map(({ iconName: propIconName, text: propText }, index) => (
-            <li key={`${propIconName}-${index.toString()}`} className="min-w-[50%] my-0.5 first:mt-0 last:mb-0">
+            <li key={`${propIconName}-${index.toString()}`} className="min-w-1/2 my-0.5 first:mt-0 last:mb-0">
               <span className="inline-flex items-center gap-1 text-xs text-gray-600">
                 <Icon name={propIconName} size="sm" color="gray" />
                 <span>{propText}</span>
@@ -184,21 +184,21 @@ const EventCard = ({
 
   const renderHorizontalMobileCard = () => (
     <div
-      className="relative flex flex-row bg-white rounded-xl overflow-hidden shadow-[0_0_8px_0_rgba(0,0,0,0.08)] hover:shadow-[0_0_16px_0_rgba(0,0,0,0.16)] transition-all duration-300 max-w-[560px] h-[116px]"
+      className="relative flex flex-row bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 max-w-xl h-28"
       dir="rtl"
       data-test="horizontal-mobile-card"
       {...rest}
     >
       {renderEventLink(
         <img
-          className="w-[146px] min-w-[146px] h-full object-cover"
+          className="w-36 min-w-36 h-full object-cover"
           data-test="horizontal-mobile-cover"
           src={cover || defaultCoverUrl}
           loading="lazy"
           alt={title}
         />
       )}
-      <div className="flex flex-col p-4 justify-between flex-1 min-w-[250px] text-right" data-test="horizontal-content">
+      <div className="flex flex-col p-4 justify-between flex-1 min-w-64 text-right" data-test="horizontal-content">
         <div className="flex flex-row justify-between">
           <div className="inline-block">
             {(finished && !hasFile) && <EventCardLabel type="finished" />}
@@ -224,7 +224,7 @@ const EventCard = ({
         )}
         <ul className="flex flex-row flex-wrap m-0 p-0 list-none">
           {productPropertiesList.map(({ iconName: propIconName, text: propText }, index) => (
-            <li key={`${propIconName}-${index.toString()}`} className="min-w-[50%] my-0.5 first:mt-0 last:mb-0">
+            <li key={`${propIconName}-${index.toString()}`} className="min-w-1/2 my-0.5 first:mt-0 last:mb-0">
               <span className="inline-flex items-center gap-1 text-xs text-gray-600">
                 <Icon name={propIconName} size="sm" color="gray" />
                 <span>{propText}</span>
