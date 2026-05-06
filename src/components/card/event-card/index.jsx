@@ -70,7 +70,7 @@ const EventCard = ({
       )}
       {hasFile && (
         <span className="absolute top-32 left-0 bg-purple-800 w-fit text-white px-2 py-1 rounded text-xs z-10">
-          حاوی ویدیوی ضبط‌ شده رویداد
+          حاوی ویدیو
         </span>
       )}
       <div
