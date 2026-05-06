@@ -120,7 +120,7 @@ const EventCard = ({
           </ul>
         </div>
         {(organization && organization.logo !== 'unset') && (
-          <div dir="rtl">
+          <div dir="rtl" className="overflow-hidden">
             <TitledAvatar title={organization.name} titleSize={12} avatar={organization.logo} avatarSize="xs" renderAvatarLink={renderOrganizationLink} />
           </div>
         )}
