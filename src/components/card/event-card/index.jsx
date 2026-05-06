@@ -51,7 +51,7 @@ const EventCard = ({
 
   const renderVerticalCard = () => (
     <div
-      className="relative flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 max-w-68 h-90"
+      className="relative flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 max-w-64 h-96"
       dir="rtl"
       data-test="vertical-card"
       {...rest}
@@ -59,7 +59,7 @@ const EventCard = ({
       {renderEventLink(
         coverImage || (
           <img
-            className="w-full min-w-68 h-36 object-cover"
+            className="w-full min-w-64 h-36 object-cover"
             data-test="vertical-cover"
             src={cover || defaultCoverUrl}
             loading="lazy"

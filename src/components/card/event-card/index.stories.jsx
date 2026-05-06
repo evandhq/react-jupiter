@@ -129,7 +129,7 @@ VerticalWithCustomCover.args = {
   type: 'vertical',
   title: 'تایتل یک رویداد اینجاست کهن',
   renderEventLink: (element) => <a href="/tosomewherenew">{element}</a>,
-  coverImage: <img src="https://static.evand.net/assets/images/defaults/event-cover.jpg" className="w-full min-w-[270px] h-auto min-h-[150px] aspect-[16/9] object-cover" alt="cover" />,
+  coverImage: <img src="https://static.evand.net/assets/images/defaults/event-cover.jpg" className="w-full min-w-64 h-auto min-h-36 object-cover" alt="cover" />,
 };
 
 export const VerticalWithFinished = Template.bind({});
