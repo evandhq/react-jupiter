@@ -5,42 +5,70 @@ import { colorMap, sizes } from './theme';
 
 const base = 'inline-flex items-center justify-center border box-border rounded-sm font-semibold transition-all duration-250 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]';
 
-// Style type templates
-const getStyleClasses = (styleType, color) => {
-  const colorClasses = {
-    darkBlue: {
-      primary: 'bg-main border-main text-white hover:bg-main/80 active:bg-main/95 focus-visible:ring-main',
-      secondary: 'bg-transparent border-main text-main hover:bg-blue-50 active:bg-blue-100 focus-visible:ring-main',
-      tertiary: 'bg-transparent border-transparent text-main hover:bg-main/10 active:bg-main/20 focus-visible:ring-main'
-    },
-    red: {
-      primary: 'bg-red-600 border-red-600 text-white hover:bg-red-700 active:bg-red-800 focus-visible:ring-red-600',
-      secondary: 'bg-transparent border-red-600 text-red-600 hover:bg-red-50 active:bg-red-100 focus-visible:ring-red-600',
-      tertiary: 'bg-transparent border-transparent text-red-600 hover:bg-red-50 active:bg-red-100 focus-visible:ring-red-600'
-    },
-    green: {
-      primary: 'bg-green-600 border-green-600 text-white hover:bg-green-700 active:bg-green-800 focus-visible:ring-green-600',
-      secondary: 'bg-transparent border-green-600 text-green-600 hover:bg-green-50 active:bg-green-100 focus-visible:ring-green-600',
-      tertiary: 'bg-transparent border-transparent text-green-600 hover:bg-green-50 active:bg-green-100 focus-visible:ring-green-600'
-    },
-    yellow: {
-      primary: 'bg-yellow-600 border-yellow-600 text-white hover:bg-yellow-700 active:bg-yellow-800 focus-visible:ring-yellow-600',
-      secondary: 'bg-transparent border-yellow-600 text-yellow-600 hover:bg-yellow-50 active:bg-yellow-100 focus-visible:ring-yellow-600',
-      tertiary: 'bg-transparent border-transparent text-yellow-600 hover:bg-yellow-50 active:bg-yellow-100 focus-visible:ring-yellow-600'
-    },
-    blue: {
-      primary: 'bg-sky-600 border-sky-600 text-white hover:bg-sky-700 active:bg-sky-800 focus-visible:ring-sky-600',
-      secondary: 'bg-transparent border-sky-600 text-sky-600 hover:bg-sky-50 active:bg-sky-100 focus-visible:ring-sky-600',
-      tertiary: 'bg-transparent border-transparent text-sky-600 hover:bg-sky-50 active:bg-sky-100 focus-visible:ring-sky-600'
-    },
-    gray: {
-      primary: 'bg-gray-600 border-gray-600 text-white hover:bg-gray-700 active:bg-gray-800 focus-visible:ring-gray-600',
-      secondary: 'bg-transparent border-gray-600 text-gray-600 hover:bg-gray-50 active:bg-gray-100 focus-visible:ring-gray-600',
-      tertiary: 'bg-transparent border-transparent text-gray-600 hover:bg-gray-50 active:bg-gray-100 focus-visible:ring-gray-600'
-    }
-  };
+// Style type templates for preset colors
+const presetColorClasses = {
+  darkBlue: {
+    primary: 'bg-main border-main text-white hover:bg-main/80 active:bg-main/95 focus-visible:ring-main',
+    secondary: 'bg-transparent border-main text-main hover:bg-blue-50 active:bg-blue-100 focus-visible:ring-main',
+    tertiary: 'bg-transparent border-transparent text-main hover:bg-main/10 active:bg-main/20 focus-visible:ring-main'
+  },
+  red: {
+    primary: 'bg-red-600 border-red-600 text-white hover:bg-red-700 active:bg-red-800 focus-visible:ring-red-600',
+    secondary: 'bg-transparent border-red-600 text-red-600 hover:bg-red-50 active:bg-red-100 focus-visible:ring-red-600',
+    tertiary: 'bg-transparent border-transparent text-red-600 hover:bg-red-50 active:bg-red-100 focus-visible:ring-red-600'
+  },
+  green: {
+    primary: 'bg-green-600 border-green-600 text-white hover:bg-green-700 active:bg-green-800 focus-visible:ring-green-600',
+    secondary: 'bg-transparent border-green-600 text-green-600 hover:bg-green-50 active:bg-green-100 focus-visible:ring-green-600',
+    tertiary: 'bg-transparent border-transparent text-green-600 hover:bg-green-50 active:bg-green-100 focus-visible:ring-green-600'
+  },
+  yellow: {
+    primary: 'bg-yellow-600 border-yellow-600 text-white hover:bg-yellow-700 active:bg-yellow-800 focus-visible:ring-yellow-600',
+    secondary: 'bg-transparent border-yellow-600 text-yellow-600 hover:bg-yellow-50 active:bg-yellow-100 focus-visible:ring-yellow-600',
+    tertiary: 'bg-transparent border-transparent text-yellow-600 hover:bg-yellow-50 active:bg-yellow-100 focus-visible:ring-yellow-600'
+  },
+  blue: {
+    primary: 'bg-sky-600 border-sky-600 text-white hover:bg-sky-700 active:bg-sky-800 focus-visible:ring-sky-600',
+    secondary: 'bg-transparent border-sky-600 text-sky-600 hover:bg-sky-50 active:bg-sky-100 focus-visible:ring-sky-600',
+    tertiary: 'bg-transparent border-transparent text-sky-600 hover:bg-sky-50 active:bg-sky-100 focus-visible:ring-sky-600'
+  },
+  gray: {
+    primary: 'bg-gray-600 border-gray-600 text-white hover:bg-gray-700 active:bg-gray-800 focus-visible:ring-gray-600',
+    secondary: 'bg-transparent border-gray-600 text-gray-600 hover:bg-gray-50 active:bg-gray-100 focus-visible:ring-gray-600',
+    tertiary: 'bg-transparent border-transparent text-gray-600 hover:bg-gray-50 active:bg-gray-100 focus-visible:ring-gray-600'
+  }
+};
 
-  return colorClasses[color]?.[styleType] || colorClasses.darkBlue.primary;
+/**
+ * Generates Tailwind classes for a given styleType and color.
+ * - Preset colors (darkBlue, red, green, etc.) → predefined classes
+ * - Tailwind tokens (green-400, slate-100) → standard Tailwind utility classes
+ * - Custom CSS colors (#FF5733, rgb(...), var(--css-var)) → arbitrary value brackets `bg-[value]`
+ */
+const getStyleClasses = (styleType, color) => {
+  // Check if it's a known preset color
+  if (presetColorClasses[color]) {
+    return presetColorClasses[color][styleType] || presetColorClasses[color].primary;
+  }
+
+  // Tailwind color token (e.g., "green-400") — use as standard Tailwind utility
+  // These are static classes that Tailwind JIT can discover at build time
+  if (/^[a-z]+-\d+$/.test(color)) {
+    const styles = {
+      primary: `bg-${color} border-${color} text-white hover:bg-${color}/80 active:bg-${color}/70 focus-visible:ring-${color}`,
+      secondary: `bg-transparent border-${color} text-${color} hover:bg-${color}/10 active:bg-${color}/20 focus-visible:ring-${color}`,
+      tertiary: `bg-transparent border-transparent text-${color} hover:bg-${color}/10 active:bg-${color}/20 focus-visible:ring-${color}`,
+    };
+    return styles[styleType] || styles.primary;
+  }
+
+  // Custom CSS color (hex, rgb, CSS variable) — use arbitrary brackets
+  const styles = {
+    primary: `bg-[${color}] border-[${color}] text-white hover:bg-[${color}]/80 active:bg-[${color}]/70 focus-visible:ring-[${color}]`,
+    secondary: `bg-transparent border-[${color}] text-[${color}] hover:bg-[${color}]/10 active:bg-[${color}]/20 focus-visible:ring-[${color}]`,
+    tertiary: `bg-transparent border-transparent text-[${color}] hover:bg-[${color}]/10 active:bg-[${color}]/20 focus-visible:ring-[${color}]`,
+  };
+  return styles[styleType] || styles.primary;
 };
 
 // Color mapping
@@ -88,6 +116,7 @@ const Button = ({
   isLoading = false,
   loadingText = 'صبر کنید...',
   linkTarget = '_self',
+  textColor,
   children,
   className = '',
   onClick,
@@ -105,6 +134,7 @@ const Button = ({
     base,
     sizes[size],
     styleClasses,
+    textColor,
     wide ? 'w-full' : '',
     isIconOnly ? 'p-2' : '',
     className,

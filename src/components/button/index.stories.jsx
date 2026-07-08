@@ -31,9 +31,14 @@ export default {
       defaultValue: 'primary',
     },
     mainColor: {
-      control: 'select',
-      options: ['red', 'blue', 'green', 'yellow', 'darkBlue', 'gray'],
+      control: 'text',
       defaultValue: 'blue',
+      description: 'A preset color key (red, blue, green, yellow, darkBlue, gray) or any custom CSS color value (hex, rgb, CSS variable, etc.)',
+    },
+    textColor: {
+      control: 'text',
+      defaultValue: '',
+      description: 'Optional Tailwind text color class to override the default text color, e.g. "text-red-200", "text-yellow-300"',
     },
     children: {
       control: 'text',
@@ -301,4 +306,100 @@ export const WithReactNodeChildren = Template.bind({});
 WithReactNodeChildren.args = {
   size: 'md',
   children: <Text color="white">این یک متن  تستی است</Text>,
+};
+
+// --- Custom Color Stories ---
+
+export const CustomHexPrimary = Template.bind({});
+CustomHexPrimary.args = {
+  styleType: 'primary',
+  mainColor: '#FF5733',
+  children: 'رنگ سفارشی هگز Primary',
+};
+
+export const CustomHexSecondary = Template.bind({});
+CustomHexSecondary.args = {
+  styleType: 'secondary',
+  mainColor: '#8B5CF6',
+  children: 'رنگ سفارشی هگز Secondary',
+};
+
+export const CustomHexTertiary = Template.bind({});
+CustomHexTertiary.args = {
+  styleType: 'tertiary',
+  mainColor: '#10B981',
+  children: 'رنگ سفارشی هگز Tertiary',
+};
+
+export const CustomRgbPrimary = Template.bind({});
+CustomRgbPrimary.args = {
+  styleType: 'primary',
+  mainColor: 'rgb(249, 115, 22)',
+  children: 'رنگ سفارشی RGB Primary',
+};
+
+export const CustomRgbSecondary = Template.bind({});
+CustomRgbSecondary.args = {
+  styleType: 'secondary',
+  mainColor: 'rgb(99, 102, 241)',
+  children: 'رنگ سفارشی RGB Secondary',
+};
+
+export const CustomCssVarPrimary = Template.bind({});
+CustomCssVarPrimary.args = {
+  styleType: 'primary',
+  mainColor: 'var(--secondary)',
+  children: 'رنگ از CSS Variable Primary',
+};
+
+export const CustomCssVarSecondary = Template.bind({});
+CustomCssVarSecondary.args = {
+  styleType: 'secondary',
+  mainColor: 'var(--main)',
+  children: 'رنگ از CSS Variable Secondary',
+};
+
+export const CustomColorDisabled = Template.bind({});
+CustomColorDisabled.args = {
+  styleType: 'primary',
+  mainColor: '#FF5733',
+  disabled: true,
+  children: 'دکمه سفارشی غیرفعال',
+};
+
+export const CustomGreen400Primary = Template.bind({});
+CustomGreen400Primary.args = {
+  styleType: 'primary',
+  mainColor: 'green-400',
+  children: 'دکمه با bg-green-400',
+};
+
+export const CustomGreen400Secondary = Template.bind({});
+CustomGreen400Secondary.args = {
+  styleType: 'secondary',
+  mainColor: 'green-400',
+  children: 'دکمه سبز outline ثانویه',
+};
+
+export const CustomGreen400Tertiary = Template.bind({});
+CustomGreen400Tertiary.args = {
+  styleType: 'tertiary',
+  mainColor: 'green-400',
+  children: 'دکمه سبز ghost ثالثیه',
+};
+
+export const CustomGreen400WithRedText = Template.bind({});
+CustomGreen400WithRedText.args = {
+  styleType: 'primary',
+  mainColor: 'green-400',
+  textColor: 'text-red-200',
+  children: 'سبز با متن قرمز',
+};
+
+export const BluePrimaryWithYellowText = Template.bind({});
+BluePrimaryWithYellowText.args = {
+  styleType: 'primary',
+  mainColor: 'blue',
+  textColor: 'text-yellow-300',
+  children: 'آبی با متن زرد',
 };
