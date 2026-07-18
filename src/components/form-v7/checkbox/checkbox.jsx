@@ -21,12 +21,13 @@ const Checkbox = ({
   number,
   control,
   children,
+  className = '',
 }) => {
   const radioElements = React.Children.toArray(children);
 
   return (
     <ThemeProvider theme={theme}>
-      <Fieldset onChange={handleChange}>
+      <Fieldset onChange={handleChange} className={className}>
         <GlobalStyle />
         <Label label={label} number={number} required={required} />
         <Controller

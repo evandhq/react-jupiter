@@ -7,13 +7,13 @@ import theme from '../theme';
 
 const RadioOption = (props) => {
   const {
-    label, value, isDisabled = false, defaultCheckedValue = '', groupName, register,
+    label, value, isDisabled = false, defaultCheckedValue = '', groupName, register, className = '',
   } = props;
   const itemId = `${groupName}-${value}-${label.split(' ').join('')}`;
 
   return (
     <ThemeProvider theme={theme}>
-      <label htmlFor={itemId}>
+      <label htmlFor={itemId} className={className}>
         <Input
           type="radio"
           id={itemId}

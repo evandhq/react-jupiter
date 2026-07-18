@@ -6,12 +6,12 @@ import { Text } from '../../typography';
 import { Input } from './index.style';
 
 const CheckboxOption = (props) => {
-  const { label, value, isDisabled = false, isChecked = false, groupName, register, handleOnchange } = props;
+  const { label, value, isDisabled = false, isChecked = false, groupName, register, handleOnchange, className = '' } = props;
   const itemId = `${groupName}-${value}`;
 
   return (
     <ThemeProvider theme={theme}>
-      <label className="flex gap-2" htmlFor={itemId}>
+      <label className={`flex gap-2 ${className}`} htmlFor={itemId}>
         <Input
           type="checkbox"
           id={itemId}
