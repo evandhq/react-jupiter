@@ -32,6 +32,7 @@ const Select = ({
             <>
               <StyledSelect
                 {...field}
+                className="px-3 py-2"
                 defaultValue={defaultValue}
                 onChange={(e) => {
                   if (handleChange) {
