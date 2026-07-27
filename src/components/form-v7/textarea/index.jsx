@@ -8,6 +8,7 @@ import ErrorMsg from '../errorMsg';
 import Label from '../label';
 import StyledTextarea from './index.style';
 import { Fieldset } from '../index.style';
+import { DEFAULT_SIZE } from '../sizes';
 
 const Textarea = ({
   htmlElementName = 'textarea-element',
@@ -22,6 +23,7 @@ const Textarea = ({
   number = null,
   register,
   control,
+  size = DEFAULT_SIZE,
 }) => (
   <ThemeProvider theme={theme}>
     <Fieldset>
@@ -40,6 +42,7 @@ const Textarea = ({
               resize={resize}
               defaultValue={defaultValue}
               minHeight={minHeight}
+              size={size}
               {...register(htmlElementName, {
                 onChange: handleChange,
                 disabled: isDisabled,

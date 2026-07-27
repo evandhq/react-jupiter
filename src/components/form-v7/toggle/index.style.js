@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getSize } from '../sizes';
 
 export const ToggleWrapper = styled.div`
   display: flex;
@@ -10,8 +11,8 @@ export const ToggleWrapper = styled.div`
 export const ToggleLabel = styled.label`
   position: relative;
   display: inline-block;
-  width: 44px;
-  height: 24px;
+  width: ${({ size }) => getSize('toggle', size).width};
+  height: ${({ size }) => getSize('toggle', size).height};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
 
@@ -25,7 +26,7 @@ export const ToggleInput = styled.input`
   }
 
   &:checked + span:before {
-    transform: translateX(20px);
+    transform: translateX(${({ size }) => getSize('toggle', size).translateX});
   }
 `;
 
@@ -43,10 +44,10 @@ export const ToggleSlider = styled.span`
   &:before {
     content: '';
     position: absolute;
-    height: 18px;
-    width: 18px;
-    left: 3px;
-    bottom: 3px;
+    height: ${({ size }) => getSize('toggle', size).sliderSize};
+    width: ${({ size }) => getSize('toggle', size).sliderSize};
+    left: ${({ size }) => getSize('toggle', size).sliderPos};
+    bottom: ${({ size }) => getSize('toggle', size).sliderPos};
     background-color: white;
     transition: 0.3s;
     border-radius: 50%;

@@ -7,6 +7,7 @@ import Label from '../label';
 import { Fieldset } from '../index.style';
 import { ToggleWrapper, ToggleLabel, ToggleInput, ToggleSlider } from './index.style';
 import theme from '../theme';
+import { DEFAULT_SIZE } from '../sizes';
 
 const Toggle = ({
   name = 'toggle-element',
@@ -18,6 +19,7 @@ const Toggle = ({
   control,
   register,
   className = '',
+  size = DEFAULT_SIZE,
 }) => (
   <ThemeProvider theme={theme}>
     <Fieldset className={className}>
@@ -32,15 +34,16 @@ const Toggle = ({
               {type === 'vertical' && (
                 <Label label={label} number={number} required={required} />
               )}
-              <ToggleLabel disabled={isDisabled}>
+              <ToggleLabel disabled={isDisabled} size={size}>
                 <ToggleInput
                   type="checkbox"
                   disabled={isDisabled}
+                  size={size}
                   {...register(name, {
                     disabled: isDisabled,
                   })}
                 />
-                <ToggleSlider disabled={isDisabled} />
+                <ToggleSlider disabled={isDisabled} size={size} />
               </ToggleLabel>
               {type === 'horizontal' && label && (
                 <Label label={label} number={number} required={required} />

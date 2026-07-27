@@ -9,6 +9,7 @@ import Label from '../label';
 import { Input } from '../text-input/index.style';
 import Display from '../../display';
 import { Fieldset } from '../index.style';
+import { DEFAULT_SIZE } from '../sizes';
 
 function Captcha({
   classNames = '',
@@ -19,6 +20,7 @@ function Captcha({
   imageUrl,
   control,
   fetchData,
+  size = DEFAULT_SIZE,
 }) {
   const persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g];
   const arabicNumbers = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g];
@@ -58,6 +60,7 @@ function Captcha({
                       name={htmlElementName}
                       type="text"
                       rtl={false}
+                      size={size}
                       value={value}
                       onChange={(e) => {
                         onChange(fixNumbers(e.target.value));

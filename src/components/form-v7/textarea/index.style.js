@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { getSize } from '../sizes';
 
 const StyledTextarea = styled.textarea`
   font-family: 'IranSharp';
-  font-size: 14px;
+  font-size: ${({ size }) => getSize('textarea', size).fontSize};
 
   resize: ${({ resize }) => resize};
   min-height: ${({ minHeight }) => `${minHeight}px`};
   width: 100%;
-  padding: 8px 16px;
+  padding: ${({ size }) => getSize('textarea', size).padding};
   box-sizing: border-box;
   
   border-radius: ${({ theme }) => `${theme.borderRadius}px`};
