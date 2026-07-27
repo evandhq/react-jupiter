@@ -7,6 +7,7 @@ import { RadioWrapper } from './index.style';
 import { Fieldset } from '../index.style';
 import Label from '../label';
 import theme from '../theme';
+import { DEFAULT_SIZE } from '../sizes';
 
 const Radio = ({
   groupName = 'radio-element',
@@ -21,6 +22,7 @@ const Radio = ({
   register,
   children,
   className = '',
+  size = DEFAULT_SIZE,
 }) => {
   const radioElements = React.Children.toArray(children);
 
@@ -40,10 +42,10 @@ const Radio = ({
                   (radioElement) => (
                     isDisabled ? (
                       React.cloneElement(radioElement, {
-                        groupName, defaultCheckedValue, isDisabled, register,
+                        groupName, defaultCheckedValue, isDisabled, register, size,
                       })
                     ) : (
-                      React.cloneElement(radioElement, { groupName, defaultCheckedValue, register })
+                      React.cloneElement(radioElement, { groupName, defaultCheckedValue, register, size })
                     )
                   ),
                 )}

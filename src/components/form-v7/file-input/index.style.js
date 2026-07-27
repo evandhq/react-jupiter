@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import { Text } from '../../typography';
 import Icon from '../../icon';
+import { getSize } from '../sizes';
 
 export const Input = styled.input`
   font-family: 'IranSharp';
   font-weight: bold;
-  font-size: 12px;
+  font-size: ${({ size }) => getSize('fileInput', size).fontSize};
   border-radius: ${({ theme }) => `${theme.borderRadius}px`};
   border: solid 1px ${({ theme }) => theme.borderColor.normal};
-  padding: 4px;
+  padding: ${({ size }) => getSize('fileInput', size).padding};
   box-sizing: border-box;
   width: 100%;
 

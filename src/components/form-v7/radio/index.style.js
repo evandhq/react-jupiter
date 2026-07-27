@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getSize } from '../sizes';
 
 export const Fieldset = styled.fieldset`
   border: none;
@@ -21,11 +22,11 @@ export const Input = styled.input`
   appearance: none;
 
   border-radius: 50%;
-  width: 16px;
-  height: 16px;
+  width: ${({ size }) => getSize('radio', size).width};
+  height: ${({ size }) => getSize('radio', size).height};
   margin-right: 5px;
   position: relative;
-  top: 4px;
+  top: ${({ size }) => getSize('radio', size).top};
   
   border: 1px solid ${({ disabled, theme }) => (disabled ? theme.disabled.color : theme.borderColor.normal)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
@@ -37,8 +38,8 @@ export const Input = styled.input`
 
   &:checked {
     border: 1px solid ${({ theme }) => (theme.borderColor.normal)};
-    width: 16px;
-    height: 16px;
+    width: ${({ size }) => getSize('radio', size).width};
+    height: ${({ size }) => getSize('radio', size).height};
     background: ${({ disabled, theme }) => (disabled ? theme.disabled.color : theme.borderColor.focus)};
 
     &:after {
@@ -51,11 +52,11 @@ export const Input = styled.input`
     display: block;
     background: ${({ disabled }) => (disabled ? 'white' : 'transparent')};
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: ${({ size }) => getSize('radio', size).focusWidth};
+    height: ${({ size }) => getSize('radio', size).focusHeight};
     border-radius: 100%;
     z-index: -1;
-    top: -6px;
-    right: -6px;
+    top: ${({ size }) => getSize('radio', size).focusTop};
+    right: ${({ size }) => getSize('radio', size).focusRight};
   }
 `;

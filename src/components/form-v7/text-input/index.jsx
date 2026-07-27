@@ -7,6 +7,7 @@ import Label from '../label';
 import Icon from '../../icon';
 import { Text } from '../../typography';
 import { fixNumbers } from '../../utils/numbers';
+import { DEFAULT_SIZE } from '../sizes';
 import {
   Input,
   DescriptionContainer,
@@ -46,6 +47,7 @@ class TextInput extends Component {
       register,
       control,
       className = '',
+      size = DEFAULT_SIZE,
     } = this.props;
 
     const { showPassword } = this.state;
@@ -90,12 +92,16 @@ class TextInput extends Component {
                     id={id || `${type}-${htmlElementName.split(' ').join('')}`}
                     name={htmlElementName}
                     className={twMerge(`
-                      w-full !box-border px-3 py-2 text-sm font-normal font-['IranSharp']
+                      w-full !box-border font-normal font-['IranSharp']
                       border border-gray-300 rounded-md
                       ${rtl ? 'text-right' : 'text-left'}
                       ${disabled ? 'bg-gray-100 text-gray-500 border-transparent cursor-not-allowed' : 'bg-white text-gray-900 hover:border-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'}
                       focus:outline-none transition-colors duration-200
                       ${type === 'password' ? 'pr-3 pl-10' : 'px-3'}
+                      ${size === 'xs' ? 'text-xs py-1 px-2' : ''}
+                      ${size === 'sm' ? 'text-sm py-1.5 px-3' : ''}
+                      ${size === 'md' ? 'text-base py-2 px-3' : ''}
+                      ${size === 'lg' ? 'text-lg py-3 px-4' : ''}
                     `, className)}
                     type={showPassword ? 'text' : type}
                     placeholder={placeholder}

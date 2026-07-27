@@ -4,10 +4,11 @@ import { ThemeProvider } from 'styled-components';
 import { Text } from '../../typography';
 import { Input } from './index.style';
 import theme from '../theme';
+import { DEFAULT_SIZE } from '../sizes';
 
 const RadioOption = (props) => {
   const {
-    label, value, isDisabled = false, defaultCheckedValue = '', groupName, register, className = '',
+    label, value, isDisabled = false, defaultCheckedValue = '', groupName, register, className = '', size = DEFAULT_SIZE,
   } = props;
   const itemId = `${groupName}-${value}-${label.split(' ').join('')}`;
 
@@ -20,6 +21,7 @@ const RadioOption = (props) => {
           name={groupName}
           defaultValue={value}
           defaultChecked={defaultCheckedValue === value}
+          size={size}
           {...register(groupName, {
             disabled: isDisabled,
           })}

@@ -7,6 +7,7 @@ import GlobalStyle from '../../globalStyle';
 import theme from '../theme';
 import ErrorMsg from '../errorMsg';
 import Label from '../label';
+import { DEFAULT_SIZE } from '../sizes';
 import {
   Input,
   DescriptionContainer,
@@ -24,6 +25,7 @@ const FileInput = ({
   htmlElementName,
   register,
   control,
+  size = DEFAULT_SIZE,
 }) => (
   <ThemeProvider theme={theme}>
     <Fieldset>
@@ -45,6 +47,7 @@ const FileInput = ({
               id={id || `${type}-${htmlElementName.split(' ').join('')}`}
               name={htmlElementName}
               type="file"
+              size={size}
               {...register(htmlElementName, {
                 disabled,
                 required: required ? 'این فیلد الزامی است' : false,

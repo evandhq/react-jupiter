@@ -11,35 +11,38 @@ import Textarea from '../textarea';
 import Checkbox from '../checkbox/checkbox';
 import CheckboxOption from '../checkbox/checkbox-option';
 import Captcha from '../captcha';
+import Toggle from '../toggle/toggle';
 
 export default {
   title: 'Form-V7/Sample Form',
   component: 'form',
-  
+
   argTypes: {
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg'],
+      defaultValue: 'md',
+      description: 'Applies to all form components',
+    },
+    selectPlaceholder: {
+      control: 'text',
+      defaultValue: 'یک گزینه را انتخاب کنید',
+    },
     fileInputLabel: {
       control: 'text',
-      defaultValue: 'این لیبل است',
+      defaultValue: 'بارگذاری فایل',
     },
-    fileInputPlaceholder: {
+    fileInputDescription: {
       control: 'text',
-      defaultValue: 'متن پیشفرض',
+      defaultValue: 'حجم فایل ارسالی باید کمتر از ۴ مگابایت باشد',
     },
     fileInputDisabled: {
       control: 'boolean',
       defaultValue: false,
     },
-    fileInputErrorMessage: {
-      control: 'text',
-      defaultValue: 'ارور زیبا',
-    },
     radioLabel: {
       control: 'text',
-      defaultValue: 'زیر دیپلم',
-    },
-    radioValue: {
-      control: 'text',
-      defaultValue: '100',
+      defaultValue: 'مقطع تحصیلی',
     },
     radioDisabled: {
       control: 'boolean',
@@ -47,56 +50,51 @@ export default {
     },
     textInputLabel: {
       control: 'text',
-      defaultValue: 'این لیبل است',
+      defaultValue: 'نام و نام خانوادگی',
     },
     textInputPlaceholder: {
       control: 'text',
-      defaultValue: 'متن پیشفرض',
+      defaultValue: 'نام خود را وارد کنید',
     },
     textInputDisabled: {
       control: 'boolean',
       defaultValue: false,
     },
-    textInputErrorMessage: {
+    passwordLabel: {
       control: 'text',
-      defaultValue: 'ارور زیبا',
-    },
-    textInputType: {
-      control: 'select',
-      options: ['text', 'password'],
-      defaultValue: 'text',
+      defaultValue: 'رمز عبور',
     },
     textareaLabel: {
       control: 'text',
-      defaultValue: 'توضیجات',
-    },
-    textareaHtmlElementName: {
-      control: 'text',
-      defaultValue: 'textarea-box',
+      defaultValue: 'توضیحات',
     },
     textareaPlaceholder: {
       control: 'text',
-      defaultValue: 'این پلیس هولدر است',
+      defaultValue: 'توضیحات خود را وارد کنید',
     },
     textareaMinHeight: {
-      control: 'text',
-      defaultValue: '120',
+      control: 'number',
+      defaultValue: 120,
     },
     checkboxLabel: {
       control: 'text',
-      defaultValue: 'ورزشی',
-    },
-    checkboxValue: {
-      control: 'text',
-      defaultValue: '100',
+      defaultValue: 'در کدام موضوع‌ها توانایی دارید؟',
     },
     checkboxDisabled: {
       control: 'boolean',
       defaultValue: false,
     },
-    checkboxChecked: {
+    toggleLabel: {
+      control: 'text',
+      defaultValue: 'فعال‌سازی اعلان‌ها',
+    },
+    toggleDisabled: {
       control: 'boolean',
       defaultValue: false,
+    },
+    captchaLabel: {
+      control: 'text',
+      defaultValue: 'کد تصویری',
     },
   },
 };
@@ -106,171 +104,165 @@ const Template = (args) => {
     register,
     handleSubmit,
     control,
-    setValue,
     setError,
   } = useForm();
 
   const onSubmit = (data) => {
-    setError({
-      message: 'کپچا معتبر نیست .',
-      errors: { captcha: ['کپچا معتبر نیست .'] },
-      status_code: 422,
-    });
+    action('form submitted')(data);
   };
 
-  const options = [
-    'question 1',
-    'question 2',
-    'question 3',
+  const selectOptions = [
+    { value: 'q1', label: 'گزینه ۱' },
+    { value: 'q2', label: 'گزینه ۲' },
+    { value: 'q3', label: 'گزینه ۳' },
   ];
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg space-y-4">
+      {/* Select / Dropdown */}
       <Select
         htmlElementName="select"
-        placeholder="یک گزینه را انتخاب کنید"
+        placeholder={args.selectPlaceholder}
         register={register}
         control={control}
-        defaultValue={0}
-        label="select box"
+        label="انتخاب کنید"
         number={1}
-        required={false}
+        size={args.size}
       >
-        {!!options && options.map((option, key) => (
-          <SelectOption key={key} value={option} label={option} />
+        {selectOptions.map((opt) => (
+          <SelectOption key={opt.value} value={opt.value} label={opt.label} />
         ))}
       </Select>
 
+      {/* File Input */}
       <FileInput
         htmlElementName="file-input"
         register={register}
         control={control}
         label={args.fileInputLabel}
-        description="حجم فایل ارسالی باید کمتر از ۴ مگابایت باشد"
+        description={args.fileInputDescription}
         number={2}
-        placeholder={args.fileInputPlaceholder}
         disabled={args.fileInputDisabled}
-        errorMessage={args.fileInputErrorMessage}
-        required={false}
+        size={args.size}
       />
 
+      {/* Radio Group */}
       <Radio
         groupName="radio"
-        label="radio input"
+        label={args.radioLabel}
         number={3}
         register={register}
         control={control}
-        required={false}
+        size={args.size}
       >
-        <RadioOption
-          label={args.radioLabel}
-          value={args.radioValue}
-          isDisabled={args.radioDisabled}
-        />
-        <RadioOption value="200" label="دیپلم" />
-        <RadioOption value="300" label="کارشناسی" />
-        <RadioOption value="400" label="کارشناسی ارشد" />
-        <RadioOption value="500" label="دکترا" />
+        <RadioOption value="diplom" label="زیر دیپلم" />
+        <RadioOption value="diploma" label="دیپلم" />
+        <RadioOption value="bachelor" label="کارشناسی" />
+        <RadioOption value="master" label="کارشناسی ارشد" />
+        <RadioOption value="phd" label="دکترا" isDisabled={args.radioDisabled} />
       </Radio>
 
+      {/* Text Input */}
       <TextInput
         htmlElementName="text-input"
-        required={false}
         label={args.textInputLabel}
-        number={23}
+        number={4}
         register={register}
         control={control}
         placeholder={args.textInputPlaceholder}
         disabled={args.textInputDisabled}
-        errorMessage={args.textInputErrorMessage}
-        type={args.textInputType}
+        type="text"
         rtl
+        size={args.size}
       />
 
+      {/* Password Input */}
       <TextInput
-        htmlElementName="text-input"
+        htmlElementName="password-input"
+        label={args.passwordLabel}
+        number={5}
+        register={register}
+        control={control}
+        placeholder="رمز عبور خود را وارد کنید"
         type="password"
-        required={false}
-        label={args.textInputLabel}
-        number={23}
-        register={register}
-        control={control}
-        placeholder={args.textInputPlaceholder}
-        disabled={args.textInputDisabled}
-        errorMessage={args.textInputErrorMessage}
         rtl
+        size={args.size}
       />
 
+      {/* Textarea */}
       <Textarea
         register={register}
         control={control}
         label={args.textareaLabel}
-        htmlElementName={args.textareaHtmlElementName}
+        htmlElementName="textarea"
         placeholder={args.textareaPlaceholder}
         minHeight={args.textareaMinHeight}
-        isDisabled={false}
-        required={false}
-        resize="both"
-        handleChange={action('trigger what you want to do in onChange function')}
-        defaultValue="این یک باکس متنی می‌باشد"
+        number={6}
+        size={args.size}
       />
 
+      {/* Checkbox Group */}
       <Checkbox
         groupName="checkbox"
-        required={false}
-        label="در کدام موضوع ها توانایی دارید"
+        label={args.checkboxLabel}
         register={register}
         control={control}
+        size={args.size}
       >
-        <CheckboxOption
-          label={args.checkboxLabel}
-          value={args.checkboxValue}
-          isDisabled={args.checkboxDisabled}
-          isChecked={args.checkboxChecked}
-          register={register}
-        />
-        <CheckboxOption value="200" label="علمی" />
-        <CheckboxOption value="300" label="مذهبی" />
-        <CheckboxOption value="400" label="فرهنگی" />
-        <CheckboxOption value="500" label="هنری" />
+        <CheckboxOption value="sports" label="ورزشی" />
+        <CheckboxOption value="science" label="علمی" />
+        <CheckboxOption value="religious" label="مذهبی" />
+        <CheckboxOption value="cultural" label="فرهنگی" />
+        <CheckboxOption value="art" label="هنری" isDisabled={args.checkboxDisabled} />
       </Checkbox>
 
+      {/* Toggle */}
+      <Toggle
+        name="toggle"
+        label={args.toggleLabel}
+        register={register}
+        control={control}
+        isDisabled={args.toggleDisabled}
+        size={args.size}
+      />
+
+      {/* Captcha */}
       <Captcha
         register={register}
         control={control}
-        label="کد تصویری"
+        label={args.captchaLabel}
         htmlElementName="captcha"
         imageUrl="https://static.evand.net/captcha/0bb5a9832be7b86a2a0a646ae2fd1649.jpg"
-        handleChange={action('trigger what you want to do in onChange function')}
-        fetchData={() => console.log('fetching')}
-        setValue={setValue}
+        fetchData={() => action('refresh captcha')()}
+        size={args.size}
       />
 
-      <button type="submit">submit</button>
+      <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+        ثبت فرم
+      </button>
     </form>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  fileInputLabel: 'این لیبل است',
-  fileInputPlaceholder: 'متن پیشفرض',
+  size: 'md',
+  selectPlaceholder: 'یک گزینه را انتخاب کنید',
+  fileInputLabel: 'بارگذاری فایل',
+  fileInputDescription: 'حجم فایل ارسالی باید کمتر از ۴ مگابایت باشد',
   fileInputDisabled: false,
-  fileInputErrorMessage: 'ارور زیبا',
-  radioLabel: 'زیر دیپلم',
-  radioValue: '100',
+  radioLabel: 'مقطع تحصیلی',
   radioDisabled: false,
-  textInputLabel: 'این لیبل است',
-  textInputPlaceholder: 'متن پیشفرض',
+  textInputLabel: 'نام و نام خانوادگی',
+  textInputPlaceholder: 'نام خود را وارد کنید',
   textInputDisabled: false,
-  textInputErrorMessage: 'ارور زیبا',
-  textInputType: 'text',
-  textareaLabel: 'توضیجات',
-  textareaHtmlElementName: 'textarea-box',
-  textareaPlaceholder: 'این پلیس هولدر است',
-  textareaMinHeight: '120',
-  checkboxLabel: 'ورزشی',
-  checkboxValue: '100',
+  passwordLabel: 'رمز عبور',
+  textareaLabel: 'توضیحات',
+  textareaPlaceholder: 'توضیحات خود را وارد کنید',
+  textareaMinHeight: 120,
+  checkboxLabel: 'در کدام موضوع‌ها توانایی دارید؟',
   checkboxDisabled: false,
-  checkboxChecked: false,
+  toggleLabel: 'فعال‌سازی اعلان‌ها',
+  toggleDisabled: false,
+  captchaLabel: 'کد تصویری',
 };
