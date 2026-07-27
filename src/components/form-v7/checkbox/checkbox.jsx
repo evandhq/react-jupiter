@@ -9,6 +9,7 @@ import { Fieldset } from '../index.style';
 import theme from '../theme';
 import Label from '../label';
 import { Text } from '../../typography';
+import { DEFAULT_SIZE } from '../sizes';
 
 const Checkbox = ({
   groupName = 'radio-element',
@@ -22,6 +23,7 @@ const Checkbox = ({
   control,
   children,
   className = '',
+  size = DEFAULT_SIZE,
 }) => {
   const radioElements = React.Children.toArray(children);
 
@@ -40,9 +42,9 @@ const Checkbox = ({
                 {radioElements.map(
                   (radioElement) => (
                     isDisabled ? (
-                      React.cloneElement(radioElement, { groupName, isDisabled, register })
+                      React.cloneElement(radioElement, { groupName, isDisabled, register, size })
                     ) : (
-                      React.cloneElement(radioElement, { groupName, register })
+                      React.cloneElement(radioElement, { groupName, register, size })
                     )
                   ),
                 )}

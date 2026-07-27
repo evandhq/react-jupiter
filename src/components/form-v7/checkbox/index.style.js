@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getSize } from '../sizes';
 
 export const Fieldset = styled.fieldset`
   border: none;
@@ -17,8 +18,8 @@ export const Input = styled.input`
   -moz-appearance: none;
   appearance: none;
 
-  width: 16px;
-  height: 16px;
+  width: ${({ size }) => getSize('checkbox', size).width};
+  height: ${({ size }) => getSize('checkbox', size).height};
 
   border: 1px solid ${({ disabled, theme }) => (disabled ? theme.disabled.color : theme.borderColor.normal)};
   background: ${({ disabled, theme }) => (disabled ? theme.disabled.background : 'white')};
@@ -44,18 +45,18 @@ export const Input = styled.input`
     content: '';
     display: block;
 
-    height: 8px;
-    width: 5px;
+    height: ${({ size }) => getSize('checkbox', size).checkHeight};
+    width: ${({ size }) => getSize('checkbox', size).checkWidth};
     position: absolute;
-    right: 5px;
-    top: 2px;
+    right: ${({ size }) => getSize('checkbox', size).checkRight};
+    top: ${({ size }) => getSize('checkbox', size).checkTop};
 
     transition: 0.2s all linear;
 
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    border-bottom: 2px solid transparent;
-    border-right: 2px solid transparent;
+    border-bottom: ${({ size }) => getSize('checkbox', size).checkBorder} solid transparent;
+    border-right: ${({ size }) => getSize('checkbox', size).checkBorder} solid transparent;
   }
 `;

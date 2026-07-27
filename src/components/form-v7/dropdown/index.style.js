@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getSize } from '../sizes';
 
 export const SelectButton = styled.div`
   position: relative;
@@ -6,11 +7,11 @@ export const SelectButton = styled.div`
   &:after {
     content: "";
     display: block;
-    width: 7px;
-    height: 7px;
+    width: ${({ size }) => getSize('select', size).chevronSize};
+    height: ${({ size }) => getSize('select', size).chevronSize};
     position: absolute;
-    left: 13px;
-    top: 9px;
+    left: ${({ size }) => getSize('select', size).chevronLeft};
+    top: ${({ size }) => getSize('select', size).chevronTop};
     border: solid ${({ disabled, theme }) => (disabled ? theme.disabled.color : theme.borderColor.normal)};
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
@@ -21,12 +22,11 @@ export const SelectButton = styled.div`
   &:before {
     content: "";
     display: block;
-    width: 33px;
+    width: ${({ size }) => getSize('select', size).separatorWidth};
     position: absolute;
-    margin-top: 2px;
-    top: 0;
+    top: 1px;
     bottom: 1px;
-    left: 5px;
+    left: ${({ size }) => getSize('select', size).separatorLeft};
     border-right: 1px solid ${({ disabled, theme }) => (disabled ? theme.disabled.color : theme.borderColor.normal)};
     background: ${({ disabled, theme }) => (disabled ? theme.disabled.background : 'white')};
     pointer-events: none;
@@ -36,14 +36,13 @@ export const SelectButton = styled.div`
 export const StyledSelect = styled.select`
   font-family: 'IranSharp';
   font-weight: normal;
-  font-size: 12px;
+  font-size: ${({ size }) => getSize('select', size).fontSize};
   border-radius: ${({ theme }) => `${theme.borderRadius}px`};
   border: solid 1px ${({ disabled, theme }) => (disabled ? 'transparent' : theme.borderColor.normal)};
-  padding: 4px;
+  padding: ${({ size }) => getSize('select', size).padding};
   box-sizing: border-box;
   width: ${({ width }) => width};
   background: ${({ disabled, theme }) => (disabled ? theme.disabled.background : 'white')};
-  ${({ disabled, theme }) => (disabled ? `color: ${theme.disabled.color};` : '')}
   ${({ disabled, theme }) => (disabled ? `color: ${theme.disabled.color};` : '')}
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 

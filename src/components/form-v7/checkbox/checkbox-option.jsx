@@ -4,9 +4,10 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../theme';
 import { Text } from '../../typography';
 import { Input } from './index.style';
+import { DEFAULT_SIZE } from '../sizes';
 
 const CheckboxOption = (props) => {
-  const { label, value, isDisabled = false, isChecked = false, groupName, register, handleOnchange, className = '' } = props;
+  const { label, value, isDisabled = false, isChecked = false, groupName, register, handleOnchange, className = '', size = DEFAULT_SIZE } = props;
   const itemId = `${groupName}-${value}`;
 
   return (
@@ -18,6 +19,7 @@ const CheckboxOption = (props) => {
           name={groupName}
           value={value}
           defaultChecked={isChecked}
+          size={size}
           {...register(groupName, {
             disabled: isDisabled,
             onChange: (handleOnchange),

@@ -42,6 +42,15 @@ export default {
       control: 'boolean',
       defaultValue: true,
     },
+    className: {
+      control: 'text',
+      defaultValue: '',
+    },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg'],
+      defaultValue: 'md',
+    },
   },
 };
 

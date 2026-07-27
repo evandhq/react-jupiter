@@ -7,6 +7,7 @@ import ErrorMsg from '../errorMsg';
 import { StyledSelect, SelectButton } from './index.style';
 import Label from '../label';
 import { Fieldset } from '../index.style';
+import { DEFAULT_SIZE } from '../sizes';
 
 const Select = ({
   htmlElementName = 'select-element',
@@ -20,10 +21,12 @@ const Select = ({
   number = null,
   control,
   children,
+  className = '',
+  size = DEFAULT_SIZE,
 }) => {
   const renderSelect = () => (
     <ThemeProvider theme={theme}>
-      <SelectButton disabled={isDisabled}>
+      <SelectButton disabled={isDisabled} size={size}>
         <Controller
           name={htmlElementName}
           control={control}
@@ -32,7 +35,8 @@ const Select = ({
             <>
               <StyledSelect
                 {...field}
-                className="px-3 py-2"
+                size={size}
+                className={className}
                 defaultValue={defaultValue}
                 onChange={(e) => {
                   if (handleChange) {
