@@ -27,7 +27,10 @@ class TextInput extends Component {
   };
 
   handleFocus = (e) => {
-    e.target.setSelectionRange(0, 0);
+    const { type } = this.props;
+    if (type !== 'number') {
+      e.target.setSelectionRange(0, 0);
+    }
   };
 
   render() {
@@ -48,6 +51,9 @@ class TextInput extends Component {
       control,
       className = '',
       size = DEFAULT_SIZE,
+      min = undefined,
+      max = undefined,
+      step = undefined,
     } = this.props;
 
     const { showPassword } = this.state;
@@ -94,7 +100,7 @@ class TextInput extends Component {
                     className={twMerge(`
                       w-full !box-border font-normal font-['IranSharp']
                       border border-gray-300 rounded-md
-                      ${rtl ? 'text-right' : 'text-left'}
+                      ${rtl && type !== 'number' ? 'text-right' : 'text-left'}
                       ${disabled ? 'bg-gray-100 text-gray-500 border-transparent cursor-not-allowed' : 'bg-white text-gray-900 hover:border-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'}
                       focus:outline-none transition-colors duration-200
                       ${type === 'password' ? 'pr-3 pl-10' : 'px-3'}
@@ -107,7 +113,11 @@ class TextInput extends Component {
                     placeholder={placeholder}
                     defaultValue={value}
                     disabled={disabled}
-                    dir={rtl ? 'rtl' : 'ltr'}
+                    dir={rtl && type !== 'number' ? 'rtl' : 'ltr'}
+                    inputMode={type === 'number' ? 'numeric' : undefined}
+                    min={type === 'number' ? min : undefined}
+                    max={type === 'number' ? max : undefined}
+                    step={type === 'number' ? step : undefined}
                     {...register(htmlElementName, {
                       onFocus: this.handleFocus,
                       disabled,
