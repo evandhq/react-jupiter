@@ -12,7 +12,8 @@ export const Fieldset = styled.fieldset`
 
 export const RadioWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ justifyContent }) => justifyContent || 'space-between'};
+  gap: ${({ gap: gapValue }) => (gapValue != null ? gapValue : '0')};
   ${({ type }) => (type === 'vertical' ? 'flex-direction: column;' : '')}
 `;
 

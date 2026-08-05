@@ -6,7 +6,7 @@ import TextInput from './index';
 export default {
   title: 'Form-V7/Text Input',
   component: TextInput,
-  
+
   argTypes: {
     htmlElementName: {
       control: 'text',
@@ -28,13 +28,9 @@ export default {
       control: 'text',
       defaultValue: 'توضیحات اضافه',
     },
-    errorMessage: {
-      control: 'text',
-      defaultValue: 'ارور زیبا',
-    },
     type: {
       control: 'select',
-      options: ['text', 'password'],
+      options: ['text', 'password', 'number'],
       defaultValue: 'text',
     },
     rtl: {
@@ -49,57 +45,83 @@ export default {
       control: 'number',
       defaultValue: 23,
     },
+    priceFormat: {
+      control: 'boolean',
+      defaultValue: false,
+    },
+    className: {
+      control: 'text',
+      defaultValue: '',
+    },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg'],
+      defaultValue: 'md',
+    },
   },
 };
 
 const Template = (args) => {
-  const { register, control, handleSubmit } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
+  const { register, control } = useForm();
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <TextInput {...args} register={register} control={control} />
-    </form>
+    <TextInput {...args} register={register} control={control} />
   );
 };
 
 export const FullOptions = Template.bind({});
 FullOptions.args = {
   htmlElementName: 'text-name-02',
-  required: true,
   label: 'این لیبل است',
   number: 23,
   placeholder: 'متن پیشفرض',
   disabled: false,
   description: 'توضیحات اضافه',
-  errorMessage: 'ارور زیبا',
+  required: true,
   type: 'text',
   rtl: true,
 };
 
 export const LTR = Template.bind({});
 LTR.args = {
-  ...FullOptions.args,
+  htmlElementName: 'en-name',
+  label: 'English Label',
+  placeholder: 'LTR placeholder',
+  type: 'text',
   rtl: false,
 };
 
 export const Password = Template.bind({});
 Password.args = {
-  ...FullOptions.args,
+  htmlElementName: 'password-field',
+  label: 'رمز عبور',
+  placeholder: 'رمز عبور خود را وارد کنید',
   type: 'password',
+  required: true,
+};
+
+export const Numeric = Template.bind({});
+Numeric.args = {
+  htmlElementName: 'quantity',
+  label: 'تعداد',
+  placeholder: 'عدد وارد کنید',
+  type: 'number',
+  required: true,
+};
+
+export const Price = Template.bind({});
+Price.args = {
+  htmlElementName: 'price',
+  label: 'قیمت (تومان)',
+  placeholder: 'قیمت را وارد کنید',
+  type: 'number',
+  priceFormat: true,
+  required: true,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  ...FullOptions.args,
+  htmlElementName: 'disabled-field',
+  label: 'فیلد غیرفعال',
+  placeholder: 'غیرفعال',
   disabled: true,
-};
-
-export const WithError = Template.bind({});
-WithError.args = {
-  ...FullOptions.args,
-  errorMessage: 'لطفا این فیلد را پر کنید',
 };

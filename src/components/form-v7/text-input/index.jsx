@@ -27,10 +27,43 @@ class TextInput extends Component {
   };
 
   handleFocus = (e) => {
-    const { type } = this.props;
-    if (type !== 'number') {
+    const { type, priceFormat } = this.props;
+    if (type !== 'number' && !priceFormat) {
       e.target.setSelectionRange(0, 0);
     }
+  };
+
+  handleKeyDown = (e) => {
+    const { type, priceFormat } = this.props;
+    if (type !== 'number' && !priceFormat) return;
+
+    const allowedKeys = [
+      'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
+      'Tab', 'Escape', 'Enter', 'Home', 'End',
+    ];
+
+    if ((e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x'].includes(e.key.toLowerCase())) {
+      return;
+    }
+
+    if (allowedKeys.includes(e.key)) return;
+    if (e.key === '.' || e.key === '-') return;
+
+    if (!/^[0-9\u06F0-\u06F9\u0660-\u0669]$/.test(e.key)) {
+      e.preventDefault();
+    }
+  };
+
+  formatPriceValue = (value) => {
+    if (value === '' || value === null || value === undefined) return '';
+    const num = Number(value);
+    if (isNaN(num)) return '';
+    return new Intl.NumberFormat('fa-IR').format(num);
+  };
+
+  unformatPriceValue = (value) => {
+    if (!value && value !== 0) return '';
+    return String(value).replace(/[^0-9.-]/g, '');
   };
 
   render() {
@@ -54,6 +87,7 @@ class TextInput extends Component {
       min = undefined,
       max = undefined,
       step = undefined,
+      priceFormat = false,
     } = this.props;
 
     const { showPassword } = this.state;
@@ -100,7 +134,7 @@ class TextInput extends Component {
                     className={twMerge(`
                       w-full !box-border font-normal font-['IranSharp']
                       border border-gray-300 rounded-md
-                      ${rtl && type !== 'number' ? 'text-right' : 'text-left'}
+                      ${rtl && type !== 'number' && !priceFormat ? 'text-right' : 'text-left'}
                       ${disabled ? 'bg-gray-100 text-gray-500 border-transparent cursor-not-allowed' : 'bg-white text-gray-900 hover:border-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'}
                       focus:outline-none transition-colors duration-200
                       ${type === 'password' ? 'pr-3 pl-10' : 'px-3'}
@@ -109,25 +143,42 @@ class TextInput extends Component {
                       ${size === 'md' ? 'text-base py-2 px-3' : ''}
                       ${size === 'lg' ? 'text-lg py-3 px-4' : ''}
                     `, className)}
-                    type={showPassword ? 'text' : type}
+                    type={priceFormat ? 'text' : (showPassword ? 'text' : type)}
                     placeholder={placeholder}
-                    defaultValue={value}
+                    defaultValue={priceFormat ? this.formatPriceValue(value) : value}
                     disabled={disabled}
-                    dir={rtl && type !== 'number' ? 'rtl' : 'ltr'}
-                    inputMode={type === 'number' ? 'numeric' : undefined}
-                    min={type === 'number' ? min : undefined}
-                    max={type === 'number' ? max : undefined}
-                    step={type === 'number' ? step : undefined}
+                    dir={rtl && type !== 'number' && !priceFormat ? 'rtl' : 'ltr'}
+                    inputMode={type === 'number' || priceFormat ? 'numeric' : undefined}
+                    min={type === 'number' && !priceFormat ? min : undefined}
+                    max={type === 'number' && !priceFormat ? max : undefined}
+                    step={type === 'number' && !priceFormat ? step : undefined}
                     {...register(htmlElementName, {
                       onFocus: this.handleFocus,
                       disabled,
                       onChange: (e) => fixNumbers(e),
                     })}
+                    onKeyDown={this.handleKeyDown}
                     onChange={(e) => {
-                      fixNumbers(e)
-                      onChange(e)
+                      fixNumbers(e);
+                      if (priceFormat) {
+                        const raw = this.unformatPriceValue(e.target.value);
+                        onChange(raw);
+                      } else {
+                        onChange(e);
+                      }
                     }}
-                    onFocus={this.handleFocus}
+                    onFocus={(e) => {
+                      this.handleFocus(e);
+                      if (priceFormat) {
+                        e.target.value = value || '';
+                      }
+                    }}
+                    {...(priceFormat ? {
+                      onBlur: (e) => {
+                        e.target.value = this.formatPriceValue(value);
+                        onBlur(e);
+                      },
+                    } : {})}
                     readOnly={readOnly}
                   />
                 </div>

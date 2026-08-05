@@ -23,6 +23,8 @@ const Radio = ({
   children,
   className = '',
   size = DEFAULT_SIZE,
+  justifyContent = 'space-between',
+  gap = null,
 }) => {
   const radioElements = React.Children.toArray(children);
 
@@ -37,7 +39,7 @@ const Radio = ({
           rules={{ required: required ? 'این فیلد اجباری است' : false }}
           render={({ fieldState }) => (
             <>
-              <RadioWrapper type={type}>
+              <RadioWrapper type={type} justifyContent={justifyContent} gap={gap}>
                 {radioElements.map(
                   (radioElement) => (
                     isDisabled ? (
