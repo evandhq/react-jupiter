@@ -2,19 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { Text } from '../../typography';
-import { Input } from './index.style';
+import { Input, RadioLabel } from './index.style';
 import theme from '../theme';
 import { DEFAULT_SIZE } from '../sizes';
 
 const RadioOption = (props) => {
   const {
     label, value, isDisabled = false, defaultCheckedValue = '', groupName, register, className = '', size = DEFAULT_SIZE,
+    suffix = null,
   } = props;
   const itemId = `${groupName}-${value}-${label.split(' ').join('')}`;
 
   return (
     <ThemeProvider theme={theme}>
-      <label htmlFor={itemId} className={className}>
+      <RadioLabel htmlFor={itemId} className={`gap-2 ${className}`}>
         <Input
           type="radio"
           id={itemId}
@@ -29,7 +30,8 @@ const RadioOption = (props) => {
         <Text size={14}>
           {label}
         </Text>
-      </label>
+        {suffix}
+      </RadioLabel>
     </ThemeProvider>
   );
 };

@@ -12,9 +12,12 @@ export const Fieldset = styled.fieldset`
 
 export const RadioWrapper = styled.div`
   display: flex;
-  justify-content: ${({ justifyContent }) => justifyContent || 'space-between'};
-  gap: ${({ gap: gapValue }) => (gapValue != null ? gapValue : '0')};
   ${({ type }) => (type === 'vertical' ? 'flex-direction: column;' : '')}
+`;
+
+export const RadioLabel = styled.label`
+  display: inline-flex;
+  align-items: center;
 `;
 
 export const Input = styled.input`
@@ -27,7 +30,6 @@ export const Input = styled.input`
   height: ${({ size }) => getSize('radio', size).height};
   margin-right: 5px;
   position: relative;
-  top: ${({ size }) => getSize('radio', size).top};
   
   border: 1px solid ${({ disabled, theme }) => (disabled ? theme.disabled.color : theme.borderColor.normal)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
@@ -57,7 +59,8 @@ export const Input = styled.input`
     height: ${({ size }) => getSize('radio', size).focusHeight};
     border-radius: 100%;
     z-index: -1;
-    top: ${({ size }) => getSize('radio', size).focusTop};
-    right: ${({ size }) => getSize('radio', size).focusRight};
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
   }
 `;

@@ -11,7 +11,7 @@ import { DEFAULT_SIZE } from '../sizes';
 
 const Select = ({
   htmlElementName = 'select-element',
-  defaultValue = '',
+  defaultValue = undefined,
   placeholder = '',
   label = '',
   width = '100%',
@@ -38,6 +38,7 @@ const Select = ({
                 size={size}
                 className={className}
                 defaultValue={defaultValue}
+                disabled={isDisabled}
                 onChange={(e) => {
                   if (handleChange) {
                     handleChange(e.target.value);

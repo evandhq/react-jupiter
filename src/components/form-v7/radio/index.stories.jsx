@@ -8,7 +8,7 @@ import RadioOption from './radio-option';
 export default {
   title: 'Form-V7/Radio',
   component: Radio,
-  
+
   argTypes: {
     groupName: {
       control: 'text',
@@ -31,10 +31,6 @@ export default {
       options: ['horizontal', 'vertical'],
       defaultValue: 'horizontal',
     },
-    errorMessage: {
-      control: 'text',
-      defaultValue: 'ارور زیبا',
-    },
     required: {
       control: 'boolean',
       defaultValue: true,
@@ -42,6 +38,10 @@ export default {
     number: {
       control: 'number',
       defaultValue: 1,
+    },
+    wrapperClassName: {
+      control: 'text',
+      defaultValue: 'justify-between',
     },
   },
 };
@@ -74,7 +74,6 @@ FullOptions.args = {
   handleChange: action('trigger what you want to do in onChange function'),
   isDisabled: false,
   type: 'horizontal',
-  errorMessage: 'ارور زیبا',
   required: true,
 };
 
@@ -90,16 +89,22 @@ Disabled.args = {
   isDisabled: true,
 };
 
-export const WithError = Template.bind({});
-WithError.args = {
+export const LeftAligned = Template.bind({});
+LeftAligned.args = {
   ...FullOptions.args,
-  errorMessage: 'لطفا یک گزینه را انتخاب کنید',
+  wrapperClassName: 'justify-start gap-4',
+};
+
+export const ResponsiveClasses = Template.bind({});
+ResponsiveClasses.args = {
+  ...FullOptions.args,
+  wrapperClassName: 'justify-start md:flex-row flex-col md:gap-6 gap-3',
 };
 
 const RadioOptionTemplate = (args) => {
-  const { register } = useForm();
+  const { register, control } = useForm();
   return (
-    <Radio groupName="degree" label="آخرین مدرک تحصیلی خود را انتخاب کنید" number={1} register={register}>
+    <Radio groupName="degree" label="آخرین مدرک تحصیلی خود را انتخاب کنید" number={1} register={register} control={control}>
       <RadioOption {...args} />
       <RadioOption value="200" label="دیپلم" />
       <RadioOption value="300" label="کارشناسی" />

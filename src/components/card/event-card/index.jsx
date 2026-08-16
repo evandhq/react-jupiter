@@ -259,7 +259,6 @@ EventCard.propTypes = {
       name: PropTypes.string.isRequired,
       logo: PropTypes.string,
     }),
-    PropTypes.undefined,
   ]),
   renderEventLink: PropTypes.func.isRequired,
   renderOrganizationLink: PropTypes.func,
