@@ -3,7 +3,7 @@ import { getSize } from '../sizes';
 
 export const ToggleWrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 8px;
   ${({ type }) => (type === 'vertical' ? 'flex-direction: column; align-items: flex-start;' : '')}
 `;

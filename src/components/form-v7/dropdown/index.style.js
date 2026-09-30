@@ -30,6 +30,7 @@ export const SelectButton = styled.div`
     border-right: 1px solid ${({ disabled, theme }) => (disabled ? theme.disabled.color : theme.borderColor.normal)};
     background: ${({ disabled, theme }) => (disabled ? theme.disabled.background : 'white')};
     pointer-events: none;
+    max-height: 39px;
   }
 `;
 
