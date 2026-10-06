@@ -6,12 +6,12 @@ import { Margin } from '../spacing';
 const ErrorMsg = ({ errorMessage = '' }) => {
   if (errorMessage) {
     return (
-      <Margin top={4}>
-        <Icon name="error" color="red" size="sm" stickyRight />
-        <Text bold size={10} color="red" data-test="error-message">
+      <div className="mt-1 flex flex-row gap-1.25 items-start">
+        <Icon name="error" color="text-red-500" size="sm" />
+        <span className="text-xs text-red-500" data-test="error-message">
           {errorMessage}
-        </Text>
-      </Margin>
+        </span>
+      </div>
     );
   }
 
